@@ -1,26 +1,22 @@
-require("color_rgb")
+require("game_object")
+
 
 Player = {}
 
 function Player:new (obj)
-	obj = obj or {}
+	obj = GameObject:new(obj)
 	setmetatable(obj, self)
 	self.__index = self
 	return obj
 end
 
 function Player:new (x, y, color)
-	obj = {}
-	obj.x = x
-	obj.y = y
-	obj.width = 20
-	obj.height = 100
-	obj.speed = 500
-	obj.color = color or ColorRGB:new()
+	obj = GameObject:new(x, y, 50, 50, 500, color)
 	setmetatable(obj, self)
 	self.__index = self
 	return obj
 end
+
 
 -- function Player:load()
 --   self.x = 50
@@ -45,5 +41,12 @@ end
 
 function Player:draw()
 	love.graphics.setColor(self.color.r, self.color.g, self.color.b)
+
  	love.graphics.rectangle("fill",self.x, self.y, self.width, self.height)
+   love.graphics.circle("fill", self.x + self.width/2, self.y, self.width/2)
+
+	love.graphics.setColor(1, 1, 1)
+	love.graphics.circle("fill", self.x + self.width/4, self.y - self.width/4, self.width/10)
+	love.graphics.circle("fill", self.x + 3 * self.width/4, self.y - self.width/4, self.width/10)
+
 end

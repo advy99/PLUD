@@ -2,23 +2,16 @@ require("color_rgb")
 
 GameObject = {}
 
-function GameObject:new (obj)
-	obj = obj or {}
+function GameObject:new()
+	obj = {}
 	setmetatable(obj, self)
 	self.__index = self
 	return obj
 end
 
-function GameObject:new (x, y, width, height, speed, has_gravity, color)
+function GameObject:newGameObject(world, x, y, type)
 	obj = {}
-	obj.x = x
-	obj.y = y
-	obj.width = width
-	obj.height = height
-	obj.speed = speed
-	obj.has_gravity = has_gravity
-	obj.color = color
-	obj.mass = 50
+	obj.body = love.physics.newBody(world, x, y, type)
 	setmetatable(obj, self)
 	self.__index = self
 	return obj

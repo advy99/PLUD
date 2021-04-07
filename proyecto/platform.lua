@@ -10,8 +10,10 @@ function Platform:new (obj)
 	return obj
 end
 
-function Platform:new (x, y, width, height, color)
-	obj = GameObject:new(x, y, width, height, 0, false, color)
+function Platform:newPlatform(world, x, y, width, height)
+	obj = GameObject:newGameObject(world, x, y , "static")
+	obj.shape = love.physics.newRectangleShape(width, height)
+	obj.fixture = love.physics.newFixture(obj.body, obj.shape, 1)
 	setmetatable(obj, self)
 	self.__index = self
 	return obj
@@ -28,7 +30,6 @@ function Platform:update(dt)
 end
 
 function Platform:draw()
-	love.graphics.setColor(self.color.r, self.color.g, self.color.b)
-
- 	love.graphics.rectangle("fill",self.x, self.y, self.width, self.height)
+	love.graphics.setColor(0.28, 0.63, 0.05) -- set the drawing color to green for the ground
+	love.graphics.polygon("fill", self.body:getWorldPoints(self.shape:getPoints()))
 end

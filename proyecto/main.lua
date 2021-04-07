@@ -1,47 +1,53 @@
 require("player")
 require("handle_input")
-require("physics")
+require("constants")
 require("platform")
 
 
 function love.load()
 	love.math.setRandomSeed(os.time()) -- Semilla para el cambio de colores aleatorio al colisionar
-	local color_jugador1 = Color("red")
-	local color_jugador2 = Color("pink")
-	player1 = Player:new(50, love.graphics.getHeight() / 2, color_jugador1)
-	player2 = Player:new(love.graphics.getWidth() - 100, love.graphics.getHeight() / 2, color_jugador2)
 
-	platform = Platform:new(0, love.graphics.getHeight() - 75, love.graphics.getWidth(), 50, color_jugador1)
+	local px_per_meter = 64
+	love.physics.setMeter(px_per_meter)
+	world = love.physics.newWorld(0, Constants.GRAVITY * px_per_meter, true)
+
+	objects = {}
+
+	objects.player1 = {}
+	objects.player1.body = love.physics.newBody(world, 200, 550, "dynamic")
+	objects.player1.shape = love.physics.newRectangleShape(50, 50) --the ball's shape has a radius of 20
+	objects.player1.fixture = love.physics.newFixture(objects.player1.body, objects.player1.shape, 1) -- Attach fixture to body and give it a density of 1.
+	objects.player1.fixture:setRestitution(0.9)
+
+	objects.ground = {}
+   objects.ground.body = love.physics.newBody(world, 650/2, 650-50/2) --remember, the shape (the rectangle we create next) anchors to the body from its center, so we have to move it to (650/2, 650-50/2)
+   objects.ground.shape = love.physics.newRectangleShape(650, 50) --make a rectangle with a width of 650 and a height of 50
+   objects.ground.fixture = love.physics.newFixture(objects.ground.body, objects.ground.shape) --attach shape to body
+
+--
+--
+	-- local color_jugador1 = Color("red")
+	-- local color_jugador2 = Color("pink")
+	-- player1 =Player:new(50, love.graphics.getHeight() / 2, color_jugador1)
+-- player2 = Player:new(love.graphics.getWidth() - 100, love.graphics.getHeight() / 2, color_jugador2)
+--
+	-- platform =Platform:new(0, love.graphics.getHeight() - 0, love.graphics.getWidth(), 50, color_jugador1)
 end
 
 function love.update(dt)
+	world:update(dt)
+
 	handleKeyboard(dt)
-	if checkCollision(player1, player2) then
-		player1.color:changeColor(love.math.random(), love.math.random(), love.math.random())
-		player2.color:changeColor(love.math.random(), love.math.random(), love.math.random())
-	end
-
-	if checkCollision(player1, platform) then
-		player1.mass = -player1.mass
-	end
-
-	gravity(player1, dt)
-	gravity(player2, dt)
-	gravity(platform, dt)
 end
 
 function love.draw()
-	player1:draw()
-	player2:draw()
-	platform:draw()
-end
+	love.graphics.setColor(0.28, 0.63, 0.05) -- set the drawing color to green for the ground
+	love.graphics.polygon("fill", objects.ground.body:getWorldPoints(objects.ground.shape:getPoints()))
+	-- player1:draw()
+	-- player2:draw()
+	-- platform:draw()
 
-function checkCollision(a, b) --Takes two arguments, the rectangles we want to check for collision.
-	return a.x + a.width > b.x and a.x < b.x + b.width and a.y + a.height > b.y and a.y < b.y + b.height
-end
+	love.graphics.setColor(0.76, 0.18, 0.05) --set the drawing color to red for the ball
+	love.graphics.polygon("fill", objects.player1.body:getWorldPoints(objects.player1.shape:getPoints()))
 
-function gravity(obj, dt)
-	if obj.has_gravity then
-		obj.y = obj.y + Constants.GRAVITY * obj.mass * dt
-	end
 end

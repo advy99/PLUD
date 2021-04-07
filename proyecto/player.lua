@@ -4,7 +4,7 @@ Player = GameObject:new()
 
 
 function Player:newPlayer(world, x, y)
-	obj = GameObject:newGameObject(world, x, y, "kinematic")
+	obj = GameObject:newGameObject(world, x, y, "dynamic")
 	obj.shape = love.physics.newRectangleShape(50, 50)
 	obj.fixture = love.physics.newFixture(obj.body, obj.shape, 1)
 	obj.x_speed = 1000

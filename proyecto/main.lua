@@ -4,10 +4,10 @@ require("handle_input")
 
 function love.load()
 	love.math.setRandomSeed(os.time())
-	local color_jugador1 = ColorRGB:new(1, 0, 0)
-	local color_jugador2 = ColorRGB:new(0, 1, 0)
+	local color_jugador1 = Color("red")
+	local color_jugador2 = Color("pink")
 	player1 = Player:new(50, love.graphics.getHeight() / 2, color_jugador1)
-	player2 = Player:new(love.graphics.getWidth() - 50, love.graphics.getHeight() / 2, color_jugador2)
+	player2 = Player:new(love.graphics.getWidth() - 100, love.graphics.getHeight() / 2, color_jugador2)
 end
 
 function love.update(dt)

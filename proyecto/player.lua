@@ -8,7 +8,8 @@ function Player:newPlayer(world, x, y)
 	obj.shape = love.physics.newRectangleShape(50, 50)
 	obj.fixture = love.physics.newFixture(obj.body, obj.shape, 1)
 	obj.x_speed = 1000
-	obj.y_speed = 380
+	obj.y_speed = 1000
+	obj.body:setMass(1)
 	setmetatable(obj, self)
 	self.__index = self
 	return obj

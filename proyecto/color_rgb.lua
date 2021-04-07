@@ -13,6 +13,8 @@ function ColorRGB:new (r, g, b)
 	obj.g = g or 1
 	obj.b = b or 1
 
+	-- Si algun color no esta en el rango [0, 1] (nos lo dan entre [0,255])
+	-- lo ponemos en [0, 1]
 	if obj.r > 1 then
 		obj.r = obj.r / 255
 	end

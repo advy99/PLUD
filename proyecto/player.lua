@@ -11,7 +11,7 @@ function Player:new (obj)
 end
 
 function Player:new (x, y, color)
-	obj = GameObject:new(x, y, 50, 50, 500, color)
+	obj = GameObject:new(x, y, 50, 50, 500, true, color)
 	setmetatable(obj, self)
 	self.__index = self
 	return obj
@@ -25,14 +25,6 @@ end
 
 function Player:update(dt)
   -- self:move(dt)
-end
-
-function Player:move(move, dt)      -- Move the player if it is inside the screen boundaries
-  if move == -1 and self.x > 0 then
-    self.x = self.x - self.speed * dt
- elseif move == 1 and self.x + self.width < love.graphics.getWidth() then
-    self.x = self.x + self.speed * dt
-  end
 end
 
 function Player:jump()

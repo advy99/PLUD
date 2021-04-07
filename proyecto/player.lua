@@ -1,10 +1,10 @@
 require("game_object")
 
 
-Player = {}
+Player = GameObject:new()
 
 function Player:new (obj)
-	obj = GameObject:new(obj)
+	obj = obj or GameObject:new(obj)
 	setmetatable(obj, self)
 	self.__index = self
 	return obj

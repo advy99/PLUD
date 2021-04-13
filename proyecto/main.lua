@@ -31,9 +31,4 @@ function love.draw()
 		object:draw()
 	end
 
-	-- player2:draw()
-	-- platform:draw()
-
-
-
 end

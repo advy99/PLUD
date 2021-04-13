@@ -14,6 +14,7 @@ function love.load()
 	objects = {}
 
 	objects.player1 = Player:newPlayer(world, love.graphics.getWidth() / 2, love.graphics.getHeight() / 2)
+	objects.player2 = Player:newPlayer(world, love.graphics.getWidth() / 4, love.graphics.getHeight() / 2)
 
 	objects.platform = Platform:newPlatform(world, love.graphics.getWidth() / 2, love.graphics.getHeight() - 100, love.graphics.getWidth(), 50)
 	objects.platformR = Platform:newPlatform(world, love.graphics.getWidth() / 4, love.graphics.getHeight() - 250, love.graphics.getWidth()/5, 50)
@@ -30,10 +31,6 @@ function love.draw()
 	for _, object in pairs(objects) do
 		object:draw()
 	end
-
-	-- player2:draw()
-	-- platform:draw()
-
 
 
 end

@@ -23,6 +23,10 @@ end
 
 function love.update(dt)
 	world:update(dt)
+
+	objects.player1:update(dt)
+	objects.player2:update(dt)
+	
 	handleKeyboard(dt)
 end
 

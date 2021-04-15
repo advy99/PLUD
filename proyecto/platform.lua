@@ -10,10 +10,12 @@ function Platform:new (obj)
 	return obj
 end
 
-function Platform:newPlatform(world, x, y, width, height)
+function Platform:newPlatform(world, x, y, width, height, id)
 	obj = GameObject:newGameObject(world, x, y , "static")
 	obj.shape = love.physics.newRectangleShape(width, height)
 	obj.fixture = love.physics.newFixture(obj.body, obj.shape, 1)
+	obj.fixture:setCategory(2)
+	obj.fixture:setUserData(id)
 	setmetatable(obj, self)
 	self.__index = self
 	return obj

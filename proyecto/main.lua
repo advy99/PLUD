@@ -31,6 +31,12 @@ function love.update(dt)
 	handleKeyboard(dt)
 end
 
+function love.keypressed(k)
+   if k == 'escape' then
+      love.event.quit()
+   end
+end
+
 function love.draw()
 
 	for _, object in pairs(objects) do

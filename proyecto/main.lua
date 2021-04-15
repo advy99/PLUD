@@ -5,6 +5,11 @@ require("platform")
 
 
 function love.load()
+
+	local LIP = require "LIP"
+
+	config = LIP.load("config.ini")
+	love.window.setMode(config.screen.width, config.screen.height, {vsync = config.screen.vsync, fullscreen = config.screen.fullscreen})
 	love.math.setRandomSeed(os.time()) -- Semilla para el cambio de colores aleatorio al colisionar
 
 	local px_per_meter = 64

@@ -52,17 +52,22 @@ end
 
 function beginContact(a, b, coll)
 
-	if a:getUserData() == "player1" then
-		objects.player1:endJump()
-	elseif a:getUserData() == "player2" then
-		objects.player2:endJump()
+	if a:getCategory() == Constants.PLAYER_CATEGORY and b:getCategory() == Constants.PLATFORM_CATEGORY then
+		if a:getUserData() == "player1" then
+			objects.player1:endJump()
+		elseif a:getUserData() == "player2" then
+			objects.player2:endJump()
+		end
 	end
 
-	if b:getUserData() == "player1" then
-		objects.player1:endJump()
-	elseif b:getUserData() == "player2" then
-		objects.player2:endJump()
+	if b:getCategory() == Constants.PLAYER_CATEGORY and a:getCategory() == Constants.PLATFORM_CATEGORY then
+		if b:getUserData() == "player1" then
+			objects.player1:endJump()
+		elseif b:getUserData() == "player2" then
+			objects.player2:endJump()
+		end
 	end
+
 
 end
 

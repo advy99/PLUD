@@ -19,28 +19,44 @@ function love.load()
 
 	objects = {}
 
-	objects.player1 = Player:newPlayer(world, love.graphics.getWidth() / 2, love.graphics.getHeight() / 2, "player1")
+	objects.player1 = Player:newPlayer(world, 3 * love.graphics.getWidth() / 4, love.graphics.getHeight() / 2, "player1")
 	objects.player2 = Player:newPlayer(world, love.graphics.getWidth() / 4, love.graphics.getHeight() / 2, "player2")
 
-	objects.platform = Platform:newPlatform(world, love.graphics.getWidth() / 2, love.graphics.getHeight() - 100, love.graphics.getWidth(), 50, "up_platform")
-	objects.platformR = Platform:newPlatform(world, love.graphics.getWidth() / 4, love.graphics.getHeight() - 250, love.graphics.getWidth()/5, 50, "down_platform")
+	objects.platformL = Platform:newPlatform(world, love.graphics.getWidth() / 4, love.graphics.getHeight() - 150, love.graphics.getWidth()/5, 50, "left_platform")
+	objects.platformL:addSensor("up")
+
+	objects.platformR = Platform:newPlatform(world, 3 * love.graphics.getWidth() / 4, love.graphics.getHeight() - 150, love.graphics.getWidth()/5, 50, "left_platform")
+	objects.platformR:addSensor("up")
+
+	objects.floor= Platform:newPlatform(world, love.graphics.getWidth() / 2, love.graphics.getHeight(), love.graphics.getWidth(), 50, "floor")
+	objects.floor:addSensor("up")
+	objects.roof= Platform:newPlatform(world, love.graphics.getWidth() / 2, 0, love.graphics.getWidth(), 50, "roof")
+
+	objects.left_wall = Platform:newPlatform(world, 0, love.graphics.getHeight() / 2, 50, love.graphics.getHeight(),"left_wall")
+	objects.left_wall:addSensor("right")
+	objects.right_wall = Platform:newPlatform(world, love.graphics.getWidth(), love.graphics.getHeight() / 2, 50, love.graphics.getHeight(), "right_wall")
+	objects.right_wall:addSensor("left")
+
+	objects.middle_wall = Platform:newPlatform(world, love.graphics.getWidth() / 2, 3 * love.graphics.getHeight() / 4, 50, love.graphics.getHeight() / 2, "middle_wall")
+	objects.middle_wall:addSensor("left")
+	objects.middle_wall:addSensor("right")
+	objects.middle_wall:addSensor("up")
+
+
 
 end
 
 function love.update(dt)
 	world:update(dt)
 
-	objects.player1:update(dt)
-	objects.player2:update(dt)
+	for _, object in pairs(objects) do
+		object:update()
+	end
 
 	handleKeyboard(dt)
 end
 
-function love.keypressed(k)
-   if k == 'escape' then
-      love.event.quit()
-   end
-end
+
 
 function love.draw()
 
@@ -77,6 +93,7 @@ function endContact(a, b, coll)
 		if a:getUserData() == "player1" and objects.player1:getMode() ~= "jumping" then
 			objects.player1:setMode("falling")
 		elseif a:getUserData() == "player2" and objects.player2:getMode() ~= "jumping" then
+
 			objects.player2:setMode("falling")
 		end
 	end

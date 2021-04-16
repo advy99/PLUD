@@ -9,5 +9,6 @@ Constants.PLAYER_CATEGORY = 2
 Constants.PLATFORM_CATEGORY = 3
 
 
-
+-- Constantes de debug
 Constants.DEBUG = true
+Constants.SHOW_HITBOX = true

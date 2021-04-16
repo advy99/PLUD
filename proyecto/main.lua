@@ -54,17 +54,17 @@ function beginContact(a, b, coll)
 
 	if a:getCategory() == Constants.PLAYER_CATEGORY and b:getCategory() == Constants.PLATFORM_CATEGORY then
 		if a:getUserData() == "player1" then
-			objects.player1:endJump()
+			objects.player1:setMode("grounded")
 		elseif a:getUserData() == "player2" then
-			objects.player2:endJump()
+			objects.player2:setMode("grounded")
 		end
 	end
 
 	if b:getCategory() == Constants.PLAYER_CATEGORY and a:getCategory() == Constants.PLATFORM_CATEGORY then
 		if b:getUserData() == "player1" then
-			objects.player1:endJump()
+			objects.player1:setMode("grounded")
 		elseif b:getUserData() == "player2" then
-			objects.player2:endJump()
+			objects.player2:setMode("grounded")
 		end
 	end
 
@@ -73,6 +73,21 @@ end
 
 function endContact(a, b, coll)
 
+	if a:getCategory() == Constants.PLAYER_CATEGORY and b:getCategory() == Constants.PLATFORM_CATEGORY then
+		if a:getUserData() == "player1" and objects.player1:getMode() ~= "jumping" then
+			objects.player1:setMode("falling")
+		elseif a:getUserData() == "player2" and objects.player2:getMode() ~= "jumping" then
+			objects.player2:setMode("falling")
+		end
+	end
+
+	if b:getCategory() == Constants.PLAYER_CATEGORY and a:getCategory() == Constants.PLATFORM_CATEGORY then
+		if b:getUserData() == "player1" and objects.player1:getMode() ~= "jumping" then
+			objects.player1:setMode("falling")
+		elseif b:getUserData() == "player2" and objects.player2:getMode() ~= "jumping" then
+			objects.player2:setMode("falling")
+		end
+	end
 end
 
 function preSolve(a, b, coll)

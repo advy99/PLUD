@@ -13,8 +13,7 @@ function Player:newPlayer(world, x, y, id)
 	obj.x_speed = 1000
 	obj.y_speed = 1000
 	obj.body:setMass(1)
-	obj.jumping = true
-	obj.grounded = false
+	obj.mode = "jumping"
 	setmetatable(obj, self)
 	self.__index = self
 	return obj
@@ -25,20 +24,22 @@ function Player:move(dir_x, dir_y)
 end
 
 function Player:jump()
-	if not self.jumping and self.grounded then
-		self.jumping = true
-		self.grounded = false
+	if self.mode ~= "jumping" then
+		self.mode = "jumping"
 		self.body:applyLinearImpulse(0, -500)
 	end
 end
 
-function Player:endJump()
-	self.jumping = false
-	self.grounded = true
+function Player:setMode(mode)
+	self.mode = mode
+end
+
+function Player:getMode()
+	return self.mode
 end
 
 function Player:update(dt)
-
+	print("Modo del jugador: ", self.mode)
 end
 
 function Player:draw()

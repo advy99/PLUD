@@ -13,6 +13,8 @@ end
 function Platform:newPlatform(world, x, y, width, height, id)
 	obj = GameObject:newGameObject(world, x, y , "static")
 
+	obj.width = width
+	obj.height = height
 	obj.shapes = {}
 	obj.shapes[0] = love.physics.newRectangleShape(width, height)
 
@@ -36,19 +38,14 @@ end
 function Platform:addSensor(position)
 	-- +1 and -1 in shape width to avoid lateral collisions
 	-- up by default
-	topLeftX, topLeftY, bottomRightX, bottomRightY = self.fixtures[0]:getBoundingBox( )
-
-	width = bottomRightX - topLeftX
-	height = bottomRightY - topLeftY
-
-	sensor_x1, sensor_y1, sensor_x2, sensor_y2 = -width / 2 + 1, -height / 2, width / 2 - 1, -height / 2
+	local sensor_x1, sensor_y1, sensor_x2, sensor_y2 = -self.width / 2 + 1, -self.height / 2, self.width / 2 - 1, -self.height / 2
 
 	if position == "down" then
-		sensor_x1, sensor_y1, sensor_x2, sensor_y2 = -width / 2 + 1, height / 2, width / 2 - 1, height / 2
+		sensor_x1, sensor_y1, sensor_x2, sensor_y2 = -self.width / 2 + 1, self.height / 2, self.width / 2 - 1, self.height / 2
 	elseif position == "left" then
-		sensor_x1, sensor_y1, sensor_x2, sensor_y2 = -width / 2, (-height / 2) + 1 , -width / 2, (height / 2) - 1
+		sensor_x1, sensor_y1, sensor_x2, sensor_y2 = -self.width / 2, (-self.height / 2) + 1 , -self.width / 2, (self.height / 2) - 1
 	elseif position == "right" then
-		sensor_x1, sensor_y1, sensor_x2, sensor_y2 = width / 2, (-height / 2) + 1, width / 2, (height / 2) - 1
+		sensor_x1, sensor_y1, sensor_x2, sensor_y2 = self.width / 2, (-self.height / 2) + 1, self.width / 2, (self.height / 2) - 1
 	end
 
 

@@ -10,5 +10,5 @@ Constants.PLATFORM_CATEGORY = 3
 
 
 -- Constantes de debug
-Constants.DEBUG = true
+Constants.DEBUG = false
 Constants.SHOW_HITBOX = true

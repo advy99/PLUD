@@ -50,7 +50,7 @@ function love.update(dt)
 	world:update(dt)
 
 	for _, object in pairs(objects) do
-		object:update()
+		object:update(dt)
 	end
 
 	handleKeyboard(dt)

@@ -74,10 +74,6 @@ function Player:update(dt)
 end
 
 function Player:draw()
-	--love.graphics.setLineWidth( 1 )
-	--love.graphics.setColor(1, 1, 0)
-	--love.graphics.polygon("fill", self.body:getWorldPoints(self.shape:getPoints()))
-
 
 	love.graphics.reset()
 	local spriteNum = math.floor(self.animation.currentTime / self.animation.duration * #self.animation.quads) + 1

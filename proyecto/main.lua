@@ -1,3 +1,10 @@
+--
+-- Fichero principal de Love2D
+--
+--
+--
+
+
 require("player")
 require("handle_input")
 require("constants")

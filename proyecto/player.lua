@@ -16,12 +16,12 @@ Player = GameObject:new()
 -- Necesitamos el mundo donde estará, su posición x e y, y su id
 --
 --
-function Player:newPlayer(world, x, y, id)
+function Player:newPlayer(world, x, y, sprite_sheet, id)
 	-- creamos el objeto con base de GameObject
 	obj = GameObject:newGameObject(world, x, y, "dynamic")
 	-- le asignamos una altura y anchura, asociados a su forma
-	obj.width = 40
-	obj.height = 50
+	obj.width = 32
+	obj.height = 32
 	obj.shape = love.physics.newRectangleShape(obj.width, obj.height)
 
 	-- Emparejamos el cuerpo con la forma del jugador
@@ -36,9 +36,15 @@ function Player:newPlayer(world, x, y, id)
 	obj.body:setMass(1)
 	obj.mode = "jumping"
 
+	obj.scale = 4
+
 	-- orientación y animación
 	obj.orientation = 1
-	obj.animation = newAnimation(love.graphics.newImage("oldHero.png"), 16, 18, 1)
+
+	obj.animations = {}
+	obj.animations.idle = newAnimation(sprite_sheet, 0, 32, 32, 1)
+	obj.animations.walk = newAnimation(sprite_sheet, 32, 32, 32, 1)
+
 
 	setmetatable(obj, self)
 	self.__index = self
@@ -102,10 +108,12 @@ function Player:update(dt)
 	-- No permitimos que el jugador se gire
 	self.body:setAngle(0)
 
-	-- Animamos el jugador
-	self.animation.currentTime = self.animation.currentTime + dt
-	if self.animation.currentTime >= self.animation.duration then
-		self.animation.currentTime = self.animation.currentTime - self.animation.duration
+	if self.mode == "grounded" then
+		-- Animamos el jugador
+		self.animations.idle.currentTime = self.animations.idle.currentTime + dt
+		if self.animations.idle.currentTime >= self.animations.idle.duration then
+			self.animations.idle.currentTime = self.animations.idle.currentTime - self.animations.idle.duration
+		end
 	end
 
 	if Constants.DEBUG then
@@ -119,12 +127,12 @@ function Player:draw()
 	-- limpiamos la brocha de dibujado
 	love.graphics.reset()
 	-- calculamos que sprite se tiene que dibujar
-	local spriteNum = math.floor(self.animation.currentTime / self.animation.duration * #self.animation.quads) + 1
+	local spriteNum = math.floor(self.animations.idle.currentTime / self.animations.idle.duration * #self.animations.idle.quads) + 1
 
 	-- Dibujamos el sprite, dependiendo de la orientación establecemos el ancho para
 	-- dibujarlo al reves
 	local width = self.orientation * self.width
-	love.graphics.draw(self.animation.spriteSheet, self.animation.quads[spriteNum], self.body:getX() - width / 2, self.body:getY() - self.height / 2, 0, self.orientation * 3, 3 )
+	love.graphics.draw(self.animations.idle.spriteSheet, self.animations.idle.quads[spriteNum], self.body:getX() + (width / 2) * self.scale , self.body:getY() - (self.height / 2) * self.scale, 0, -self.orientation * self.scale, self.scale )
 
 	if Constants.SHOW_HITBOX then
 		love.graphics.setLineWidth( 1 )

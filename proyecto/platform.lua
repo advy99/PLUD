@@ -21,6 +21,8 @@ function Platform:newPlatform(world, x, y, width, height, id)
 	obj.fixtures = {}
 	obj.fixtures[0] = love.physics.newFixture(obj.body, obj.shapes[0], 1)
 
+	obj.fixtures[0]:setFriction(0.8)
+
 	obj.number_fixtures = 1
 
 	setmetatable(obj, self)
@@ -56,6 +58,7 @@ function Platform:addSensor(position)
 	self.fixtures[self.number_fixtures]:setCategory(Constants.PLATFORM_CATEGORY)
 	-- self.fixtures[self.number_fixtures]:setUserData(id)
 
+	obj.fixtures[self.number_fixtures]:setFriction(0.8)
 
 	self.number_fixtures = self.number_fixtures + 1
 

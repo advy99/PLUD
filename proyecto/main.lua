@@ -36,7 +36,7 @@ function love.load()
 
 
 	local sprite_sheet_player1 = love.graphics.newImage("img/green_slime_atlas.png")
-	local sprite_sheet_player2 = love.graphics.newImage("img/green_slime_atlas.png")
+	local sprite_sheet_player2 = love.graphics.newImage("img/red_slime_atlas.png")
 
 
 	-- dos jugadores

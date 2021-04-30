@@ -20,7 +20,7 @@ function love.load()
 	local LIP = require "LIP"
 
 	-- cargamos la configuración
-	config = LIP.load("config.ini")
+	local config = LIP.load("config.ini")
 
 	-- establecemos la configuración de la ventana y la semilla aleatoria
 	love.window.setMode(config.screen.width, config.screen.height, {vsync = config.screen.vsync, fullscreen = config.screen.fullscreen})
@@ -28,15 +28,20 @@ function love.load()
 
 	-- Creamos un mundo nuevo y asignamos la funciones que gestionarán las colisiones
 	love.physics.setMeter(Constants.PX_PER_METER)
-	world = love.physics.newWorld(0, Constants.GRAVITY * px_per_meter, true)
+	world = love.physics.newWorld(0, Constants.GRAVITY * Constants.PX_PER_METER, true)
 	world:setCallbacks(beginContact, endContact, preSolve, postSolve)
 
 	-- objetos que estarán en nuestro mundo
 	objects = {}
 
+
+	local sprite_sheet_player1 = love.graphics.newImage("img/green_slime_atlas.png")
+	local sprite_sheet_player2 = love.graphics.newImage("img/green_slime_atlas.png")
+
+
 	-- dos jugadores
-	objects.player1 = Player:newPlayer(world, 3 * love.graphics.getWidth() / 4, love.graphics.getHeight() / 2, "player1")
-	objects.player2 = Player:newPlayer(world, love.graphics.getWidth() / 4, love.graphics.getHeight() / 2, "player2")
+	objects.player2 = Player:newPlayer(world, love.graphics.getWidth() / 4, love.graphics.getHeight() / 2, sprite_sheet_player2, "player2")
+	objects.player1 = Player:newPlayer(world, 3 * love.graphics.getWidth() / 4, love.graphics.getHeight() / 2, sprite_sheet_player1, "player1")
 
 	-- plataforma a la izquierda, con un sensor en la parte superior
 	objects.platformL = Platform:newPlatform(world, love.graphics.getWidth() / 4, love.graphics.getHeight() - 150, love.graphics.getWidth()/5, 50, "left_platform")

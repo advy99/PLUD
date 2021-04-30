@@ -20,14 +20,25 @@ function Player:newPlayer(world, x, y, sprite_sheet, id)
 	-- creamos el objeto con base de GameObject
 	obj = GameObject:newGameObject(world, x, y, "dynamic")
 	-- le asignamos una altura y anchura, asociados a su forma
-	obj.width = 32
-	obj.height = 32
-	obj.shape = love.physics.newRectangleShape(obj.width, obj.height)
+
+	obj.scale = 4
+
+	obj.width = 12 * obj.scale
+	obj.height = 10 * obj.scale
+	local radius = obj.width * 3/5 / 2
+	obj.circle_shape = love.physics.newCircleShape(radius)
+	obj.rectangle_shape = love.physics.newRectangleShape(0, obj.height / 4, obj.width, obj.height / 2)
 
 	-- Emparejamos el cuerpo con la forma del jugador
-	obj.fixture = love.physics.newFixture(obj.body, obj.shape, 1)
-	obj.fixture:setCategory(Constants.PLAYER_CATEGORY)
-	obj.fixture:setUserData(id)
+	obj.circle_fixture = love.physics.newFixture(obj.body, obj.circle_shape, 1)
+	obj.circle_fixture:setCategory(Constants.PLAYER_CATEGORY)
+	obj.circle_fixture:setUserData(id)
+
+	obj.rectangle_fixture = love.physics.newFixture(obj.body, obj.rectangle_shape, 1)
+	obj.rectangle_fixture:setCategory(Constants.PLAYER_CATEGORY)
+	obj.rectangle_fixture:setUserData(id)
+	obj.rectangle_fixture:setFriction(0.5)
+
 
 	-- Variables de su velocidad, fuerza de salto, masa, y estado
 	obj.x_speed = 700
@@ -36,15 +47,21 @@ function Player:newPlayer(world, x, y, sprite_sheet, id)
 	obj.body:setMass(1)
 	obj.mode = "jumping"
 
-	obj.scale = 4
 
 	-- orientación y animación
 	obj.orientation = 1
 
-	obj.animations = {}
-	obj.animations.idle = newAnimation(sprite_sheet, 0, 32, 32, 1)
-	obj.animations.walk = newAnimation(sprite_sheet, 32, 32, 32, 1)
+	obj.sprite_width = 32
+	obj.sprite_height = 32
 
+	obj.animations = {}
+	obj.animations.idle = newAnimation(sprite_sheet, 0, obj.sprite_width, obj.sprite_height, 1)
+	obj.animations.walk = newAnimation(sprite_sheet, 32, obj.sprite_width, obj.sprite_height, 1)
+	obj.animations.jump = newAnimation(sprite_sheet, 64, obj.sprite_width, obj.sprite_height, 1)
+	obj.animations.attack = newAnimation(sprite_sheet, 96, obj.sprite_width, obj.sprite_height, 1)
+	obj.animations.dead = newAnimation(sprite_sheet, 128, obj.sprite_width, obj.sprite_height, 1)
+
+	obj.current_animation = obj.animations.idle
 
 	setmetatable(obj, self)
 	self.__index = self
@@ -109,17 +126,29 @@ function Player:update(dt)
 	self.body:setAngle(0)
 
 	if self.mode == "grounded" then
-		-- Animamos el jugador
-		self.animations.idle.currentTime = self.animations.idle.currentTime + dt
-		if self.animations.idle.currentTime >= self.animations.idle.duration then
-			self.animations.idle.currentTime = self.animations.idle.currentTime - self.animations.idle.duration
-		end
+		self.current_animation = self.animations.idle
+	elseif self.mode == "walking" then
+		self.current_animation = self.animations.walk
 	end
+
+	self:animate(dt)
 
 	if Constants.DEBUG then
 		print("Modo del jugador ", self.fixture:getUserData() ," : ", self.mode)
 	end
 end
+
+-- Función para animar al jugador
+
+function Player:animate(dt)
+	-- Animamos el jugador
+	self.current_animation.currentTime = self.current_animation.currentTime + dt
+	if self.current_animation.currentTime >= self.current_animation.duration then
+		self.current_animation.currentTime = self.current_animation.currentTime - self.current_animation.duration
+	end
+
+end
+
 
 -- Función para dibujar el jugador
 function Player:draw()
@@ -127,16 +156,19 @@ function Player:draw()
 	-- limpiamos la brocha de dibujado
 	love.graphics.reset()
 	-- calculamos que sprite se tiene que dibujar
-	local spriteNum = math.floor(self.animations.idle.currentTime / self.animations.idle.duration * #self.animations.idle.quads) + 1
+	local spriteNum = math.floor(self.current_animation.currentTime / self.current_animation.duration * #self.animations.idle.quads) + 1
 
 	-- Dibujamos el sprite, dependiendo de la orientación establecemos el ancho para
 	-- dibujarlo al reves
-	local width = self.orientation * self.width
-	love.graphics.draw(self.animations.idle.spriteSheet, self.animations.idle.quads[spriteNum], self.body:getX() + (width / 2) * self.scale , self.body:getY() - (self.height / 2) * self.scale, 0, -self.orientation * self.scale, self.scale )
+	local width = self.body:getX() + (self.orientation * (self.sprite_width / 2 - 1)) * self.scale
+	local height = self.body:getY() - (self.sprite_height / 2) * self.scale
+
+	love.graphics.draw(self.current_animation.spriteSheet, self.current_animation.quads[spriteNum], width , height, 0, -self.orientation * self.scale, self.scale )
 
 	if Constants.SHOW_HITBOX then
 		love.graphics.setLineWidth( 1 )
 		love.graphics.setColor(1, 0, 0) -- set the drawing color to red for the hitbox
-		love.graphics.polygon("line", self.body:getWorldPoints(self.shape:getPoints()))
+		love.graphics.circle("line", self.body:getX(), self.body:getY(), self.circle_shape:getRadius())
+		love.graphics.polygon("line", self.body:getWorldPoints(self.rectangle_shape:getPoints()))
 	end
 end

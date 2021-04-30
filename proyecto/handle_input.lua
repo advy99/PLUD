@@ -12,9 +12,6 @@ function handleKeyboard(dt)
 		objects.player1:jump()
 	end
 
-	if love.keyboard.isDown("down") then --press the up arrow key to set the ball in the air
-		objects.player1:move(0)
-	end
 
 
 	if love.keyboard.isDown("d") then --press the right arrow key to push the ball to the right
@@ -27,10 +24,6 @@ function handleKeyboard(dt)
 
 	if love.keyboard.isDown("w") then --press the up arrow key to set the ball in the air
 		objects.player2:jump()
-	end
-
-	if love.keyboard.isDown("s") then --press the up arrow key to set the ball in the air
-		objects.player2:move(0)
 	end
 
 

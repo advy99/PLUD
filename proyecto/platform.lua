@@ -21,7 +21,7 @@ function Platform:newPlatform(world, x, y, width, height, id)
 	obj.fixtures = {}
 	obj.fixtures[0] = love.physics.newFixture(obj.body, obj.shapes[0], 1)
 
-	obj.fixtures[0]:setFriction(0.8)
+	obj.fixtures[0]:setFriction(0)
 
 	obj.number_fixtures = 1
 

@@ -94,6 +94,8 @@ function Player:move(dir_x)
 		self.body:setLinearVelocity(-self.max_speed, y)
 	end
 
+	self:startWalking()
+
 	if Constants.DEBUG then
 		print(x, "\t", y)
 	end
@@ -116,6 +118,7 @@ end
 
 -- cambiar el estado de un jugador
 function Player:setMode(mode)
+
 	self.previous_mode = self.mode
 	self.mode = mode
 
@@ -123,6 +126,19 @@ function Player:setMode(mode)
 		self.remaining_jumps = 1
 	end
 
+end
+
+function Player:startWalking()
+	if self.mode == "grounded" then
+		self:setMode("walking")
+	end
+end
+
+-- Función para que el jugador deje de andar
+function Player:stopWalking()
+	if self.mode == "walking" then
+		self:setMode(self.previous_mode);
+	end
 end
 
 -- Obtener el estado de un jugador
@@ -135,13 +151,15 @@ function Player:attack()
 	self:setMode("attacking");
 end
 
--- Función para actualizar en cada frame el jugador
--- Recibe el tiempo transcurrido desde el ultimo update
-function Player:update(dt)
+-- Función para que el jugador muera
+function Player:kill()
+	self:setMode("dying");
+end
 
-	-- No permitimos que el jugador se gire
-	self.body:setAngle(0)
+-- Función para gestionar que animación es necesaria utilizar en ese momento
+function Player:handleAnimations(dt)
 
+	-- Si tenemos una animación a medias, no cambiamos de animación
 	if self.time_to_finish_animation <= 0 then
 
 		-- Seleccionamos la animación adecuada en función del estado del jugador
@@ -160,16 +178,27 @@ function Player:update(dt)
 		elseif self.mode == "dying" then
 			self.current_animation = self.animations.dead
 			self.time_to_finish_animation = 1
+			self:setMode(self.previous_mode)
 		end
 	else
 		self.time_to_finish_animation = self.time_to_finish_animation - dt
 	end
 
+end
+
+-- Función para actualizar en cada frame el jugador
+-- Recibe el tiempo transcurrido desde el ultimo update
+function Player:update(dt)
+
+	-- No permitimos que el jugador se gire
+	self.body:setAngle(0)
+
+	self:handleAnimations(dt)
 	self:animate(dt)
 
 	-- Modo DEBUG: Muestra el estado del jugador
 	if Constants.DEBUG then
-		print("Modo del jugador ", self.fixture:getUserData() ," : ", self.mode)
+		print("Modo del jugador ", self.circle_fixture:getUserData() ," : ", self.mode)
 	end
 end
 

@@ -46,6 +46,7 @@ function Player:newPlayer(world, x, y, sprite_sheet, id)
 	obj.max_speed = 500
 	obj.body:setMass(1)
 	obj.mode = "jumping"
+	obj.previous_mode = obj.mode
 
 
 	-- orientación y animación
@@ -62,6 +63,10 @@ function Player:newPlayer(world, x, y, sprite_sheet, id)
 	obj.animations.dead = newAnimation(sprite_sheet, 128, obj.sprite_width, obj.sprite_height, 1)
 
 	obj.current_animation = obj.animations.idle
+
+	obj.remaining_jumps = 1
+
+	obj.time_to_finish_animation = 0
 
 	setmetatable(obj, self)
 	self.__index = self
@@ -100,8 +105,9 @@ function Player:jump()
 	-- si no está saltando, cambiamos el estado a saltando y le aplicamos
 	-- la fuerza de salto
 	-- aplicamos la fuerza negativa, ya que el eje Y crece hacia abajo
-	if self.mode ~= "jumping" then
-		self.mode = "jumping"
+	if self.remaining_jumps ~= 0 then
+		self:setMode("jumping")
+		self.remaining_jumps = self.remaining_jumps - 1
 		local x, _ = self.body:getLinearVelocity()
 		self.body:setLinearVelocity(x, 0)
 		self.body:applyLinearImpulse(0, -self.jump_power)
@@ -110,12 +116,23 @@ end
 
 -- cambiar el estado de un jugador
 function Player:setMode(mode)
+	self.previous_mode = self.mode
 	self.mode = mode
+
+	if mode == "grounded" then
+		self.remaining_jumps = 1
+	end
+
 end
 
--- obtener el estado de un jugador
+-- Obtener el estado de un jugador
 function Player:getMode()
 	return self.mode
+end
+
+-- Función para que el jugador ataque
+function Player:attack()
+	self:setMode("attacking");
 end
 
 -- Función para actualizar en cada frame el jugador
@@ -125,14 +142,32 @@ function Player:update(dt)
 	-- No permitimos que el jugador se gire
 	self.body:setAngle(0)
 
-	if self.mode == "grounded" then
-		self.current_animation = self.animations.idle
-	elseif self.mode == "walking" then
-		self.current_animation = self.animations.walk
+	if self.time_to_finish_animation <= 0 then
+
+		-- Seleccionamos la animación adecuada en función del estado del jugador
+		if self.mode == "grounded" then
+			self.current_animation = self.animations.idle
+		elseif self.mode == "walking" then
+			self.current_animation = self.animations.walk
+		elseif self.mode == "jumping" then
+			self.current_animation = self.animations.jump
+		elseif self.mode == "attacking" then
+			self.current_animation = self.animations.attack
+			self.time_to_finish_animation = 1
+			-- como el ataque es una animación unica, volvemos al estado anterior
+			-- en cuanto acabamos la animación
+			self:setMode(self.previous_mode)
+		elseif self.mode == "dying" then
+			self.current_animation = self.animations.dead
+			self.time_to_finish_animation = 1
+		end
+	else
+		self.time_to_finish_animation = self.time_to_finish_animation - dt
 	end
 
 	self:animate(dt)
 
+	-- Modo DEBUG: Muestra el estado del jugador
 	if Constants.DEBUG then
 		print("Modo del jugador ", self.fixture:getUserData() ," : ", self.mode)
 	end

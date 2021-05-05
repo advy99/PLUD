@@ -1,5 +1,5 @@
-require("game_object")
-require("constants")
+require("src/game_object")
+require("src/constants")
 
 Platform = GameObject:new()
 

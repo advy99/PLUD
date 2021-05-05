@@ -3,9 +3,9 @@
 --
 --
 
-require("game_object")
-require("constants")
-require("animations")
+require("src/game_object")
+require("src/constants")
+require("src/animations")
 
 
 -- El jugador será un tipo de GameObject

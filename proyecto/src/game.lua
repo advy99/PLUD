@@ -1,6 +1,6 @@
 
-require("src/handle_collisions")
-require("src/events")
+require("src/handler/handle_collisions")
+require("src/enums/events")
 
 
 local class = require 'lib/middleclass'

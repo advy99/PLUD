@@ -1,4 +1,4 @@
-require("src/events")
+require("src/enums/events")
 
 -- Funcion que se ejecutará cuando se detecta una colisión
 function beginContact(a, b, coll)

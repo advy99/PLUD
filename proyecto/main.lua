@@ -6,10 +6,10 @@
 
 
 require("src/game")
-require("src/player")
-require("src/handle_input")
-require("src/constants")
-require("src/platform")
+require("src/game_objects/player")
+require("src/handler/handle_input")
+require("src/enums/constants")
+require("src/game_objects/platform")
 require("src/load_levels")
 
 

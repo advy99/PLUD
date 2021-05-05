@@ -1,5 +1,5 @@
-require("src/game_object")
-require("src/constants")
+require("src/game_objects/game_object")
+require("src/enums/constants")
 
 Platform = GameObject:subclass('Platform')
 

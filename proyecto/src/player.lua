@@ -9,68 +9,66 @@ require("src/animations")
 
 
 -- El jugador será un tipo de GameObject
-Player = GameObject:new()
+Player = GameObject:subclass('Player')
+
 
 --
 -- Constructor del jugador
 -- Necesitamos el mundo donde estará, su posición x e y, y su id
 --
 --
-function Player:newPlayer(world, x, y, sprite_sheet, id)
-	-- creamos el objeto con base de GameObject
-	obj = GameObject:newGameObject(world, x, y, "dynamic")
+function Player:initialize(world, x, y, sprite_sheet, id)
+	-- creamos el selfeto con base de GameObject
+	GameObject.initialize(self, world, x, y, "dynamic")
+
 	-- le asignamos una altura y anchura, asociados a su forma
 
-	obj.scale = 4
+	self.scale = 4
 
-	obj.width = 12 * obj.scale
-	obj.height = 10 * obj.scale
-	local radius = obj.width * 3/5 / 2
-	obj.circle_shape = love.physics.newCircleShape(radius)
-	obj.rectangle_shape = love.physics.newRectangleShape(0, obj.height / 4, obj.width, obj.height / 2)
+	self.width = 12 * self.scale
+	self.height = 10 * self.scale
+	local radius = self.width * 3/5 / 2
+	self.circle_shape = love.physics.newCircleShape(radius)
+	self.rectangle_shape = love.physics.newRectangleShape(0, self.height / 4, self.width, self.height / 2)
 
 	-- Emparejamos el cuerpo con la forma del jugador
-	obj.circle_fixture = love.physics.newFixture(obj.body, obj.circle_shape, 1)
-	obj.circle_fixture:setCategory(Constants.PLAYER_CATEGORY)
-	obj.circle_fixture:setUserData(id)
+	self.circle_fixture = love.physics.newFixture(self.body, self.circle_shape, 1)
+	self.circle_fixture:setCategory(Constants.PLAYER_CATEGORY)
+	self.circle_fixture:setUserData(id)
 
-	obj.rectangle_fixture = love.physics.newFixture(obj.body, obj.rectangle_shape, 1)
-	obj.rectangle_fixture:setCategory(Constants.PLAYER_CATEGORY)
-	obj.rectangle_fixture:setUserData(id)
-	obj.rectangle_fixture:setFriction(0.5)
+	self.rectangle_fixture = love.physics.newFixture(self.body, self.rectangle_shape, 1)
+	self.rectangle_fixture:setCategory(Constants.PLAYER_CATEGORY)
+	self.rectangle_fixture:setUserData(id)
+	self.rectangle_fixture:setFriction(0.5)
 
 
 	-- Variables de su velocidad, fuerza de salto, masa, y estado
-	obj.x_speed = 700
-	obj.jump_power = 500
-	obj.max_speed = 500
-	obj.body:setMass(1)
-	obj.mode = "jumping"
-	obj.previous_mode = obj.mode
+	self.x_speed = 700
+	self.jump_power = 500
+	self.max_speed = 500
+	self.body:setMass(1)
+	self.mode = "jumping"
+	self.previous_mode = self.mode
 
 
 	-- orientación y animación
-	obj.orientation = 1
+	self.orientation = 1
 
-	obj.sprite_width = 32
-	obj.sprite_height = 32
+	self.sprite_width = 32
+	self.sprite_height = 32
 
-	obj.animations = {}
-	obj.animations.idle = newAnimation(sprite_sheet, 0, obj.sprite_width, obj.sprite_height, 1)
-	obj.animations.walk = newAnimation(sprite_sheet, 32, obj.sprite_width, obj.sprite_height, 1)
-	obj.animations.jump = newAnimation(sprite_sheet, 64, obj.sprite_width, obj.sprite_height, 1)
-	obj.animations.attack = newAnimation(sprite_sheet, 96, obj.sprite_width, obj.sprite_height, 1)
-	obj.animations.dead = newAnimation(sprite_sheet, 128, obj.sprite_width, obj.sprite_height, 1)
+	self.animations = {}
+	self.animations.idle = newAnimation(sprite_sheet, 0, self.sprite_width, self.sprite_height, 1)
+	self.animations.walk = newAnimation(sprite_sheet, 32, self.sprite_width, self.sprite_height, 1)
+	self.animations.jump = newAnimation(sprite_sheet, 64, self.sprite_width, self.sprite_height, 1)
+	self.animations.attack = newAnimation(sprite_sheet, 96, self.sprite_width, self.sprite_height, 1)
+	self.animations.dead = newAnimation(sprite_sheet, 128, self.sprite_width, self.sprite_height, 1)
 
-	obj.current_animation = obj.animations.idle
+	self.current_animation = self.animations.idle
 
-	obj.remaining_jumps = 1
+	self.remaining_jumps = 1
 
-	obj.time_to_finish_animation = 0
-
-	setmetatable(obj, self)
-	self.__index = self
-	return obj
+	self.time_to_finish_animation = 0
 end
 
 -- función para mover al jugador en el eje x

@@ -1,41 +1,23 @@
 require("src/game_object")
 require("src/constants")
 
-Platform = GameObject:new()
+Platform = GameObject:subclass('Platform')
 
-function Platform:new (obj)
-	obj = obj or GameObject:new(obj)
-	setmetatable(obj, self)
-	self.__index = self
-	return obj
+function Platform:initialize(world, x, y, width, height, id)
+	GameObject.initialize(self, world, x, y , "static")
+
+	self.width = width
+	self.height = height
+	self.shapes = {}
+	self.shapes[0] = love.physics.newRectangleShape(width, height)
+
+	self.fixtures = {}
+	self.fixtures[0] = love.physics.newFixture(self.body, self.shapes[0], 1)
+
+	self.fixtures[0]:setFriction(0)
+
+	self.number_fixtures = 1
 end
-
-function Platform:newPlatform(world, x, y, width, height, id)
-	obj = GameObject:newGameObject(world, x, y , "static")
-
-	obj.width = width
-	obj.height = height
-	obj.shapes = {}
-	obj.shapes[0] = love.physics.newRectangleShape(width, height)
-
-	obj.fixtures = {}
-	obj.fixtures[0] = love.physics.newFixture(obj.body, obj.shapes[0], 1)
-
-	obj.fixtures[0]:setFriction(0)
-
-	obj.number_fixtures = 1
-
-	setmetatable(obj, self)
-	self.__index = self
-
-	return obj
-end
-
-
--- function Platform:load()
---   self.x = 50
---   self.y = love.graphics.getHeight() / 2
--- end
 
 function Platform:addSensor(position)
 	-- +1 and -1 in shape width to avoid lateral collisions
@@ -52,13 +34,13 @@ function Platform:addSensor(position)
 
 
 	self.shapes[self.number_fixtures] = love.physics.newEdgeShape(sensor_x1, sensor_y1, sensor_x2, sensor_y2)
-	self.fixtures[self.number_fixtures] = love.physics.newFixture(obj.body, obj.shapes[self.number_fixtures], 1)
+	self.fixtures[self.number_fixtures] = love.physics.newFixture(self.body, self.shapes[self.number_fixtures], 1)
 	self.fixtures[self.number_fixtures]:isSensor(true)
 
 	self.fixtures[self.number_fixtures]:setCategory(Constants.PLATFORM_CATEGORY)
 	-- self.fixtures[self.number_fixtures]:setUserData(id)
 
-	obj.fixtures[self.number_fixtures]:setFriction(0.8)
+	self.fixtures[self.number_fixtures]:setFriction(0.8)
 
 	self.number_fixtures = self.number_fixtures + 1
 

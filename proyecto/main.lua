@@ -19,7 +19,7 @@ require("src/load_levels")
 function love.load()
 
 	-- cargamos el modulo LIP, para leer y escribir archivos ini
-	local LIP = require "src/LIP"
+	local LIP = require "lib/LIP"
 
 	-- cargamos la configuración
 	local config = LIP.load("config/config.ini")

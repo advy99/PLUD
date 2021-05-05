@@ -1,0 +1,4 @@
+Events = {}
+
+Events.PLAYER_LAND_PLATFORM = 1
+Events.PLAYER_LEAVE_PLATFORM = 2

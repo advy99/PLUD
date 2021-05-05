@@ -1,19 +1,20 @@
 
-function create_level_1()
+function create_level_1(world)
 	local sprite_sheet_player1 = love.graphics.newImage("img/blue_slime_atlas.png")
 	local sprite_sheet_player2 = love.graphics.newImage("img/red_slime_atlas.png")
 
+	local objects = {}
 
 	-- dos jugadores
 	objects.player2 = Player:new(world, love.graphics.getWidth() / 4, love.graphics.getHeight() / 2, sprite_sheet_player2, "player2")
 	objects.player1 = Player:new(world, 3 * love.graphics.getWidth() / 4, love.graphics.getHeight() / 2, sprite_sheet_player1, "player1")
 
 	-- plataforma a la izquierda, con un sensor en la parte superior
-	objects.platformL = Platform:new(world, love.graphics.getWidth() / 4, love.graphics.getHeight() - 150, love.graphics.getWidth()/5, 50, "left_platform")
+	objects.platformL = Platform:new(world, love.graphics.getWidth() / 4, love.graphics.getHeight() - 150, love.graphics.getWidth()/5, 50, "platformL")
 	objects.platformL:addSensor("up")
 
 	-- plataforma a la derecha, con un sensor en la parte superior
-	objects.platformR = Platform:new(world, 3 * love.graphics.getWidth() / 4, love.graphics.getHeight() - 150, love.graphics.getWidth()/5, 50, "left_platform")
+	objects.platformR = Platform:new(world, 3 * love.graphics.getWidth() / 4, love.graphics.getHeight() - 150, love.graphics.getWidth()/5, 50, "platformR")
 	objects.platformR:addSensor("up")
 
 	-- suelo, con un sensor en la parte superior, y techo
@@ -32,6 +33,8 @@ function create_level_1()
 	objects.middle_wall = Platform:new(world, love.graphics.getWidth() / 2, 3 * love.graphics.getHeight() / 4, 50, love.graphics.getHeight() / 2, "middle_wall")
 	-- objects.middle_wall:addSensor("left")
 	-- objects.middle_wall:addSensor("right")
-	-- objects.middle_wall:addSensor("up")
+	-- objects.middle_wall:addSensor("up")\
+
+	return objects
 
 end

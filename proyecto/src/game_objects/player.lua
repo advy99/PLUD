@@ -167,6 +167,8 @@ function Player:handleAnimations(dt)
 			self.current_animation = self.animations.walk
 		elseif self.mode == "jumping" then
 			self.current_animation = self.animations.jump
+			self.current_animation.currentTime = 0
+			self.time_to_finish_animation = 1
 		elseif self.mode == "attacking" then
 			self.current_animation = self.animations.attack
 			self.time_to_finish_animation = 1
@@ -178,8 +180,6 @@ function Player:handleAnimations(dt)
 			self.time_to_finish_animation = 1
 			self:setMode(self.previous_mode)
 		end
-	else
-		self.time_to_finish_animation = self.time_to_finish_animation - dt
 	end
 
 end
@@ -204,7 +204,19 @@ end
 
 function Player:animate(dt)
 	-- Animamos el jugador
-	self.current_animation.currentTime = self.current_animation.currentTime + dt
+
+	-- si estamos saltando
+	if self:getMode() == "jumping" then
+		-- paramos la animación en el punto de salto, hasta que toque el suelo
+		self.current_animation.currentTime = math.min(self.current_animation.currentTime + dt, 0.5)
+		self.time_to_finish_animation =  math.max(self.time_to_finish_animation - dt, 0.5)
+	else
+		-- con cualquier otra animacion, simplemente la continuamos
+		self.current_animation.currentTime = self.current_animation.currentTime + dt
+		self.time_to_finish_animation = self.time_to_finish_animation - dt
+	end
+
+
 	if self.current_animation.currentTime >= self.current_animation.duration then
 		self.current_animation.currentTime = self.current_animation.currentTime - self.current_animation.duration
 	end

@@ -3,9 +3,10 @@ require("src/handler/handle_collisions")
 require("src/enums/events")
 
 
-local class = require 'lib/middleclass'
+local class = require "lib/middleclass"
+local sti = require "lib/sti"
 
-Game = class('Game')
+Game = class("Game")
 
 
 function Game:initialize()
@@ -13,6 +14,8 @@ function Game:initialize()
 	self.world:setCallbacks(beginContact, endContact, preSolve, postSolve)
 
 	self.objects = create_level_1(self.world)
+	self.map = sti("maps/prueba.lua", { "box2d" })
+	self.map:box2d_init(self.world)
 
 end
 
@@ -21,7 +24,7 @@ function Game:update(dt)
 
 	-- actualizamos el mundo
 	self.world:update(dt)
-
+	self.map:update(dt)
 	-- para cada objeto, llamamos a su respectivo update
 	for _, object in pairs(self.objects) do
 		object:update(dt)
@@ -34,6 +37,14 @@ function Game:draw()
 	for _, object in pairs(self.objects) do
 		object:draw()
 	end
+
+	love.graphics.setColor(1, 1, 1)
+	self.map:draw()
+	--
+	-- -- Draw Collision Map (useful for debugging)
+	-- love.graphics.setColor(1, 0, 0)
+	-- map:box2d_draw()
+
 end
 
 

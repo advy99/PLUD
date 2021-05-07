@@ -2,3 +2,5 @@ Events = {}
 
 Events.PLAYER_LAND_PLATFORM = 1
 Events.PLAYER_LEAVE_PLATFORM = 2
+Events.EXIT_GAME = 3
+Events.LOAD_LEVEL1 = 4

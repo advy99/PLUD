@@ -10,12 +10,11 @@ Game = class("Game")
 
 
 function Game:initialize()
-	self.world = love.physics.newWorld(0, Constants.GRAVITY * Constants.PX_PER_METER, true)
-	self.world:setCallbacks(beginContact, endContact, preSolve, postSolve)
+	self.world = nil
+	self.objects = {}
 
-	self.objects = create_level_1(self.world)
-	self.map = sti("maps/prueba.lua", { "box2d" })
-	self.map:box2d_init(self.world)
+	self.level = "level_menu"
+	self:loadLevel(self.level)
 
 end
 
@@ -40,16 +39,19 @@ function Game:draw()
 
 	love.graphics.setColor(1, 1, 1)
 	self.map:draw()
-	--
-	-- -- Draw Collision Map (useful for debugging)
-	-- love.graphics.setColor(1, 0, 0)
-	-- map:box2d_draw()
+
+	if Constants.SHOW_HITBOX then
+		-- Draw Collision Map (useful for debugging)
+		love.graphics.setColor(1, 0, 0)
+		self.map:box2d_draw()
+	end
 
 end
 
 
 function Game:handleEvent(object, event)
 
+	print(event)
 	if event == Events.PLAYER_LAND_PLATFORM then
 		self.objects[object]:setMode("grounded")
 
@@ -59,6 +61,27 @@ function Game:handleEvent(object, event)
 			self.objects[object]:setMode("falling")
 		end
 
+	elseif event == Events.EXIT_GAME then
+		love.event.quit()
+
+	elseif event == Events.LOAD_LEVEL1 then
+		self:loadLevel("1")
 	end
 
+end
+
+
+function Game:loadLevel(level_name)
+
+	if self.world ~= nil then
+		self.world:destroy()
+	end
+
+	self.world = love.physics.newWorld(0, Constants.GRAVITY * Constants.PX_PER_METER, true)
+	self.world:setCallbacks(beginContact, endContact, preSolve, postSolve)
+
+	self.objects = create_objects(self.world, level_name)
+
+	self.map = sti("maps/" .. level_name .. ".lua", { "box2d" })
+	self.map:box2d_init(self.world)
 end

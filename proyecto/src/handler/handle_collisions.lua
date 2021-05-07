@@ -5,6 +5,7 @@ function beginContact(a, b, coll)
 
 	local category_a, mask_a, group_a = a:getFilterData()
 	local category_b, mask_b, group_b = b:getFilterData()
+	print(category_b, "\t", category_a)
 
 	-- Si colisionan un jugador y un un sensor de una plataforma, el jugador para al estado grounded
 	if a:getCategory() == Constants.PLAYER_CATEGORY and category_b == Constants.PLATFORM_CATEGORY then
@@ -14,6 +15,28 @@ function beginContact(a, b, coll)
 	-- lo mismo, pero por si se pasa a y b intercam
 	if b:getCategory() == Constants.PLAYER_CATEGORY and category_a == Constants.PLATFORM_CATEGORY then
 		game:handleEvent(b:getUserData(), Events.PLAYER_LAND_PLATFORM)
+	end
+
+	-- Colisiones con salir
+	-- Si colisionan un jugador y un un sensor de una plataforma, el jugador para al estado grounded
+	if a:getCategory() == Constants.PLAYER_CATEGORY and category_b == Constants.EXIT_CATEGORY then
+		game:handleEvent(a:getUserData(), Events.EXIT_GAME)
+	end
+
+	-- lo mismo, pero por si se pasa a y b intercam
+	if b:getCategory() == Constants.PLAYER_CATEGORY and category_a == Constants.EXIT_CATEGORY then
+		game:handleEvent(b:getUserData(), Events.EXIT_GAME)
+	end
+
+	-- Colisiones con salir
+	-- Si colisionan un jugador y un un sensor de una plataforma, el jugador para al estado grounded
+	if a:getCategory() == Constants.PLAYER_CATEGORY and category_b == Constants.PLAY_CATEGORY then
+		game:handleEvent(a:getUserData(), Events.LOAD_LEVEL1)
+	end
+
+	-- lo mismo, pero por si se pasa a y b intercam
+	if b:getCategory() == Constants.PLAYER_CATEGORY and category_a == Constants.PLAY_CATEGORY then
+		game:handleEvent(b:getUserData(), Events.LOAD_LEVEL1)
 	end
 
 end

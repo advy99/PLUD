@@ -51,7 +51,6 @@ end
 
 function Game:handleEvent(object, event)
 
-	print(event)
 	if event == Events.PLAYER_LAND_PLATFORM then
 		self.objects[object]:setMode("grounded")
 
@@ -65,7 +64,7 @@ function Game:handleEvent(object, event)
 		love.event.quit()
 
 	elseif event == Events.LOAD_LEVEL1 then
-		self:loadLevel("1")
+		self:loadLevel("level_1")
 	end
 
 end
@@ -84,4 +83,6 @@ function Game:loadLevel(level_name)
 
 	self.map = sti("maps/" .. level_name .. ".lua", { "box2d" })
 	self.map:box2d_init(self.world)
+
+	self.level = level_name
 end

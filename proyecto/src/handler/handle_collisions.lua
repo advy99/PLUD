@@ -5,7 +5,6 @@ function beginContact(a, b, coll)
 
 	local category_a, mask_a, group_a = a:getFilterData()
 	local category_b, mask_b, group_b = b:getFilterData()
-	print(category_b, "\t", category_a)
 
 	-- Si colisionan un jugador y un un sensor de una plataforma, el jugador para al estado grounded
 	if a:getCategory() == Constants.PLAYER_CATEGORY and category_b == Constants.PLATFORM_CATEGORY then

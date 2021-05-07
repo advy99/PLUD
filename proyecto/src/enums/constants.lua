@@ -12,4 +12,4 @@ Constants.EXIT_CATEGORY = 16
 
 -- Constantes de debug
 Constants.DEBUG = false
-Constants.SHOW_HITBOX = true
+Constants.SHOW_HITBOX = false

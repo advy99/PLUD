@@ -7,7 +7,11 @@ function create_objects(world, level_name)
 
 	if level_name == "level_menu" then
 		-- dos jugadores
-		objects.player1 = Player:new(world, love.graphics.getWidth() / 2, love.graphics.getHeight() / 2, sprite_sheet_player2, "player1")
+		objects.player1 = Player:new(world, love.graphics.getWidth() / 2, love.graphics.getHeight() / 2, sprite_sheet_player1, "player1")
+	elseif level_name == "level_1" then
+		objects.player1 = Player:new(world, love.graphics.getWidth() / 4, love.graphics.getHeight() / 2, sprite_sheet_player1, "player1")
+		objects.player2 = Player:new(world, 3 * love.graphics.getWidth() / 4, love.graphics.getHeight() / 2, sprite_sheet_player2, "player2")
+
 	end
 
 	return objects

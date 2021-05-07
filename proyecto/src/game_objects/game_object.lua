@@ -4,9 +4,9 @@
 --
 --
 
-local class = require 'lib/middleclass'
+local class = require "lib/middleclass"
 
-GameObject = class('GameObject')
+GameObject = class("GameObject")
 
 
 --

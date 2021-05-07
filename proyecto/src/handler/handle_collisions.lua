@@ -3,13 +3,16 @@ require("src/enums/events")
 -- Funcion que se ejecutará cuando se detecta una colisión
 function beginContact(a, b, coll)
 
+	local category_a, mask_a, group_a = a:getFilterData()
+	local category_b, mask_b, group_b = b:getFilterData()
+
 	-- Si colisionan un jugador y un un sensor de una plataforma, el jugador para al estado grounded
-	if a:getCategory() == Constants.PLAYER_CATEGORY and b:getCategory() == Constants.PLATFORM_CATEGORY then
+	if a:getCategory() == Constants.PLAYER_CATEGORY and category_b == Constants.PLATFORM_CATEGORY then
 		game:handleEvent(a:getUserData(), Events.PLAYER_LAND_PLATFORM)
 	end
 
 	-- lo mismo, pero por si se pasa a y b intercam
-	if b:getCategory() == Constants.PLAYER_CATEGORY and a:getCategory() == Constants.PLATFORM_CATEGORY then
+	if b:getCategory() == Constants.PLAYER_CATEGORY and category_a == Constants.PLATFORM_CATEGORY then
 		game:handleEvent(b:getUserData(), Events.PLAYER_LAND_PLATFORM)
 	end
 

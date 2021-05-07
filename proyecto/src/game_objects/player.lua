@@ -23,7 +23,7 @@ function Player:initialize(world, x, y, sprite_sheet, id)
 
 	-- le asignamos una altura y anchura, asociados a su forma
 
-	self.scale = 4
+	self.scale = 3
 
 	self.width = 12 * self.scale
 	self.height = 10 * self.scale

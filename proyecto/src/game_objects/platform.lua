@@ -1,7 +1,7 @@
 require("src/game_objects/game_object")
 require("src/enums/constants")
 
-Platform = GameObject:subclass('Platform')
+Platform = GameObject:subclass("Platform")
 
 function Platform:initialize(world, x, y, width, height, id)
 	GameObject.initialize(self, world, x, y , "static")

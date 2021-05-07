@@ -10,7 +10,7 @@ function handleKeyboard(dt)
 	end
 
 
-	if game.level == "level_1" then
+	if game.objects.player2 ~= nil then
 
 		if love.keyboard.isDown("d") then --press the right arrow key to push the ball to the right
 			game.objects.player2:move(1)
@@ -46,7 +46,7 @@ function love.keypressed(k)
 		game.objects.player1:jump()
 	end
 
-	if game.level == "level_1" then
+	if game.objects.player2 ~= nil then
 
 		if k == "e" then
 			game.objects.player2:attack()
@@ -61,8 +61,7 @@ function love.keypressed(k)
 end
 
 function love.keyreleased(k)
-	if game.level == "level_1" then
-
+	if game.objects.player2 ~= nil then
 		if k == "a" or k == "d" then
 			game.objects.player2:stopWalking()
 		end

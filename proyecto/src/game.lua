@@ -52,9 +52,6 @@ function Game:handleEvent(object, event)
 
 		elseif event == Events.EXIT_GAME then
 			love.event.quit()
-
-		elseif event == Events.LOAD_LEVEL1 then
-			self:loadLevel("level_1")
 		end
 	end
 

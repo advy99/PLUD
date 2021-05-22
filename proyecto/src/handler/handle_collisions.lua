@@ -30,12 +30,12 @@ function beginContact(a, b, coll)
 	-- Colisiones con salir
 	-- Si colisionan un jugador y un un sensor de una plataforma, el jugador para al estado grounded
 	if a:getCategory() == Constants.PLAYER_CATEGORY and category_b == Constants.PLAY_CATEGORY then
-		game:handleEvent(a:getUserData(), Events.LOAD_LEVEL1)
+		game:loadLevel("level_3")
 	end
 
 	-- lo mismo, pero por si se pasa a y b intercam
 	if b:getCategory() == Constants.PLAYER_CATEGORY and category_a == Constants.PLAY_CATEGORY then
-		game:loadLevel("level_1")
+		game:loadLevel("level_3")
 	end
 
 	if b:getCategory() == Constants.PLAYER_CATEGORY and a:getCategory() == Constants.PLAYER_CATEGORY then

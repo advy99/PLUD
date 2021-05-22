@@ -8,7 +8,7 @@ return {
   height = 24,
   tilewidth = 32,
   tileheight = 32,
-  nextlayerid = 33,
+  nextlayerid = 34,
   nextobjectid = 28,
   properties = {},
   tilesets = {
@@ -51,7 +51,21 @@ return {
       parallaxx = 1,
       parallaxy = 1,
       properties = {},
-      layers = {}
+      layers = {
+        {
+          type = "imagelayer",
+          image = "../img/landscape.png",
+          id = 33,
+          name = "fondo",
+          visible = true,
+          opacity = 1,
+          offsetx = 0,
+          offsety = -312,
+          parallaxx = 1,
+          parallaxy = 1,
+          properties = {}
+        }
+      }
     },
     {
       type = "group",

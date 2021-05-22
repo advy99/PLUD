@@ -1,12 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.5" tiledversion="1.6.0" orientation="orthogonal" renderorder="right-down" width="40" height="24" tilewidth="32" tileheight="32" infinite="0" nextlayerid="33" nextobjectid="28">
+<map version="1.5" tiledversion="1.6.0" orientation="orthogonal" renderorder="right-down" width="40" height="24" tilewidth="32" tileheight="32" infinite="0" nextlayerid="34" nextobjectid="28">
  <editorsettings>
   <export target="level_1.lua" format="lua"/>
  </editorsettings>
  <tileset firstgid="1" name="Terreno" tilewidth="32" tileheight="32" tilecount="85" columns="17">
   <image source="../img/terrain.png" width="544" height="160"/>
  </tileset>
- <group id="31" name="background"/>
+ <group id="31" name="background">
+  <imagelayer id="33" name="fondo" offsetx="0" offsety="-312">
+   <image source="../img/landscape.png" width="1920" height="1080"/>
+  </imagelayer>
+ </group>
  <group id="13" name="basic" locked="1">
   <properties>
    <property name="collidable" type="bool" value="true"/>

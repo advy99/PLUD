@@ -35,7 +35,7 @@ function beginContact(a, b, coll)
 
 	-- lo mismo, pero por si se pasa a y b intercam
 	if b:getCategory() == Constants.PLAYER_CATEGORY and category_a == Constants.PLAY_CATEGORY then
-		game:handleEvent(b:getUserData(), Events.LOAD_LEVEL1)
+		game:loadLevel("level_1")
 	end
 
 	if b:getCategory() == Constants.PLAYER_CATEGORY and a:getCategory() == Constants.PLAYER_CATEGORY then

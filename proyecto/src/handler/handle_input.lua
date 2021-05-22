@@ -35,17 +35,19 @@ function love.keypressed(k)
 		end
    end
 
+	if game.level.objects.player1 ~= nil then
+		if k == "enter" then
+			game.level.objects.player1:attack()
+		end
 
-	if k == "enter" then
-		game.level.objects.player1:attack()
-	end
 
-	if k == "t" then
-		game.level.objects.player1:kill()
-	end
+		if k == "t" then
+			game.level.objects.player1:kill()
+		end
 
-	if k == "up" then --press the up arrow key to set the ball in the air
-		game.level.objects.player1:jump()
+		if k == "up" then --press the up arrow key to set the ball in the air
+			game.level.objects.player1:jump()
+		end
 	end
 
 	if game.level.objects.player2 ~= nil then
@@ -69,7 +71,9 @@ function love.keyreleased(k)
 		end
 	end
 
-	if k == "left" or k == "right" then
-		game.level.objects.player1:stopWalking()
+	if game.level.objects.player1 ~= nil then
+		if k == "left" or k == "right" then
+			game.level.objects.player1:stopWalking()
+		end
 	end
 end

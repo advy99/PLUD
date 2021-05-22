@@ -38,6 +38,10 @@ function beginContact(a, b, coll)
 		game:handleEvent(b:getUserData(), Events.LOAD_LEVEL1)
 	end
 
+	if b:getCategory() == Constants.PLAYER_CATEGORY and a:getCategory() == Constants.PLAYER_CATEGORY then
+		game:handleEventBetweenObjects(a:getUserData(), b:getUserData(), Events.PLAYERS_COLLIDE)
+	end
+
 end
 
 -- Función que se ejecutará cuando finaliza una colisión
@@ -51,6 +55,8 @@ function endContact(a, b, coll)
 	if b:getCategory() == Constants.PLAYER_CATEGORY and a:getCategory() == Constants.PLATFORM_CATEGORY then
 		game:handleEvent(b:getUserData(), Events.PLAYER_LEAVE_PLATFORM)
 	end
+
+
 end
 
 -- funcion que se ejecuta antes de resolver una colision

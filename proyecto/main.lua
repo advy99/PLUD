@@ -10,7 +10,6 @@ require("src/game_objects/player")
 require("src/handler/handle_input")
 require("src/enums/constants")
 require("src/game_objects/platform")
-require("src/load_levels")
 
 
 

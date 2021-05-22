@@ -32,14 +32,15 @@ function Game:update(dt)
 end
 
 function Game:draw()
-	-- para cada objeto, llamamos a su respectivo draw
-	for _, object in pairs(self.objects) do
-		object:draw()
-	end
 
 	love.graphics.setColor(1, 1, 1)
 	self.map:draw()
 
+	-- para cada objeto, llamamos a su respectivo draw
+	for _, object in pairs(self.objects) do
+		object:draw()
+	end
+	
 	if Constants.SHOW_HITBOX then
 		-- Draw Collision Map (useful for debugging)
 		love.graphics.setColor(1, 0, 0)

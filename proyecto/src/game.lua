@@ -63,13 +63,13 @@ function Game:handleEventBetweenObjects(object_a, object_b, event)
 	if self.level.objects[object_b] ~= nil and self.level.objects[object_b] ~= nil then
 
 		if event == Events.PLAYERS_COLLIDE then
-			if self.objects[object_a].has_bomb and self.bomb_swap_time >= 1 then
-				self.objects[object_a].has_bomb = false
-				self.objects[object_b].has_bomb = true
+			if self.level.objects[object_a].has_bomb and self.bomb_swap_time >= 1 then
+				self.level.objects[object_a].has_bomb = false
+				self.level.objects[object_b].has_bomb = true
 				self.bomb_swap_time = 0.5
-			elseif self.objects[object_b].has_bomb and self.bomb_swap_time >= 1 then
-				self.objects[object_b].has_bomb = false
-				self.objects[object_a].has_bomb = true
+			elseif self.level.objects[object_b].has_bomb and self.bomb_swap_time >= 1 then
+				self.level.objects[object_b].has_bomb = false
+				self.level.objects[object_a].has_bomb = true
 				self.bomb_swap_time = 0.5
 			end
 		end

@@ -14,3 +14,9 @@ Constants.EXIT_CATEGORY = 16
 -- Constantes de debug
 Constants.DEBUG = false
 Constants.SHOW_HITBOX = false
+
+-- Constantes de minijuegos
+Constants.MENU = 0
+Constants.BOMB_TAG = 1
+Constants.TREASURE_HUNT = 2
+Constants.SPIKE_BALL = 3

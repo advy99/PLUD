@@ -1,8 +1,11 @@
 
 require("src/handler/handle_collisions")
 require("src/enums/events")
+require("src/enums/constants")
 require("src/level")
-
+require("src/minigames/minigame")
+require("src/minigames/bomb_tag")
+require("src/minigames/game_menu")
 
 
 local class = require "lib/middleclass"
@@ -12,100 +15,123 @@ Game = class("Game")
 
 
 function Game:initialize()
-	self.objects = {}
 
-	self.bomb_swap_time = 0
-	self.bomb_timer = 5
-
-	self.level = Level("level_menu")
+	self:changeMiniGame(Constants.MENU)
 
 end
 
 
 function Game:update(dt)
 
-	self.level:update(dt)
-
-	if self.bomb_swap_time < 1 then
-		self.bomb_swap_time = self.bomb_swap_time + dt
-	end
-
-	if self.bomb_timer > 0 then
-		self.bomb_timer = self.bomb_timer - dt
-	else
-
-		for _ , player in pairs(self.level.objects) do
-			if player.has_bomb then
-				player:kill()
-			end
-		end
-
-	end
-
-	for _ , player in pairs(self.level.objects) do
-		if player.has_died then
-			player:respawn(300, 300)
-			self.bomb_timer = 5
-		end
-	end
+	self.minigame:update(dt)
 
 
 end
 
 function Game:draw()
-	self.level:draw()
 
-	if self.level.level_name ~= "level_menu" then
-		love.graphics.setColor(0, 0, 0)
-		local mainFont = love.graphics.newFont("fonts/kirbyss.ttf", 50)
-		love.graphics.setFont(mainFont)
-		love.graphics.printf("Tiempo restante: " .. math.abs(math.ceil(self.bomb_timer)), -100,  50, 1000, "center")
-	end
+	self.minigame:draw()
 
 end
 
 
 function Game:handleEvent(object, event)
 
-	-- no debería pasar nunca, ya que el objeto está en el nivel, pero por si acaso
-	if self.level.objects[object] ~= nil then
-
-		if event == Events.PLAYER_LAND_PLATFORM then
-			self.level.objects[object]:setMode("grounded")
-
-		elseif event == Events.PLAYER_LEAVE_PLATFORM then
-
-			if self.level.objects[object]:getMode() ~= "jumping" then
-				self.level.objects[object]:setMode("falling")
-			end
-
-		elseif event == Events.EXIT_GAME then
-			love.event.quit()
-		end
-	end
+	self.minigame:handleEvent(object, event)
 
 end
 
 
 function Game:handleEventBetweenObjects(object_a, object_b, event)
 
-	if self.level.objects[object_b] ~= nil and self.level.objects[object_b] ~= nil then
+	self.minigame:handleEventBetweenObjects(object_a, object_b, event)
 
-		if event == Events.PLAYERS_COLLIDE then
-			if self.level.objects[object_a].has_bomb and self.bomb_swap_time >= 1 then
-				self.level.objects[object_a].has_bomb = false
-				self.level.objects[object_b].has_bomb = true
-				self.bomb_swap_time = 0.5
-			elseif self.level.objects[object_b].has_bomb and self.bomb_swap_time >= 1 then
-				self.level.objects[object_b].has_bomb = false
-				self.level.objects[object_a].has_bomb = true
-				self.bomb_swap_time = 0.5
-			end
+end
+
+function Game:changeMiniGame(minigame)
+
+	if minigame == Constants.BOMB_TAG then
+		self.minigame = BombTag()
+	elseif minigame == Constants.MENU then
+		self.minigame = GameMenu()
+	end
+end
+
+function Game:loadLevel(level_name)
+	self.minimage:loadLevel(level_name)
+end
+
+
+function Game:keyPressed(k)
+	if k == 'escape' then
+		if self.minigame.level.level_name == "level_menu" then
+			love.event.quit()
+		else
+			self:changeMiniGame(Constants.MENU)
+		end
+	end
+
+	if self.minigame.level.objects.player1 ~= nil then
+		if k == "enter" then
+			self.minigame.level.objects.player1:attack()
+		end
+
+
+		if k == "t" then
+			self.minigame.level.objects.player1:kill()
+		end
+
+		if k == "up" then --press the up arrow key to set the ball in the air
+			self.minigame.level.objects.player1:jump()
+		end
+	end
+
+	if self.minigame.level.objects.player2 ~= nil then
+
+		if k == "e" then
+			self.minigame.level.objects.player2:attack()
+		end
+
+		if k == "w" then --press the up arrow key to set the ball in the air
+			self.minigame.level.objects.player2:jump()
 		end
 	end
 end
 
+function Game:keyReleased(k)
+	if self.minigame.level.objects.player2 ~= nil then
+		if k == "a" or k == "d" then
+			self.minigame.level.objects.player2:stopWalking()
+		end
+	end
 
-function Game:loadLevel(level_name)
-	self.level = Level(level_name)
+	if self.minigame.level.objects.player1 ~= nil then
+		if k == "left" or k == "right" then
+			self.minigame.level.objects.player1:stopWalking()
+		end
+	end
+end
+
+function Game:handleKeyboard(dt)
+	if self.minigame.level.objects.player1 ~= nil then
+
+		if love.keyboard.isDown("right") then --press the right arrow key to push the ball to the right
+			self.minigame.level.objects.player1:move(1)
+		end
+
+		if love.keyboard.isDown("left") then --press the left arrow key to push the ball to the left
+			self.minigame.level.objects.player1:move(-1)
+		end
+	end
+
+	if self.minigame.level.objects.player2 ~= nil then
+
+		if love.keyboard.isDown("d") then --press the right arrow key to push the ball to the right
+			self.minigame.level.objects.player2:move(1)
+		end
+
+		if love.keyboard.isDown("a") then --press the left arrow key to push the ball to the left
+			self.minigame.level.objects.player2:move(-1)
+		end
+	end
 end

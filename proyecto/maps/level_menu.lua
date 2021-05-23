@@ -101,7 +101,7 @@ return {
       visible = true,
       opacity = 1,
       offsetx = -1.13687e-13,
-      offsety = -312,
+      offsety = -214.67,
       parallaxx = 1,
       parallaxy = 1,
       properties = {}

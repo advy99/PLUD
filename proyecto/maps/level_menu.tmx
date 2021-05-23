@@ -12,7 +12,7 @@
  <tileset firstgid="90" name="salir" tilewidth="32" tileheight="32" tilecount="4" columns="4">
   <image source="../img/salir.png" width="128" height="32"/>
  </tileset>
- <imagelayer id="50" name="fondo" offsetx="-1.13687e-13" offsety="-312">
+ <imagelayer id="50" name="fondo" offsetx="-1.13687e-13" offsety="-214.67">
   <image source="../img/landscape.png" width="1920" height="1080"/>
  </imagelayer>
  <group id="13" name="Suelo" locked="1">

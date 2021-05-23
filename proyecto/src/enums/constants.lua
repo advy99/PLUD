@@ -2,6 +2,7 @@ Constants = {}
 
 Constants.GRAVITY = 9.81
 Constants.PX_PER_METER = 64
+Constants.NUMBER_OF_LEVELS = 3
 
 -- Categoría de las fixture, va del 1 al 16
 Constants.NIL_CATEGORY = 1

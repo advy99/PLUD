@@ -10,16 +10,16 @@ function create_objects(world, level_name)
 
 	local objects = {}
 
-	-- si es el menu, solo el jugador 1
-	if level_name == "level_menu" then
-		-- dos jugadores
-		objects.player1 = Player:new(world, love.graphics.getWidth() / 2, love.graphics.getHeight() / 1.1, sprite_sheet_player1, "player1")
-	elseif level_name == "level_1" then
-		-- si es el nivel 1, dos jugadores
-		objects.player1 = Player:new(world, love.graphics.getWidth() / 4, love.graphics.getHeight() / 2, sprite_sheet_player1, "player1")
-		objects.player2 = Player:new(world, 3 * love.graphics.getWidth() / 4, love.graphics.getHeight() / 2, sprite_sheet_player2, "player2")
+	local pos_x_player1 = love.graphics.getWidth() / 4
 
+
+	if level_name == "level_menu" then
+		pos_x_player1 = love.graphics.getWidth() / 2
+	else
+		objects.player2 = Player:new(world, 3 * love.graphics.getWidth() / 4, love.graphics.getHeight() / 2, sprite_sheet_player2, "player2")
 	end
+
+	objects.player1 = Player:new(world, pos_x_player1, love.graphics.getHeight() / 2, sprite_sheet_player1, "player1")
 
 	return objects
 
@@ -73,6 +73,15 @@ function Level:draw()
 		-- Draw Collision Map (useful for debugging)
 		love.graphics.setColor(1, 0, 0)
 		self.map:box2d_draw()
+	end
+
+	if self.level_name == "level_menu" then
+		-- prueba de fuentes
+		local mainFont = love.graphics.newFont("fonts/kirbyss.ttf", 50)
+		love.graphics.setFont(mainFont)
+		love.graphics.printf("JUGAR", -love.graphics.getWidth() * 0.165 ,  love.graphics.getHeight() * 0.825, 1000, "center")
+		love.graphics.printf("SALIR", love.graphics.getWidth() * 0.385,  love.graphics.getHeight() * 0.825, 1000, "center")
+
 	end
 
 end

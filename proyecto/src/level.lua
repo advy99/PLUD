@@ -75,13 +75,4 @@ function Level:draw()
 		self.map:box2d_draw()
 	end
 
-	if self.level_name == "level_menu" then
-		-- prueba de fuentes
-		local mainFont = love.graphics.newFont("fonts/kirbyss.ttf", 50)
-		love.graphics.setFont(mainFont)
-		love.graphics.printf("JUGAR", -love.graphics.getWidth() * 0.165 ,  love.graphics.getHeight() * 0.825, 1000, "center")
-		love.graphics.printf("SALIR", love.graphics.getWidth() * 0.385,  love.graphics.getHeight() * 0.825, 1000, "center")
-
-	end
-
 end

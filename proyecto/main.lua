@@ -7,7 +7,6 @@
 
 require("src/game")
 require("src/game_objects/player")
-require("src/handler/handle_input")
 require("src/enums/constants")
 require("src/game_objects/platform")
 
@@ -44,7 +43,7 @@ function love.update(dt)
 	game:update(dt)
 
 	-- gestionamos la entrada por teclado
-	handleKeyboard(dt)
+	game:handleKeyboard(dt)
 end
 
 
@@ -53,5 +52,16 @@ end
 function love.draw()
 
 	game:draw()
+
+end
+
+
+
+function love.keypressed(k)
+	game:keyPressed(k)
+end
+
+function love.keyreleased(k)
+	game:keyReleased(k)
 
 end

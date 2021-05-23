@@ -31,10 +31,7 @@ function beginContact(a, b, coll)
 	if (a:getCategory() == Constants.PLAYER_CATEGORY and category_b == Constants.PLAY_CATEGORY) or
 	 	(b:getCategory() == Constants.PLAYER_CATEGORY and category_a == Constants.PLAY_CATEGORY) then
 
-		-- Generamos un aleatorio entre 1 y NUMBER_OF_LEVELS, ambos incluidos
-		local num_level = love.math.random(1, Constants.NUMBER_OF_LEVELS)
-
-		game:loadLevel("level_" .. num_level)
+		game:changeMiniGame(Constants.BOMB_TAG)
 	end
 
 

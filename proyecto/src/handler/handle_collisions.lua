@@ -27,16 +27,16 @@ function beginContact(a, b, coll)
 		game:handleEvent(b:getUserData(), Events.EXIT_GAME)
 	end
 
-	-- Colisiones con salir
-	-- Si colisionan un jugador y un un sensor de una plataforma, el jugador para al estado grounded
-	if a:getCategory() == Constants.PLAYER_CATEGORY and category_b == Constants.PLAY_CATEGORY then
-		game:loadLevel("level_3")
+
+	if (a:getCategory() == Constants.PLAYER_CATEGORY and category_b == Constants.PLAY_CATEGORY) or
+	 	(b:getCategory() == Constants.PLAYER_CATEGORY and category_a == Constants.PLAY_CATEGORY) then
+
+		-- Generamos un aleatorio entre 1 y NUMBER_OF_LEVELS, ambos incluidos
+		local num_level = love.math.random(1, Constants.NUMBER_OF_LEVELS)
+
+		game:loadLevel("level_" .. num_level)
 	end
 
-	-- lo mismo, pero por si se pasa a y b intercam
-	if b:getCategory() == Constants.PLAYER_CATEGORY and category_a == Constants.PLAY_CATEGORY then
-		game:loadLevel("level_3")
-	end
 
 	if b:getCategory() == Constants.PLAYER_CATEGORY and a:getCategory() == Constants.PLAYER_CATEGORY then
 		game:handleEventBetweenObjects(a:getUserData(), b:getUserData(), Events.PLAYERS_COLLIDE)

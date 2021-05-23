@@ -15,6 +15,7 @@ function Game:initialize()
 	self.objects = {}
 
 	self.bomb_swap_time = 0
+	self.bomb_timer = 5
 
 	self.level = Level("level_menu")
 
@@ -29,10 +30,38 @@ function Game:update(dt)
 		self.bomb_swap_time = self.bomb_swap_time + dt
 	end
 
+	if self.bomb_timer > 0 then
+		self.bomb_timer = self.bomb_timer - dt
+	else
+
+		for _ , player in pairs(self.level.objects) do
+			if player.has_bomb then
+				player:kill()
+			end
+		end
+
+	end
+
+	for _ , player in pairs(self.level.objects) do
+		if player.has_died then
+			player:respawn(300, 300)
+			self.bomb_timer = 5
+		end
+	end
+
+
 end
 
 function Game:draw()
 	self.level:draw()
+
+	if self.level.level_name ~= "level_menu" then
+		love.graphics.setColor(0, 0, 0)
+		local mainFont = love.graphics.newFont("fonts/kirbyss.ttf", 50)
+		love.graphics.setFont(mainFont)
+		love.graphics.printf("Tiempo restante: " .. math.abs(math.ceil(self.bomb_timer)), -100,  50, 1000, "center")
+	end
+
 end
 
 

@@ -70,7 +70,10 @@ function Player:initialize(world, x, y, sprite_sheet, id)
 
 	self.remaining_jumps = 1
 
+	self.has_died = false
+
 	self.time_to_finish_animation = 0
+
 end
 
 -- función para mover al jugador en el eje x
@@ -78,52 +81,60 @@ end
 -- de x_speed del jugador
 
 function Player:move(dir_x)
+	if self.mode ~= "dying" then
 
-	-- cambiamos la orientacion del jugador
-	self.orientation = dir_x
+		-- cambiamos la orientacion del jugador
+		self.orientation = dir_x
 
-	-- le aplicamos la fuerza correspondiente
-	self.body:applyForce(self.x_speed * dir_x, 0)
+		-- le aplicamos la fuerza correspondiente
+		self.body:applyForce(self.x_speed * dir_x, 0)
 
-	-- si ha llegado a su limite de velocidad, lo mantenemos en el limite
-	local x, y = self.body:getLinearVelocity()
+		-- si ha llegado a su limite de velocidad, lo mantenemos en el limite
+		local x, y = self.body:getLinearVelocity()
 
-	if ( x > self.max_speed ) then
-		self.body:setLinearVelocity(self.max_speed, y)
-	elseif ( x < -self.max_speed ) then
-		self.body:setLinearVelocity(-self.max_speed, y)
-	end
+		if ( x > self.max_speed ) then
+			self.body:setLinearVelocity(self.max_speed, y)
+		elseif ( x < -self.max_speed ) then
+			self.body:setLinearVelocity(-self.max_speed, y)
+		end
 
-	self:startWalking()
+		self:startWalking()
 
-	if Constants.DEBUG then
-		print(x, "\t", y)
+		if Constants.DEBUG then
+			print(x, "\t", y)
+		end
 	end
 
 end
 
 -- función para que el jugador salte
 function Player:jump()
-	-- si no está saltando, cambiamos el estado a saltando y le aplicamos
-	-- la fuerza de salto
-	-- aplicamos la fuerza negativa, ya que el eje Y crece hacia abajo
-	if self.remaining_jumps ~= 0 then
-		self:setMode("jumping")
-		self.remaining_jumps = self.remaining_jumps - 1
-		local x, _ = self.body:getLinearVelocity()
-		self.body:setLinearVelocity(x, 0)
-		self.body:applyLinearImpulse(0, -self.jump_power)
+	if self.mode ~= "dying" then
+		-- si no está saltando, cambiamos el estado a saltando y le aplicamos
+		-- la fuerza de salto
+		-- aplicamos la fuerza negativa, ya que el eje Y crece hacia abajo
+		if self.remaining_jumps ~= 0 then
+			self:setMode("jumping")
+			self.remaining_jumps = self.remaining_jumps - 1
+			local x, _ = self.body:getLinearVelocity()
+			self.body:setLinearVelocity(x, 0)
+			self.body:applyLinearImpulse(0, -self.jump_power)
+		end
 	end
 end
 
 -- cambiar el estado de un jugador
 function Player:setMode(mode)
 
-	self.previous_mode = self.mode
-	self.mode = mode
+	if self.mode ~= "dying" then
 
-	if mode == "grounded" then
-		self.remaining_jumps = 1
+		self.previous_mode = self.mode
+		self.mode = mode
+
+		if mode == "grounded" then
+			self.remaining_jumps = 1
+		end
+
 	end
 
 end
@@ -159,8 +170,14 @@ end
 -- Función para gestionar que animación es necesaria utilizar en ese momento
 function Player:handleAnimations(dt)
 
+	if self.previous_mode ~= self.mode and self.mode == "dying" then
+		self.current_animation = self.animations.dead
+		self.time_to_finish_animation = 1
+		self.previous_mode = self.mode
+	end
+
 	-- Si tenemos una animación a medias, no cambiamos de animación
-	if self.time_to_finish_animation <= 0 then
+	if self.time_to_finish_animation <= 0 and self.mode ~= "dying" then
 
 		-- Seleccionamos la animación adecuada en función del estado del jugador
 		if self.mode == "grounded" then
@@ -177,13 +194,23 @@ function Player:handleAnimations(dt)
 			-- como el ataque es una animación unica, volvemos al estado anterior
 			-- en cuanto acabamos la animación
 			self:setMode(self.previous_mode)
-		elseif self.mode == "dying" then
-			self.current_animation = self.animations.dead
-			self.time_to_finish_animation = 1
-			self:setMode(self.previous_mode)
 		end
+	elseif self.time_to_finish_animation <= 0 and self.mode == "dying"  then
+		self.has_died = true
 	end
 
+
+
+
+
+end
+
+function Player:respawn(pos_x, pos_y)
+	self.has_died = false
+	self.mode = "grounded"
+	self.body:setPosition(pos_x, pos_y)
+	self.body:setAwake(true)
+	self.time_to_finish_animation = 0
 end
 
 -- Función para actualizar en cada frame el jugador
@@ -229,32 +256,35 @@ end
 -- Función para dibujar el jugador
 function Player:draw()
 
-	-- limpiamos la brocha de dibujado
-	love.graphics.reset()
-	-- calculamos que sprite se tiene que dibujar
-	local spriteNum = math.floor(self.current_animation.currentTime / self.current_animation.duration * #self.animations.idle.quads) + 1
+	if not self.has_died then
+		-- limpiamos la brocha de dibujado
+		love.graphics.reset()
+		-- calculamos que sprite se tiene que dibujar
+		local spriteNum = math.floor(self.current_animation.currentTime / self.current_animation.duration * #self.animations.idle.quads) + 1
 
-	-- Dibujamos el sprite, dependiendo de la orientación establecemos el ancho para
-	-- dibujarlo al reves
-	local width = self.body:getX() + (self.orientation * (self.sprite_width / 2 - 1)) * self.scale
-	local height = self.body:getY() - (self.sprite_height / 2) * self.scale
+		-- Dibujamos el sprite, dependiendo de la orientación establecemos el ancho para
+		-- dibujarlo al reves
+		local width = self.body:getX() + (self.orientation * (self.sprite_width / 2 - 1)) * self.scale
+		local height = self.body:getY() - (self.sprite_height / 2) * self.scale
 
-	love.graphics.draw(self.current_animation.spriteSheet, self.current_animation.quads[spriteNum], width , height, 0, -self.orientation * self.scale, self.scale )
+		love.graphics.draw(self.current_animation.spriteSheet, self.current_animation.quads[spriteNum], width , height, 0, -self.orientation * self.scale, self.scale )
 
-	-- si el personaje tiene la bomba, la dibujamos
-	if self.has_bomb then
+		-- si el personaje tiene la bomba, la dibujamos
+		if self.has_bomb then
 
-		local dynamite = love.graphics.newImage("img/dynamite_01.png")
-		local dynamite_width = self.body:getX() + 5 * self.orientation
-		local dynamite_height = self.body:getY() * 0.98
+			local dynamite = love.graphics.newImage("img/dynamite_01.png")
+			local dynamite_width = self.body:getX() + 5 * self.orientation
+			local dynamite_height = self.body:getY() * 0.98
 
-		love.graphics.draw(dynamite, dynamite_width, dynamite_height, 0, -self.orientation, 1)
-	end
+			love.graphics.draw(dynamite, dynamite_width, dynamite_height, 0, -self.orientation, 1)
+		end
 
-	if Constants.SHOW_HITBOX then
-		love.graphics.setLineWidth( 1 )
-		love.graphics.setColor(1, 0, 0) -- set the drawing color to red for the hitbox
-		love.graphics.circle("line", self.body:getX(), self.body:getY(), self.circle_shape:getRadius())
-		love.graphics.polygon("line", self.body:getWorldPoints(self.rectangle_shape:getPoints()))
+		if Constants.SHOW_HITBOX then
+			love.graphics.setLineWidth( 1 )
+			love.graphics.setColor(1, 0, 0) -- set the drawing color to red for the hitbox
+			love.graphics.circle("line", self.body:getX(), self.body:getY(), self.circle_shape:getRadius())
+			love.graphics.polygon("line", self.body:getWorldPoints(self.rectangle_shape:getPoints()))
+		end
+
 	end
 end

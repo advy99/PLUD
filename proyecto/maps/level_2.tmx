@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.5" tiledversion="1.6.0" orientation="orthogonal" renderorder="right-down" width="40" height="24" tilewidth="32" tileheight="32" infinite="0" nextlayerid="34" nextobjectid="43">
+<map version="1.5" tiledversion="1.6.0" orientation="orthogonal" renderorder="right-down" width="40" height="24" tilewidth="32" tileheight="32" infinite="0" nextlayerid="34" nextobjectid="44">
  <editorsettings>
   <export target="level_1.lua" format="lua"/>
  </editorsettings>
@@ -190,6 +190,12 @@
     </properties>
    </object>
    <object id="42" name="p16" x="31.4545" y="159.964" width="128.182" height="15.8545">
+    <properties>
+     <property name="categories" type="int" value="3"/>
+     <property name="friction" type="float" value="0.8"/>
+    </properties>
+   </object>
+   <object id="43" name="p17" x="480.477" y="383.984" width="318.906" height="1.70313">
     <properties>
      <property name="categories" type="int" value="3"/>
      <property name="friction" type="float" value="0.8"/>

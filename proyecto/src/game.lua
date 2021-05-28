@@ -65,7 +65,7 @@ end
 
 function Game:keyPressed(k)
 	if k == 'escape' then
-		if self.minigame.level.level_name == "level_menu" then
+		if self.minigame.level.level_name == "level_title" then
 			love.event.quit()
 		else
 			self:changeMiniGame(Constants.MENU)

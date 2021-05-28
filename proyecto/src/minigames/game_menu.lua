@@ -6,7 +6,7 @@ GameMenu = MiniGame:subclass('GameMenu')
 
 function GameMenu:initialize()
 
-	MiniGame.initialize(self, "level_menu")
+	MiniGame.initialize(self, "level_title")
 
 end
 

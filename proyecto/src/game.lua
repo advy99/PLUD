@@ -16,7 +16,7 @@ Game = class("Game")
 
 function Game:initialize()
 
-	-- TODO: no declaramos self.minigame
+	self.minigame = nil
 	self:changeMiniGame(Constants.MENU)
 
 end

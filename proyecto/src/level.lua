@@ -13,7 +13,7 @@ function create_objects(world, level_name)
 	local pos_x_player1 = love.graphics.getWidth() / 4
 
 
-	if level_name == "level_menu" then
+	if level_name == "level_title" then
 		pos_x_player1 = love.graphics.getWidth() / 2
 	else
 		objects.player2 = Player:new(world, 3 * love.graphics.getWidth() / 4, love.graphics.getHeight() / 2, sprite_sheet_player2, "player2")
@@ -63,6 +63,9 @@ end
 function Level:draw()
 	love.graphics.setColor(1, 1, 1)
 	self.map:draw()
+
+	-- para cuando nos pongamos a escalar el mapa
+	-- self.map:draw(0,0,scale,scale)
 
 	-- para cada objeto, llamamos a su respectivo draw
 	for _, object in pairs(self.objects) do

@@ -1,5 +1,8 @@
 Constants = {}
 
+Constants.DEFAULT_WIDTH = 1280
+Constants.DEFAULT_HEIGHT = 864
+
 Constants.GRAVITY = 9.81
 Constants.PX_PER_METER = 64
 Constants.NUMBER_OF_LEVELS = 3

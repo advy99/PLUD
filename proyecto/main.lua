@@ -23,13 +23,16 @@ function love.load()
 	-- cargamos la configuración
 	local config = LIP.load("config/config.ini")
 
+	flags = {vsync = config.screen.vsync, fullscreen = config.screen.fullscreen, resizable = true}
+
 	-- establecemos la configuración de la ventana y la semilla aleatoria
-	love.window.setMode(config.screen.width, config.screen.height, {vsync = config.screen.vsync, fullscreen = config.screen.fullscreen})
+	love.window.setMode(Constants.DEFAULT_WIDTH, Constants.DEFAULT_HEIGHT, flags)
 	love.math.setRandomSeed(os.time()) -- Semilla para el cambio de colores aleatorio al colisionar
 
 	-- Creamos un mundo nuevo y asignamos la funciones que gestionarán las colisiones
 	love.physics.setMeter(Constants.PX_PER_METER)
 
+	-- scale = 1
 	game = Game:new()
 
 
@@ -50,12 +53,19 @@ end
 -- Funcion draw de Love2D
 -- Esta funcion es la que se encarga de dibujar los objetos
 function love.draw()
+	-- love.physics.setMeter(Constants.PX_PER_METER * scale)
+	love.physics.setMeter(Constants.PX_PER_METER)
 
 	game:draw()
 
 end
 
-
+-- TODO Para hacer pruebas más adelante
+-- function love.resize(w, h)
+-- 	scale = w / Constants.DEFAULT_WIDTH
+--
+-- 	love.window.updateMode( w, Constants.DEFAULT_HEIGHT * scale )
+-- end
 
 function love.keypressed(k)
 	game:keyPressed(k)

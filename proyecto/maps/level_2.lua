@@ -151,7 +151,7 @@ return {
               rotation = 0,
               visible = false,
               properties = {
-                ["categories"] = 3,
+                ["group"] = 3,
                 ["friction"] = 0.8
               }
             }
@@ -257,7 +257,7 @@ return {
               rotation = 0,
               visible = true,
               properties = {
-                ["categories"] = 3,
+                ["group"] = 3,
                 ["friction"] = 0.8
               }
             },
@@ -273,7 +273,7 @@ return {
               rotation = 0,
               visible = true,
               properties = {
-                ["categories"] = 3,
+                ["group"] = 3,
                 ["friction"] = 0.8
               }
             },
@@ -289,7 +289,7 @@ return {
               rotation = 0,
               visible = true,
               properties = {
-                ["categories"] = 3,
+                ["group"] = 3,
                 ["friction"] = 0.8
               }
             },
@@ -305,7 +305,7 @@ return {
               rotation = 0,
               visible = true,
               properties = {
-                ["categories"] = 3,
+                ["group"] = 3,
                 ["friction"] = 0.8
               }
             },
@@ -321,7 +321,7 @@ return {
               rotation = 0,
               visible = true,
               properties = {
-                ["categories"] = 3,
+                ["group"] = 3,
                 ["friction"] = 0.8
               }
             },
@@ -337,7 +337,7 @@ return {
               rotation = 0,
               visible = true,
               properties = {
-                ["categories"] = 3,
+                ["group"] = 3,
                 ["friction"] = 0.8
               }
             },
@@ -353,7 +353,7 @@ return {
               rotation = 0,
               visible = true,
               properties = {
-                ["categories"] = 3,
+                ["group"] = 3,
                 ["friction"] = 0.8
               }
             },
@@ -369,7 +369,7 @@ return {
               rotation = 0,
               visible = true,
               properties = {
-                ["categories"] = 3,
+                ["group"] = 3,
                 ["friction"] = 0.8
               }
             },
@@ -385,7 +385,7 @@ return {
               rotation = 0,
               visible = true,
               properties = {
-                ["categories"] = 3,
+                ["group"] = 3,
                 ["friction"] = 0.8
               }
             },
@@ -401,7 +401,7 @@ return {
               rotation = 0,
               visible = true,
               properties = {
-                ["categories"] = 3,
+                ["group"] = 3,
                 ["friction"] = 0.8
               }
             },
@@ -417,7 +417,7 @@ return {
               rotation = 0,
               visible = true,
               properties = {
-                ["categories"] = 3,
+                ["group"] = 3,
                 ["friction"] = 0.8
               }
             },
@@ -433,7 +433,7 @@ return {
               rotation = 0,
               visible = true,
               properties = {
-                ["categories"] = 3,
+                ["group"] = 3,
                 ["friction"] = 0.8
               }
             },
@@ -449,7 +449,7 @@ return {
               rotation = 0,
               visible = true,
               properties = {
-                ["categories"] = 3,
+                ["group"] = 3,
                 ["friction"] = 0.8
               }
             },
@@ -465,7 +465,7 @@ return {
               rotation = 0,
               visible = true,
               properties = {
-                ["categories"] = 3,
+                ["group"] = 3,
                 ["friction"] = 0.8
               }
             },
@@ -481,7 +481,7 @@ return {
               rotation = 0,
               visible = true,
               properties = {
-                ["categories"] = 3,
+                ["group"] = 3,
                 ["friction"] = 0.8
               }
             },
@@ -497,7 +497,7 @@ return {
               rotation = 0,
               visible = true,
               properties = {
-                ["categories"] = 3,
+                ["group"] = 3,
                 ["friction"] = 0.8
               }
             },
@@ -513,7 +513,7 @@ return {
               rotation = 0,
               visible = true,
               properties = {
-                ["categories"] = 3,
+                ["group"] = 3,
                 ["friction"] = 0.8
               }
             },
@@ -529,7 +529,7 @@ return {
               rotation = 0,
               visible = true,
               properties = {
-                ["categories"] = 3,
+                ["group"] = 3,
                 ["friction"] = 0.8
               }
             }

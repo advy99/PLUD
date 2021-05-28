@@ -37,7 +37,7 @@ function Platform:addSensor(position)
 	self.fixtures[self.number_fixtures] = love.physics.newFixture(self.body, self.shapes[self.number_fixtures], 1)
 	self.fixtures[self.number_fixtures]:isSensor(true)
 
-	self.fixtures[self.number_fixtures]:setCategory(Constants.PLATFORM_CATEGORY)
+	self.fixtures[self.number_fixtures]:setGroupIndex(Constants.PLATFORM_GROUP)
 	-- self.fixtures[self.number_fixtures]:setUserData(id)
 
 	self.fixtures[self.number_fixtures]:setFriction(0.8)

@@ -49,7 +49,7 @@
   <objectgroup id="12" name="floor_sensor" locked="1">
    <object id="17" name="floor" x="31.625" y="735.773" width="1216.5" height="8.22727" visible="0">
     <properties>
-     <property name="categories" type="int" value="3"/>
+     <property name="group" type="int" value="3"/>
      <property name="friction" type="float" value="0.8"/>
     </properties>
    </object>
@@ -95,37 +95,37 @@
   <objectgroup id="32" name="platforms">
    <object id="22" name="p5" x="161" y="575.914" width="190.333" height="9.41951">
     <properties>
-     <property name="categories" type="int" value="3"/>
+     <property name="group" type="int" value="3"/>
      <property name="friction" type="float" value="0.8"/>
     </properties>
    </object>
    <object id="23" name="p4" x="512.75" y="511.938" width="254.25" height="7.3125">
     <properties>
-     <property name="categories" type="int" value="3"/>
+     <property name="group" type="int" value="3"/>
      <property name="friction" type="float" value="0.8"/>
     </properties>
    </object>
    <object id="24" name="p3" x="928.545" y="575.949" width="190.727" height="5.14205">
     <properties>
-     <property name="categories" type="int" value="3"/>
+     <property name="group" type="int" value="3"/>
      <property name="friction" type="float" value="0.8"/>
     </properties>
    </object>
    <object id="25" name="p2" x="928.909" y="319.963" width="190.545" height="2.21875">
     <properties>
-     <property name="categories" type="int" value="3"/>
+     <property name="group" type="int" value="3"/>
      <property name="friction" type="float" value="0.8"/>
     </properties>
    </object>
    <object id="26" name="p1" x="160.364" y="319.938" width="191.273" height="3.15341">
     <properties>
-     <property name="categories" type="int" value="3"/>
+     <property name="group" type="int" value="3"/>
      <property name="friction" type="float" value="0.8"/>
     </properties>
    </object>
    <object id="27" name="p0" x="513" y="191.906" width="254.063" height="6.59375">
     <properties>
-     <property name="categories" type="int" value="3"/>
+     <property name="group" type="int" value="3"/>
      <property name="friction" type="float" value="0.8"/>
     </properties>
    </object>

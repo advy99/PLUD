@@ -33,11 +33,12 @@ function Player:initialize(world, x, y, sprite_sheet, id)
 
 	-- Emparejamos el cuerpo con la forma del jugador
 	self.circle_fixture = love.physics.newFixture(self.body, self.circle_shape, 1)
-	self.circle_fixture:setCategory(Constants.PLAYER_CATEGORY)
+	self.circle_fixture:setGroupIndex(Constants.PLAYER_GROUP)
+
 	self.circle_fixture:setUserData(id)
 
 	self.rectangle_fixture = love.physics.newFixture(self.body, self.rectangle_shape, 1)
-	self.rectangle_fixture:setCategory(Constants.PLAYER_CATEGORY)
+	self.rectangle_fixture:setGroupIndex(Constants.PLAYER_GROUP)
 	self.rectangle_fixture:setUserData(id)
 	self.rectangle_fixture:setFriction(0.5)
 

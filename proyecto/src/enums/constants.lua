@@ -9,10 +9,17 @@ Constants.NUMBER_OF_LEVELS = 3
 
 -- Categoría de las fixture, va del 1 al 16
 Constants.NIL_CATEGORY = 1
-Constants.PLAYER_CATEGORY = 2
-Constants.PLATFORM_CATEGORY = 3
-Constants.PLAY_CATEGORY = 4
-Constants.EXIT_CATEGORY = 16
+Constants.NIL_GROUP = 1
+
+Constants.PLAYER_GROUP = 2
+
+Constants.PLATFORM_GROUP = 3
+-- La categoria 1 es la por defecto de love2d, la NIL_CATEGORY
+Constants.PLATFORM_PLAY_CATEGORY = 2
+Constants.PLATFORM_PRACTICE_CATEGORY = 3
+Constants.PLATFORM_OPTIONS_CATEGORY = 4
+Constants.PLATFORM_EXIT_CATEGORY = 5
+
 
 -- Constantes de debug
 Constants.DEBUG = false

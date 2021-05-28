@@ -6,36 +6,38 @@ function beginContact(a, b, coll)
 	local category_a, mask_a, group_a = a:getFilterData()
 	local category_b, mask_b, group_b = b:getFilterData()
 
+
 	-- Si colisionan un jugador y un un sensor de una plataforma, el jugador para al estado grounded
-	if a:getCategory() == Constants.PLAYER_CATEGORY and category_b == Constants.PLATFORM_CATEGORY then
+	if a:getGroupIndex() == Constants.PLAYER_GROUP and group_b == Constants.PLATFORM_GROUP then
 		game:handleEvent(a:getUserData(), Events.PLAYER_LAND_PLATFORM)
 	end
 
 	-- lo mismo, pero por si se pasa a y b intercam
-	if b:getCategory() == Constants.PLAYER_CATEGORY and category_a == Constants.PLATFORM_CATEGORY then
+	if b:getGroupIndex() == Constants.PLAYER_GROUP and group_a == Constants.PLATFORM_GROUP then
 		game:handleEvent(b:getUserData(), Events.PLAYER_LAND_PLATFORM)
 	end
 
 	-- Colisiones con salir
 	-- Si colisionan un jugador y un un sensor de una plataforma, el jugador para al estado grounded
-	if a:getCategory() == Constants.PLAYER_CATEGORY and category_b == Constants.EXIT_CATEGORY then
+	if a:getGroupIndex() == Constants.PLAYER_GROUP and category_b == Constants.PLATFORM_EXIT_CATEGORY then
 		game:handleEvent(a:getUserData(), Events.EXIT_GAME)
 	end
 
 	-- lo mismo, pero por si se pasa a y b intercam
-	if b:getCategory() == Constants.PLAYER_CATEGORY and category_a == Constants.EXIT_CATEGORY then
+	if b:getGroupIndex() == Constants.PLAYER_GROUP and category_a == Constants.PLATFORM_EXIT_CATEGORY then
 		game:handleEvent(b:getUserData(), Events.EXIT_GAME)
 	end
 
 
-	if (a:getCategory() == Constants.PLAYER_CATEGORY and category_b == Constants.PLAY_CATEGORY) or
-	 	(b:getCategory() == Constants.PLAYER_CATEGORY and category_a == Constants.PLAY_CATEGORY) then
+	if (a:getGroupIndex() == Constants.PLAYER_GROUP and group_b == Constants.PLATFORM_GROUP and category_b == Constants.PLATFORM_PLAY_CATEGORY) or
+	 	(b:getGroupIndex() == Constants.PLAYER_GROUP and group_b == Constants.PLATFORM_GROUP and category_a == Constants.PLATFORM_PLAY_CATEGORY) then
 
 		game:changeMiniGame(Constants.BOMB_TAG)
+
 	end
 
 
-	if b:getCategory() == Constants.PLAYER_CATEGORY and a:getCategory() == Constants.PLAYER_CATEGORY then
+	if b:getGroupIndex() == Constants.PLAYER_GROUP and a:getGroupIndex() == Constants.PLAYER_GROUP then
 		game:handleEventBetweenObjects(a:getUserData(), b:getUserData(), Events.PLAYERS_COLLIDE)
 	end
 
@@ -45,11 +47,11 @@ end
 function endContact(a, b, coll)
 
 	-- Si es un jugador y una plataforma, y el jugador no estaba saltando, pasa a cayendo.
-	if a:getCategory() == Constants.PLAYER_CATEGORY and b:getCategory() == Constants.PLATFORM_CATEGORY then
+	if a:getGroupIndex() == Constants.PLAYER_GROUP and b:getGroupIndex() == Constants.PLATFORM_GROUP then
 		game:handleEvent(a:getUserData(), Events.PLAYER_LEAVE_PLATFORM)
 	end
 
-	if b:getCategory() == Constants.PLAYER_CATEGORY and a:getCategory() == Constants.PLATFORM_CATEGORY then
+	if b:getGroupIndex() == Constants.PLAYER_GROUP and a:getGroupIndex() == Constants.PLATFORM_GROUP then
 		game:handleEvent(b:getUserData(), Events.PLAYER_LEAVE_PLATFORM)
 	end
 

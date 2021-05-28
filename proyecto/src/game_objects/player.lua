@@ -41,8 +41,7 @@ function Player:initialize(world, x, y, sprite_sheet, id)
 	self.rectangle_fixture:setUserData(id)
 	self.rectangle_fixture:setFriction(0.5)
 
-	-- TODO: Arreglar esto y ponerlo a false, de momento es para pruebas
-	self.has_bomb = id == "player1"
+	self.has_bomb = false
 
 	-- Variables de su velocidad, fuerza de salto, masa, y estado
 	self.x_speed = 700

@@ -13,6 +13,7 @@ function BombTag:initialize()
 
 	MiniGame.initialize(self, "level_" .. num_level)
 
+	self:assignBomb()
 	self.bomb_swap_time = 0
 	self.bomb_timer = 5
 
@@ -34,6 +35,7 @@ function BombTag:update(dt)
 		for _ , player in pairs(self.level.objects) do
 			if player.has_bomb then
 				player:kill()
+				player.has_bomb = false
 			end
 		end
 
@@ -43,6 +45,7 @@ function BombTag:update(dt)
 		if player.has_died then
 			player:respawn(300, 300)
 			self.bomb_timer = 5
+			self:assignBomb()
 		end
 	end
 
@@ -84,4 +87,11 @@ function BombTag:handleEventBetweenObjects(object_a, object_b, event)
 			end
 		end
 	end
+end
+
+function BombTag:assignBomb()
+	local num_player = love.math.random(1, #self.level.objects)
+
+	self.level.objects[num_player].has_bomb = true
+
 end

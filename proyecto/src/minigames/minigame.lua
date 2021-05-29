@@ -5,7 +5,7 @@ MiniGame = class("MiniGame")
 
 function MiniGame:initialize(minigame_level)
 
-	self.level = Level(minigame_level)
+	self.level = Level:new(minigame_level)
 
 end
 

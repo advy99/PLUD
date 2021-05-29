@@ -52,9 +52,9 @@ end
 function Game:changeMiniGame(minigame)
 
 	if minigame == Constants.BOMB_TAG then
-		self.minigame = BombTag()
+		self.minigame = BombTag:new()
 	elseif minigame == Constants.MENU then
-		self.minigame = GameMenu()
+		self.minigame = GameMenu:new()
 	end
 end
 

@@ -39,7 +39,7 @@ function Level:initialize(level_name)
 	self.world:setCallbacks(beginContact, endContact, preSolve, postSolve)
 
 	-- creamos los objetos dentro del mundo
-	self.objects = create_objects(self.world, level_name)
+	self.players = create_objects(self.world, level_name)
 
 	-- cargamos el mapa asociado
 	self.map = sti("maps/" .. level_name .. ".lua", { "box2d" })
@@ -55,7 +55,7 @@ function Level:update(dt)
 	self.world:update(dt)
 	self.map:update(dt)
 	-- para cada objeto, llamamos a su respectivo update
-	for _, object in pairs(self.objects) do
+	for _, object in pairs(self.players) do
 		object:update(dt)
 	end
 end
@@ -68,7 +68,7 @@ function Level:draw()
 	-- self.map:draw(0,0,scale,scale)
 
 	-- para cada objeto, llamamos a su respectivo draw
-	for _, object in pairs(self.objects) do
+	for _, object in pairs(self.players) do
 		object:draw()
 	end
 

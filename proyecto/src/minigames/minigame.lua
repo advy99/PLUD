@@ -30,15 +30,15 @@ end
 function MiniGame:handleEvent(object, event)
 
 	-- no debería pasar nunca, ya que el objeto está en el nivel, pero por si acaso
-	if self.level.objects[object] ~= nil then
+	if self.level.players[object] ~= nil then
 
 		if event == Events.PLAYER_LAND_PLATFORM then
-			self.level.objects[object]:setMode("grounded")
+			self.level.players[object]:setMode("grounded")
 
 		elseif event == Events.PLAYER_LEAVE_PLATFORM then
 
-			if self.level.objects[object]:getMode() ~= "jumping" then
-				self.level.objects[object]:setMode("falling")
+			if self.level.players[object]:getMode() ~= "jumping" then
+				self.level.players[object]:setMode("falling")
 			end
 
 		elseif event == Events.EXIT_GAME then

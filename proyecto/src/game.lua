@@ -72,67 +72,67 @@ function Game:keyPressed(k)
 		end
 	end
 
-	if self.minigame.level.objects.player1 ~= nil then
+	if self.minigame.level.players.player1 ~= nil then
 		if k == "enter" then
-			self.minigame.level.objects.player1:attack()
+			self.minigame.level.players.player1:attack()
 		end
 
 
 		if k == "t" then
-			self.minigame.level.objects.player1:kill()
+			self.minigame.level.players.player1:kill()
 		end
 
 		if k == "up" then --press the up arrow key to set the ball in the air
-			self.minigame.level.objects.player1:jump()
+			self.minigame.level.players.player1:jump()
 		end
 	end
 
-	if self.minigame.level.objects.player2 ~= nil then
+	if self.minigame.level.players.player2 ~= nil then
 
 		if k == "e" then
-			self.minigame.level.objects.player2:attack()
+			self.minigame.level.players.player2:attack()
 		end
 
 		if k == "w" then --press the up arrow key to set the ball in the air
-			self.minigame.level.objects.player2:jump()
+			self.minigame.level.players.player2:jump()
 		end
 	end
 end
 
 function Game:keyReleased(k)
-	if self.minigame.level.objects.player2 ~= nil then
+	if self.minigame.level.players.player2 ~= nil then
 		if k == "a" or k == "d" then
-			self.minigame.level.objects.player2:stopWalking()
+			self.minigame.level.players.player2:stopWalking()
 		end
 	end
 
-	if self.minigame.level.objects.player1 ~= nil then
+	if self.minigame.level.players.player1 ~= nil then
 		if k == "left" or k == "right" then
-			self.minigame.level.objects.player1:stopWalking()
+			self.minigame.level.players.player1:stopWalking()
 		end
 	end
 end
 
 function Game:handleKeyboard(dt)
-	if self.minigame.level.objects.player1 ~= nil then
+	if self.minigame.level.players.player1 ~= nil then
 
 		if love.keyboard.isDown("right") then --press the right arrow key to push the ball to the right
-			self.minigame.level.objects.player1:move(1)
+			self.minigame.level.players.player1:move(1)
 		end
 
 		if love.keyboard.isDown("left") then --press the left arrow key to push the ball to the left
-			self.minigame.level.objects.player1:move(-1)
+			self.minigame.level.players.player1:move(-1)
 		end
 	end
 
-	if self.minigame.level.objects.player2 ~= nil then
+	if self.minigame.level.players.player2 ~= nil then
 
 		if love.keyboard.isDown("d") then --press the right arrow key to push the ball to the right
-			self.minigame.level.objects.player2:move(1)
+			self.minigame.level.players.player2:move(1)
 		end
 
 		if love.keyboard.isDown("a") then --press the left arrow key to push the ball to the left
-			self.minigame.level.objects.player2:move(-1)
+			self.minigame.level.players.player2:move(-1)
 		end
 	end
 end

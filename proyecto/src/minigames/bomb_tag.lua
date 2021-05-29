@@ -90,7 +90,8 @@ function BombTag:handleEventBetweenObjects(object_a, object_b, event)
 end
 
 function BombTag:assignBomb()
-	local num_player = love.math.random(1, #self.level.players)
+	local num_player = table_size(self.level.players)
+	num_player = love.math.random(num_player)
 
 	self.level.players["player" .. num_player].has_bomb = true
 

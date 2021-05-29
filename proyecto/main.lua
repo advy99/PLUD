@@ -6,6 +6,8 @@
 
 
 require("src/game")
+require("src/text_box")
+require("src/configuration")
 require("src/game_objects/player")
 require("src/enums/constants")
 require("src/game_objects/platform")
@@ -17,13 +19,9 @@ require("src/game_objects/platform")
 -- Cargaremos toda la configuración inicial
 function love.load()
 
-	-- cargamos el modulo LIP, para leer y escribir archivos ini
-	local LIP = require "lib/LIP"
+	config = Configuration()
 
-	-- cargamos la configuración
-	local config = LIP.load("config/config.ini")
-
-	flags = {vsync = config.screen.vsync, fullscreen = config.screen.fullscreen, resizable = true}
+	flags = {vsync = config:getVSYNC(), fullscreen = config:getFullscreen(), resizable = true}
 
 	-- establecemos la configuración de la ventana y la semilla aleatoria
 	love.window.setMode(Constants.DEFAULT_WIDTH, Constants.DEFAULT_HEIGHT, flags)
@@ -34,6 +32,8 @@ function love.load()
 
 	-- scale = 1
 	game = Game:new()
+
+	fps_counter = TextBox:new("FPS: " .. love.timer.getFPS(), 0, 0, 100, 50, 20) -- text, posX, posY, sizeW, sizeH, textSize
 
 
 end
@@ -47,6 +47,10 @@ function love.update(dt)
 
 	-- gestionamos la entrada por teclado
 	game:handleKeyboard(dt)
+
+	if config:getShowFPS() then
+		fps_counter:updateText("FPS: " .. love.timer.getFPS())
+	end
 end
 
 
@@ -54,10 +58,13 @@ end
 -- Esta funcion es la que se encarga de dibujar los objetos
 function love.draw()
 	-- love.physics.setMeter(Constants.PX_PER_METER * scale)
-	love.physics.setMeter(Constants.PX_PER_METER)
+	-- love.physics.setMeter(Constants.PX_PER_METER)
 
 	game:draw()
 
+	if config:getShowFPS() then
+		fps_counter:draw()
+	end
 end
 
 -- TODO Para hacer pruebas más adelante

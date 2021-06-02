@@ -39,3 +39,7 @@ function Menu:handleEventBetweenObjects(object_a, object_b, event)
 	MiniGame.handleEventBetweenObjects(self, object_a, object_b, event)
 
 end
+
+function Menu:mouseMoved(x, y)
+	MiniGame.mouseMoved(self, x, y)
+end

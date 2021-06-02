@@ -65,6 +65,12 @@ function Game:loadLevel(level_name)
 	self.minimage:loadLevel(level_name)
 end
 
+function Game:mouseMoved(x, y)
+	if self.minigame ~= nil then
+		self.minigame:mouseMoved(x, y)
+	end
+end
+
 
 function Game:keyPressed(k)
 	if k == 'escape' then

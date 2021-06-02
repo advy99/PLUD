@@ -37,3 +37,7 @@ function GameMenu:handleEventBetweenObjects(object_a, object_b, event)
 	Menu.handleEventBetweenObjects(self, object_a, object_b, event)
 
 end
+
+function GameMenu:mouseMoved(x, y)
+	Menu.mouseMoved(self, x, y)
+end

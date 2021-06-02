@@ -53,3 +53,7 @@ end
 function MiniGame:handleEventBetweenObjects(object_a, object_b, event)
 
 end
+
+function MiniGame:mouseMoved(x, y)
+	
+end

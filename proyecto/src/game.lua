@@ -48,8 +48,7 @@ function Game:draw()
 	self.minigame:draw()
 
 	if self.next_minigame ~= nil then
-		-- TODO: AJUSTAR POSICIÓN DEL TEXTO
-		local countdown_text = TextBox:new( "STARTING IN... " .. math.abs(math.ceil(self.countdown)), 400, 400, 250, 200, 40)
+		local countdown_text = TextBox:new( "STARTING IN...\n" .. math.abs(math.ceil(self.countdown)), 462.5, 375, 350, 150, 40)
 		countdown_text:draw()
 	end
 

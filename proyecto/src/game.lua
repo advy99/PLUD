@@ -6,6 +6,7 @@ require("src/level")
 require("src/minigames/minigame")
 require("src/minigames/bomb_tag")
 require("src/minigames/game_menu")
+require("src/minigames/configuration_menu")
 
 
 local class = require "lib/middleclass"
@@ -55,6 +56,8 @@ function Game:changeMiniGame(minigame)
 		self.minigame = BombTag:new()
 	elseif minigame == Constants.MENU then
 		self.minigame = GameMenu:new()
+	elseif minigame == Constants.CONFIGURATION_MENU then
+		self.minigame = ConfigurationMenu:new()
 	end
 end
 

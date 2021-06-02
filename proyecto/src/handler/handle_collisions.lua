@@ -17,22 +17,10 @@ function beginContact(a, b, coll)
 		game:handleEvent(b:getUserData(), Events.PLAYER_LAND_PLATFORM)
 	end
 
-	-- Colisiones con salir
-	-- Si colisionan un jugador y un un sensor de una plataforma, el jugador para al estado grounded
-	if a:getGroupIndex() == Constants.PLAYER_GROUP and group_b == Constants.PLATFORM_GROUP and category_b == Constants.PLATFORM_EXIT_CATEGORY then
-		game:handleEvent(a:getUserData(), Events.EXIT_GAME)
-	end
-
-	-- lo mismo, pero por si se pasa a y b intercam
-	if b:getGroupIndex() == Constants.PLAYER_GROUP and group_a == Constants.PLATFORM_GROUP and category_a == Constants.PLATFORM_EXIT_CATEGORY then
-		game:handleEvent(b:getUserData(), Events.EXIT_GAME)
-	end
-
 
 	if (a:getGroupIndex() == Constants.PLAYER_GROUP and group_b == Constants.PLATFORM_GROUP and category_b == Constants.PLATFORM_PLAY_CATEGORY) or
 	 	(b:getGroupIndex() == Constants.PLAYER_GROUP and group_a == Constants.PLATFORM_GROUP and category_a == Constants.PLATFORM_PLAY_CATEGORY) then
 
-		-- game:changeMiniGame(Constants.BOMB_TAG)
 		game:handleInternalEvent(Events.PLAYER_LAND_PLATFORM_PLAY)
 
 	end
@@ -40,8 +28,21 @@ function beginContact(a, b, coll)
 	if (a:getGroupIndex() == Constants.PLAYER_GROUP and group_b == Constants.PLATFORM_GROUP and category_b == Constants.PLATFORM_CONFIGURATION_CATEGORY) or
 	 	(b:getGroupIndex() == Constants.PLAYER_GROUP and group_a == Constants.PLATFORM_GROUP and category_a == Constants.PLATFORM_CONFIGURATION_CATEGORY) then
 
-		-- game:changeMiniGame(Constants.CONFIGURATION_MENU)
 		game:handleInternalEvent(Events.PLAYER_LAND_PLATFORM_CONFIGURATION)
+
+	end
+
+	if (a:getGroupIndex() == Constants.PLAYER_GROUP and group_b == Constants.PLATFORM_GROUP and category_b == Constants.PLATFORM_PRACTICE_CATEGORY) or
+		(b:getGroupIndex() == Constants.PLAYER_GROUP and group_a == Constants.PLATFORM_GROUP and category_a == Constants.PLATFORM_PRACTICE_CATEGORY) then
+
+		game:handleInternalEvent(Events.PLAYER_LAND_PLATFORM_PRACTICE)
+
+	end
+
+	if (a:getGroupIndex() == Constants.PLAYER_GROUP and group_b == Constants.PLATFORM_GROUP and category_b == Constants.PLATFORM_EXIT_CATEGORY) or
+		(b:getGroupIndex() == Constants.PLAYER_GROUP and group_a == Constants.PLATFORM_GROUP and category_a == Constants.PLATFORM_EXIT_CATEGORY) then
+
+		game:handleInternalEvent(Events.PLAYER_LAND_PLATFORM_EXIT)
 
 	end
 
@@ -64,6 +65,35 @@ function endContact(a, b, coll)
 		game:handleEvent(b:getUserData(), Events.PLAYER_LEAVE_PLATFORM)
 	end
 
+
+	-- si sale de una plataforma con contador
+	if (a:getGroupIndex() == Constants.PLAYER_GROUP and group_b == Constants.PLATFORM_GROUP and category_b == Constants.PLATFORM_PLAY_CATEGORY) or
+	 	(b:getGroupIndex() == Constants.PLAYER_GROUP and group_a == Constants.PLATFORM_GROUP and category_a == Constants.PLATFORM_PLAY_CATEGORY) then
+
+		game:handleInternalEvent(Events.PLAYER_LEAVE_PLATFORM_PLAY)
+
+	end
+
+	if (a:getGroupIndex() == Constants.PLAYER_GROUP and group_b == Constants.PLATFORM_GROUP and category_b == Constants.PLATFORM_CONFIGURATION_CATEGORY) or
+	 	(b:getGroupIndex() == Constants.PLAYER_GROUP and group_a == Constants.PLATFORM_GROUP and category_a == Constants.PLATFORM_CONFIGURATION_CATEGORY) then
+
+		game:handleInternalEvent(Events.PLAYER_LEAVE_PLATFORM_CONFIGURATION)
+
+	end
+
+	if (a:getGroupIndex() == Constants.PLAYER_GROUP and group_b == Constants.PLATFORM_GROUP and category_b == Constants.PLATFORM_PRACTICE_CATEGORY) or
+		(b:getGroupIndex() == Constants.PLAYER_GROUP and group_a == Constants.PLATFORM_GROUP and category_a == Constants.PLATFORM_PRACTICE_CATEGORY) then
+
+		game:handleInternalEvent(Events.PLAYER_LEAVE_PLATFORM_PRACTICE)
+
+	end
+
+	if (a:getGroupIndex() == Constants.PLAYER_GROUP and group_b == Constants.PLATFORM_GROUP and category_b == Constants.PLATFORM_EXIT_CATEGORY) or
+		(b:getGroupIndex() == Constants.PLAYER_GROUP and group_a == Constants.PLATFORM_GROUP and category_a == Constants.PLATFORM_EXIT_CATEGORY) then
+
+		game:handleInternalEvent(Events.PLAYER_LEAVE_PLATFORM_EXIT)
+
+	end
 
 end
 

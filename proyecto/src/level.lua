@@ -16,8 +16,8 @@ function create_objects(world, level_name)
 	if level_name == "level_title" then
 		pos_x_player1 = love.graphics.getWidth() / 2
 	else
-		objects.player2 = Player:new(world, 3 * love.graphics.getWidth() / 4, love.graphics.getHeight() / 2, sprite_sheet_player2, "player2")
 	end
+	objects.player2 = Player:new(world, 3 * love.graphics.getWidth() / 4, love.graphics.getHeight() / 2, sprite_sheet_player2, "player2")
 
 	objects.player1 = Player:new(world, pos_x_player1, love.graphics.getHeight() / 2, sprite_sheet_player1, "player1")
 

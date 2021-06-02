@@ -56,6 +56,9 @@ end
 -- Función que se ejecutará cuando finaliza una colisión
 function endContact(a, b, coll)
 
+	local category_a, mask_a, group_a = a:getFilterData()
+	local category_b, mask_b, group_b = b:getFilterData()
+
 	-- Si es un jugador y una plataforma, y el jugador no estaba saltando, pasa a cayendo.
 	if a:getGroupIndex() == Constants.PLAYER_GROUP and b:getGroupIndex() == Constants.PLATFORM_GROUP then
 		game:handleEvent(a:getUserData(), Events.PLAYER_LEAVE_PLATFORM)
@@ -73,6 +76,7 @@ function endContact(a, b, coll)
 		game:handleInternalEvent(Events.PLAYER_LEAVE_PLATFORM_PLAY)
 
 	end
+
 
 	if (a:getGroupIndex() == Constants.PLAYER_GROUP and group_b == Constants.PLATFORM_GROUP and category_b == Constants.PLATFORM_CONFIGURATION_CATEGORY) or
 	 	(b:getGroupIndex() == Constants.PLAYER_GROUP and group_a == Constants.PLATFORM_GROUP and category_a == Constants.PLATFORM_CONFIGURATION_CATEGORY) then

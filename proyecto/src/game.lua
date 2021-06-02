@@ -59,7 +59,7 @@ function Game:handleInternalEvent(event)
 	self.minigame:handleInternalEvent(event)
 
 	local num = event - Events.PLAYER_LAND_PLATFORM_PLAY
-
+	-- cuando entran en una plataforma
 	if num <= 3 then
 		if self.minigame:numPlayersInPlatform(num) == self.minigame:getNumPlayers() then
 			self.countdown = 5
@@ -71,9 +71,15 @@ function Game:handleInternalEvent(event)
 				self.next_minigame = Constants.CONFIGURATION_MENU
 			elseif event == Events.PLAYER_LAND_PLATFORM_PRACTICE then
 
-			elseif event == Events.EXIT_GAME then
-				self.next_minigame = Constants.CONFIGURATION_MENU
+			elseif event == Events.PLAYER_LAND_PLATFORM_EXIT then
+				self.next_minigame = Constants.EXIT
 			end
+		end
+	else
+		-- cuando el jugador sale de una plataforma
+		if self.countdown ~= nil then
+			self.countdown = nil
+			self.next_minigame = nil
 		end
 	end
 

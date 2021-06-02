@@ -145,14 +145,14 @@ return {
               type = "",
               shape = "rectangle",
               x = 31.625,
-              y = 735.773,
+              y = 735.951,
               width = 1216.5,
-              height = 8.22727,
+              height = 8.04949,
               rotation = 0,
               visible = false,
               properties = {
-                ["categories"] = 3,
-                ["friction"] = 0.8
+                ["friction"] = 0.8,
+                ["group"] = 3
               }
             }
           }

@@ -47,10 +47,10 @@
 </data>
   </layer>
   <objectgroup id="12" name="floor_sensor" locked="1">
-   <object id="17" name="floor" x="31.625" y="735.773" width="1216.5" height="8.22727" visible="0">
+   <object id="17" name="floor" x="31.625" y="735.951" width="1216.5" height="8.04949" visible="0">
     <properties>
-     <property name="categories" type="int" value="3"/>
      <property name="friction" type="float" value="0.8"/>
+     <property name="group" type="int" value="3"/>
     </properties>
    </object>
   </objectgroup>

@@ -33,7 +33,7 @@ function love.load()
 	-- scale = 1
 	game = Game:new()
 
-	fps_counter = TextBox:new("FPS: " .. love.timer.getFPS(), 0, 0, 100, 50, 20) -- text, posX, posY, sizeW, sizeH, textSize
+	fps_counter = TextBox:new( love.timer.getFPS() .. " FPS", 0, 0, 100, 50, 20) -- text, posX, posY, sizeW, sizeH, textSize
 
 
 end
@@ -49,7 +49,7 @@ function love.update(dt)
 	game:handleKeyboard(dt)
 
 	if config:getShowFPS() then
-		fps_counter:updateText("FPS: " .. love.timer.getFPS())
+		fps_counter:updateText( love.timer.getFPS() .. " FPS")
 	end
 end
 

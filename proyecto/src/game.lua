@@ -7,6 +7,7 @@ require("src/minigames/minigame")
 require("src/minigames/bomb_tag")
 require("src/minigames/menus/configuration_menu")
 require("src/minigames/menus/game_menu")
+require("src/text_box")
 
 
 local class = require "lib/middleclass"
@@ -20,12 +21,24 @@ function Game:initialize()
 	self.minigame = nil
 	self:changeMiniGame(Constants.MENU)
 
+	self.countdown = nil
+	self.next_minigame = nil
 end
 
 
 function Game:update(dt)
 
 	self.minigame:update(dt)
+
+	if self.next_minigame ~= nil then
+		if self.countdown <= 0 then
+			self:changeMiniGame(self.next_minigame)
+			self.next_minigame = nil
+			self.countdown = nil
+		else
+			self.countdown = self.countdown - dt
+		end
+	end
 
 
 end
@@ -34,8 +47,27 @@ function Game:draw()
 
 	self.minigame:draw()
 
+	if self.next_minigame ~= nil then
+		-- TODO: AJUSTAR POSICIÓN DEL TEXTO
+		local countdown_text = TextBox:new( "STARTING IN... " .. math.abs(math.ceil(self.countdown)), 400, 400, 250, 200, 40)
+		countdown_text:draw()
+	end
+
 end
 
+function Game:handleInternalEvent(event)
+
+	self.countdown = 5
+
+	self.next_minigame = nil
+	if event == Events.PLAYER_LAND_PLATFORM_PLAY then
+		self.next_minigame = Constants.BOMB_TAG
+	elseif event == Events.PLAYER_LAND_PLATFORM_CONFIGURATION then
+		self.next_minigame = Constants.CONFIGURATION_MENU
+	end
+
+
+end
 
 function Game:handleEvent(object, event)
 

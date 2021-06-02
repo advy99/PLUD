@@ -32,14 +32,16 @@ function beginContact(a, b, coll)
 	if (a:getGroupIndex() == Constants.PLAYER_GROUP and group_b == Constants.PLATFORM_GROUP and category_b == Constants.PLATFORM_PLAY_CATEGORY) or
 	 	(b:getGroupIndex() == Constants.PLAYER_GROUP and group_a == Constants.PLATFORM_GROUP and category_a == Constants.PLATFORM_PLAY_CATEGORY) then
 
-		game:changeMiniGame(Constants.BOMB_TAG)
+		-- game:changeMiniGame(Constants.BOMB_TAG)
+		game:handleInternalEvent(Events.PLAYER_LAND_PLATFORM_PLAY)
 
 	end
 
 	if (a:getGroupIndex() == Constants.PLAYER_GROUP and group_b == Constants.PLATFORM_GROUP and category_b == Constants.PLATFORM_CONFIGURATION_CATEGORY) or
 	 	(b:getGroupIndex() == Constants.PLAYER_GROUP and group_a == Constants.PLATFORM_GROUP and category_a == Constants.PLATFORM_CONFIGURATION_CATEGORY) then
 
-		game:changeMiniGame(Constants.CONFIGURATION_MENU)
+		-- game:changeMiniGame(Constants.CONFIGURATION_MENU)
+		game:handleInternalEvent(Events.PLAYER_LAND_PLATFORM_CONFIGURATION)
 
 	end
 

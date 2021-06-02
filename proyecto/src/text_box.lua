@@ -16,7 +16,7 @@ end
 function TextBox:draw()
 
 	love.graphics.setColor(0, 0, 0)
-	love.graphics.rectangle( "fill", self.posX, self.posY, self.sizeW, self.sizeH, self.sizeW / 10, self.sizeH / 10)
+	love.graphics.rectangle( "fill", self.posX, self.posY, self.sizeW, self.sizeH, self.sizeW / 10)
 
 	love.graphics.setColor(1, 1, 1)
 	local font = love.graphics.newFont("fonts/kirbyss.ttf", self.textSize)

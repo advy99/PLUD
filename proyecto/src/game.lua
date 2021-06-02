@@ -6,7 +6,7 @@ require("src/level")
 require("src/minigames/minigame")
 require("src/minigames/bomb_tag")
 require("src/minigames/menus/configuration_menu")
-require("src/minigames/menus/game_menu")
+require("src/minigames/menus/title_menu")
 require("src/text_box")
 
 
@@ -86,7 +86,7 @@ function Game:changeMiniGame(minigame)
 	if minigame == Constants.BOMB_TAG then
 		self.minigame = BombTag:new()
 	elseif minigame == Constants.MENU then
-		self.minigame = GameMenu:new()
+		self.minigame = TitleMenu:new()
 	elseif minigame == Constants.CONFIGURATION_MENU then
 		self.minigame = ConfigurationMenu:new()
 	end

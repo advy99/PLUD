@@ -31,3 +31,4 @@ Constants.BOMB_TAG = 1
 Constants.TREASURE_HUNT = 2
 Constants.SPIKE_BALL = 3
 Constants.CONFIGURATION_MENU = 4
+Constants.EXIT = 5

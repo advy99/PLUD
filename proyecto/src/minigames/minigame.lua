@@ -27,6 +27,14 @@ function MiniGame:loadLevel(level_name)
 end
 
 
+function MiniGame:handleInternalEvent(event)
+
+end
+
+function MiniGame:getNumPlayers()
+	return table_size(self.level.players)
+end
+
 function MiniGame:handleEvent(object, event)
 
 	-- no debería pasar nunca, ya que el objeto está en el nivel, pero por si acaso
@@ -55,5 +63,5 @@ function MiniGame:handleEventBetweenObjects(object_a, object_b, event)
 end
 
 function MiniGame:mouseMoved(x, y)
-	
+
 end

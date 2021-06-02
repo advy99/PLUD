@@ -5,8 +5,8 @@ require("src/enums/constants")
 require("src/level")
 require("src/minigames/minigame")
 require("src/minigames/bomb_tag")
-require("src/minigames/game_menu")
-require("src/minigames/configuration_menu")
+require("src/minigames/menus/configuration_menu")
+require("src/minigames/menus/game_menu")
 
 
 local class = require "lib/middleclass"

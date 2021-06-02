@@ -23,7 +23,7 @@ function MiniGame:draw()
 end
 
 function MiniGame:loadLevel(level_name)
-	self.level = Level(level_name)
+	self.level = Level:new(level_name)
 end
 
 

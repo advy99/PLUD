@@ -82,3 +82,7 @@ function love.keyreleased(k)
 	game:keyReleased(k)
 
 end
+
+function love.mousemoved(x, y, dx, dy, istouch)
+	game:mouseMoved(x, y)
+end

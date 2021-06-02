@@ -19,18 +19,18 @@ function beginContact(a, b, coll)
 
 	-- Colisiones con salir
 	-- Si colisionan un jugador y un un sensor de una plataforma, el jugador para al estado grounded
-	if a:getGroupIndex() == Constants.PLAYER_GROUP and category_b == Constants.PLATFORM_EXIT_CATEGORY then
+	if a:getGroupIndex() == Constants.PLAYER_GROUP and group_b == Constants.PLATFORM_GROUP and category_b == Constants.PLATFORM_EXIT_CATEGORY then
 		game:handleEvent(a:getUserData(), Events.EXIT_GAME)
 	end
 
 	-- lo mismo, pero por si se pasa a y b intercam
-	if b:getGroupIndex() == Constants.PLAYER_GROUP and category_a == Constants.PLATFORM_EXIT_CATEGORY then
+	if b:getGroupIndex() == Constants.PLAYER_GROUP and group_a == Constants.PLATFORM_GROUP and category_a == Constants.PLATFORM_EXIT_CATEGORY then
 		game:handleEvent(b:getUserData(), Events.EXIT_GAME)
 	end
 
 
 	if (a:getGroupIndex() == Constants.PLAYER_GROUP and group_b == Constants.PLATFORM_GROUP and category_b == Constants.PLATFORM_PLAY_CATEGORY) or
-	 	(b:getGroupIndex() == Constants.PLAYER_GROUP and group_b == Constants.PLATFORM_GROUP and category_a == Constants.PLATFORM_PLAY_CATEGORY) then
+	 	(b:getGroupIndex() == Constants.PLAYER_GROUP and group_a == Constants.PLATFORM_GROUP and category_a == Constants.PLATFORM_PLAY_CATEGORY) then
 
 		game:changeMiniGame(Constants.BOMB_TAG)
 

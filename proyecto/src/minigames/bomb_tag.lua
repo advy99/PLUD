@@ -32,7 +32,7 @@ function BombTag:update(dt)
 		self.bomb_timer = self.bomb_timer - dt
 	else
 
-		for _ , player in pairs(self.level.objects) do
+		for _ , player in pairs(self.level.players) do
 			if player.has_bomb then
 				player:kill()
 				player.has_bomb = false
@@ -41,7 +41,7 @@ function BombTag:update(dt)
 
 	end
 
-	for _ , player in pairs(self.level.objects) do
+	for _ , player in pairs(self.level.players) do
 		if player.has_died then
 			player:respawn(300, 300)
 			self.bomb_timer = 5
@@ -73,16 +73,16 @@ function BombTag:handleEventBetweenObjects(object_a, object_b, event)
 
 	MiniGame.handleEventBetweenObjects(self, object_a, object_b, event)
 
-	if self.level.objects[object_b] ~= nil and self.level.objects[object_b] ~= nil then
+	if self.level.players[object_b] ~= nil and self.level.players[object_b] ~= nil then
 
 		if event == Events.PLAYERS_COLLIDE then
-			if self.level.objects[object_a].has_bomb and self.bomb_swap_time >= 1 then
-				self.level.objects[object_a].has_bomb = false
-				self.level.objects[object_b].has_bomb = true
+			if self.level.players[object_a].has_bomb and self.bomb_swap_time >= 1 then
+				self.level.players[object_a].has_bomb = false
+				self.level.players[object_b].has_bomb = true
 				self.bomb_swap_time = 0.5
-			elseif self.level.objects[object_b].has_bomb and self.bomb_swap_time >= 1 then
-				self.level.objects[object_b].has_bomb = false
-				self.level.objects[object_a].has_bomb = true
+			elseif self.level.players[object_b].has_bomb and self.bomb_swap_time >= 1 then
+				self.level.players[object_b].has_bomb = false
+				self.level.players[object_a].has_bomb = true
 				self.bomb_swap_time = 0.5
 			end
 		end
@@ -90,8 +90,9 @@ function BombTag:handleEventBetweenObjects(object_a, object_b, event)
 end
 
 function BombTag:assignBomb()
-	local num_player = love.math.random(1, #self.level.objects)
+	local num_player = table_size(self.level.players)
+	num_player = love.math.random(num_player)
 
-	self.level.objects[num_player].has_bomb = true
+	self.level.players["player" .. num_player].has_bomb = true
 
 end

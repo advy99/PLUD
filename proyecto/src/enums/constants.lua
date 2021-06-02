@@ -17,7 +17,7 @@ Constants.PLATFORM_GROUP = 3
 -- La categoria 1 es la por defecto de love2d, la NIL_CATEGORY
 Constants.PLATFORM_PLAY_CATEGORY = 2
 Constants.PLATFORM_PRACTICE_CATEGORY = 3
-Constants.PLATFORM_OPTIONS_CATEGORY = 4
+Constants.PLATFORM_CONFIGURATION_CATEGORY = 4
 Constants.PLATFORM_EXIT_CATEGORY = 5
 
 
@@ -30,3 +30,4 @@ Constants.MENU = 0
 Constants.BOMB_TAG = 1
 Constants.TREASURE_HUNT = 2
 Constants.SPIKE_BALL = 3
+Constants.CONFIGURATION_MENU = 4

@@ -2,39 +2,38 @@ require("src/minigames/minigame")
 local class = require "lib/middleclass"
 
 
-GameMenu = MiniGame:subclass('GameMenu')
+ConfigurationMenu = MiniGame:subclass('ConfigurationMenu')
 
-function GameMenu:initialize()
+function ConfigurationMenu:initialize()
 
-	MiniGame.initialize(self, "level_title")
+	MiniGame.initialize(self, "level_config")
 
 	self.game_name_image = love.graphics.newImage("img/lose_to_win.png")
 
 end
 
 
-function GameMenu:update(dt)
+function ConfigurationMenu:update(dt)
 
 	MiniGame.update(self, dt)
 
 end
 
 
-function GameMenu:draw()
+function ConfigurationMenu:draw()
 	love.graphics.setColor(1, 1, 1)
 	MiniGame.draw(self)
-
 
 	love.graphics.draw(self.game_name_image, 480, 70, 0, 0.1, 0.1)
 
 end
 
-function GameMenu:handleEvent(object, event)
+function ConfigurationMenu:handleEvent(object, event)
 	MiniGame.handleEvent(self, object, event)
 end
 
 
-function GameMenu:handleEventBetweenObjects(object_a, object_b, event)
+function ConfigurationMenu:handleEventBetweenObjects(object_a, object_b, event)
 
 	MiniGame.handleEventBetweenObjects(self, object_a, object_b, event)
 

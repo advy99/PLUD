@@ -174,6 +174,7 @@ function Player:handleAnimations(dt)
 		self.current_animation = self.animations.dead
 		self.time_to_finish_animation = 1
 		self.previous_mode = self.mode
+		self.current_animation.currentTime = 0
 	end
 
 	-- Si tenemos una animación a medias, no cambiamos de animación

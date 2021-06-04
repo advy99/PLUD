@@ -80,7 +80,7 @@ function Player:initialize(world, x, y, sprite_sheet, id)
 end
 
 function Player:getScore()
-	return self.Score
+	return self.score
 end
 
 -- función para mover al jugador en el eje x

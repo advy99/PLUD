@@ -21,7 +21,6 @@ function Game:initialize()
 
 	self.minigame = nil
 	self.num_active_players = 1
-	self:changeMiniGame(Constants.MENU)
 
 	self.countdown = nil
 	self.next_minigame = nil
@@ -30,6 +29,8 @@ function Game:initialize()
 		local keys = config.config["player" .. i]
 		self["interface_p" .. i] = InterfaceBox:new(96 + (i-1) * 224 + (i-1) * 64, 784, keys)
 	end
+
+	self:changeMiniGame(Constants.MENU)
 end
 
 

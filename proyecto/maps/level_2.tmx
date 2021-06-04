@@ -7,7 +7,7 @@
   <image source="../img/terrain.png" width="544" height="160"/>
  </tileset>
  <group id="31" name="background">
-  <imagelayer id="33" name="fondo" offsetx="0" offsety="-214.67">
+  <imagelayer id="33" name="fondo" offsetx="0" offsety="-182.67">
    <image source="../img/landscape.png" width="1920" height="1080"/>
   </imagelayer>
  </group>

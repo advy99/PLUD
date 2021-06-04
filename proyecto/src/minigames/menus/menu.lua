@@ -10,7 +10,7 @@ function Menu:initialize(level_name, num_players)
 
 	self.players_in_platform = {}
 
-	for i = 0,4 do
+	for i = 0,5 do
 		self.players_in_platform[i] = 0
 	end
 
@@ -59,7 +59,6 @@ function Menu:handleInternalEvent(event)
 	-- como las plataformas estan ordenadas como en los eventos, si al evento le quito
 	-- el valor del primer evento, se me queda en un rango de [0,7]
 	local num = math.abs(event) - Events.PLAYER_LAND_PLATFORM_PLAY
-
 	-- Si es negativo, se ha salido de la plataforma
 	if event < 0 then
 		-- le vuelvo a restar el valor del primer evento para dejarlo en [0,3]

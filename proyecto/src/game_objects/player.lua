@@ -21,6 +21,8 @@ function Player:initialize(world, x, y, sprite_sheet, id)
 	-- creamos el selfeto con base de GameObject
 	GameObject.initialize(self, world, x, y, "dynamic")
 
+	self.score = 0
+
 	-- le asignamos una altura y anchura, asociados a su forma
 
 	self.scale = 3
@@ -75,6 +77,10 @@ function Player:initialize(world, x, y, sprite_sheet, id)
 
 	self.time_to_finish_animation = 0
 
+end
+
+function Player:getScore()
+	return self.Score
 end
 
 -- función para mover al jugador en el eje x

@@ -44,10 +44,10 @@ function InterfaceBox:draw(player)
 		love.graphics.setColor(1, 1, 1)
 		local font = love.graphics.newFont("fonts/kirbyss.ttf", self.textSize)
 		love.graphics.setFont(font)
-		love.graphics.printf("SCORE\n300", self.posX + 32,  self.posY + self.sizeH / 4, self.sizeW, "center")
+		love.graphics.printf("SCORE\n" .. player:getScore(), self.posX + 32,  self.posY + self.sizeH / 4, self.sizeW, "center")
 	end
 end
 
-function switchBetweenControlsAndScore
+function InterfaceBox:switchBetweenControlsAndScore()
 	self.show_controls = not self.show_controls
 end

@@ -113,6 +113,10 @@ end
 
 function Game:changeMiniGame(minigame)
 
+	for i = 1, self.num_active_players, 1 do
+		self["interface_p" .. i]:switchBetweenControlsAndScore()
+	end
+
 	if minigame == Constants.BOMB_TAG then
 		self.minigame = BombTag:new(self.num_active_players)
 	elseif minigame == Constants.MENU then

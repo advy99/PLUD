@@ -3,9 +3,9 @@ local class = require "lib/middleclass"
 
 MiniGame = class("MiniGame")
 
-function MiniGame:initialize(minigame_level)
+function MiniGame:initialize(minigame_level, num_players)
 
-	self.level = Level:new(minigame_level)
+	self.level = Level:new(minigame_level, num_players)
 
 end
 
@@ -64,4 +64,12 @@ end
 
 function MiniGame:mouseMoved(x, y)
 
+end
+
+function MiniGame:addPlayer(num_player)
+	self.level:addPlayer(num_player)
+end
+
+function MiniGame:removePlayer(num_player)
+	self.level:removePlayer(num_player)
 end

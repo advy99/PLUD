@@ -1,45 +1,18 @@
 local class = require "lib/middleclass"
 local sti = require "lib/sti"
 
-
--- Funcion para crear los objetos de un nivel en un mundo
--- Devuelve los objetos que componen ese nivel
-function create_objects(world, level_name)
-	local sprite_sheet_player1 = love.graphics.newImage("img/blue_slime_atlas.png")
-	local sprite_sheet_player2 = love.graphics.newImage("img/red_slime_atlas.png")
-
-	local objects = {}
-
-	local pos_x_player1 = love.graphics.getWidth() / 4
-
-
-	if level_name == "level_title" then
-		pos_x_player1 = love.graphics.getWidth() / 2
-	else
-	end
-	objects.player2 = Player:new(world, 3 * love.graphics.getWidth() / 4, love.graphics.getHeight() / 2, sprite_sheet_player2, "player2")
-
-	objects.player1 = Player:new(world, pos_x_player1, love.graphics.getHeight() / 2, sprite_sheet_player1, "player1")
-
-	return objects
-
-end
-
-
-
-
 Level = class("Level")
 
 
 -- Constructor de la clase nivel, recibe como argumento el nivel a crear
-function Level:initialize(level_name)
+function Level:initialize(level_name, num_players)
 
 	-- creamos el mundo
 	self.world = love.physics.newWorld(0, Constants.GRAVITY * Constants.PX_PER_METER, true)
 	self.world:setCallbacks(beginContact, endContact, preSolve, postSolve)
 
 	-- creamos los objetos dentro del mundo
-	self.players = create_objects(self.world, level_name)
+	self.players = {}
 
 	-- cargamos el mapa asociado
 	self.map = sti("maps/" .. level_name .. ".lua", { "box2d" })
@@ -47,6 +20,11 @@ function Level:initialize(level_name)
 
 	-- guardamos el nombre del nivel
 	self.level_name = level_name
+
+	for i=1, num_players, 1
+	do
+		self:addPlayer(i)
+	end
 
 end
 
@@ -78,4 +56,32 @@ function Level:draw()
 		self.map:box2d_draw()
 	end
 
+end
+
+-- Funcion para crear los objetos de un nivel en un mundo
+-- Devuelve los objetos que componen ese nivel
+function Level:addPlayer(num_player)
+	local sprite_sheet = nil
+
+	if num_player == 1 then
+		sprite_sheet = love.graphics.newImage("img/blue_slime_atlas.png")
+	elseif num_player == 2 then
+		sprite_sheet = love.graphics.newImage("img/red_slime_atlas.png")
+	elseif num_player == 3 then
+		sprite_sheet = love.graphics.newImage("img/green_slime_atlas.png")
+	elseif num_player == 4 then
+		sprite_sheet = love.graphics.newImage("img/yellow_slime_atlas.png")
+	end
+
+	local player_name = "player" .. num_player
+
+	self.players[player_name] = Player:new(self.world, 300, love.graphics.getHeight() / 2, sprite_sheet, player_name )
+
+end
+
+function Level:removePlayer(num_player)
+	local player_name = "player" .. num_player
+
+	self.players[player_name]:destroy()
+	self.players[player_name] = nil
 end

@@ -19,6 +19,7 @@ Game = class("Game")
 function Game:initialize()
 
 	self.minigame = nil
+	self.num_active_players = 1
 	self:changeMiniGame(Constants.MENU)
 
 	self.countdown = nil
@@ -60,7 +61,7 @@ function Game:handleInternalEvent(event)
 
 	local num = event - Events.PLAYER_LAND_PLATFORM_PLAY
 	-- cuando entran en una plataforma
-	if num <= 3 then
+	if event > 0 then
 		if self.minigame:numPlayersInPlatform(num) == self.minigame:getNumPlayers() then
 			self.countdown = 5
 
@@ -101,11 +102,11 @@ end
 function Game:changeMiniGame(minigame)
 
 	if minigame == Constants.BOMB_TAG then
-		self.minigame = BombTag:new()
+		self.minigame = BombTag:new(self.num_active_players)
 	elseif minigame == Constants.MENU then
-		self.minigame = TitleMenu:new()
+		self.minigame = TitleMenu:new(self.num_active_players)
 	elseif minigame == Constants.CONFIGURATION_MENU then
-		self.minigame = ConfigurationMenu:new()
+		self.minigame = ConfigurationMenu:new(self.num_active_players)
 	elseif minigame == Constants.EXIT then
 		love.event.quit()
 	end
@@ -130,6 +131,14 @@ function Game:keyPressed(k)
 		end
 	end
 
+	if k == Constants.ADD_PLAYER_KEY and self.num_active_players < 4 then
+		self:addPlayer()
+	end
+
+	if k == Constants.REMOVE_PLAYER_KEY and self.num_active_players > 1 then
+		self:removePlayer()
+	end
+
 	for _, player in pairs(self.minigame.level.players) do
 		player:keyPressed(k)
 	end
@@ -148,5 +157,27 @@ function Game:handleKeyboard(dt)
 
 	for _, player in pairs(self.minigame.level.players) do
 		player:handleKeyboard(dt)
+	end
+end
+
+function Game:addPlayer()
+
+	if self.minigame.class.name == "ConfigurationMenu" or self.minigame.class.name == "TitleMenu" then
+		self.num_active_players = self.num_active_players + 1
+		self.minigame:addPlayer(self.num_active_players)
+		self.countdown = nil
+		self.next_minigame = nil
+	end
+
+
+end
+
+
+function Game:removePlayer()
+	if self.minigame.class.name == "ConfigurationMenu" or self.minigame.class.name == "TitleMenu" then
+		self.minigame:removePlayer(self.num_active_players)
+		self.num_active_players = self.num_active_players - 1
+		self.countdown = nil
+		self.next_minigame = nil
 	end
 end

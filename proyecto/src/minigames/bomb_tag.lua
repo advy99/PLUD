@@ -6,12 +6,12 @@ local class = require "lib/middleclass"
 
 BombTag = MiniGame:subclass('BombTag')
 
-function BombTag:initialize()
+function BombTag:initialize(num_players)
 
 	-- Generamos un aleatorio entre 1 y NUMBER_OF_LEVELS, ambos incluidos
 	local num_level = love.math.random(1, Constants.NUMBER_OF_LEVELS)
 
-	MiniGame.initialize(self, "level_" .. num_level)
+	MiniGame.initialize(self, "level_" .. num_level, num_players)
 
 	self:assignBomb()
 	self.bomb_swap_time = 0

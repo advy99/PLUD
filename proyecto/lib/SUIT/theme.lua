@@ -65,7 +65,7 @@ function theme.Checkbox(chk, opt, x,y,w,h)
 	local th = opt.font:getHeight()
 
 	love.graphics.push( )
-	love.graphics.translate(opt.font:getWidth(chk.text .. " \t "), 0)
+	love.graphics.translate(w - h*.8, 0)
 	theme.drawBox(x+h/10,y+h/10,h*.8,h*.8, c, opt.cornerRadius)
 	love.graphics.setColor(c.fg)
 	if chk.checked then

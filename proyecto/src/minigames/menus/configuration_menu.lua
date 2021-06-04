@@ -10,6 +10,10 @@ function ConfigurationMenu:initialize(num_players)
 	local text_color = {1, 1, 1}
 	local box_color = {0, 0, 0}
 	self.title = TextBox:new("CONFIGURATION", 435, 80, 400, 75, 40, 1, text_color, box_color)
+	self.screen_section = TextBox:new("Screen", 525, 170, 200, 60, 35, 0.9, text_color, box_color)
+	self.volume_section = TextBox:new("Volume", 525, 350, 200, 60, 35, 0.9, text_color, box_color)
+
+
 	self.config_background = TextBox:new("", 390, 70, 500, 600, 40, 0.9, text_color, box_color)
 
 	self.vsync_chk = {text = "VSYNC", checked = config:getVSYNC()}
@@ -29,9 +33,12 @@ function ConfigurationMenu:update(dt)
 	love.graphics.setFont(font)
 
 
-	suit.Checkbox(self.vsync_chk, {align = "center"}, 500, 200, 200,30)
-	suit.Checkbox(self.fps_chk, {align = "center"}, 500, 250, 200,30)
-	suit.Slider(self.fps_chk, {align = "center"}, 500, 250, 200,30)
+	suit.Checkbox(self.vsync_chk, {align = "left"}, 500, 250, 250,30)
+	suit.Checkbox(self.fps_chk, {align = "left"}, 500, 300, 250,30)
+	suit.Label("Music:", {align = "left"}, 475, 425, 100,30)
+	suit.Slider(self.music_slider, {align = "right"}, 600, 425, 200,30)
+	suit.Label("SFX:", {align = "left"}, 475, 475, 100,30)
+	suit.Slider(self.sfx_slider, {align = "right"}, 600, 475, 200,30)
 
 
 
@@ -48,6 +55,9 @@ function ConfigurationMenu:draw()
 
 	self.config_background:draw()
 	self.title:draw()
+	self.screen_section:draw()
+	self.volume_section:draw()
+
 
 	suit.draw()
 

@@ -99,6 +99,8 @@ function Game:handleInternalEvent(event)
 				-- TODO: Tenemos que ver que hacemos con la plataforma de prácticas
 			elseif event == Events.PLAYER_LAND_PLATFORM_EXIT then
 				self.next_minigame = Constants.EXIT
+			elseif event == Events.PLAYER_LAND_PLATFORM_MENU then
+				self.next_minigame = Constants.MENU
 			end
 		end
 	else

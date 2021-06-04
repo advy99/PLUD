@@ -19,6 +19,9 @@ Constants.PLATFORM_PLAY_CATEGORY = 2
 Constants.PLATFORM_PRACTICE_CATEGORY = 3
 Constants.PLATFORM_CONFIGURATION_CATEGORY = 4
 Constants.PLATFORM_EXIT_CATEGORY = 5
+Constants.PLATFORM_SAVE_CONFIG_CATEGORY = 6
+Constants.PLATFORM_MENU_CATEGORY = 7
+
 
 
 -- Constantes de debug
@@ -26,12 +29,12 @@ Constants.DEBUG = false
 Constants.SHOW_HITBOX = false
 
 -- Constantes de minijuegos
-Constants.MENU = 0
 Constants.BOMB_TAG = 1
 Constants.TREASURE_HUNT = 2
 Constants.SPIKE_BALL = 3
 Constants.CONFIGURATION_MENU = 4
 Constants.EXIT = 5
+Constants.MENU = 6
 
 
 Constants.ADD_PLAYER_KEY = "return"

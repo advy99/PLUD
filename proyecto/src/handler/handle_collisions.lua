@@ -46,6 +46,13 @@ function beginContact(a, b, coll)
 
 	end
 
+	if (a:getGroupIndex() == Constants.PLAYER_GROUP and group_b == Constants.PLATFORM_GROUP and category_b == Constants.PLATFORM_MENU_CATEGORY) or
+		(b:getGroupIndex() == Constants.PLAYER_GROUP and group_a == Constants.PLATFORM_GROUP and category_a == Constants.PLATFORM_MENU_CATEGORY) then
+
+		game:handleInternalEvent(Events.PLAYER_LAND_PLATFORM_MENU)
+
+	end
+
 
 	if b:getGroupIndex() == Constants.PLAYER_GROUP and a:getGroupIndex() == Constants.PLAYER_GROUP then
 		game:handleEventBetweenObjects(a:getUserData(), b:getUserData(), Events.PLAYERS_COLLIDE)
@@ -96,6 +103,13 @@ function endContact(a, b, coll)
 		(b:getGroupIndex() == Constants.PLAYER_GROUP and group_a == Constants.PLATFORM_GROUP and category_a == Constants.PLATFORM_EXIT_CATEGORY) then
 
 		game:handleInternalEvent(Events.PLAYER_LEAVE_PLATFORM_EXIT)
+
+	end
+
+	if (a:getGroupIndex() == Constants.PLAYER_GROUP and group_b == Constants.PLATFORM_GROUP and category_b == Constants.PLATFORM_MENU_CATEGORY) or
+		(b:getGroupIndex() == Constants.PLAYER_GROUP and group_a == Constants.PLATFORM_GROUP and category_a == Constants.PLATFORM_MENU_CATEGORY) then
+
+		game:handleInternalEvent(Events.PLAYER_LEAVE_PLATFORM_MENU)
 
 	end
 

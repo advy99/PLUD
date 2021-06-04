@@ -26,8 +26,10 @@ function Game:initialize()
 	self.countdown = nil
 	self.next_minigame = nil
 
-	local keys = config.config.player2
-	self.interface = InterfaceBox:new(200, 200, keys)
+	for i = 1,4,1 do
+		local keys = config.config["player" .. i]
+		self["interface_p" .. i] = InterfaceBox:new(96 + (i-1) * 224 + (i-1) * 64, 784, keys)
+	end
 end
 
 
@@ -59,7 +61,9 @@ function Game:draw()
 		countdown_text:draw()
 	end
 
-	self.interface:draw(self.minigame.level.players.player1)
+	for i = 1, self.num_active_players, 1 do
+		self["interface_p" .. i]:draw(self.minigame.level.players["player" .. i])
+	end
 
 end
 

@@ -12,7 +12,7 @@ function InterfaceBox:initialize(posX, posY, keys)
 	self.sizeW = 224
 	self.sizeH = 96
 	self.textSize = 30
-	self.opacity = 0.5
+	self.opacity = 0.65
 
 	local text_color = {0, 0, 0}
 	local box_color = {1, 1, 1}

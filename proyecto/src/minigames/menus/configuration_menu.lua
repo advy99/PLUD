@@ -17,10 +17,13 @@ end
 function ConfigurationMenu:initialize(num_players)
 	Menu.initialize(self, "level_config", num_players)
 
-	self.title = TextBox:new("CONFIGURATION", 435, 80, 400, 75, 40, 0.6)
+
+	local text_color = {1, 1, 1}
+	local box_color = {0, 0, 0}
+	self.title = TextBox:new("CONFIGURATION", 435, 80, 400, 75, 40, 0.6, text_color, box_color)
 	self.vsync_value = TextBox:new(config:getTextVSYNC(), 650, 180, 100, 40, 30, 0)
 
-	self.config_background = TextBox:new("", 390, 70, 500, 600, 40, 0.6)
+	self.config_background = TextBox:new("", 390, 70, 500, 600, 40, 0.6, text_color, box_color)
 
 	local font = love.graphics.newFont("fonts/kirbyss.ttf", 30)
 

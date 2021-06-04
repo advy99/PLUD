@@ -77,7 +77,6 @@ function Game:handleInternalEvent(event)
 	if event > 0 then
 		if self.minigame:numPlayersInPlatform(num) == self.minigame:getNumPlayers() then
 			self.countdown = 5
-
 			self.next_minigame = nil
 			if event == Events.PLAYER_LAND_PLATFORM_PLAY then
 				self.next_minigame = Constants.BOMB_TAG
@@ -89,6 +88,8 @@ function Game:handleInternalEvent(event)
 				self.next_minigame = Constants.EXIT
 			elseif event == Events.PLAYER_LAND_PLATFORM_MENU then
 				self.next_minigame = Constants.MENU
+			elseif event == Events.PLAYER_LAND_PLATFORM_SAVE_CONFIG_AND_MENU then
+				self.next_minigame = Constants.SAVE_CONFIG
 			end
 		end
 	else
@@ -128,6 +129,9 @@ function Game:changeMiniGame(minigame)
 		self.minigame = ConfigurationMenu:new(self.num_active_players)
 	elseif minigame == Constants.EXIT then
 		love.event.quit()
+	elseif minigame == Constants.SAVE_CONFIG then
+		self.minigame:saveConfig()
+		self.minigame = TitleMenu:new(self.num_active_players)
 	end
 end
 

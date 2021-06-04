@@ -5,6 +5,7 @@ Configuration = class("Configuration")
 
 function Configuration:initialize()
 	self.config = nil
+	self.path = "config/config.ini"
 	self:loadConfiguration()
 end
 
@@ -49,11 +50,11 @@ function Configuration:getFullscreen()
 end
 
 function Configuration:saveConfig()
-	LIP.save("config/config.ini", self.config)
+	LIP.save(self.path, self.config)
 end
 
 function Configuration:loadConfiguration()
-	self.config = LIP.load("config/config.ini")
+	self.config = LIP.load(self.path)
 end
 
 

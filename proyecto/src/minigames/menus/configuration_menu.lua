@@ -1,4 +1,6 @@
 require("src/minigames/menus/menu")
+require("src/configuration")
+
 local class = require "lib/middleclass"
 local suit = require("lib/SUIT")
 
@@ -13,13 +15,13 @@ function ConfigurationMenu:initialize(num_players)
 	self.screen_section = TextBox:new("Screen", 525, 170, 200, 60, 35, 0.9, text_color, box_color)
 	self.volume_section = TextBox:new("Volume", 525, 350, 200, 60, 35, 0.9, text_color, box_color)
 
-
 	self.config_background = TextBox:new("", 390, 70, 500, 600, 40, 0.9, text_color, box_color)
+	self.init_config = Configuration:new()
 
-	self.vsync_chk = {text = "VSYNC", checked = config:getVSYNC()}
-	self.fps_chk = {text = "Show FPS", checked = config:getShowFPS()}
-	self.music_slider = {value = config:getMusicVolume()}
-	self.sfx_slider = {value = config:getSFXVolume()}
+	self.vsync_chk = {text = "VSYNC", checked = self.init_config:getVSYNC()}
+	self.fps_chk = {text = "Show FPS", checked = self.init_config:getShowFPS()}
+	self.music_slider = {value = self.init_config:getMusicVolume()}
+	self.sfx_slider = {value = self.init_config:getSFXVolume()}
 
 
 end
@@ -42,8 +44,8 @@ function ConfigurationMenu:update(dt)
 
 
 
-	config:setVSYNC(self.vsync_chk.checked)
-	config:setShowFPS(self.fps_chk.checked)
+	self.init_config:setVSYNC(self.vsync_chk.checked)
+	self.init_config:setShowFPS(self.fps_chk.checked)
 
 
 end
@@ -77,4 +79,11 @@ end
 
 function ConfigurationMenu:mouseMoved(x, y)
 	Menu.mouseMoved(self, x, y)
+end
+
+function ConfigurationMenu:saveConfig()
+	self.init_config:saveConfig()
+	config:loadConfiguration()
+	local flags = {vsync = config:getVSYNC(), fullscreen = false, resizable = false}
+	love.window.updateMode(Constants.DEFAULT_WIDTH, Constants.DEFAULT_HEIGHT, flags)
 end

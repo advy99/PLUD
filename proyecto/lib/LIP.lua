@@ -1,5 +1,5 @@
 --[[
-	Copyright (c) 2012 Carreras Nicolas, Ruairidh Carmichael
+	Copyright (c) 2012 Carreras Nicolas
 	
 	Permission is hereby granted, free of charge, to any person obtaining a copy
 	of this software and associated documentation files (the "Software"), to deal
@@ -19,9 +19,9 @@
 	OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 	SOFTWARE.
 --]]
---- Love INI Parser.
--- It has never been that simple to use INI files with Love2D.
---@author Dynodzzo, VideahGams
+--- Lua INI Parser.
+-- It has never been that simple to use INI files with Lua.
+--@author Dynodzzo
 
 local LIP = {};
 
@@ -30,11 +30,10 @@ local LIP = {};
 --@return The table containing all data from the INI file. [table]
 function LIP.load(fileName)
 	assert(type(fileName) == 'string', 'Parameter "fileName" must be a string.');
-	local lovefile = love.filesystem.newFile(fileName)
-	local file = assert(lovefile:open('r'), 'Error loading file : ' .. fileName);
+	local file = assert(io.open(fileName, 'r'), 'Error loading file : ' .. fileName);
 	local data = {};
 	local section;
-	for line in love.filesystem.lines(fileName) do
+	for line in file:lines() do
 		local tempSection = line:match('^%[([^%[%]]+)%]$');
 		if(tempSection)then
 			section = tonumber(tempSection) and tonumber(tempSection) or tempSection;
@@ -55,7 +54,7 @@ function LIP.load(fileName)
 			data[section][param] = value;
 		end
 	end
-	lovefile:close();
+	file:close();
 	return data;
 end
 
@@ -65,18 +64,17 @@ end
 function LIP.save(fileName, data)
 	assert(type(fileName) == 'string', 'Parameter "fileName" must be a string.');
 	assert(type(data) == 'table', 'Parameter "data" must be a table.');
-	local lovefile = love.filesystem.newFile(fileName)
-	local file = assert(lovefile:open('w+b'), 'Error loading file :' .. fileName);
+	local file = assert(io.open(fileName, 'w+b'), 'Error loading file :' .. fileName);
 	local contents = '';
 	for section, param in pairs(data) do
-		contents = contents .. ('[%s]\r\n'):format(section);
+		contents = contents .. ('[%s]\n'):format(section);
 		for key, value in pairs(param) do
-			contents = contents .. ('%s=%s\r\n'):format(key, tostring(value));
+			contents = contents .. ('%s=%s\n'):format(key, tostring(value));
 		end
-		contents = contents .. '\r\n';
+		contents = contents .. '\n';
 	end
-	lovefile:write(contents);
-	lovefile:close();
+	file:write(contents);
+	file:close();
 end
 
 return LIP;

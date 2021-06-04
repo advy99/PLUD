@@ -8,6 +8,7 @@ require("src/minigames/bomb_tag")
 require("src/minigames/menus/configuration_menu")
 require("src/minigames/menus/title_menu")
 require("src/text_box")
+require("src/interface_box")
 
 
 local class = require "lib/middleclass"
@@ -24,6 +25,8 @@ function Game:initialize()
 
 	self.countdown = nil
 	self.next_minigame = nil
+
+	self.interface = InterfaceBox:new(200, 200)
 end
 
 
@@ -52,6 +55,8 @@ function Game:draw()
 		local countdown_text = TextBox:new( "STARTING IN...\n" .. math.abs(math.ceil(self.countdown)), 462.5, 375, 350, 150, 40, 0.8)
 		countdown_text:draw()
 	end
+
+	self.interface:draw(self.minigame.level.players.player1)
 
 end
 

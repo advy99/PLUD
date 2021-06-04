@@ -55,3 +55,20 @@ end
 function Configuration:loadConfiguration()
 	self.config = LIP.load("config/config.ini")
 end
+
+
+function Configuration:getMusicVolume()
+	return self.config.audio.music
+end
+
+function Configuration:getSFXVolume()
+	return self.config.audio.sfx
+end
+
+function Configuration:setMusicVolume(value)
+	self.config.audio.music = value
+end
+
+function Configuration:setSFXVolume(value)
+	self.config.audio.sfx = value
+end

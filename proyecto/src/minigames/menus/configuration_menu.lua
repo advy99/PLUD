@@ -14,8 +14,8 @@ function quit_game()
 end
 
 
-function ConfigurationMenu:initialize()
-	Menu.initialize(self, "level_config")
+function ConfigurationMenu:initialize(num_players)
+	Menu.initialize(self, "level_config", num_players)
 
 	self.menu = menuengine.new(200,100)
 	self.menu:addEntry("Start Game", start_game)

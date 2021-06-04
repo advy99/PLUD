@@ -25,7 +25,7 @@ function ConfigurationMenu:update(dt)
 	love.graphics.setFont(font)
 
 
-	suit.Checkbox(self.vsync_chk, 500, 200, 200,30)
+	suit.Checkbox(self.vsync_chk, {align = "center"}, 500, 200, 200,30)
 
 	config:setVSYNC(self.vsync_chk.checked)
 

@@ -64,6 +64,8 @@ function theme.Checkbox(chk, opt, x,y,w,h)
 	local c = theme.getColorForState(opt)
 	local th = opt.font:getHeight()
 
+	love.graphics.push( )
+	love.graphics.translate(opt.font:getWidth(chk.text .. " \t "), 0)
 	theme.drawBox(x+h/10,y+h/10,h*.8,h*.8, c, opt.cornerRadius)
 	love.graphics.setColor(c.fg)
 	if chk.checked then
@@ -72,6 +74,7 @@ function theme.Checkbox(chk, opt, x,y,w,h)
 		love.graphics.setLineJoin("bevel")
 		love.graphics.line(x+h*.2,y+h*.55, x+h*.45,y+h*.75, x+h*.8,y+h*.2)
 	end
+	love.graphics.pop( )
 
 	if chk.text then
 		love.graphics.setFont(opt.font)
@@ -128,7 +131,7 @@ function theme.Input(input, opt, x,y,w,h)
 	local ctw = opt.font:getWidth(input.candidate_text.text)
 	love.graphics.setColor((opt.color and opt.color.normal and opt.color.normal.fg) or theme.color.normal.fg)
 	love.graphics.print(input.candidate_text.text, x + tw, y+(h-th)/2)
-	
+
 	-- candidate text rectangle box
 	love.graphics.rectangle("line", x + tw, y+(h-th)/2, ctw, th)
 

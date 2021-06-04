@@ -15,8 +15,16 @@ function Configuration:setVSYNC(mode)
 	self.config.screen.vsync = mode
 end
 
-function Configuration:getVSYNC(mode)
+function Configuration:getVSYNC()
 	return self.config.screen.vsync
+end
+
+function Configuration:getTextVSYNC()
+	if self.config.screen.vsync then
+		return "ON"
+	else
+		return "OFF"
+	end
 end
 
 function Configuration:setShowFPS(mode)

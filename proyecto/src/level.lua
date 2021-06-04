@@ -39,7 +39,8 @@ function Level:update(dt)
 end
 
 function Level:draw()
-	love.graphics.setColor(1, 1, 1)
+	love.graphics.reset()
+
 	self.map:draw()
 
 	-- para cuando nos pongamos a escalar el mapa

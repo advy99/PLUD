@@ -32,3 +32,7 @@ Constants.TREASURE_HUNT = 2
 Constants.SPIKE_BALL = 3
 Constants.CONFIGURATION_MENU = 4
 Constants.EXIT = 5
+
+
+Constants.ADD_PLAYER_KEY = "return"
+Constants.REMOVE_PLAYER_KEY = "-"

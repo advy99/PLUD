@@ -48,7 +48,7 @@ function Game:draw()
 	self.minigame:draw()
 
 	if self.next_minigame ~= nil then
-		local countdown_text = TextBox:new( "STARTING IN...\n" .. math.abs(math.ceil(self.countdown)), 462.5, 375, 350, 150, 40)
+		local countdown_text = TextBox:new( "STARTING IN...\n" .. math.abs(math.ceil(self.countdown)), 462.5, 375, 350, 150, 40, 0.8)
 		countdown_text:draw()
 	end
 
@@ -70,13 +70,13 @@ function Game:handleInternalEvent(event)
 			elseif event == Events.PLAYER_LAND_PLATFORM_CONFIGURATION then
 				self.next_minigame = Constants.CONFIGURATION_MENU
 			elseif event == Events.PLAYER_LAND_PLATFORM_PRACTICE then
-
+				-- TODO: Tenemos que ver que hacemos con la plataforma de prácticas
 			elseif event == Events.PLAYER_LAND_PLATFORM_EXIT then
 				self.next_minigame = Constants.EXIT
 			end
 		end
 	else
-		-- cuando el jugador sale de una plataforma
+		-- cuando el jugador sale de una plataforma	
 		if self.countdown ~= nil then
 			self.countdown = nil
 			self.next_minigame = nil

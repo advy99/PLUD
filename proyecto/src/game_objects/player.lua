@@ -254,6 +254,11 @@ function Player:animate(dt)
 
 end
 
+function Player:getCurrentQuad()
+	-- calculamos que sprite se tiene que dibujar
+	return math.floor(self.current_animation.currentTime / self.current_animation.duration * #self.animations.idle.quads) + 1
+
+end
 
 -- Función para dibujar el jugador
 function Player:draw()
@@ -261,15 +266,13 @@ function Player:draw()
 	if not self.has_died then
 		-- limpiamos la brocha de dibujado
 		love.graphics.reset()
-		-- calculamos que sprite se tiene que dibujar
-		local spriteNum = math.floor(self.current_animation.currentTime / self.current_animation.duration * #self.animations.idle.quads) + 1
 
 		-- Dibujamos el sprite, dependiendo de la orientación establecemos el ancho para
 		-- dibujarlo al reves
 		local width = self.body:getX() + (self.orientation * (self.sprite_width / 2 - 1)) * self.scale
 		local height = self.body:getY() - (self.sprite_height / 2) * self.scale
 
-		love.graphics.draw(self.current_animation.spriteSheet, self.current_animation.quads[spriteNum], width , height, 0, -self.orientation * self.scale, self.scale )
+		love.graphics.draw(self.current_animation.spriteSheet, self.current_animation.quads[self:getCurrentQuad()], width , height, 0, -self.orientation * self.scale, self.scale )
 
 		-- si el personaje tiene la bomba, la dibujamos
 		if self.has_bomb then

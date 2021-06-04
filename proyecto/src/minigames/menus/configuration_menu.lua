@@ -17,7 +17,10 @@ end
 function ConfigurationMenu:initialize(num_players)
 	Menu.initialize(self, "level_config", num_players)
 
-	self.menu = menuengine.new(200,100)
+	self.config_interface = {}
+	self.config_background = TextBox:new("", 100, 100, 400, 600, 40, 1)
+
+	self.menu = menuengine.new(500,100)
 	self.menu:addEntry("Start Game", start_game)
 	self.menu:addSep()
 	self.menu:addEntry("Quit Game", quit_game)
@@ -34,11 +37,13 @@ end
 
 
 function ConfigurationMenu:draw()
-	love.graphics.setColor(1, 1, 1)
+	love.graphics.reset()
 	Menu.draw(self)
 
 	love.graphics.draw(self.game_name_image, 480, 70, 0, 0.1, 0.1)
+	self.config_text:draw()
 	self.menu:draw()
+
 
 end
 

@@ -20,7 +20,7 @@ end
 
 
 function TitleMenu:draw()
-	love.graphics.setColor(1, 1, 1)
+	love.graphics.reset()
 	Menu.draw(self)
 
 

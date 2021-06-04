@@ -27,7 +27,8 @@ end
 
 
 function Menu:draw()
-	love.graphics.setColor(1, 1, 1)
+	love.graphics.reset()
+
 	MiniGame.draw(self)
 
 

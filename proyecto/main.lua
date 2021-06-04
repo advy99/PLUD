@@ -21,7 +21,7 @@ function love.load()
 
 	config = Configuration()
 
-	flags = {vsync = config:getVSYNC(), fullscreen = config:getFullscreen(), resizable = true}
+	local flags = {vsync = config:getVSYNC(), fullscreen = false, resizable = false}
 
 	-- establecemos la configuración de la ventana y la semilla aleatoria
 	love.window.setMode(Constants.DEFAULT_WIDTH, Constants.DEFAULT_HEIGHT, flags)

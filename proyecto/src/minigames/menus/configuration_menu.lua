@@ -1,34 +1,18 @@
 require("src/minigames/menus/menu")
 local class = require "lib/middleclass"
-local menuengine = require "lib/menuengine"
-menuengine.stop_on_nil_functions = true
+local suit = require("lib/SUIT")
 
 ConfigurationMenu = Menu:subclass('ConfigurationMenu')
 
-function changeVSYNC()
-	config:setVSYNC(not config:getVSYNC())
-end
-
-function quit_game()
-	print("QUIT")
-end
 
 
 function ConfigurationMenu:initialize(num_players)
 	Menu.initialize(self, "level_config", num_players)
 
 	self.title = TextBox:new("CONFIGURATION", 435, 80, 400, 75, 40, 0.6)
-	self.vsync_value = TextBox:new(config:getTextVSYNC(), 650, 180, 100, 40, 30, 0)
-
 	self.config_background = TextBox:new("", 390, 70, 500, 600, 40, 0.6)
 
-	local font = love.graphics.newFont("fonts/kirbyss.ttf", 30)
-
-	self.menu = menuengine.new(500,200, font)
-	self.menu:addEntry("VSYC: \t\t ", changeVSYNC)
-	self.menu:addSep()
-	self.menu:addEntry("Quit Game", quit_game)
-
+	self.vsync_chk = {text = "VSYNC", checked = config:getVSYNC()}
 
 end
 
@@ -36,8 +20,15 @@ end
 function ConfigurationMenu:update(dt)
 
 	Menu.update(self, dt)
-	self.menu:update()
-	self.vsync_value:updateText(config:getTextVSYNC())
+
+	local font = love.graphics.newFont("fonts/kirbyss.ttf", 30)
+	love.graphics.setFont(font)
+
+
+	suit.Checkbox(self.vsync_chk, 500, 200, 200,30)
+
+	config:setVSYNC(self.vsync_chk.checked)
+
 end
 
 
@@ -47,8 +38,8 @@ function ConfigurationMenu:draw()
 
 	self.config_background:draw()
 	self.title:draw()
-	self.vsync_value:draw()
-	self.menu:draw()
+
+	suit.draw()
 
 
 end
@@ -66,6 +57,4 @@ end
 
 function ConfigurationMenu:mouseMoved(x, y)
 	Menu.mouseMoved(self, x, y)
-
-	menuengine.mousemoved(x, y)
 end

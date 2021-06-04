@@ -4,6 +4,8 @@ InterfaceBox = class("InterfaceBox")
 
 function InterfaceBox:initialize(posX, posY, keys)
 
+	self.show_controls = false
+
 	self.posX = posX
 	self.posY = posY
 
@@ -12,7 +14,7 @@ function InterfaceBox:initialize(posX, posY, keys)
 	self.sizeW = 224
 	self.sizeH = 96
 	self.textSize = 30
-	self.opacity = 0.65
+	self.opacity = 0.5
 
 	local text_color = {0, 0, 0}
 	local box_color = {1, 1, 1}
@@ -34,7 +36,18 @@ function InterfaceBox:draw(player)
 	love.graphics.reset()
 	love.graphics.draw(current_animation.spriteSheet, current_animation.quads[current_quad], self.posX , self.posY, 0, player.scale, player.scale )
 
-	self.up:draw()
-	self.left:draw()
-	self.right:draw()
+	if self.show_controls then
+		self.up:draw()
+		self.left:draw()
+		self.right:draw()
+	else
+		love.graphics.setColor(1, 1, 1)
+		local font = love.graphics.newFont("fonts/kirbyss.ttf", self.textSize)
+		love.graphics.setFont(font)
+		love.graphics.printf("SCORE\n300", self.posX + 32,  self.posY + self.sizeH / 4, self.sizeW, "center")
+	end
+end
+
+function switchBetweenControlsAndScore
+	self.show_controls = not self.show_controls
 end

@@ -61,11 +61,13 @@ function Game:draw()
 
 		local message = ""
 		if self.next_minigame == Constants.BOMB_TAG then
-			message = "GAME STARTS\n IN... "
+			message = "GAME STARTS\nIN... "
 		elseif self.next_minigame == Constants.MENU then
-			message = "QUIT TO MENU IN... "
+			message = "QUIT TO\nMENU IN... "
 		elseif self.next_minigame == Constants.CONFIGURATION_MENU then
-			message = "SETTINGS\n IN... "
+			message = "SETTINGS\nIN... "
+		elseif self.next_minigame == Constants.SAVE_CONFIG then
+			message = "QUIT AND SAVE\nIN... "
 		elseif self.next_minigame == Constants.EXIT then
 			message = "EXIT GAME\nIN... "
 		end

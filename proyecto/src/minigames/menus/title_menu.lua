@@ -8,6 +8,8 @@ function TitleMenu:initialize(num_players)
 
 	Menu.initialize(self, "level_title", num_players)
 
+	self.game_name_image = love.graphics.newImage("img/lose_to_win.png")
+
 
 end
 

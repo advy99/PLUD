@@ -8,8 +8,6 @@ function Menu:initialize(level_name, num_players)
 
 	MiniGame.initialize(self, level_name, num_players)
 
-	self.game_name_image = love.graphics.newImage("img/lose_to_win.png")
-
 	self.players_in_platform = {}
 
 	for i = 0,3 do
@@ -30,9 +28,6 @@ function Menu:draw()
 	love.graphics.reset()
 
 	MiniGame.draw(self)
-
-
-	love.graphics.draw(self.game_name_image, 480, 70, 0, 0.1, 0.1)
 
 end
 

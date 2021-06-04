@@ -58,7 +58,19 @@ function Game:draw()
 	if self.next_minigame ~= nil then
 		local text_color = {1, 1, 1}
 		local box_color = {0, 0, 0}
-		local countdown_text = TextBox:new( "STARTING IN...\n" .. math.abs(math.ceil(self.countdown)), 462.5, 375, 350, 150, 40, 0.8, text_color, box_color)
+
+		local message = ""
+		if self.next_minigame == Constants.BOMB_TAG then
+			message = "GAME STARTS\n IN... "
+		elseif self.next_minigame == Constants.MENU then
+			message = "QUIT TO MENU IN... "
+		elseif self.next_minigame == Constants.CONFIGURATION_MENU then
+			message = "SETTINGS\n IN... "
+		elseif self.next_minigame == Constants.EXIT then
+			message = "EXIT GAME\nIN... "
+		end
+
+		local countdown_text = TextBox:new( message .. math.abs(math.ceil(self.countdown)), 462.5, 375, 350, 150, 40, 0.8, text_color, box_color)
 		countdown_text:draw()
 	end
 

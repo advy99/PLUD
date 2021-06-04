@@ -125,7 +125,11 @@ function Game:changeMiniGame(minigame)
 	elseif minigame == Constants.CONFIGURATION_MENU then
 		self.minigame = ConfigurationMenu:new(self.num_active_players)
 	elseif minigame == Constants.EXIT then
-		love.event.quit()
+		if self.minigame.class.name == "TitleMenu" then
+			love.event.quit()
+		else
+			self.minigame = TitleMenu:new(self.num_active_players)
+		end
 	end
 end
 

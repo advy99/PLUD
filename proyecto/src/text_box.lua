@@ -24,7 +24,7 @@ function TextBox:draw()
 	love.graphics.setColor(self.text_color[1], self.text_color[2], self.text_color[3])
 	local font = love.graphics.newFont("fonts/kirbyss.ttf", self.textSize)
 	love.graphics.setFont(font)
-	love.graphics.printf(self.text, self.posX,  self.posY + self.sizeH / 3, self.sizeW, "center")
+	love.graphics.printf(self.text, self.posX,  self.posY + self.sizeH / 4, self.sizeW, "center")
 end
 
 function TextBox:updateText(text)

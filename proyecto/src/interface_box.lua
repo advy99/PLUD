@@ -2,17 +2,24 @@ local class = require "lib/middleclass"
 
 InterfaceBox = class("InterfaceBox")
 
-function InterfaceBox:initialize(posX, posY, sprite)
+function InterfaceBox:initialize(posX, posY, keys)
 
 	self.posX = posX
 	self.posY = posY
 
-	self.player_sprite = sprite
+	self.keys = keys
 
 	self.sizeW = 224
 	self.sizeH = 96
 	self.textSize = 30
-	self.opacity = 1
+	self.opacity = 0.5
+
+	local text_color = {0, 0, 0}
+	local box_color = {1, 1, 1}
+	local key_size = 28
+	self.up = TextBox:new( string.upper(self.keys.JUMP_KEY), self.posX + 3*self.sizeW/5, self.posY + 16, key_size, key_size, 16, 1, text_color, box_color) -- text, posX, posY, sizeW, sizeH, textSize
+	self.left = TextBox:new( string.upper(self.keys.LEFT_KEY), self.posX - 17 + 3*self.sizeW/5, self.posY + 48, key_size, key_size, 16, 1, text_color, box_color)
+	self.right = TextBox:new( string.upper(self.keys.RIGHT_KEY), self.posX + 17 + 3*self.sizeW/5, self.posY + 48, key_size, key_size, 16, 1, text_color, box_color)
 
 end
 
@@ -25,10 +32,9 @@ function InterfaceBox:draw(player)
 	love.graphics.rectangle( "fill", self.posX, self.posY, self.sizeW, self.sizeH, self.sizeW / 10)
 
 	love.graphics.reset()
-	love.graphics.draw(current_animation.spriteSheet, current_animation.quads[current_quad], 300 , 50, 0, -player.scale, player.scale )
+	love.graphics.draw(current_animation.spriteSheet, current_animation.quads[current_quad], self.posX , self.posY, 0, player.scale, player.scale )
 
-	love.graphics.setColor(1, 1, 1)
-	local font = love.graphics.newFont("fonts/kirbyss.ttf", self.textSize)
-	love.graphics.setFont(font)
-	love.graphics.printf("PRUEBA", self.posX,  self.posY + self.sizeH / 3, self.sizeW, "center")
+	self.up:draw()
+	self.left:draw()
+	self.right:draw()
 end

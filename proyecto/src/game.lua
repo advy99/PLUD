@@ -26,7 +26,8 @@ function Game:initialize()
 	self.countdown = nil
 	self.next_minigame = nil
 
-	self.interface = InterfaceBox:new(200, 200)
+	local keys = config.config.player2
+	self.interface = InterfaceBox:new(200, 200, keys)
 end
 
 
@@ -52,7 +53,9 @@ function Game:draw()
 	self.minigame:draw()
 
 	if self.next_minigame ~= nil then
-		local countdown_text = TextBox:new( "STARTING IN...\n" .. math.abs(math.ceil(self.countdown)), 462.5, 375, 350, 150, 40, 0.8)
+		local text_color = {1, 1, 1}
+		local box_color = {0, 0, 0}
+		local countdown_text = TextBox:new( "STARTING IN...\n" .. math.abs(math.ceil(self.countdown)), 462.5, 375, 350, 150, 40, 0.8, text_color, box_color)
 		countdown_text:draw()
 	end
 

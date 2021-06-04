@@ -87,6 +87,8 @@ function Game:handleInternalEvent(event)
 				-- TODO: Tenemos que ver que hacemos con la plataforma de prácticas
 			elseif event == Events.PLAYER_LAND_PLATFORM_EXIT then
 				self.next_minigame = Constants.EXIT
+			elseif event == Events.PLAYER_LAND_PLATFORM_MENU then
+				self.next_minigame = Constants.MENU
 			end
 		end
 	else
@@ -125,11 +127,7 @@ function Game:changeMiniGame(minigame)
 	elseif minigame == Constants.CONFIGURATION_MENU then
 		self.minigame = ConfigurationMenu:new(self.num_active_players)
 	elseif minigame == Constants.EXIT then
-		if self.minigame.class.name == "TitleMenu" then
-			love.event.quit()
-		else
-			self.minigame = TitleMenu:new(self.num_active_players)
-		end
+		love.event.quit()
 	end
 end
 

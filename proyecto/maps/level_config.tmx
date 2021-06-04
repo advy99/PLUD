@@ -108,7 +108,7 @@
    </object>
    <object id="36" name="exit" x="992.804" y="639.984" width="190.243" height="11.2308">
     <properties>
-     <property name="categories" value="5"/>
+     <property name="categories" value="7"/>
      <property name="friction" type="float" value="0.8"/>
      <property name="group" type="int" value="3"/>
     </properties>

@@ -312,3 +312,7 @@ function Player:handleKeyboard(dt)
 		self:move(1)
 	end
 end
+
+function Player:destroy()
+	self.body:destroy()
+end

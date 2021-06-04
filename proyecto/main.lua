@@ -33,7 +33,9 @@ function love.load()
 	-- scale = 1
 	game = Game:new()
 
-	fps_counter = TextBox:new( love.timer.getFPS() .. " FPS", 0, 0, 100, 50, 20, 0.6) -- text, posX, posY, sizeW, sizeH, textSize
+	local text_color = {1, 1, 1}
+	local box_color = {0, 0, 0}
+	fps_counter = TextBox:new( love.timer.getFPS() .. " FPS", 0, 0, 100, 50, 20, 0.6, text_color, box_color) -- text, posX, posY, sizeW, sizeH, textSize
 
 
 end

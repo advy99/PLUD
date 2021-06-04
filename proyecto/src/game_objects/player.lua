@@ -43,6 +43,7 @@ function Player:initialize(world, x, y, sprite_sheet, id)
 	self.rectangle_fixture:setFriction(0.5)
 
 	self.has_bomb = false
+	self.player_id = id
 
 	-- Variables de su velocidad, fuerza de salto, masa, y estado
 	self.x_speed = 700
@@ -287,5 +288,27 @@ function Player:draw()
 			love.graphics.polygon("line", self.body:getWorldPoints(self.rectangle_shape:getPoints()))
 		end
 
+	end
+end
+
+
+function Player:keyPressed(k)
+	if k == config.config[self.player_id].JUMP_KEY then
+		self:jump()
+	end
+end
+
+
+function Player:keyReleased(k)
+	if k == config.config[self.player_id].LEFT_KEY or k == config.config[self.player_id].RIGHT_KEY then
+		self:stopWalking()
+	end
+end
+
+function Player:handleKeyboard(dt)
+	if love.keyboard.isDown(config.config[self.player_id].LEFT_KEY) then
+		self:move(-1)
+	elseif love.keyboard.isDown(config.config[self.player_id].RIGHT_KEY) then
+		self:move(1)
 	end
 end

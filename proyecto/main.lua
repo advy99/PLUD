@@ -53,6 +53,8 @@ function love.update(dt)
 	if config:getShowFPS() then
 		fps_counter:updateText( love.timer.getFPS() .. " FPS")
 	end
+
+	collectgarbage()
 end
 
 

@@ -125,7 +125,7 @@ function ConfigurationMenu:draw()
 	else
 		self.controls_title:draw()
 		love.graphics.reset()
-		-- love.graphics.draw(self.players_images["player" .. self.actual_player], self.top_left, 590, 115, 0, 3, 3)
+		love.graphics.draw(self.players_images["player" .. self.actual_player], self.top_left, 590, 115, 0, 3, 3)
 
 	end
 

@@ -7,7 +7,7 @@ Bla bla bla
 
 ## Bibliotecas
 
-- LIP: https://github.com/videah/Love_INI_Parser/ (licencia MIT)
+- LIP: https://github.com/Dynodzzo/Lua_INI_Parser/ (licencia MIT)
 - middleclass: Biblioteca para usar clases en Lua: https://github.com/kikito/middleclass (licencia MIT)
 - SUIT: Biblioteca para gestionar menus con sliders, checkbox, etc: https://github.com/vrld/suit
 

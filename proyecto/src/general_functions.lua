@@ -18,3 +18,16 @@ function table_size(T)
 	for _ in pairs(T) do count = count + 1 end
 	return count
 end
+
+
+function readKey()
+
+	local name, a,b,c,d,e,f = love.event.wait()
+
+	while (name ~= "keyreleased")
+	do
+		name, a,b,c,d,e,f = love.event.wait()
+	end
+
+	return a
+end

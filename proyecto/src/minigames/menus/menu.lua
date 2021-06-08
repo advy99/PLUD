@@ -10,7 +10,7 @@ function Menu:initialize(level_name, num_players)
 
 	self.players_in_platform = {}
 
-	for i = 0,5 do
+	for i = 0,8 do
 		self.players_in_platform[i] = 0
 	end
 

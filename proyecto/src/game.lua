@@ -8,6 +8,7 @@ require("src/minigames/bomb_tag")
 require("src/minigames/death_ball")
 require("src/minigames/menus/configuration_menu")
 require("src/minigames/menus/title_menu")
+require("src/minigames/menus/practice_menu")
 require("src/text_box")
 require("src/interface_box")
 
@@ -65,8 +66,11 @@ function Game:draw()
 		local box_color = {0, 0, 0}
 
 		local message = ""
-		if self.next_minigame == Constants.BOMB_TAG then
+		if self.next_minigame == Constants.BOMB_TAG or self.next_minigame == Constants.TREASURE_HUNT or
+		self.next_minigame == Constants.DEATH_BALL then
 			message = "GAME STARTS\nIN... "
+		elseif self.next_minigame == Constants.PRACTICE then
+			message = "PRACTICE MODE\n IN... "
 		elseif self.next_minigame == Constants.MENU then
 			message = "QUIT TO\nMENU IN... "
 		elseif self.next_minigame == Constants.CONFIGURATION_MENU then
@@ -105,13 +109,19 @@ function Game:handleInternalEvent(event)
 			elseif event == Events.PLAYER_LAND_PLATFORM_CONFIGURATION then
 				self.next_minigame = Constants.CONFIGURATION_MENU
 			elseif event == Events.PLAYER_LAND_PLATFORM_PRACTICE then
-				-- TODO: Tenemos que ver que hacemos con la plataforma de prácticas
+				self.next_minigame = Constants.PRACTICE
 			elseif event == Events.PLAYER_LAND_PLATFORM_EXIT then
 				self.next_minigame = Constants.EXIT
 			elseif event == Events.PLAYER_LAND_PLATFORM_MENU then
 				self.next_minigame = Constants.MENU
 			elseif event == Events.PLAYER_LAND_PLATFORM_SAVE_CONFIG_AND_MENU then
 				self.next_minigame = Constants.SAVE_CONFIG
+			elseif event == Events.PLAYER_LAND_PLATFORM_BOMB_TAG then
+				self.next_minigame = Constants.BOMB_TAG
+			elseif event == Events.PLAYER_LAND_PLATFORM_TREASURE_HUNT then
+				self.next_minigame = Constants.TREASURE_HUNT
+			elseif event == Events.PLAYER_LAND_PLATFORM_DEATH_BALL then
+				self.next_minigame = Constants.DEATH_BALL
 			end
 		end
 	else
@@ -150,8 +160,12 @@ function Game:changeMiniGame(minigame)
 		self.minigame = BombTag:new(self.num_active_players)
 	elseif minigame == Constants.DEATH_BALL then
 		self.minigame = DeathBall:new(self.num_active_players)
+	elseif minigame == Constants.TREASURE_HUNT then
+		--self.minigame = TreasureHunt:new(self.num_active_players) TODO: implementar tercer minijuego
 	elseif minigame == Constants.MENU then
 		self.minigame = TitleMenu:new(self.num_active_players)
+	elseif minigame == Constants.PRACTICE then
+		self.minigame = PracticeMenu:new(self.num_active_players)
 	elseif minigame == Constants.CONFIGURATION_MENU then
 		self.minigame = ConfigurationMenu:new(self.num_active_players)
 	elseif minigame == Constants.EXIT then

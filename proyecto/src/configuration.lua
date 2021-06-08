@@ -73,3 +73,17 @@ end
 function Configuration:setSFXVolume(value)
 	self.config.audio.sfx = value
 end
+
+
+function Configuration:keyAssigned(k)
+
+	for i = 1,4,1 do
+		for _, object in pairs(self.config["player" .. i]) do
+			if k == object then
+				return true
+			end
+		end
+	end
+
+	return false
+end

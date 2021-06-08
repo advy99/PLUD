@@ -83,25 +83,26 @@ function ConfigurationMenu:update(dt)
 
 		if suit.Button(string.upper(self.init_config.config["player" .. self.actual_player].JUMP_KEY), {id = "jump", align = "center"}, 675, 200, 40,30).hit then
 			local k = readKey()
-			print(k)
-			self.init_config.config["player" .. self.actual_player].JUMP_KEY = k
+			if not self.init_config:keyAssigned(k) then
+				self.init_config.config["player" .. self.actual_player].JUMP_KEY = k
+			end
 		end
 
 		suit.Label("LEFT", {align = "left"}, 475, 250, 130,30)
 		if suit.Button(string.upper(self.init_config.config["player" .. self.actual_player].LEFT_KEY), {id = "left", align = "center"}, 675, 250, 40,30).hit then
 			local k = readKey()
-			print(k)
-
-			self.init_config.config["player" .. self.actual_player].LEFT_KEY = k
+			if not self.init_config:keyAssigned(k) then
+				self.init_config.config["player" .. self.actual_player].LEFT_KEY = k
+			end
 		end
 
 
 		suit.Label("RIGHT", {align = "left"}, 475, 300, 130,30)
 		if suit.Button(string.upper(self.init_config.config["player" .. self.actual_player].RIGHT_KEY), {id = "right", align = "center"}, 675, 300, 40,30).hit then
 			local k = readKey()
-			print(k)
-
-			self.init_config.config["player" .. self.actual_player].RIGHT_KEY = k
+			if not self.init_config:keyAssigned(k) then
+				self.init_config.config["player" .. self.actual_player].RIGHT_KEY = k
+			end
 		end
 
 		-- si pulso dentro de controles, estoy saliendo de controles
@@ -124,7 +125,7 @@ function ConfigurationMenu:draw()
 	else
 		self.controls_title:draw()
 		love.graphics.reset()
-		love.graphics.draw(self.players_images["player" .. self.actual_player], self.top_left, 590, 115, 0, 3, 3)
+		-- love.graphics.draw(self.players_images["player" .. self.actual_player], self.top_left, 590, 115, 0, 3, 3)
 
 	end
 

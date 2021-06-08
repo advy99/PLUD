@@ -70,6 +70,12 @@ function beginContact(a, b, coll)
 		game:handleEvent(b:getUserData(), Events.PLAYER_TOUCHED_DEATH_BALL)
 	end
 
+	-- lo mismo, pero por si se pasa a y b intercam
+	if group_a == Constants.OBJECTS_GROUP and category_a == Constants.DEATH_BALL_CATEGORY or
+		group_b == Constants.OBJECTS_GROUP and category_b == Constants.DEATH_BALL_CATEGORY then
+		game:handleInternalEvent(Events.DEATH_BALL_COLLISION)
+	end
+
 
 	if b:getGroupIndex() == Constants.PLAYER_GROUP and a:getGroupIndex() == Constants.PLAYER_GROUP then
 		game:handleEventBetweenObjects(a:getUserData(), b:getUserData(), Events.PLAYERS_COLLIDE)

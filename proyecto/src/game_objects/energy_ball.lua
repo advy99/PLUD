@@ -45,28 +45,37 @@ function EnergyBall:initialize(world, x, y)
 
 	self.circle_fixture:setUserData("energy_ball")
 
-	self.x_speed = 100
-	self.y_speed = 100
-
+	self.x = 100
+	self.y = 100
+	self.x_direction = 1
+	self.y_direction = 1
+	self.angle = 180
+	self.speed = 200
 end
 
 -- Función para actualizar en cada frame el jugador
 -- Recibe el tiempo transcurrido desde el ultimo update
 function EnergyBall:update(dt)
 
-	-- No permitimos que el jugador se gire
-	self.body:setAngle(0)
-
 	self.animation.currentTime = (self.animation.currentTime + dt) % self.animation.duration
+	self.body:setLinearVelocity( math.cos(math.rad(self.angle)) * self.speed , math.cos(math.rad(self.angle)) * self.speed)
+	self.body:applyTorque(self.angle)
+	-- self.body:setAngularVelocity(math.pi)
+end
 
-	self.body:setLinearVelocity(self.x_speed, self.y_speed)
-
+function EnergyBall:changeBallDirection(angle)
+	self.angle = angle
 end
 
 function EnergyBall:getCurrentQuad()
 	-- calculamos que sprite se tiene que dibujar
 	return math.floor(self.animation.currentTime / self.animation.duration * #self.animation.quads) + 1
 
+end
+
+function EnergyBall:changeBallDirection()
+	self.x_direction = -self.x_direction
+	self.y_direction = -self.y_direction
 end
 
 -- Función para dibujar el jugador

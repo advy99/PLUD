@@ -14,7 +14,7 @@ function DeathBall:initialize(num_players)
 
 	MiniGame.initialize(self, "level_" .. num_level, num_players)
 
-	self.energy_ball = EnergyBall:new(self.level.world, 100, 100)
+	self.energy_ball = EnergyBall:new(self.level.world, 500, 500)
 
 end
 
@@ -71,4 +71,10 @@ function DeathBall:handleEventBetweenObjects(object_a, object_b, event)
 	-- 		end
 	-- 	end
 	-- end
+end
+
+
+function DeathBall:changeBallDirection()
+	local aleatorio = love.math.random( 0, 360 )
+	self.energy_ball:changeBallDirection(aleatorio )
 end

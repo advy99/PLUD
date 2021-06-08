@@ -49,6 +49,10 @@ function Game:update(dt)
 		end
 	end
 
+	for i = 1,4,1 do
+		local keys = config.config["player" .. i]
+		self["interface_p" .. i]:update(keys)
+	end
 
 end
 

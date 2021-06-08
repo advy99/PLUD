@@ -25,6 +25,13 @@ function InterfaceBox:initialize(posX, posY, keys)
 
 end
 
+function InterfaceBox:update(keys)
+	self.keys = keys
+	self.up:updateText(string.upper(self.keys.JUMP_KEY))
+	self.left:updateText(string.upper(self.keys.LEFT_KEY))
+	self.right:updateText(string.upper(self.keys.RIGHT_KEY))
+end
+
 function InterfaceBox:draw(player)
 
 	local current_animation = player.current_animation

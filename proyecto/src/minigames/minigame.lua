@@ -50,7 +50,7 @@ function MiniGame:handleEvent(object, event)
 			end
 
 		elseif event == Events.EXIT_GAME then
-			love.event.quit()
+			love.event.quit()			
 		end
 	end
 

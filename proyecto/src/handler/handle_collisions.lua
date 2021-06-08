@@ -25,6 +25,27 @@ function beginContact(a, b, coll)
 
 	end
 
+	if (a:getGroupIndex() == Constants.PLAYER_GROUP and group_b == Constants.PLATFORM_GROUP and category_b == Constants.PLATFORM_BOMB_TAG_CATEGORY) or
+		(b:getGroupIndex() == Constants.PLAYER_GROUP and group_a == Constants.PLATFORM_GROUP and category_a == Constants.PLATFORM_BOMB_TAG_CATEGORY) then
+
+		game:handleInternalEvent(Events.PLAYER_LAND_PLATFORM_BOMB_TAG)
+
+	end
+
+	if (a:getGroupIndex() == Constants.PLAYER_GROUP and group_b == Constants.PLATFORM_GROUP and category_b == Constants.PLATFORM_TREASURE_HUNT_CATEGORY) or
+		(b:getGroupIndex() == Constants.PLAYER_GROUP and group_a == Constants.PLATFORM_GROUP and category_a == Constants.PLATFORM_TREASURE_HUNT_CATEGORY) then
+
+		game:handleInternalEvent(Events.PLAYER_LAND_PLATFORM_TREASURE_HUNT)
+
+	end
+
+	if (a:getGroupIndex() == Constants.PLAYER_GROUP and group_b == Constants.PLATFORM_GROUP and category_b == Constants.PLATFORM_DEATH_BALL_CATEGORY) or
+		(b:getGroupIndex() == Constants.PLAYER_GROUP and group_a == Constants.PLATFORM_GROUP and category_a == Constants.PLATFORM_DEATH_BALL_CATEGORY) then
+
+		game:handleInternalEvent(Events.PLAYER_LAND_PLATFORM_DEATH_BALL)
+
+	end
+
 	if (a:getGroupIndex() == Constants.PLAYER_GROUP and group_b == Constants.PLATFORM_GROUP and category_b == Constants.PLATFORM_CONFIGURATION_CATEGORY) or
 	 	(b:getGroupIndex() == Constants.PLAYER_GROUP and group_a == Constants.PLATFORM_GROUP and category_a == Constants.PLATFORM_CONFIGURATION_CATEGORY) then
 
@@ -124,6 +145,28 @@ function endContact(a, b, coll)
 		(b:getGroupIndex() == Constants.PLAYER_GROUP and group_a == Constants.PLATFORM_GROUP and category_a == Constants.PLATFORM_SAVE_CONFIG_CATEGORY) then
 
 		game:handleInternalEvent(Events.PLAYER_LEAVE_PLATFORM_SAVE_CONFIG_AND_MENU)
+
+	end
+
+
+	if (a:getGroupIndex() == Constants.PLAYER_GROUP and group_b == Constants.PLATFORM_GROUP and category_b == Constants.PLATFORM_BOMB_TAG_CATEGORY) or
+		(b:getGroupIndex() == Constants.PLAYER_GROUP and group_a == Constants.PLATFORM_GROUP and category_a == Constants.PLATFORM_BOMB_TAG_CATEGORY) then
+
+		game:handleInternalEvent(Events.PLAYER_LEAVE_PLATFORM_BOMB_TAG)
+
+	end
+
+	if (a:getGroupIndex() == Constants.PLAYER_GROUP and group_b == Constants.PLATFORM_GROUP and category_b == Constants.PLATFORM_TREASURE_HUNT_CATEGORY) or
+		(b:getGroupIndex() == Constants.PLAYER_GROUP and group_a == Constants.PLATFORM_GROUP and category_a == Constants.PLATFORM_TREASURE_HUNT_CATEGORY) then
+
+		game:handleInternalEvent(Events.PLAYER_LEAVE_PLATFORM_TREASURE_HUNT)
+
+	end
+
+	if (a:getGroupIndex() == Constants.PLAYER_GROUP and group_b == Constants.PLATFORM_GROUP and category_b == Constants.PLATFORM_DEATH_BALL_CATEGORY) or
+		(b:getGroupIndex() == Constants.PLAYER_GROUP and group_a == Constants.PLATFORM_GROUP and category_a == Constants.PLATFORM_DEATH_BALL_CATEGORY) then
+
+		game:handleInternalEvent(Events.PLAYER_LEAVE_PLATFORM_DEATH_BALL)
 
 	end
 

@@ -22,6 +22,8 @@ Constants.PLATFORM_EXIT_CATEGORY = 5
 Constants.PLATFORM_SAVE_CONFIG_CATEGORY = 6
 Constants.PLATFORM_MENU_CATEGORY = 7
 
+Constants.OBJECTS_GROUP = 4
+Constants.DEATH_BALL_CATEGORY = 2
 
 
 -- Constantes de debug

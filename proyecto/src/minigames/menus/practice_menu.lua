@@ -8,9 +8,6 @@ function PracticeMenu:initialize(num_players)
 
 	Menu.initialize(self, "level_practice", num_players)
 
-	self.game_name_image = love.graphics.newImage("img/lose_to_win.png")
-
-
 end
 
 
@@ -24,9 +21,6 @@ end
 function PracticeMenu:draw()
 	love.graphics.reset()
 	Menu.draw(self)
-
-
-	love.graphics.draw(self.game_name_image, 480, 70, 0, 0.1, 0.1)
 
 end
 

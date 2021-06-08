@@ -55,6 +55,8 @@ function ConfigurationMenu:update(dt)
 		suit.Label("SFX", {align = "left"}, 475, 475, 130,30)
 		self.on_controls = suit.Button("CONTROLS", {align = "center"}, 480, 550, 300,50).hit
 
+		-- TODO : Seleccion de idioma
+
 		self.init_config:setVSYNC(self.vsync_chk.checked)
 		self.init_config:setShowFPS(self.fps_chk.checked)
 		self.init_config:setMusicVolume(self.music_slider.value)
@@ -74,6 +76,32 @@ function ConfigurationMenu:update(dt)
 			if self.actual_player > 4 then
 				self.actual_player = self.actual_player - 4
 			end
+		end
+
+
+		suit.Label("JUMP", {align = "left"}, 475, 200, 130,30)
+
+		if suit.Button(string.upper(self.init_config.config["player" .. self.actual_player].JUMP_KEY), {id = "jump", align = "center"}, 675, 200, 40,30).hit then
+			local k = readKey()
+			print(k)
+			self.init_config.config["player" .. self.actual_player].JUMP_KEY = k
+		end
+
+		suit.Label("LEFT", {align = "left"}, 475, 250, 130,30)
+		if suit.Button(string.upper(self.init_config.config["player" .. self.actual_player].LEFT_KEY), {id = "left", align = "center"}, 675, 250, 40,30).hit then
+			local k = readKey()
+			print(k)
+
+			self.init_config.config["player" .. self.actual_player].LEFT_KEY = k
+		end
+
+
+		suit.Label("RIGHT", {align = "left"}, 475, 300, 130,30)
+		if suit.Button(string.upper(self.init_config.config["player" .. self.actual_player].RIGHT_KEY), {id = "right", align = "center"}, 675, 300, 40,30).hit then
+			local k = readKey()
+			print(k)
+
+			self.init_config.config["player" .. self.actual_player].RIGHT_KEY = k
 		end
 
 		-- si pulso dentro de controles, estoy saliendo de controles

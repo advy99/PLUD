@@ -12,6 +12,8 @@ function ConfigurationMenu:initialize(num_players)
 	local text_color = {1, 1, 1}
 	local box_color = {0, 0, 0}
 	self.title = TextBox:new("CONFIGURATION", 435, 80, 400, 75, 40, 1, text_color, box_color)
+	self.controls_title = TextBox:new("CONTROLS", 435, 80, 400, 75, 40, 1, text_color, box_color)
+
 	self.screen_section = TextBox:new("SCREEN", 525, 170, 200, 60, 35, 0.9, text_color, box_color)
 	self.volume_section = TextBox:new("VOLUME", 525, 350, 200, 60, 35, 0.9, text_color, box_color)
 
@@ -35,6 +37,7 @@ function ConfigurationMenu:update(dt)
 	local font = love.graphics.newFont("fonts/kirbyss.ttf", 30)
 	love.graphics.setFont(font)
 
+
 	if not self.on_controls then
 		suit.Checkbox(self.vsync_chk, {align = "left"}, 500, 250, 250,30)
 		suit.Checkbox(self.fps_chk, {align = "left"}, 500, 300, 250,30)
@@ -42,14 +45,15 @@ function ConfigurationMenu:update(dt)
 		suit.Label("MUSIC", {align = "left"}, 475, 425, 130,30)
 		suit.Slider(self.sfx_slider, {align = "right"}, 600, 475, 200,30)
 		suit.Label("SFX", {align = "left"}, 475, 475, 130,30)
-		suit.Button("CONTROLS", {align = "center"}, 480, 550, 300,50)
-
-
+		self.on_controls = suit.Button("CONTROLS", {align = "center"}, 480, 550, 300,50).hit
 
 		self.init_config:setVSYNC(self.vsync_chk.checked)
 		self.init_config:setShowFPS(self.fps_chk.checked)
 		self.init_config:setMusicVolume(self.music_slider.value)
 		self.init_config:setSFXVolume(self.sfx_slider.value)
+	else
+		-- si pulso dentro de controles, estoy saliendo de controles
+		self.on_controls = not suit.Button("BACK", {align = "center"}, 480, 550, 300,50).hit
 	end
 
 end
@@ -59,11 +63,14 @@ function ConfigurationMenu:draw()
 	love.graphics.reset()
 	Menu.draw(self)
 
+	self.config_background:draw()
+
 	if not self.on_controls then
-		self.config_background:draw()
 		self.title:draw()
 		self.screen_section:draw()
 		self.volume_section:draw()
+	else
+		self.controls_title:draw()
 	end
 
 	suit.draw()

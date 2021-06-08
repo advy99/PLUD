@@ -9,6 +9,14 @@ ConfigurationMenu = Menu:subclass('ConfigurationMenu')
 function ConfigurationMenu:initialize(num_players)
 	Menu.initialize(self, "level_config", num_players)
 
+	self.players_images = {}
+	self.players_images.player1 = love.graphics.newImage("img/blue_slime_atlas.png")
+	self.players_images.player2 = love.graphics.newImage("img/red_slime_atlas.png")
+	self.players_images.player3 = love.graphics.newImage("img/green_slime_atlas.png")
+	self.players_images.player4 = love.graphics.newImage("img/yellow_slime_atlas.png")
+	self.actual_player = 1
+	self.top_left = love.graphics.newQuad(0, 0, 32, 32, self.players_images.player1:getDimensions())
+
 	local text_color = {1, 1, 1}
 	local box_color = {0, 0, 0}
 	self.title = TextBox:new("CONFIGURATION", 435, 80, 400, 75, 40, 1, text_color, box_color)
@@ -52,6 +60,22 @@ function ConfigurationMenu:update(dt)
 		self.init_config:setMusicVolume(self.music_slider.value)
 		self.init_config:setSFXVolume(self.sfx_slider.value)
 	else
+
+		if suit.Button("<-", {align = "center"}, 500, 150, 70,30).hit then
+			self.actual_player = self.actual_player - 1
+			if self.actual_player < 1 then
+				self.actual_player = self.actual_player + 4
+			end
+		end
+
+		if suit.Button("->", {align = "center"}, 700, 150, 70,30).hit then
+			self.actual_player = self.actual_player + 1
+
+			if self.actual_player > 4 then
+				self.actual_player = self.actual_player - 4
+			end
+		end
+
 		-- si pulso dentro de controles, estoy saliendo de controles
 		self.on_controls = not suit.Button("BACK", {align = "center"}, 480, 550, 300,50).hit
 	end
@@ -71,6 +95,9 @@ function ConfigurationMenu:draw()
 		self.volume_section:draw()
 	else
 		self.controls_title:draw()
+		love.graphics.reset()
+		love.graphics.draw(self.players_images["player" .. self.actual_player], self.top_left, 590, 115, 0, 3, 3)
+
 	end
 
 	suit.draw()

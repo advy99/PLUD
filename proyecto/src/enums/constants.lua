@@ -31,7 +31,7 @@ Constants.SHOW_HITBOX = false
 -- Constantes de minijuegos
 Constants.BOMB_TAG = 1
 Constants.TREASURE_HUNT = 2
-Constants.SPIKE_BALL = 3
+Constants.DEATH_BALL = 3
 Constants.CONFIGURATION_MENU = 4
 Constants.EXIT = 5
 Constants.MENU = 6

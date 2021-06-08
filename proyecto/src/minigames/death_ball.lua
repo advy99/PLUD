@@ -25,6 +25,12 @@ function DeathBall:update(dt)
 
 	self.energy_ball:update(dt)
 
+	for _ , player in pairs(self.level.players) do
+		if player.has_died then
+			player:respawn(300, 300)
+		end
+	end
+
 end
 
 
@@ -37,6 +43,13 @@ end
 
 function DeathBall:handleEvent(object, event)
 	MiniGame.handleEvent(self, object, event)
+
+	if self.level.players[object] ~= nil then
+
+		if event == Events.PLAYER_TOUCHED_DEATH_BALL then
+			self.level.players[object]:kill()
+		end
+	end
 end
 
 

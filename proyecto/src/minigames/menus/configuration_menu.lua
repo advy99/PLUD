@@ -83,7 +83,7 @@ function ConfigurationMenu:update(dt)
 
 		if suit.Button(string.upper(self.init_config.config["player" .. self.actual_player].JUMP_KEY), {id = "jump", align = "center"}, 675, 200, 40,30).hit then
 			local k = readKey()
-			if not self.init_config:keyAssigned(k) then
+			if not self.init_config:keyAssigned(k) and k ~= "escape" then
 				self.init_config.config["player" .. self.actual_player].JUMP_KEY = k
 			end
 		end
@@ -91,7 +91,7 @@ function ConfigurationMenu:update(dt)
 		suit.Label("LEFT", {align = "left"}, 550, 250, 130,30)
 		if suit.Button(string.upper(self.init_config.config["player" .. self.actual_player].LEFT_KEY), {id = "left", align = "center"}, 675, 250, 40,30).hit then
 			local k = readKey()
-			if not self.init_config:keyAssigned(k) then
+			if not self.init_config:keyAssigned(k) and k ~= "escape" then
 				self.init_config.config["player" .. self.actual_player].LEFT_KEY = k
 			end
 		end
@@ -100,7 +100,7 @@ function ConfigurationMenu:update(dt)
 		suit.Label("RIGHT", {align = "left"}, 550, 300, 130,30)
 		if suit.Button(string.upper(self.init_config.config["player" .. self.actual_player].RIGHT_KEY), {id = "right", align = "center"}, 675, 300, 40,30).hit then
 			local k = readKey()
-			if not self.init_config:keyAssigned(k) then
+			if not self.init_config:keyAssigned(k) and k ~= "escape" then
 				self.init_config.config["player" .. self.actual_player].RIGHT_KEY = k
 			end
 		end

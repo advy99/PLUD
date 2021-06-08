@@ -5,6 +5,7 @@ require("src/enums/constants")
 require("src/level")
 require("src/minigames/minigame")
 require("src/minigames/bomb_tag")
+require("src/minigames/death_ball")
 require("src/minigames/menus/configuration_menu")
 require("src/minigames/menus/title_menu")
 require("src/text_box")
@@ -93,7 +94,7 @@ function Game:handleInternalEvent(event)
 			self.countdown = 5
 			self.next_minigame = nil
 			if event == Events.PLAYER_LAND_PLATFORM_PLAY then
-				self.next_minigame = Constants.BOMB_TAG
+				self.next_minigame = Constants.DEATH_BALL -- TODO: cambiar entre los 3 minijuegos, con ganador, tabla de puntuaciones, etc.
 			elseif event == Events.PLAYER_LAND_PLATFORM_CONFIGURATION then
 				self.next_minigame = Constants.CONFIGURATION_MENU
 			elseif event == Events.PLAYER_LAND_PLATFORM_PRACTICE then
@@ -137,6 +138,8 @@ function Game:changeMiniGame(minigame)
 
 	if minigame == Constants.BOMB_TAG then
 		self.minigame = BombTag:new(self.num_active_players)
+	elseif minigame == Constants.DEATH_BALL then
+		self.minigame = DeathBall:new(self.num_active_players)
 	elseif minigame == Constants.MENU then
 		self.minigame = TitleMenu:new(self.num_active_players)
 	elseif minigame == Constants.CONFIGURATION_MENU then

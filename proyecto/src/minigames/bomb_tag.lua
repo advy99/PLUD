@@ -55,12 +55,10 @@ end
 function BombTag:draw()
 	MiniGame.draw(self)
 
-	if self.level.level_name ~= "level_menu" then
-		love.graphics.setColor(0, 0, 0)
-		local mainFont = love.graphics.newFont("fonts/kirbyss.ttf", 50)
-		love.graphics.setFont(mainFont)
-		love.graphics.printf("Tiempo restante: " .. math.abs(math.ceil(self.bomb_timer)), -100,  50, 1000, "center")
-	end
+	love.graphics.setColor(0, 0, 0)
+	local mainFont = love.graphics.newFont("fonts/kirbyss.ttf", 50)
+	love.graphics.setFont(mainFont)
+	love.graphics.printf("Tiempo restante: " .. math.abs(math.ceil(self.bomb_timer)), -100,  50, 1000, "center")
 
 end
 

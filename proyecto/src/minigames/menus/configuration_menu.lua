@@ -46,7 +46,8 @@ function ConfigurationMenu:update(dt)
 
 	self.init_config:setVSYNC(self.vsync_chk.checked)
 	self.init_config:setShowFPS(self.fps_chk.checked)
-
+	self.init_config:setMusicVolume(self.music_slider.value)
+	self.init_config:setSFXVolume(self.sfx_slider.value)
 
 end
 

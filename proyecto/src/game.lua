@@ -136,8 +136,11 @@ end
 
 function Game:changeMiniGame(minigame)
 
-	for i = 1, self.num_active_players, 1 do
-		self["interface_p" .. i]:switchBetweenControlsAndScore()
+	-- TODO solo cambiar entre controles y score cuando entre a un juego
+	if minigame == Constants.BOMB_TAG or minigame == Constants.DEATH_BALL then
+		for i = 1, self.num_active_players, 1 do
+			self["interface_p" .. i]:switchBetweenControlsAndScore()
+		end
 	end
 
 	if minigame == Constants.BOMB_TAG then

@@ -4,7 +4,7 @@ InterfaceBox = class("InterfaceBox")
 
 function InterfaceBox:initialize(posX, posY, keys)
 
-	self.show_controls = false
+	self.show_controls = true
 
 	self.posX = posX
 	self.posY = posY

@@ -249,13 +249,8 @@ function Player:animate(dt)
 		self.time_to_finish_animation =  math.max(self.time_to_finish_animation - dt, 0.5)
 	else
 		-- con cualquier otra animacion, simplemente la continuamos
-		self.current_animation.currentTime = self.current_animation.currentTime + dt
+		self.current_animation.currentTime = (self.current_animation.currentTime + dt) % self.current_animation.duration
 		self.time_to_finish_animation = self.time_to_finish_animation - dt
-	end
-
-
-	if self.current_animation.currentTime >= self.current_animation.duration then
-		self.current_animation.currentTime = self.current_animation.currentTime - self.current_animation.duration
 	end
 
 end

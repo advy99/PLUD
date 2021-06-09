@@ -31,3 +31,16 @@ function readKey()
 
 	return a
 end
+
+function vector_length(x, y)
+	return math.sqrt(x*x + y*y)
+end
+
+function normalized(x, y)
+	local len = vector_length(x, y)
+	return x / len, y / len
+end
+
+function vector_dot(x1, y1, x2, y2)
+	return (x1 * x2) + (y1 * y2)
+end

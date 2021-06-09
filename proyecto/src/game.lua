@@ -99,7 +99,7 @@ function Game:handleInternalEvent(event)
 	-- cuando entran en una plataforma
 
 	if event == Events.DEATH_BALL_COLLISION then
-		self.minigame:changeBallDirection()
+		-- self.minigame:changeBallDirection()
 	elseif event > 0 then
 		if self.minigame:numPlayersInPlatform(num) == self.minigame:getNumPlayers() then
 			self.countdown = 5

@@ -55,6 +55,6 @@ function InterfaceBox:draw(player)
 	end
 end
 
-function InterfaceBox:switchBetweenControlsAndScore()
-	self.show_controls = not self.show_controls
+function InterfaceBox:setShow(type)
+	self.show_controls = type == "controls"
 end

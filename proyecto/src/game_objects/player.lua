@@ -25,10 +25,11 @@ function Player:initialize(world, x, y, sprite_sheet, id)
 
 	-- le asignamos una altura y anchura, asociados a su forma
 
-	self.scale = 3
+	self.scale = 0.75
 
-	self.width = 12 * self.scale
-	self.height = 10 * self.scale
+	self.width = 48 * self.scale
+	self.height = 40 * self.scale
+
 	local radius = self.width * 3/5 / 2
 	self.circle_shape = love.physics.newCircleShape(radius)
 	self.rectangle_shape = love.physics.newRectangleShape(0, self.height / 4, self.width, self.height / 2)
@@ -59,15 +60,17 @@ function Player:initialize(world, x, y, sprite_sheet, id)
 	-- orientación y animación
 	self.orientation = 1
 
-	self.sprite_width = 32
-	self.sprite_height = 32
 
 	self.animations = {}
+
+	self.sprite_width = 128
+	self.sprite_height = 128
 	self.animations.idle = newAnimation(sprite_sheet, 0, self.sprite_width, self.sprite_height, 1)
-	self.animations.walk = newAnimation(sprite_sheet, 32, self.sprite_width, self.sprite_height, 1)
-	self.animations.jump = newAnimation(sprite_sheet, 64, self.sprite_width, self.sprite_height, 1)
-	self.animations.attack = newAnimation(sprite_sheet, 96, self.sprite_width, self.sprite_height, 1)
-	self.animations.dead = newAnimation(sprite_sheet, 128, self.sprite_width, self.sprite_height, 1)
+	self.animations.walk = newAnimation(sprite_sheet, 128, self.sprite_width, self.sprite_height, 1)
+	self.animations.jump = newAnimation(sprite_sheet, 256, self.sprite_width, self.sprite_height, 1)
+	self.animations.attack = newAnimation(sprite_sheet, 384, self.sprite_width, self.sprite_height, 1)
+	self.animations.dead = newAnimation(sprite_sheet, 512, self.sprite_width, self.sprite_height, 1)
+
 
 	self.current_animation = self.animations.idle
 

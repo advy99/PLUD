@@ -1,15 +1,15 @@
 return {
   version = "1.5",
   luaversion = "5.1",
-  tiledversion = "1.6.0",
+  tiledversion = "1.7.0",
   orientation = "orthogonal",
   renderorder = "right-down",
   width = 40,
   height = 24,
   tilewidth = 32,
   tileheight = 32,
-  nextlayerid = 34,
-  nextobjectid = 44,
+  nextlayerid = 35,
+  nextobjectid = 48,
   properties = {},
   tilesets = {
     {
@@ -151,8 +151,8 @@ return {
               rotation = 0,
               visible = false,
               properties = {
-                ["group"] = 3,
-                ["friction"] = 0.8
+                ["friction"] = 0.8,
+                ["group"] = 3
               }
             }
           }
@@ -257,8 +257,8 @@ return {
               rotation = 0,
               visible = true,
               properties = {
-                ["group"] = 3,
-                ["friction"] = 0.8
+                ["friction"] = 0.8,
+                ["group"] = 3
               }
             },
             {
@@ -273,8 +273,8 @@ return {
               rotation = 0,
               visible = true,
               properties = {
-                ["group"] = 3,
-                ["friction"] = 0.8
+                ["friction"] = 0.8,
+                ["group"] = 3
               }
             },
             {
@@ -283,14 +283,14 @@ return {
               type = "",
               shape = "rectangle",
               x = 513,
-              y = 191.906,
+              y = 191.956,
               width = 254.063,
-              height = 6.59375,
+              height = 6.54375,
               rotation = 0,
               visible = true,
               properties = {
-                ["group"] = 3,
-                ["friction"] = 0.8
+                ["friction"] = 0.8,
+                ["group"] = 3
               }
             },
             {
@@ -305,8 +305,8 @@ return {
               rotation = 0,
               visible = true,
               properties = {
-                ["group"] = 3,
-                ["friction"] = 0.8
+                ["friction"] = 0.8,
+                ["group"] = 3
               }
             },
             {
@@ -315,14 +315,14 @@ return {
               type = "",
               shape = "rectangle",
               x = 32.25,
-              y = 576,
+              y = 575.983,
               width = 95.6875,
-              height = 3.875,
+              height = 3.89167,
               rotation = 0,
               visible = true,
               properties = {
-                ["group"] = 3,
-                ["friction"] = 0.8
+                ["friction"] = 0.8,
+                ["group"] = 3
               }
             },
             {
@@ -331,14 +331,14 @@ return {
               type = "",
               shape = "rectangle",
               x = 127.188,
-              y = 608,
+              y = 607.933,
               width = 32.75,
-              height = 4.0625,
+              height = 4.12917,
               rotation = 0,
               visible = true,
               properties = {
-                ["group"] = 3,
-                ["friction"] = 0.8
+                ["friction"] = 0.8,
+                ["group"] = 3
               }
             },
             {
@@ -347,14 +347,14 @@ return {
               type = "",
               shape = "rectangle",
               x = 159.25,
-              y = 640.063,
+              y = 639.957,
               width = 32.625,
-              height = 5.4375,
+              height = 5.54306,
               rotation = 0,
               visible = true,
               properties = {
-                ["group"] = 3,
-                ["friction"] = 0.8
+                ["friction"] = 0.8,
+                ["group"] = 3
               }
             },
             {
@@ -369,8 +369,8 @@ return {
               rotation = 0,
               visible = true,
               properties = {
-                ["group"] = 3,
-                ["friction"] = 0.8
+                ["friction"] = 0.8,
+                ["group"] = 3
               }
             },
             {
@@ -385,8 +385,8 @@ return {
               rotation = 0,
               visible = true,
               properties = {
-                ["group"] = 3,
-                ["friction"] = 0.8
+                ["friction"] = 0.8,
+                ["group"] = 3
               }
             },
             {
@@ -395,14 +395,14 @@ return {
               type = "",
               shape = "rectangle",
               x = 256,
-              y = 736,
+              y = 735.978,
               width = 774.625,
-              height = 6.9375,
+              height = 6.95972,
               rotation = 0,
               visible = true,
               properties = {
-                ["group"] = 3,
-                ["friction"] = 0.8
+                ["friction"] = 0.8,
+                ["group"] = 3
               }
             },
             {
@@ -417,8 +417,8 @@ return {
               rotation = 0,
               visible = true,
               properties = {
-                ["group"] = 3,
-                ["friction"] = 0.8
+                ["friction"] = 0.8,
+                ["group"] = 3
               }
             },
             {
@@ -433,8 +433,8 @@ return {
               rotation = 0,
               visible = true,
               properties = {
-                ["group"] = 3,
-                ["friction"] = 0.8
+                ["friction"] = 0.8,
+                ["group"] = 3
               }
             },
             {
@@ -443,14 +443,14 @@ return {
               type = "",
               shape = "rectangle",
               x = 1088.09,
-              y = 640.043,
+              y = 639.918,
               width = 38.8696,
-              height = 5,
+              height = 5.125,
               rotation = 0,
               visible = true,
               properties = {
-                ["group"] = 3,
-                ["friction"] = 0.8
+                ["friction"] = 0.8,
+                ["group"] = 3
               }
             },
             {
@@ -465,8 +465,8 @@ return {
               rotation = 0,
               visible = true,
               properties = {
-                ["group"] = 3,
-                ["friction"] = 0.8
+                ["friction"] = 0.8,
+                ["group"] = 3
               }
             },
             {
@@ -475,14 +475,14 @@ return {
               type = "",
               shape = "rectangle",
               x = 1152,
-              y = 576,
+              y = 575.973,
               width = 102.813,
-              height = 10.5,
+              height = 10.5273,
               rotation = 0,
               visible = true,
               properties = {
-                ["group"] = 3,
-                ["friction"] = 0.8
+                ["friction"] = 0.8,
+                ["group"] = 3
               }
             },
             {
@@ -497,8 +497,8 @@ return {
               rotation = 0,
               visible = true,
               properties = {
-                ["group"] = 3,
-                ["friction"] = 0.8
+                ["friction"] = 0.8,
+                ["group"] = 3
               }
             },
             {
@@ -513,8 +513,8 @@ return {
               rotation = 0,
               visible = true,
               properties = {
-                ["group"] = 3,
-                ["friction"] = 0.8
+                ["friction"] = 0.8,
+                ["group"] = 3
               }
             },
             {
@@ -523,17 +523,84 @@ return {
               type = "",
               shape = "rectangle",
               x = 480.477,
-              y = 383.984,
+              y = 383.968,
               width = 318.906,
-              height = 1.70313,
+              height = 1.71876,
               rotation = 0,
               visible = true,
               properties = {
-                ["group"] = 3,
-                ["friction"] = 0.8
+                ["friction"] = 0.8,
+                ["group"] = 3
               }
             }
           }
+        }
+      }
+    },
+    {
+      type = "objectgroup",
+      draworder = "topdown",
+      id = 34,
+      name = "spawnpoints",
+      visible = false,
+      opacity = 1,
+      offsetx = 0,
+      offsety = 0,
+      parallaxx = 1,
+      parallaxy = 1,
+      properties = {},
+      objects = {
+        {
+          id = 44,
+          name = "spawn4",
+          type = "",
+          shape = "rectangle",
+          x = 256,
+          y = 257.333,
+          width = 0,
+          height = 0,
+          rotation = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          id = 45,
+          name = "spawn3",
+          type = "",
+          shape = "rectangle",
+          x = 1024,
+          y = 258.667,
+          width = 0,
+          height = 0,
+          rotation = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          id = 46,
+          name = "spawn2",
+          type = "",
+          shape = "rectangle",
+          x = 318.667,
+          y = 674.667,
+          width = 0,
+          height = 0,
+          rotation = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          id = 47,
+          name = "spawn1",
+          type = "",
+          shape = "rectangle",
+          x = 992,
+          y = 670.667,
+          width = 0,
+          height = 0,
+          rotation = 0,
+          visible = true,
+          properties = {}
         }
       }
     }

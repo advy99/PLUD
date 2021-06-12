@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.5" tiledversion="1.6.0" orientation="orthogonal" renderorder="right-down" width="40" height="24" tilewidth="32" tileheight="32" infinite="0" nextlayerid="34" nextobjectid="28">
+<map version="1.5" tiledversion="1.7.0" orientation="orthogonal" renderorder="right-down" width="40" height="24" tilewidth="32" tileheight="32" infinite="0" nextlayerid="35" nextobjectid="36">
  <editorsettings>
   <export target="level_1.lua" format="lua"/>
  </editorsettings>
@@ -49,8 +49,8 @@
   <objectgroup id="12" name="floor_sensor" locked="1">
    <object id="17" name="floor" x="31.625" y="735.773" width="1216.5" height="8.22727" visible="0">
     <properties>
-     <property name="group" type="int" value="3"/>
      <property name="friction" type="float" value="0.8"/>
+     <property name="group" type="int" value="3"/>
     </properties>
    </object>
   </objectgroup>
@@ -95,40 +95,46 @@
   <objectgroup id="32" name="platforms">
    <object id="22" name="p5" x="161" y="575.914" width="190.333" height="9.41951">
     <properties>
-     <property name="group" type="int" value="3"/>
      <property name="friction" type="float" value="0.8"/>
+     <property name="group" type="int" value="3"/>
     </properties>
    </object>
    <object id="23" name="p4" x="512.75" y="511.938" width="254.25" height="7.3125">
     <properties>
-     <property name="group" type="int" value="3"/>
      <property name="friction" type="float" value="0.8"/>
+     <property name="group" type="int" value="3"/>
     </properties>
    </object>
    <object id="24" name="p3" x="928.545" y="575.949" width="190.727" height="5.14205">
     <properties>
-     <property name="group" type="int" value="3"/>
      <property name="friction" type="float" value="0.8"/>
+     <property name="group" type="int" value="3"/>
     </properties>
    </object>
    <object id="25" name="p2" x="928.909" y="319.963" width="190.545" height="2.21875">
     <properties>
-     <property name="group" type="int" value="3"/>
      <property name="friction" type="float" value="0.8"/>
+     <property name="group" type="int" value="3"/>
     </properties>
    </object>
    <object id="26" name="p1" x="160.364" y="319.938" width="191.273" height="3.15341">
     <properties>
-     <property name="group" type="int" value="3"/>
      <property name="friction" type="float" value="0.8"/>
+     <property name="group" type="int" value="3"/>
     </properties>
    </object>
    <object id="27" name="p0" x="513" y="191.906" width="254.063" height="6.59375">
     <properties>
-     <property name="group" type="int" value="3"/>
      <property name="friction" type="float" value="0.8"/>
+     <property name="group" type="int" value="3"/>
     </properties>
    </object>
   </objectgroup>
  </group>
+ <objectgroup id="34" name="spawnpoints" visible="0">
+  <object id="32" name="spawn4" x="256" y="508"/>
+  <object id="33" name="spawn3" x="256" y="254.667"/>
+  <object id="34" name="spawn2" x="1022.67" y="256"/>
+  <object id="35" name="spawn1" x="1024" y="512"/>
+ </objectgroup>
 </map>

@@ -1,15 +1,15 @@
 return {
   version = "1.5",
   luaversion = "5.1",
-  tiledversion = "1.6.0",
+  tiledversion = "1.7.0",
   orientation = "orthogonal",
   renderorder = "right-down",
   width = 40,
   height = 24,
   tilewidth = 32,
   tileheight = 32,
-  nextlayerid = 34,
-  nextobjectid = 28,
+  nextlayerid = 35,
+  nextobjectid = 36,
   properties = {},
   tilesets = {
     {
@@ -151,8 +151,8 @@ return {
               rotation = 0,
               visible = false,
               properties = {
-                ["group"] = 3,
-                ["friction"] = 0.8
+                ["friction"] = 0.8,
+                ["group"] = 3
               }
             }
           }
@@ -257,8 +257,8 @@ return {
               rotation = 0,
               visible = true,
               properties = {
-                ["group"] = 3,
-                ["friction"] = 0.8
+                ["friction"] = 0.8,
+                ["group"] = 3
               }
             },
             {
@@ -273,8 +273,8 @@ return {
               rotation = 0,
               visible = true,
               properties = {
-                ["group"] = 3,
-                ["friction"] = 0.8
+                ["friction"] = 0.8,
+                ["group"] = 3
               }
             },
             {
@@ -289,8 +289,8 @@ return {
               rotation = 0,
               visible = true,
               properties = {
-                ["group"] = 3,
-                ["friction"] = 0.8
+                ["friction"] = 0.8,
+                ["group"] = 3
               }
             },
             {
@@ -305,8 +305,8 @@ return {
               rotation = 0,
               visible = true,
               properties = {
-                ["group"] = 3,
-                ["friction"] = 0.8
+                ["friction"] = 0.8,
+                ["group"] = 3
               }
             },
             {
@@ -321,8 +321,8 @@ return {
               rotation = 0,
               visible = true,
               properties = {
-                ["group"] = 3,
-                ["friction"] = 0.8
+                ["friction"] = 0.8,
+                ["group"] = 3
               }
             },
             {
@@ -337,11 +337,78 @@ return {
               rotation = 0,
               visible = true,
               properties = {
-                ["group"] = 3,
-                ["friction"] = 0.8
+                ["friction"] = 0.8,
+                ["group"] = 3
               }
             }
           }
+        }
+      }
+    },
+    {
+      type = "objectgroup",
+      draworder = "topdown",
+      id = 34,
+      name = "spawnpoints",
+      visible = false,
+      opacity = 1,
+      offsetx = 0,
+      offsety = 0,
+      parallaxx = 1,
+      parallaxy = 1,
+      properties = {},
+      objects = {
+        {
+          id = 32,
+          name = "spawn4",
+          type = "",
+          shape = "rectangle",
+          x = 256,
+          y = 508,
+          width = 0,
+          height = 0,
+          rotation = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          id = 33,
+          name = "spawn3",
+          type = "",
+          shape = "rectangle",
+          x = 256,
+          y = 254.667,
+          width = 0,
+          height = 0,
+          rotation = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          id = 34,
+          name = "spawn2",
+          type = "",
+          shape = "rectangle",
+          x = 1022.67,
+          y = 256,
+          width = 0,
+          height = 0,
+          rotation = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          id = 35,
+          name = "spawn1",
+          type = "",
+          shape = "rectangle",
+          x = 1024,
+          y = 512,
+          width = 0,
+          height = 0,
+          rotation = 0,
+          visible = true,
+          properties = {}
         }
       }
     }

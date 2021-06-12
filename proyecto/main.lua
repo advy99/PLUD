@@ -71,13 +71,6 @@ function love.draw()
 	end
 end
 
--- TODO Para hacer pruebas más adelante
--- function love.resize(w, h)
--- 	scale = w / Constants.DEFAULT_WIDTH
---
--- 	love.window.updateMode( w, Constants.DEFAULT_HEIGHT * scale )
--- end
-
 function love.keypressed(k)
 	game:keyPressed(k)
 end

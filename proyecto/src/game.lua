@@ -35,11 +35,8 @@ function Game:initialize()
 
 	self:changeMiniGame(Constants.MENU)
 
-	-- TODO: por cordura mental esto está comentado para las pruebas
 	SoundManager.static.menu_music:play()
-	-- self.music = love.audio.newSource("music/menu.mp3", "stream")
-	-- self.music:setLooping(true)
-	-- self.music:play()
+
 end
 
 
@@ -155,8 +152,6 @@ function Game:handleEventBetweenObjects(object_a, object_b, event)
 end
 
 function Game:changeMiniGame(minigame)
-
-	-- TODO solo cambiar entre controles y score cuando entre a un juego
 
 
 	if minigame == Constants.BOMB_TAG then

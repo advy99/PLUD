@@ -11,6 +11,7 @@ require("src/minigames/menus/title_menu")
 require("src/minigames/menus/practice_menu")
 require("src/text_box")
 require("src/interface_box")
+require("src/sound_manager")
 
 
 local class = require "lib/middleclass"
@@ -35,9 +36,10 @@ function Game:initialize()
 	self:changeMiniGame(Constants.MENU)
 
 	-- TODO: por cordura mental esto está comentado para las pruebas
-	self.music = love.audio.newSource("music/menu.mp3", "stream")
-	self.music:setLooping(true)
-	self.music:play()
+	SoundManager.static.menu_music:play()
+	-- self.music = love.audio.newSource("music/menu.mp3", "stream")
+	-- self.music:setLooping(true)
+	-- self.music:play()
 end
 
 
@@ -165,6 +167,15 @@ function Game:changeMiniGame(minigame)
 		--self.minigame = TreasureHunt:new(self.num_active_players) TODO: implementar tercer minijuego
 	elseif minigame == Constants.MENU then
 		self.minigame = TitleMenu:new(self.num_active_players)
+		SoundManager.static.menu_music:setVolume(config:getMusicVolume() * config:getMusicVolume())
+
+		local sfx_vol = config:getSFXVolume() * config:getSFXVolume()
+		for _ , player in pairs(self.minigame.level.players) do
+			player.sound_manager:setVolume("jump", sfx_vol)
+			player.sound_manager:setVolume("land", sfx_vol)
+			player.sound_manager:setVolume("dead", sfx_vol)
+		end
+
 	elseif minigame == Constants.PRACTICE then
 		self.minigame = PracticeMenu:new(self.num_active_players)
 	elseif minigame == Constants.CONFIGURATION_MENU then

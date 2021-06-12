@@ -66,6 +66,15 @@ function ConfigurationMenu:update(dt)
 		self.init_config:setSFXVolume(self.sfx_slider.value)
 		self.init_config:setMuted(self.mute_chk.checked)
 
+		SoundManager.static.menu_music:setVolume(self.music_slider.value * self.music_slider.value)
+
+		local sfx_vol = self.sfx_slider.value * self.sfx_slider.value
+		for _ , player in pairs(self.level.players) do
+			player.sound_manager:setVolume("jump", sfx_vol)
+			player.sound_manager:setVolume("land", sfx_vol)
+			player.sound_manager:setVolume("dead", sfx_vol)
+		end
+
 	else
 
 		if suit.Button("<-", {align = "center"}, 500, 210, 70,30).hit then

@@ -37,6 +37,12 @@ function Game:initialize()
 
 	SoundManager.static.menu_music:play()
 
+	local vol = 1
+	if config:getMuted() then
+		vol = 0
+	end
+	love.audio.setVolume(vol)
+
 end
 
 
@@ -170,6 +176,12 @@ function Game:changeMiniGame(minigame)
 			player.sound_manager:setVolume("land", sfx_vol)
 			player.sound_manager:setVolume("dead", sfx_vol)
 		end
+
+		local vol = 1
+		if config:getMuted() then
+			vol = 0
+		end
+		love.audio.setVolume(vol)
 
 	elseif minigame == Constants.PRACTICE then
 		self.minigame = PracticeMenu:new(self.num_active_players)

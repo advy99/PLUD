@@ -66,7 +66,16 @@ function ConfigurationMenu:update(dt)
 		self.init_config:setSFXVolume(self.sfx_slider.value)
 		self.init_config:setMuted(self.mute_chk.checked)
 
-		SoundManager.static.menu_music:setVolume(self.music_slider.value * self.music_slider.value)
+		local vol = 1
+
+		if self.mute_chk.checked then
+			vol = 0
+		end
+
+		love.audio.setVolume(vol)
+
+		local music_vol = self.music_slider.value * self.music_slider.value
+		SoundManager.static.menu_music:setVolume(music_vol)
 
 		local sfx_vol = self.sfx_slider.value * self.sfx_slider.value
 		for _ , player in pairs(self.level.players) do

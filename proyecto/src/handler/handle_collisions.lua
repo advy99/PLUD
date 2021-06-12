@@ -103,21 +103,17 @@ function beginContact(a, b, coll)
 	-- lo mismo, pero por si se pasa a y b intercam
 	if (group_a == Constants.OBJECTS_GROUP and category_a == Constants.DEATH_BALL_CATEGORY or
 		group_b == Constants.OBJECTS_GROUP and category_b == Constants.DEATH_BALL_CATEGORY) and ball_can_touch then
+		-- cogemos la normal, y cambiamos
 		local x, y = coll:getNormal()
+		x, y = normalized(x, y)
+
 		local inix, iniy
 		inix = game.minigame.energy_ball.x_direction
 		iniy = game.minigame.energy_ball.y_direction
 		local dot = vector_dot(game.minigame.energy_ball.x_direction, game.minigame.energy_ball.y_direction, x, y)
-		local perpendicular_x = game.minigame.energy_ball.x_direction - (2 * x * dot)
-		local perpendicular_y = game.minigame.energy_ball.y_direction - (2 * y * dot)
+		game.minigame.energy_ball.x_direction = game.minigame.energy_ball.x_direction - (2 * x * dot)
+		game.minigame.energy_ball.y_direction = game.minigame.energy_ball.y_direction - (2 * y * dot)
 
-		local n_x, n_y = perpendicular_x, perpendicular_y
-
-		game.minigame.energy_ball.x_direction = n_x
-		game.minigame.energy_ball.y_direction = n_y
-
-		game:handleInternalEvent(Events.DEATH_BALL_COLLISION)
-		last_collision = love.timer.getTime( )
 		ball_can_touch = false
 	end
 

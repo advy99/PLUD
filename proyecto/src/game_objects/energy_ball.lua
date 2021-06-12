@@ -33,7 +33,7 @@ function EnergyBall:initialize(world, x, y)
 
 	-- le asignamos una altura y anchura, asociados a su forma
 
-	self.scale = 1
+	self.scale = 0.75
 
 	local radius = (self.sprite_width - 15) * self.scale / 2
 	self.circle_shape = love.physics.newCircleShape(radius)
@@ -45,8 +45,8 @@ function EnergyBall:initialize(world, x, y)
 
 	self.circle_fixture:setUserData("energy_ball")
 
-	self.x_speed = 200
-	self.y_speed = 200
+	self.x_speed = 300
+	self.y_speed = 300
 	self.x_direction = 1
 	self.y_direction = 1
 end

@@ -9,9 +9,9 @@ function TitleMenu:initialize(num_players)
 	Menu.initialize(self, "level_title", num_players)
 
 	local game_name_image = love.graphics.newImage("img/lose_to_win_animated.png")
-	self.sprite_width = 3000
-	self.sprite_height = 2600
-	self.title_animation = newAnimation(game_name_image, 0, self.sprite_width, self.sprite_height, 1)
+	self.sprite_width = 1500
+	self.sprite_height = 1300
+	self.title_animation = newAnimation(game_name_image, 0, self.sprite_width, self.sprite_height, 0.9)
 
 
 end
@@ -33,7 +33,8 @@ function TitleMenu:draw()
 
 	local quad = math.floor(self.title_animation.currentTime / self.title_animation.duration * #self.title_animation.quads) + 1
 
-	love.graphics.draw(self.title_animation.spriteSheet, self.title_animation.quads[quad], 480, 70, 0, 0.1, 0.1 )
+	love.graphics.draw(self.title_animation.spriteSheet, self.title_animation.quads[quad], 480, 70, 0, 0.2, 0.2 )
+ 	-- love.graphics.draw(self.game_name_image, 480, 70, 0, 0.1, 0.1)
 
 end
 

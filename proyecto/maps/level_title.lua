@@ -511,7 +511,7 @@ return {
       objects = {
         {
           id = 38,
-          name = "s4",
+          name = "spawn4",
           type = "",
           shape = "rectangle",
           x = 528,
@@ -524,7 +524,7 @@ return {
         },
         {
           id = 39,
-          name = "s3",
+          name = "spawn3",
           type = "",
           shape = "rectangle",
           x = 591.333,
@@ -537,7 +537,7 @@ return {
         },
         {
           id = 42,
-          name = "s2",
+          name = "spawn2",
           type = "",
           shape = "rectangle",
           x = 688,
@@ -550,7 +550,7 @@ return {
         },
         {
           id = 43,
-          name = "s1",
+          name = "spawn1",
           type = "",
           shape = "rectangle",
           x = 749.333,

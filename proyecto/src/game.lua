@@ -11,6 +11,7 @@ require("src/minigames/menus/title_menu")
 require("src/minigames/menus/practice_menu")
 require("src/text_box")
 require("src/interface_box")
+require("src/sound_manager")
 
 
 local class = require "lib/middleclass"
@@ -35,9 +36,10 @@ function Game:initialize()
 	self:changeMiniGame(Constants.MENU)
 
 	-- TODO: por cordura mental esto está comentado para las pruebas
-	self.music = love.audio.newSource("music/menu.mp3", "stream")
-	self.music:setLooping(true)
-	self.music:play()
+	SoundManager.static.menu_music:play()
+	-- self.music = love.audio.newSource("music/menu.mp3", "stream")
+	-- self.music:setLooping(true)
+	-- self.music:play()
 end
 
 

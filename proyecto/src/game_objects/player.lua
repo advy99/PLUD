@@ -79,10 +79,10 @@ function Player:initialize(world, x, y, sprite_sheet, id)
 
 	self.time_to_finish_animation = 0
 
-	self.jump_sound = love.audio.newSource("music/jump.wav", "static")
-	self.land_sound = love.audio.newSource("music/land.ogg", "static")
-	self.dead_sound = love.audio.newSource("music/dead.ogg", "static")
-
+	self.sound_manager = SoundManager:new()
+	self.sound_manager:addSource("music/jump.wav", "static", false, "jump")
+	self.sound_manager:addSource("music/land.ogg", "static", false, "land")
+	self.sound_manager:addSource("music/dead.ogg", "static", false, "dead")
 end
 
 function Player:getScore()
@@ -180,7 +180,7 @@ function Player:kill()
 	self:setMode("dying")
 	self.circle_fixture:setSensor(true)
 	self.rectangle_fixture:setSensor(true)
-	self:playKillSound()
+	self:playSound("dead")
 end
 
 -- Función para gestionar que animación es necesaria utilizar en ese momento
@@ -334,21 +334,6 @@ function Player:destroy()
 end
 
 
-function Player:playJumpSound()
-
-	if not self.jump_sound:isPlaying() then
-		self.jump_sound:play()
-	end
-end
-
-function Player:playLandSound()
-	if not self.land_sound:isPlaying() then
-		self.land_sound:play()
-	end
-end
-
-function Player:playKillSound()
-	if not self.dead_sound:isPlaying() then
-		self.dead_sound:play()
-	end
+function Player:playSound(id)
+	self.sound_manager:playSource(id)
 end

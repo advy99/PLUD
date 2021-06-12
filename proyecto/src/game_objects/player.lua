@@ -30,6 +30,7 @@ function Player:initialize(world, x, y, sprite_sheet, id)
 	self.width = 48 * self.scale
 	self.height = 40 * self.scale
 
+	self.player_id = id
 	local radius = self.width * 3/5 / 2
 	self.circle_shape = love.physics.newCircleShape(radius)
 	self.rectangle_shape = love.physics.newRectangleShape(0, self.height / 4, self.width, self.height / 2)
@@ -38,15 +39,13 @@ function Player:initialize(world, x, y, sprite_sheet, id)
 	self.circle_fixture = love.physics.newFixture(self.body, self.circle_shape, 1)
 	self.circle_fixture:setGroupIndex(Constants.PLAYER_GROUP)
 
-	self.circle_fixture:setUserData(id)
+	self.circle_fixture:setUserData(self.player_id)
 
 	self.rectangle_fixture = love.physics.newFixture(self.body, self.rectangle_shape, 1)
 	self.rectangle_fixture:setGroupIndex(Constants.PLAYER_GROUP)
-	self.rectangle_fixture:setUserData(id)
+	self.rectangle_fixture:setUserData(self.player_id)
 	self.rectangle_fixture:setFriction(0.5)
-
 	self.has_bomb = false
-	self.player_id = id
 
 	-- Variables de su velocidad, fuerza de salto, masa, y estado
 	self.x_speed = 700
@@ -82,7 +81,7 @@ function Player:initialize(world, x, y, sprite_sheet, id)
 
 	self.jump_sound = love.audio.newSource("music/jump.wav", "static")
 	self.land_sound = love.audio.newSource("music/land.ogg", "static")
-	
+	self.dead_sound = love.audio.newSource("music/dead.ogg", "static")
 
 end
 
@@ -178,9 +177,10 @@ end
 
 -- Función para que el jugador muera
 function Player:kill()
-	self:setMode("dying");
+	self:setMode("dying")
 	self.circle_fixture:setSensor(true)
 	self.rectangle_fixture:setSensor(true)
+	self:playKillSound()
 end
 
 -- Función para gestionar que animación es necesaria utilizar en ese momento
@@ -224,11 +224,11 @@ end
 
 function Player:respawn(pos_x, pos_y)
 	self.has_died = false
-	self.circle_fixture:setSensor(false)
-	self.rectangle_fixture:setSensor(false)
 	self.mode = "grounded"
 	self.body:setPosition(pos_x, pos_y)
 	self.body:setLinearVelocity(0, 0)
+	self.circle_fixture:setSensor(false)
+	self.rectangle_fixture:setSensor(false)
 	self.body:setAwake(true)
 	self.time_to_finish_animation = 0
 end
@@ -344,5 +344,11 @@ end
 function Player:playLandSound()
 	if not self.land_sound:isPlaying() then
 		self.land_sound:play()
+	end
+end
+
+function Player:playKillSound()
+	if not self.dead_sound:isPlaying() then
+		self.dead_sound:play()
 	end
 end

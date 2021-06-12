@@ -30,8 +30,8 @@ function ConfigurationMenu:initialize(num_players)
 
 	self.vsync_chk = {text = "VSYNC", checked = self.init_config:getVSYNC()}
 	self.fps_chk = {text = "SHOW FPS", checked = self.init_config:getShowFPS()}
-	self.music_slider = {value = self.init_config:getMusicVolume(), min = 0, max = 2}
-	self.sfx_slider = {value = self.init_config:getSFXVolume(), min = 0, max = 2}
+	self.music_slider = {value = self.init_config:getMusicVolume(), min = 0, max = 1}
+	self.sfx_slider = {value = self.init_config:getSFXVolume(), min = 0, max = 1}
 	self.mute_chk = {text = "MUTE ALL", checked = self.init_config:getMuted()}
 
 

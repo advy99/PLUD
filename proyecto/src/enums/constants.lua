@@ -45,3 +45,8 @@ Constants.PRACTICE = 8
 
 Constants.ADD_PLAYER_KEY = "return"
 Constants.REMOVE_PLAYER_KEY = "-"
+
+Constants.MIN_PLAYERS = 1
+Constants.MAX_PLAYERS = 4
+
+Constants.TIME_BETWEEN_MINIGAME = 3

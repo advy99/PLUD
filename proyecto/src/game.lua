@@ -22,7 +22,7 @@ Game = class("Game")
 function Game:initialize()
 
 	self.minigame = nil
-	self.num_active_players = 1
+	self.num_active_players = Constants.MIN_PLAYERS
 
 	self.countdown = nil
 	self.next_minigame = nil
@@ -102,7 +102,7 @@ function Game:handleInternalEvent(event)
 		-- self.minigame:changeBallDirection()
 	elseif event > 0 then
 		if self.minigame:numPlayersInPlatform(num) == self.minigame:getNumPlayers() then
-			self.countdown = 5
+			self.countdown = Constants.TIME_BETWEEN_MINIGAME
 			self.next_minigame = nil
 			if event == Events.PLAYER_LAND_PLATFORM_PLAY then
 				self.next_minigame = Constants.DEATH_BALL -- TODO: cambiar entre los 3 minijuegos, con ganador, tabla de puntuaciones, etc.
@@ -204,11 +204,11 @@ function Game:keyPressed(k)
 		end
 	end
 
-	if k == Constants.ADD_PLAYER_KEY and self.num_active_players < 4 then
+	if k == Constants.ADD_PLAYER_KEY and self.num_active_players < Constants.MAX_PLAYERS then
 		self:addPlayer()
 	end
 
-	if k == Constants.REMOVE_PLAYER_KEY and self.num_active_players > 1 then
+	if k == Constants.REMOVE_PLAYER_KEY and self.num_active_players > Constants.MIN_PLAYERS then
 		self:removePlayer()
 	end
 

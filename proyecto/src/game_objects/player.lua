@@ -175,8 +175,8 @@ end
 -- Función para que el jugador muera
 function Player:kill()
 	self:setMode("dying");
-	self.circle_fixture:setGroupIndex(-1)
-	self.rectangle_fixture:setGroupIndex(-1)
+	self.circle_fixture:setSensor(true)
+	self.rectangle_fixture:setSensor(true)
 end
 
 -- Función para gestionar que animación es necesaria utilizar en ese momento
@@ -220,10 +220,11 @@ end
 
 function Player:respawn(pos_x, pos_y)
 	self.has_died = false
-	self.circle_fixture:setGroupIndex(Constants.PLAYER_GROUP)
-	self.rectangle_fixture:setGroupIndex(Constants.PLAYER_GROUP)
+	self.circle_fixture:setSensor(false)
+	self.rectangle_fixture:setSensor(false)
 	self.mode = "grounded"
 	self.body:setPosition(pos_x, pos_y)
+	self.body:setLinearVelocity(0, 0)
 	self.body:setAwake(true)
 	self.time_to_finish_animation = 0
 end

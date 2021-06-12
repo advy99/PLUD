@@ -66,6 +66,8 @@ function ConfigurationMenu:update(dt)
 		self.init_config:setSFXVolume(self.sfx_slider.value)
 		self.init_config:setMuted(self.mute_chk.checked)
 
+		SoundManager.static.menu_music:setVolume(self.music_slider.value * self.music_slider.value)
+
 	else
 
 		if suit.Button("<-", {align = "center"}, 500, 210, 70,30).hit then

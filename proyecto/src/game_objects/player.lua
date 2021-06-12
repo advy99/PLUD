@@ -80,7 +80,7 @@ function Player:initialize(world, x, y, sprite_sheet, id)
 	self.time_to_finish_animation = 0
 
 	self.sound_manager = SoundManager:new()
-	self.sound_manager:addSource("music/jump.wav", "static", false, "jump")
+	self.sound_manager:addSource("music/jump.ogg", "static", false, "jump")
 	self.sound_manager:addSource("music/land.ogg", "static", false, "land")
 	self.sound_manager:addSource("music/dead.ogg", "static", false, "dead")
 end

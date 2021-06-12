@@ -2,7 +2,7 @@ local class = require "lib/middleclass"
 
 SoundManager = class("SoundManager")
 
-SoundManager.static.menu_music = love.audio.newSource("music/menu.mp3", "stream")
+SoundManager.static.menu_music = love.audio.newSource("music/menu.ogg", "stream")
 SoundManager.static.menu_music:setLooping(true)
 
 function SoundManager:initialize()

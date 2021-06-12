@@ -93,7 +93,6 @@ function Level:addPlayer(num_player)
 	pos_x = self.spawnpoints["spawn" .. num_player].x
 	pos_y = self.spawnpoints["spawn" .. num_player].y
 
-
 	local player_name = "player" .. num_player
 
 	self.players[player_name] = Player:new(self.world, pos_x, pos_y, sprite_sheet, player_name )

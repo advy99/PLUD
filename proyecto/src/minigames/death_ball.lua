@@ -25,9 +25,11 @@ function DeathBall:update(dt)
 
 	self.energy_ball:update(dt)
 
+
 	for _ , player in pairs(self.level.players) do
 		if player.has_died then
-			player:respawn(300, 300)
+			local num = love.math.random(4)
+			player:respawn(self.level.spawnpoints["spawn" .. num].x, self.level.spawnpoints["spawn" .. num].y)
 		end
 	end
 

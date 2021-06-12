@@ -150,11 +150,7 @@ end
 function Game:changeMiniGame(minigame)
 
 	-- TODO solo cambiar entre controles y score cuando entre a un juego
-	if minigame == Constants.BOMB_TAG or minigame == Constants.DEATH_BALL then
-		for i = 1, self.num_active_players, 1 do
-			self["interface_p" .. i]:switchBetweenControlsAndScore()
-		end
-	end
+
 
 	if minigame == Constants.BOMB_TAG then
 		self.minigame = BombTag:new(self.num_active_players)
@@ -174,6 +170,19 @@ function Game:changeMiniGame(minigame)
 		self.minigame:saveConfig()
 		self.minigame = TitleMenu:new(self.num_active_players)
 	end
+
+	local show
+
+	if self.minigame.class.super.name == "Menu" then
+		show = "controls"
+	else
+		show = "score"
+	end
+
+	for i = 1, self.num_active_players, 1 do
+		self["interface_p" .. i]:setShow(show)
+	end
+
 end
 
 function Game:loadLevel(level_name)
@@ -226,7 +235,7 @@ end
 
 function Game:addPlayer()
 
-	if self.minigame.class.name == "ConfigurationMenu" or self.minigame.class.name == "TitleMenu" then
+	if self.minigame.class.super.name == "Menu" then
 		self.num_active_players = self.num_active_players + 1
 		self.minigame:addPlayer(self.num_active_players)
 		self.countdown = nil
@@ -238,7 +247,8 @@ end
 
 
 function Game:removePlayer()
-	if self.minigame.class.name == "ConfigurationMenu" or self.minigame.class.name == "TitleMenu" then
+
+	if self.minigame.class.super.name == "Menu" then
 		self.minigame:removePlayer(self.num_active_players)
 		self.num_active_players = self.num_active_players - 1
 		self.countdown = nil

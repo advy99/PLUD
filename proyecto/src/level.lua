@@ -18,6 +18,20 @@ function Level:initialize(level_name, num_players)
 	self.map = sti("maps/" .. level_name .. ".lua", { "box2d" })
 	self.map:box2d_init(self.world)
 
+	self.spawnpoints = {}
+	self.spawnpoints.spawn1 = {}
+	self.spawnpoints.spawn2 = {}
+	self.spawnpoints.spawn3 = {}
+	self.spawnpoints.spawn4 = {}
+
+
+	for k, object in pairs(self.map.objects) do
+		if object.name:match("spawn%d") then
+			self.spawnpoints[object.name].x = object.x
+			self.spawnpoints[object.name].y = object.y
+		end
+	end
+
 	-- guardamos el nombre del nivel
 	self.level_name = level_name
 
@@ -74,9 +88,15 @@ function Level:addPlayer(num_player)
 		sprite_sheet = love.graphics.newImage("img/yellow_slime_atlas.png")
 	end
 
+	local pos_x, pos_y
+
+	pos_x = self.spawnpoints["spawn" .. num_player].x
+	pos_y = self.spawnpoints["spawn" .. num_player].y
+
+
 	local player_name = "player" .. num_player
 
-	self.players[player_name] = Player:new(self.world, 300, love.graphics.getHeight() / 2, sprite_sheet, player_name )
+	self.players[player_name] = Player:new(self.world, pos_x, pos_y, sprite_sheet, player_name )
 
 end
 

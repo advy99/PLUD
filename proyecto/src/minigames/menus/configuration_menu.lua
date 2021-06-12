@@ -15,7 +15,7 @@ function ConfigurationMenu:initialize(num_players)
 	self.players_images.player3 = love.graphics.newImage("img/green_slime_atlas.png")
 	self.players_images.player4 = love.graphics.newImage("img/yellow_slime_atlas.png")
 	self.actual_player = 1
-	self.top_left = love.graphics.newQuad(0, 0, 32, 32, self.players_images.player1:getDimensions())
+	self.top_left = love.graphics.newQuad(0, 0, 128, 128, self.players_images.player1:getDimensions())
 
 	local text_color = {1, 1, 1}
 	local box_color = {0, 0, 0}
@@ -25,7 +25,7 @@ function ConfigurationMenu:initialize(num_players)
 	self.screen_section = TextBox:new("SCREEN", 525, 170, 200, 60, 35, 0.9, text_color, box_color)
 	self.volume_section = TextBox:new("VOLUME", 525, 350, 200, 60, 35, 0.9, text_color, box_color)
 
-	self.config_background = TextBox:new("", 390, 70, 500, 600, 40, 0.9, text_color, box_color)
+	self.config_background = TextBox:new("", 390, 70, 500, 550, 40, 0.9, text_color, box_color)
 	self.init_config = Configuration:new()
 
 	self.vsync_chk = {text = "VSYNC", checked = self.init_config:getVSYNC()}
@@ -63,14 +63,14 @@ function ConfigurationMenu:update(dt)
 		self.init_config:setSFXVolume(self.sfx_slider.value)
 	else
 
-		if suit.Button("<-", {align = "center"}, 500, 150, 70,30).hit then
+		if suit.Button("<-", {align = "center"}, 500, 210, 70,30).hit then
 			self.actual_player = self.actual_player - 1
 			if self.actual_player < 1 then
 				self.actual_player = self.actual_player + 4
 			end
 		end
 
-		if suit.Button("->", {align = "center"}, 700, 150, 70,30).hit then
+		if suit.Button("->", {align = "center"}, 700, 210, 70,30).hit then
 			self.actual_player = self.actual_player + 1
 
 			if self.actual_player > 4 then
@@ -79,17 +79,17 @@ function ConfigurationMenu:update(dt)
 		end
 
 
-		suit.Label("JUMP", {align = "left"}, 550, 200, 130,30)
+		suit.Label("JUMP", {align = "left"}, 550, 300, 130,30)
 
-		if suit.Button(string.upper(self.init_config.config["player" .. self.actual_player].JUMP_KEY), {id = "jump", align = "center"}, 675, 200, 40,30).hit then
+		if suit.Button(string.upper(self.init_config.config["player" .. self.actual_player].JUMP_KEY), {id = "jump", align = "center"}, 675, 300, 40,30).hit then
 			local k = readKey()
 			if not self.init_config:keyAssigned(k) and k ~= "escape" then
 				self.init_config.config["player" .. self.actual_player].JUMP_KEY = k
 			end
 		end
 
-		suit.Label("LEFT", {align = "left"}, 550, 250, 130,30)
-		if suit.Button(string.upper(self.init_config.config["player" .. self.actual_player].LEFT_KEY), {id = "left", align = "center"}, 675, 250, 40,30).hit then
+		suit.Label("LEFT", {align = "left"}, 550, 350, 130,30)
+		if suit.Button(string.upper(self.init_config.config["player" .. self.actual_player].LEFT_KEY), {id = "left", align = "center"}, 675, 350, 40,30).hit then
 			local k = readKey()
 			if not self.init_config:keyAssigned(k) and k ~= "escape" then
 				self.init_config.config["player" .. self.actual_player].LEFT_KEY = k
@@ -97,8 +97,8 @@ function ConfigurationMenu:update(dt)
 		end
 
 
-		suit.Label("RIGHT", {align = "left"}, 550, 300, 130,30)
-		if suit.Button(string.upper(self.init_config.config["player" .. self.actual_player].RIGHT_KEY), {id = "right", align = "center"}, 675, 300, 40,30).hit then
+		suit.Label("RIGHT", {align = "left"}, 550, 400, 130,30)
+		if suit.Button(string.upper(self.init_config.config["player" .. self.actual_player].RIGHT_KEY), {id = "right", align = "center"}, 675, 400, 40,30).hit then
 			local k = readKey()
 			if not self.init_config:keyAssigned(k) and k ~= "escape" then
 				self.init_config.config["player" .. self.actual_player].RIGHT_KEY = k
@@ -125,7 +125,7 @@ function ConfigurationMenu:draw()
 	else
 		self.controls_title:draw()
 		love.graphics.reset()
-		love.graphics.draw(self.players_images["player" .. self.actual_player], self.top_left, 590, 115, 0, 3, 3)
+		love.graphics.draw(self.players_images["player" .. self.actual_player], self.top_left, 590, 175, 0, 0.75, 0.75)
 
 	end
 

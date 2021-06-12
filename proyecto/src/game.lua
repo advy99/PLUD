@@ -33,6 +33,11 @@ function Game:initialize()
 	end
 
 	self:changeMiniGame(Constants.MENU)
+
+	-- TODO: por cordura mental esto está comentado para las pruebas
+	self.music = love.audio.newSource("music/menu.mp3", "stream")
+	self.music:setLooping(true)
+	self.music:play()
 end
 
 

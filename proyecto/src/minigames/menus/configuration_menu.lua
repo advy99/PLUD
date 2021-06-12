@@ -25,13 +25,15 @@ function ConfigurationMenu:initialize(num_players)
 	self.screen_section = TextBox:new("SCREEN", 525, 170, 200, 60, 35, 0.9, text_color, box_color)
 	self.volume_section = TextBox:new("VOLUME", 525, 350, 200, 60, 35, 0.9, text_color, box_color)
 
-	self.config_background = TextBox:new("", 390, 70, 500, 550, 40, 0.9, text_color, box_color)
+	self.config_background = TextBox:new("", 390, 70, 500, 625, 40, 0.9, text_color, box_color)
 	self.init_config = Configuration:new()
 
 	self.vsync_chk = {text = "VSYNC", checked = self.init_config:getVSYNC()}
 	self.fps_chk = {text = "SHOW FPS", checked = self.init_config:getShowFPS()}
-	self.music_slider = {value = self.init_config:getMusicVolume()}
-	self.sfx_slider = {value = self.init_config:getSFXVolume()}
+	self.music_slider = {value = self.init_config:getMusicVolume(), min = 0, max = 2}
+	self.sfx_slider = {value = self.init_config:getSFXVolume(), min = 0, max = 2}
+	self.mute_chk = {text = "MUTE ALL", checked = self.init_config:getMuted()}
+
 
 	self.on_controls = false
 
@@ -53,7 +55,8 @@ function ConfigurationMenu:update(dt)
 		suit.Label("MUSIC", {align = "left"}, 475, 425, 130,30)
 		suit.Slider(self.sfx_slider, {align = "right"}, 600, 475, 200,30)
 		suit.Label("SFX", {align = "left"}, 475, 475, 130,30)
-		self.on_controls = suit.Button("CONTROLS", {align = "center"}, 480, 550, 300,50).hit
+		suit.Checkbox(self.mute_chk, {align = "left"}, 500, 525, 250,30)
+		self.on_controls = suit.Button("CONTROLS", {align = "center"}, 480, 600, 300,50).hit
 
 		-- TODO : Seleccion de idioma
 
@@ -61,6 +64,8 @@ function ConfigurationMenu:update(dt)
 		self.init_config:setShowFPS(self.fps_chk.checked)
 		self.init_config:setMusicVolume(self.music_slider.value)
 		self.init_config:setSFXVolume(self.sfx_slider.value)
+		self.init_config:setMuted(self.mute_chk.checked)
+
 	else
 
 		if suit.Button("<-", {align = "center"}, 500, 210, 70,30).hit then

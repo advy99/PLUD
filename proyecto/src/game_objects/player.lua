@@ -80,6 +80,10 @@ function Player:initialize(world, x, y, sprite_sheet, id)
 
 	self.time_to_finish_animation = 0
 
+	self.jump_sound = love.audio.newSource("music/jump.wav", "static")
+	self.land_sound = love.audio.newSource("music/land.ogg", "static")
+	
+
 end
 
 function Player:getScore()
@@ -327,4 +331,18 @@ end
 
 function Player:destroy()
 	self.body:destroy()
+end
+
+
+function Player:playJumpSound()
+
+	if not self.jump_sound:isPlaying() then
+		self.jump_sound:play()
+	end
+end
+
+function Player:playLandSound()
+	if not self.land_sound:isPlaying() then
+		self.land_sound:play()
+	end
 end

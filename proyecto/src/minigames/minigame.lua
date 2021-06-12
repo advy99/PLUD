@@ -42,15 +42,19 @@ function MiniGame:handleEvent(object, event)
 
 		if event == Events.PLAYER_LAND_PLATFORM then
 			self.level.players[object]:setMode("grounded")
+			self.level.players[object]:playLandSound()
+
 
 		elseif event == Events.PLAYER_LEAVE_PLATFORM then
 
 			if self.level.players[object]:getMode() ~= "jumping" then
 				self.level.players[object]:setMode("falling")
+			else
+				self.level.players[object]:playJumpSound()
 			end
 
 		elseif event == Events.EXIT_GAME then
-			love.event.quit()			
+			love.event.quit()
 		end
 	end
 

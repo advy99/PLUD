@@ -181,7 +181,7 @@
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 </data>
  </layer>
- <objectgroup id="40" name="spawnpoints">
+ <objectgroup id="40" name="spawnpoints" visible="0">
   <object id="38" name="spawn1" x="448" y="673.333"/>
   <object id="39" name="spawn4" x="834.667" y="672"/>
   <object id="40" name="spawn2" x="576" y="673.333"/>

@@ -66,12 +66,21 @@ function Configuration:getSFXVolume()
 	return self.config.audio.sfx
 end
 
+function Configuration:getMuted()
+	return self.config.audio.muted
+end
+
+
 function Configuration:setMusicVolume(value)
 	self.config.audio.music = value
 end
 
 function Configuration:setSFXVolume(value)
 	self.config.audio.sfx = value
+end
+
+function Configuration:setMuted(value)
+	self.config.audio.muted = value
 end
 
 

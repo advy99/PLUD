@@ -27,8 +27,14 @@ function TitleMenu:update(dt)
 	self.lose_to_rotation = self.lose_to_rotation + self.rotation_speed * dt
 	self.win_rotation = self.win_rotation - self.rotation_speed * dt
 
-	if self.lose_to_rotation > self.MAX_ROTATION or self.win_rotation > self.MAX_ROTATION then
+	if self.lose_to_rotation > self.MAX_ROTATION then
 		self.rotation_speed = -self.rotation_speed
+		self.lose_to_rotation = self.MAX_ROTATION
+		self.win_rotation = -self.MAX_ROTATION
+	elseif self.win_rotation > self.MAX_ROTATION then
+		self.rotation_speed = -self.rotation_speed
+		self.lose_to_rotation = -self.MAX_ROTATION
+		self.win_rotation = self.MAX_ROTATION
 	end
 
 

@@ -29,7 +29,7 @@ function DeathBall:update(dt)
 	for _ , player in pairs(self.level.players) do
 		if player.has_died then
 			local num = love.math.random(4)
-			player:respawn(self.minigame.level.spawnpoints["spawn" .. num].x, self.minigame.level.spawnpoints["spawn" .. num].y)
+			player:respawn(self.level.spawnpoints["spawn" .. num].x, self.level.spawnpoints["spawn" .. num].y)
 		end
 	end
 

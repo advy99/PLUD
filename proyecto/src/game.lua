@@ -167,6 +167,15 @@ function Game:changeMiniGame(minigame)
 		--self.minigame = TreasureHunt:new(self.num_active_players) TODO: implementar tercer minijuego
 	elseif minigame == Constants.MENU then
 		self.minigame = TitleMenu:new(self.num_active_players)
+		SoundManager.static.menu_music:setVolume(config:getMusicVolume() * config:getMusicVolume())
+
+		local sfx_vol = config:getSFXVolume() * config:getSFXVolume()
+		for _ , player in pairs(self.minigame.level.players) do
+			player.sound_manager:setVolume("jump", sfx_vol)
+			player.sound_manager:setVolume("land", sfx_vol)
+			player.sound_manager:setVolume("dead", sfx_vol)
+		end
+
 	elseif minigame == Constants.PRACTICE then
 		self.minigame = PracticeMenu:new(self.num_active_players)
 	elseif minigame == Constants.CONFIGURATION_MENU then

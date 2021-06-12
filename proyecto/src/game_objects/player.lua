@@ -83,6 +83,12 @@ function Player:initialize(world, x, y, sprite_sheet, id)
 	self.sound_manager:addSource("music/jump.ogg", "static", false, "jump")
 	self.sound_manager:addSource("music/land.ogg", "static", false, "land")
 	self.sound_manager:addSource("music/dead.ogg", "static", false, "dead")
+
+	self.sound_manager:setVolume("jump", config:getSFXVolume())
+	self.sound_manager:setVolume("land", config:getSFXVolume())
+	self.sound_manager:setVolume("dead", config:getSFXVolume())
+
+
 end
 
 function Player:getScore()

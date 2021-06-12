@@ -23,3 +23,7 @@ end
 function SoundManager:stopSource(id)
 	self.sounds[id]:stop()
 end
+
+function SoundManager:setVolume(id, value)
+	self.sounds[id]:setVolume(value)
+end

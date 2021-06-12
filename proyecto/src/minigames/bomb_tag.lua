@@ -43,7 +43,8 @@ function BombTag:update(dt)
 
 	for _ , player in pairs(self.level.players) do
 		if player.has_died then
-			player:respawn(300, 300)
+			local num = love.math.random(4)
+			player:respawn(self.minigame.level.spawnpoints["spawn" .. num].x, self.minigame.level.spawnpoints["spawn" .. num].y)
 			self.bomb_timer = 5
 			self:assignBomb()
 		end

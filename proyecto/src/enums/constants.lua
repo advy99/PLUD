@@ -22,7 +22,7 @@ Constants.PLATFORM_EXIT_CATEGORY = 5
 Constants.PLATFORM_SAVE_CONFIG_CATEGORY = 6
 Constants.PLATFORM_MENU_CATEGORY = 7
 Constants.PLATFORM_BOMB_TAG_CATEGORY = 8
-Constants.PLATFORM_TREASURE_HUNT_CATEGORY = 9
+Constants.PLATFORM_VIRUS_FALL_CATEGORY = 9
 Constants.PLATFORM_DEATH_BALL_CATEGORY = 10
 
 Constants.OBJECTS_GROUP = 4
@@ -35,7 +35,7 @@ Constants.SHOW_HITBOX = false
 
 -- Constantes de minijuegos
 Constants.BOMB_TAG = 1
-Constants.TREASURE_HUNT = 2
+Constants.VIRUS_FALL = 2
 Constants.DEATH_BALL = 3
 Constants.CONFIGURATION_MENU = 4
 Constants.EXIT = 5

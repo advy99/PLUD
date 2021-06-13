@@ -35,10 +35,10 @@ function beginContact(a, b, coll)
 
 		end
 
-		if (a:getGroupIndex() == Constants.PLAYER_GROUP and group_b == Constants.PLATFORM_GROUP and category_b == Constants.PLATFORM_TREASURE_HUNT_CATEGORY) or
-			(b:getGroupIndex() == Constants.PLAYER_GROUP and group_a == Constants.PLATFORM_GROUP and category_a == Constants.PLATFORM_TREASURE_HUNT_CATEGORY) then
+		if (a:getGroupIndex() == Constants.PLAYER_GROUP and group_b == Constants.PLATFORM_GROUP and category_b == Constants.PLATFORM_VIRUS_FALL_CATEGORY) or
+			(b:getGroupIndex() == Constants.PLAYER_GROUP and group_a == Constants.PLATFORM_GROUP and category_a == Constants.PLATFORM_VIRUS_FALL_CATEGORY) then
 
-			game:handleInternalEvent(Events.PLAYER_LAND_PLATFORM_TREASURE_HUNT)
+			game:handleInternalEvent(Events.PLAYER_LAND_PLATFORM_VIRUS_FALL)
 
 		end
 
@@ -192,10 +192,10 @@ function endContact(a, b, coll)
 
 		end
 
-		if (a:getGroupIndex() == Constants.PLAYER_GROUP and group_b == Constants.PLATFORM_GROUP and category_b == Constants.PLATFORM_TREASURE_HUNT_CATEGORY) or
-			(b:getGroupIndex() == Constants.PLAYER_GROUP and group_a == Constants.PLATFORM_GROUP and category_a == Constants.PLATFORM_TREASURE_HUNT_CATEGORY) then
+		if (a:getGroupIndex() == Constants.PLAYER_GROUP and group_b == Constants.PLATFORM_GROUP and category_b == Constants.PLATFORM_VIRUS_FALL_CATEGORY) or
+			(b:getGroupIndex() == Constants.PLAYER_GROUP and group_a == Constants.PLATFORM_GROUP and category_a == Constants.PLATFORM_VIRUS_FALL_CATEGORY) then
 
-			game:handleInternalEvent(Events.PLAYER_LEAVE_PLATFORM_TREASURE_HUNT)
+			game:handleInternalEvent(Events.PLAYER_LEAVE_PLATFORM_VIRUS_FALL)
 
 		end
 

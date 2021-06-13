@@ -78,7 +78,7 @@ function Game:draw()
 		local message = ""
 		local pos = {462.5, 375}
 		local size = {350, 150}
-		if self.next_minigame == Constants.BOMB_TAG or self.next_minigame == Constants.TREASURE_HUNT or
+		if self.next_minigame == Constants.BOMB_TAG or self.next_minigame == Constants.VIRUS_FALL or
 		self.next_minigame == Constants.DEATH_BALL then
 			message = "GAME STARTS\nIN... "
 		elseif self.next_minigame == Constants.PRACTICE then
@@ -134,8 +134,8 @@ function Game:handleInternalEvent(event)
 				self.next_minigame = Constants.SAVE_CONFIG
 			elseif event == Events.PLAYER_LAND_PLATFORM_BOMB_TAG then
 				self.next_minigame = Constants.BOMB_TAG
-			elseif event == Events.PLAYER_LAND_PLATFORM_TREASURE_HUNT then
-				self.next_minigame = Constants.TREASURE_HUNT
+			elseif event == Events.PLAYER_LAND_PLATFORM_VIRUS_FALL then
+				self.next_minigame = Constants.VIRUS_FALL
 			elseif event == Events.PLAYER_LAND_PLATFORM_DEATH_BALL then
 				self.next_minigame = Constants.DEATH_BALL
 			end
@@ -170,7 +170,7 @@ function Game:changeMiniGame(minigame)
 		self.minigame = BombTag:new(self.num_active_players)
 	elseif minigame == Constants.DEATH_BALL then
 		self.minigame = DeathBall:new(self.num_active_players)
-	elseif minigame == Constants.TREASURE_HUNT then
+	elseif minigame == Constants.VIRUS_FALL then
 		--self.minigame = TreasureHunt:new(self.num_active_players) TODO: implementar tercer minijuego
 	elseif minigame == Constants.MENU then
 		self.minigame = TitleMenu:new(self.num_active_players)

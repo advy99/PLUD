@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   fill="none"
+   height="512"
+   viewBox="0 0 36 36"
+   width="512"
+   version="1.1"
+   id="svg56"
+   sodipodi:docname="spikes.svg"
+   inkscape:version="1.1 (c4e8f9ed74, 2021-05-24)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <defs
+     id="defs60" />
+  <sodipodi:namedview
+     id="namedview58"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     showgrid="false"
+     inkscape:zoom="1.9022174"
+     inkscape:cx="165.33336"
+     inkscape:cy="296.75892"
+     inkscape:window-width="1920"
+     inkscape:window-height="1005"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer2" />
+  <g
+     inkscape:groupmode="layer"
+     id="layer1"
+     inkscape:label="bajo">
+    <path
+       d="m26 18c0 4.4183-3.5817 8-8 8s-8-3.5817-8-8 3.5817-8 8-8 8 3.5817 8 8z"
+       fill="#2edf84"
+       id="path8" />
+  </g>
+  <g
+     inkscape:groupmode="layer"
+     id="layer2"
+     inkscape:label="alto">
+    <g
+       clip-rule="evenodd"
+       fill-rule="evenodd"
+       id="g54">
+      <path
+         d="m18.75 10.0347c-4.0666.3781-7.25 3.7999-7.25 7.9653s3.1834 7.5872 7.25 7.9653c-.2469.023-.4971.0347-.75.0347-4.4183 0-8-3.5817-8-8s3.5817-8 8-8c.2529 0 .5031.0117.75.0347z"
+         fill="#00b872"
+         id="path10" />
+      <path
+         d="m18 10.75c-4.0041 0-7.25 3.2459-7.25 7.25s3.2459 7.25 7.25 7.25 7.25-3.2459 7.25-7.25-3.2459-7.25-7.25-7.25zm-8.75 7.25c0-4.8325 3.9175-8.75 8.75-8.75s8.75 3.9175 8.75 8.75-3.9175 8.75-8.75 8.75-8.75-3.9175-8.75-8.75z"
+         fill="#000"
+         id="path12" />
+      <path
+         d="m20 7.75h-4v-1.5h4z"
+         fill="#000"
+         id="path14" />
+      <path
+         d="m26.6621 12.1664-2.8284-2.8284 1.0606-1.06066 2.8285 2.82846z"
+         fill="#000"
+         id="path16" />
+      <path
+         d="m28.25 20v-4h1.5v4z"
+         fill="#000"
+         id="path18" />
+      <path
+         d="m20 28.25h-4v1.5h4z"
+         fill="#000"
+         id="path20" />
+      <path
+         d="m12.1664 26.6621-2.82846-2.8285-1.06066 1.0607 2.82842 2.8284z"
+         fill="#000"
+         id="path22" />
+      <path
+         d="m7.75 20v-4h-1.5v4z"
+         fill="#000"
+         id="path24" />
+      <path
+         d="m17.25 10v-3h1.5v3z"
+         fill="#000"
+         id="path26" />
+      <path
+         d="m20.9697 13.9697 4.2782-4.27817 1.0606 1.06067-4.2782 4.2782z"
+         fill="#000"
+         id="path28" />
+      <path
+         d="m26 17.25h3v1.5h-3z"
+         fill="#000"
+         id="path30" />
+      <path
+         d="m17.25 26v3h1.5v-3z"
+         fill="#000"
+         id="path32" />
+      <path
+         d="m13.9697 20.9697-4.27823 4.2782 1.06063 1.0607 4.2782-4.2782z"
+         fill="#000"
+         id="path34" />
+      <path
+         d="m23.8336 26.6621 2.8285-2.8285 1.0606 1.0607-2.8284 2.8284z"
+         fill="#000"
+         id="path36" />
+      <path
+         d="m9.33788 12.1664 2.82842-2.8284-1.0606-1.06066-2.82848 2.82846z"
+         fill="#000"
+         id="path38" />
+      <path
+         d="m22.0303 20.9697 4.2782 4.2782-1.0606 1.0607-4.2782-4.2782z"
+         fill="#000"
+         id="path40" />
+      <path
+         d="m15.0303 13.9697-4.2782-4.27817-1.06062 1.06067 4.27822 4.2782z"
+         fill="#000"
+         id="path42" />
+      <path
+         d="m10 17.25h-3v1.5h3z"
+         fill="#000"
+         id="path44" />
+      <path
+         d="m15.5303 14.5304-1 1-1.0606-1.0607 1-1z"
+         fill="#000"
+         id="path46" />
+      <path
+         d="m14.4697 22.5304-1-1 1.0606-1.0607 1 1z"
+         fill="#000"
+         id="path48" />
+      <path
+         d="m22.5303 21.5304-1 1-1.0606-1.0607 1-1z"
+         fill="#000"
+         id="path50" />
+      <path
+         d="m21.4697 15.5304-1-1 1.0606-1.0607 1 1z"
+         fill="#000"
+         id="path52" />
+    </g>
+  </g>
+</svg>

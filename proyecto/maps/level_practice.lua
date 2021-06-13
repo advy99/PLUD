@@ -117,14 +117,14 @@ return {
       tiles = {}
     },
     {
-      name = "chest",
+      name = "spikes",
       firstgid = 98,
       tilewidth = 32,
       tileheight = 32,
       spacing = 0,
       margin = 0,
       columns = 2,
-      image = "../img/icons/chest.png",
+      image = "../img/icons/spikes.png",
       imagewidth = 64,
       imageheight = 64,
       objectalignment = "unspecified",

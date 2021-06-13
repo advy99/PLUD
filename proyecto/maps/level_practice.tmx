@@ -15,8 +15,8 @@
  <tileset firstgid="94" name="energy" tilewidth="32" tileheight="32" tilecount="4" columns="2">
   <image source="../img/icons/energy.png" width="64" height="64"/>
  </tileset>
- <tileset firstgid="98" name="chest" tilewidth="32" tileheight="32" tilecount="4" columns="2">
-  <image source="../img/icons/chest.png" width="64" height="64"/>
+ <tileset firstgid="98" name="spikes" tilewidth="32" tileheight="32" tilecount="4" columns="2">
+  <image source="../img/icons/spikes.png" width="64" height="64"/>
  </tileset>
  <group id="31" name="background">
   <imagelayer id="33" name="fondo" offsetx="0" offsety="-182.67">

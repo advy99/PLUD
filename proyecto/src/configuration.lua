@@ -9,6 +9,7 @@ function Configuration:initialize()
 	self:loadConfiguration()
 end
 
+-- TODO: incluir mensaje de error si la tecla introducida al cambiar los controles no es válida
 
 function Configuration:setVSYNC(mode)
 	assert(type(mode) == "boolean", "setVSYNC expects a boolean")

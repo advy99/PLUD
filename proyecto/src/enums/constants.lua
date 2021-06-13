@@ -42,6 +42,7 @@ Constants.EXIT = 5
 Constants.MENU = 6
 Constants.SAVE_CONFIG = 7
 Constants.PRACTICE = 8
+Constants.PLAY = 9
 
 Constants.ADD_PLAYER_KEY = "return"
 Constants.REMOVE_PLAYER_KEY = "-"

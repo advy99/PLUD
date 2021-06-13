@@ -77,9 +77,12 @@ function Game:draw()
 
 		local message = ""
 		local pos = {462.5, 375}
-		local size = {350, 150}
+		local size = {352, 150}
 		if self.next_minigame == Constants.BOMB_TAG or self.next_minigame == Constants.VIRUS_FALL or
 		self.next_minigame == Constants.DEATH_BALL then
+			message = "GAME STARTS\nIN... "
+			pos = {462.5, 100}
+		elseif self.next_minigame == Constants.PLAY then
 			message = "GAME STARTS\nIN... "
 		elseif self.next_minigame == Constants.PRACTICE then
 			message = "PRACTICE MODE\n STARTS IN... "
@@ -121,7 +124,7 @@ function Game:handleInternalEvent(event)
 			self.countdown = Constants.TIME_BETWEEN_MINIGAME
 			self.next_minigame = nil
 			if event == Events.PLAYER_LAND_PLATFORM_PLAY then
-				self.next_minigame = Constants.DEATH_BALL -- TODO: cambiar entre los 3 minijuegos, con ganador, tabla de puntuaciones, etc.
+				self.next_minigame = Constants.PLAY
 			elseif event == Events.PLAYER_LAND_PLATFORM_CONFIGURATION then
 				self.next_minigame = Constants.CONFIGURATION_MENU
 			elseif event == Events.PLAYER_LAND_PLATFORM_PRACTICE then

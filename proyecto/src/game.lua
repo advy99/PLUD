@@ -76,22 +76,28 @@ function Game:draw()
 		local box_color = {0, 0, 0}
 
 		local message = ""
-		if self.next_minigame == Constants.BOMB_TAG or self.next_minigame == Constants.TREASURE_HUNT or
+		local pos = {462.5, 375}
+		local size = {350, 150}
+		if self.next_minigame == Constants.BOMB_TAG or self.next_minigame == Constants.VIRUS_FALL or
 		self.next_minigame == Constants.DEATH_BALL then
 			message = "GAME STARTS\nIN... "
 		elseif self.next_minigame == Constants.PRACTICE then
-			message = "PRACTICE MODE\n IN... "
+			message = "PRACTICE MODE\n STARTS IN... "
 		elseif self.next_minigame == Constants.MENU then
 			message = "QUIT TO\nMENU IN... "
+			pos = {948, 375}
+			size = {288, 150}
 		elseif self.next_minigame == Constants.CONFIGURATION_MENU then
 			message = "SETTINGS\nIN... "
 		elseif self.next_minigame == Constants.SAVE_CONFIG then
-			message = "QUIT AND SAVE\nIN... "
+			message = "QUIT AND\nSAVE IN... "
+			pos = {48, 375}
+			size = {288, 150}
 		elseif self.next_minigame == Constants.EXIT then
 			message = "EXIT GAME\nIN... "
 		end
 
-		local countdown_text = TextBox:new( message .. math.abs(math.ceil(self.countdown)), 462.5, 375, 350, 150, 40, 0.8, text_color, box_color)
+		local countdown_text = TextBox:new( message .. math.abs(math.ceil(self.countdown)), pos[1], pos[2], size[1], size[2], 40, 0.8, text_color, box_color)
 		countdown_text:draw()
 	end
 
@@ -128,8 +134,8 @@ function Game:handleInternalEvent(event)
 				self.next_minigame = Constants.SAVE_CONFIG
 			elseif event == Events.PLAYER_LAND_PLATFORM_BOMB_TAG then
 				self.next_minigame = Constants.BOMB_TAG
-			elseif event == Events.PLAYER_LAND_PLATFORM_TREASURE_HUNT then
-				self.next_minigame = Constants.TREASURE_HUNT
+			elseif event == Events.PLAYER_LAND_PLATFORM_VIRUS_FALL then
+				self.next_minigame = Constants.VIRUS_FALL
 			elseif event == Events.PLAYER_LAND_PLATFORM_DEATH_BALL then
 				self.next_minigame = Constants.DEATH_BALL
 			end
@@ -164,7 +170,7 @@ function Game:changeMiniGame(minigame)
 		self.minigame = BombTag:new(self.num_active_players)
 	elseif minigame == Constants.DEATH_BALL then
 		self.minigame = DeathBall:new(self.num_active_players)
-	elseif minigame == Constants.TREASURE_HUNT then
+	elseif minigame == Constants.VIRUS_FALL then
 		--self.minigame = TreasureHunt:new(self.num_active_players) TODO: implementar tercer minijuego
 	elseif minigame == Constants.MENU then
 		self.minigame = TitleMenu:new(self.num_active_players)

@@ -191,6 +191,7 @@ function Game:changeMiniGame(minigame)
 			vol = 0
 		end
 		love.audio.setVolume(vol)
+		changeLanguage(config:getLanguage())
 
 	elseif minigame == Constants.PRACTICE then
 		self.minigame = PracticeMenu:new(self.num_active_players)

@@ -50,6 +50,10 @@ function DeathBall:handleEvent(object, event)
 
 		if event == Events.PLAYER_TOUCHED_DEATH_BALL then
 			self.level.players[object]:kill()
+		elseif event == Events.DEATH_BALL_COLLISION then
+
+			self.energy_ball:handleEvent(object, event)
+
 		end
 	end
 end

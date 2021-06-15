@@ -20,4 +20,10 @@ function GameObject:initialize(world, x, y, type)
 	self.body = love.physics.newBody(world, x, y, type)
 	self.x_speed = 0
 	self.y_speed = 0
+
+	self.sound_manager = SoundManager:new()
+end
+
+function GameObject:playSound(id)
+	self.sound_manager:playSource(id)
 end

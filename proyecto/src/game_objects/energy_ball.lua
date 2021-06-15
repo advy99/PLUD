@@ -49,6 +49,17 @@ function EnergyBall:initialize(world, x, y)
 	self.y_speed = 300
 	self.x_direction = 1
 	self.y_direction = 1
+
+	self.sound_manager = SoundManager:new()
+	self.sound_manager:addSource("music/zap1.ogg", "static", false, "zap1")
+	self.sound_manager:addSource("music/zap2.ogg", "static", false, "zap2")
+	self.sound_manager:addSource("music/zap3.ogg", "static", false, "zap3")
+
+	self.sound_manager:setVolume("zap1", config:getSFXVolume())
+	self.sound_manager:setVolume("zap2", config:getSFXVolume())
+	self.sound_manager:setVolume("zap3", config:getSFXVolume())
+
+
 end
 
 -- Función para actualizar en cada frame el jugador
@@ -83,4 +94,25 @@ function EnergyBall:draw()
 			love.graphics.setColor(1, 0, 0) -- set the drawing color to red for the hitbox
 			love.graphics.circle("line", self.body:getX(), self.body:getY(), self.circle_shape:getRadius())
 		end
+end
+
+
+function EnergyBall:handleEvent(object, event)
+
+	if event == Events.DEATH_BALL_COLLISION then
+		local x, y = object:getNormal()
+		x, y = normalized(x, y)
+
+		local inix, iniy
+		inix = self.x_direction
+		iniy = self.y_direction
+		local dot = vector_dot(self.x_direction, self.y_direction, x, y)
+		self.x_direction = self.x_direction - (2 * x * dot)
+		self.y_direction = self.y_direction - (2 * y * dot)
+
+		local random_num = love.math.random(1,3)
+		self.sound_manager:playSound("zap" .. random_num)
+
+	end
+
 end

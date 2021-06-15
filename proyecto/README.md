@@ -31,3 +31,5 @@ Bla bla bla
 	- Boton Cofre: https://www.flaticon.com/authors/pixel-perfect
 	- Boton bomba: https://www.freepik.com/
 	- Boton death_ball: https://www.flaticon.com/authors/dinosoftlabs
+
+- Font by Brian Kent (ÆNIGMA GAMES & FONTS): https://www.dafont.com/kirby-no-kira-kizzu.font

@@ -138,7 +138,7 @@ function Game:handleInternalEvent(event)
 			self.countdown = Constants.TIME_BETWEEN_MINIGAME
 			self.next_minigame = nil
 			if event == Events.PLAYER_LAND_PLATFORM_PLAY then
-				self.next_minigame = Constants.PLAY
+				self.next_minigame = Constants.BOMB_TAG
 			elseif event == Events.PLAYER_LAND_PLATFORM_CONFIGURATION then
 				self.next_minigame = Constants.CONFIGURATION_MENU
 			elseif event == Events.PLAYER_LAND_PLATFORM_PRACTICE then
@@ -226,7 +226,7 @@ function Game:changeMiniGame(minigame)
 		show = "score"
 	end
 
-	for i = 1, self.num_active_players, 1 do
+	for i = 1, Constants.MAX_PLAYERS, 1 do
 		self["interface_p" .. i]:setShow(show)
 	end
 
@@ -283,8 +283,8 @@ function Game:handleKeyboard(dt)
 end
 
 function Game:addPlayer()
-
-	if self.minigame.class.super.name == "Menu" then
+	 -- Permite añadir jugadores en modo DEBUG
+	if self.minigame.class.super.name == "Menu" or Constants.DEBUG then
 		self.num_active_players = self.num_active_players + 1
 		self.minigame:addPlayer(self.num_active_players)
 		self.countdown = nil
@@ -296,8 +296,8 @@ end
 
 
 function Game:removePlayer()
-
-	if self.minigame.class.super.name == "Menu" then
+-- Permite eliminar jugadores en modo DEBUG
+	if self.minigame.class.super.name == "Menu" or Constants.DEBUG then
 		self.minigame:removePlayer(self.num_active_players)
 		self.num_active_players = self.num_active_players - 1
 		self.countdown = nil

@@ -16,7 +16,9 @@ function VirusFall:initialize(num_players)
 
 	self.virus = {}
 
-	for i = 1, 2, 1 do
+	self.NUM_VIRUS = 4
+
+	for i = 1, self.NUM_VIRUS, 1 do
 		self.virus[i] = Virus:new(self.level.world, 0, 0)
 		self:respawnVirus(i)
 	end
@@ -35,7 +37,7 @@ function VirusFall:update(dt)
 
 		local _, virus_y = virus:getPosition()
 
-		if virus_y > Constants.DEFAULT_HEIGHT then
+		if virus_y > Constants.GAME_HEIGHT  then
 			self:respawnVirus(index)
 		end
 
@@ -79,5 +81,6 @@ end
 
 function VirusFall:respawnVirus(i)
 	local new_x = love.math.random(32 + 26, Constants.DEFAULT_WIDTH - 32 - 26)
-	self.virus[i]:setPosition(new_x, -64)
+	local new_y = love.math.random(-32, -512)
+	self.virus[i]:setPosition(new_x, new_y)
 end

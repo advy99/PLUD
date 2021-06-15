@@ -245,6 +245,12 @@ end
 function Game:keyPressed(k)
 	if k == 'escape' and self.minigame.class.super.name ~= "Menu" then
 		self:changeMiniGame(Constants.MENU)
+	elseif k == "escape" and Constants.DEBUG then
+		if self.minigame.class.name == "TitleMenu" then
+			love.event.quit()
+		else
+			self:changeMiniGame(Constants.MENU)
+		end
 	end
 
 	if (k == Constants.ADD_PLAYER_KEY or (love.keyboard.isDown(Constants.ADD_PLAYER_KEY_COMBINATION))) and self.num_active_players < Constants.MAX_PLAYERS then

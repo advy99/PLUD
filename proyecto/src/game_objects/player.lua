@@ -190,6 +190,7 @@ function Player:kill()
 	self.circle_fixture:setSensor(true)
 	self.rectangle_fixture:setSensor(true)
 	self.sound_manager:playSource("dead")
+	self.score = self.score + 1
 end
 
 -- Función para gestionar que animación es necesaria utilizar en ese momento

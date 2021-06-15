@@ -99,7 +99,7 @@ function beginContact(a, b, coll)
 		if (group_a == Constants.OBJECTS_GROUP and category_a == Constants.DEATH_BALL_CATEGORY or
 			group_b == Constants.OBJECTS_GROUP and category_b == Constants.DEATH_BALL_CATEGORY) and ball_can_touch then
 			-- cogemos la normal, y cambiamos
-	
+
 			game:handleEvent(coll, Events.DEATH_BALL_COLLISION)
 
 			ball_can_touch = false
@@ -209,6 +209,7 @@ function endContact(a, b, coll)
 		end
 
 
+		-- hace falta esta estructura, para que no sea siempre false
 		if (group_a == Constants.OBJECTS_GROUP and category_a == Constants.DEATH_BALL_CATEGORY or
 			group_b == Constants.OBJECTS_GROUP and category_b == Constants.DEATH_BALL_CATEGORY)  then
 			ball_can_touch = true

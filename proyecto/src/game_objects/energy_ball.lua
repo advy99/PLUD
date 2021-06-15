@@ -58,9 +58,11 @@ function EnergyBall:initialize(world, x, y)
 	self.sound_manager:addSource("music/zap2.ogg", "static", false, "zap2")
 	self.sound_manager:addSource("music/zap3.ogg", "static", false, "zap3")
 
-	self.sound_manager:setVolume("zap1", config:getSFXVolume())
-	self.sound_manager:setVolume("zap2", config:getSFXVolume())
-	self.sound_manager:setVolume("zap3", config:getSFXVolume())
+	local sfx_level = config:getSFXVolume() * config:getSFXVolume()
+
+	self.sound_manager:setVolume("zap1", sfx_level)
+	self.sound_manager:setVolume("zap2", sfx_level)
+	self.sound_manager:setVolume("zap3", sfx_level)
 
 
 end
@@ -114,7 +116,14 @@ function EnergyBall:handleEvent(object, event)
 		self.y_direction = self.y_direction - (2 * y * dot)
 
 		local random_num = love.math.random(1,3)
-		self.sound_manager:playSound("zap" .. random_num)
+
+		local val = "zap" .. random_num
+
+		if self.sound_manager:isPlaying(val) then
+			self.sound_manager:stopSource(val)
+		end
+
+		self.sound_manager:playSource(val)
 
 	end
 

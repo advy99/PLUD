@@ -86,9 +86,10 @@ function Player:initialize(world, x, y, sprite_sheet, id)
 	self.sound_manager:addSource("music/land.ogg", "static", false, "land")
 	self.sound_manager:addSource("music/dead.ogg", "static", false, "dead")
 
-	self.sound_manager:setVolume("jump", config:getSFXVolume())
-	self.sound_manager:setVolume("land", config:getSFXVolume())
-	self.sound_manager:setVolume("dead", config:getSFXVolume())
+	local sfx_level = config:getSFXVolume() * config:getSFXVolume()
+	self.sound_manager:setVolume("jump", sfx_level)
+	self.sound_manager:setVolume("land", sfx_level)
+	self.sound_manager:setVolume("dead", sfx_level)
 
 
 end
@@ -188,7 +189,7 @@ function Player:kill()
 	self:setMode("dying")
 	self.circle_fixture:setSensor(true)
 	self.rectangle_fixture:setSensor(true)
-	self:playSound("dead")
+	self.sound_manager:playSource("dead")
 end
 
 -- Función para gestionar que animación es necesaria utilizar en ese momento
@@ -339,9 +340,4 @@ end
 
 function Player:destroy()
 	self.body:destroy()
-end
-
-
-function Player:playSound(id)
-	self.sound_manager:playSource(id)
 end

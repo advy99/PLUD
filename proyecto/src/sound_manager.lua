@@ -27,3 +27,7 @@ end
 function SoundManager:setVolume(id, value)
 	self.sounds[id]:setVolume(value)
 end
+
+function SoundManager:isPlaying(id)
+	return self.sounds[id]:isPlaying()
+end

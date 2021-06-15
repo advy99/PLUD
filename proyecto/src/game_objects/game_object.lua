@@ -24,6 +24,10 @@ function GameObject:initialize(world, x, y, type)
 	self.sound_manager = SoundManager:new()
 end
 
-function GameObject:playSound(id)
+function GameObject:playSound(id)	
 	self.sound_manager:playSource(id)
+end
+
+function GameObject:stopSound(id)
+	self.sound_manager:stopSource(id)
 end

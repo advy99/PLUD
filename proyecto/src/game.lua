@@ -80,24 +80,24 @@ function Game:draw()
 		local size = {352, 150}
 		if self.next_minigame == Constants.BOMB_TAG or self.next_minigame == Constants.VIRUS_FALL or
 		self.next_minigame == Constants.DEATH_BALL then
-			message = "GAME STARTS\nIN... "
+			message = language.PLAY_GAME
 			pos = {462.5, 100}
 		elseif self.next_minigame == Constants.PLAY then
-			message = "GAME STARTS\nIN... "
+			message = language.PLAY_GAME
 		elseif self.next_minigame == Constants.PRACTICE then
-			message = "PRACTICE MODE\n STARTS IN... "
+			message = language.ENTER_PRACTICE
 		elseif self.next_minigame == Constants.MENU then
-			message = "QUIT TO\nMENU IN... "
+			message = language.QUIT_TO_MENU
 			pos = {948, 375}
 			size = {288, 150}
 		elseif self.next_minigame == Constants.CONFIGURATION_MENU then
-			message = "SETTINGS\nIN... "
+			message = language.ENTER_OPTIONS
 		elseif self.next_minigame == Constants.SAVE_CONFIG then
-			message = "QUIT AND\nSAVE IN... "
+			message = language.EXIT_SAVING_OPTIONS
 			pos = {48, 375}
 			size = {288, 150}
 		elseif self.next_minigame == Constants.EXIT then
-			message = "EXIT GAME\nIN... "
+			message = language.EXIT_GAME
 		end
 
 		local countdown_text = TextBox:new( message .. math.abs(math.ceil(self.countdown)), pos[1], pos[2], size[1], size[2], 40, 0.8, text_color, box_color)

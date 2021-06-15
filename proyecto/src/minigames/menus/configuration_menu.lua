@@ -22,10 +22,23 @@ function ConfigurationMenu:initialize(num_players)
 	self.title = TextBox:new(language.CONFIGURATION, 435, 80, 400, 75, 40, 1, text_color, box_color)
 	self.controls_title = TextBox:new(language.CONTROLS, 435, 80, 400, 75, 40, 1, text_color, box_color)
 
-	self.screen_section = TextBox:new(language.SCREEN, 525, 170, 200, 60, 35, 0.9, text_color, box_color)
-	self.volume_section = TextBox:new(language.SOUND, 525, 350, 200, 60, 35, 0.9, text_color, box_color)
 
+	local background_box = {390, 70, 500, 625}
 	self.config_background = TextBox:new("", 390, 70, 500, 625, 40, 0.9, text_color, box_color)
+
+	-- pagina 1
+	local languages_box = {background_box[1] + background_box[3]/2 - 125, 170, 250, 60}
+	local volume_box = {background_box[1] + background_box[3]/2 - 100, 350, 200, 60}
+	self.language_section = TextBox:new(language.LANGUAGE, languages_box[1], languages_box[2], languages_box[3], languages_box[4], 35, 0.9, text_color, box_color)
+	self.volume_section = TextBox:new(language.SOUND, volume_box[1], volume_box[2], volume_box[3], volume_box[4], 35, 0.9, text_color, box_color)
+
+	-- pagina 2
+	local screen_box = {background_box[1] + background_box[3]/2 - 100, 170, 200, 60}
+	self.screen_section = TextBox:new(language.SCREEN, screen_box[1], screen_box[2], screen_box[3], screen_box[4], 35, 0.9, text_color, box_color)
+
+
+
+
 	self.init_config = Configuration:new()
 
 	self.vsync_chk = {text = language.VSYNC, checked = self.init_config:getVSYNC()}
@@ -35,7 +48,26 @@ function ConfigurationMenu:initialize(num_players)
 	self.mute_chk = {text = language.MUTE, checked = self.init_config:getMuted()}
 
 
-	self.on_controls = false
+	self.show_second_page = false
+
+	self.languages_array = {"english", "spanish"}
+	self.active_language = 0
+
+	for key, value in pairs(self.languages_array)
+	do
+		if value == self.init_config:getLanguage() then
+			self.active_language = key
+		end
+	end
+
+	self.languages = {}
+	self.languages.english = love.graphics.newImage("img/languages/united-kingdom.png")
+	self.languages.spanish = love.graphics.newImage("img/languages/spain.png")
+
+	self.flag_position = {background_box[1] + background_box[3]/2 - self.languages.english:getWidth() / 2  * 0.15, 250}
+	self.player_position = {background_box[1] + background_box[3]/2 - self.players_images.player1:getWidth() / 2 * 0.75 / 10, 175}
+
+	self.pages_button_position = {background_box[1] + background_box[3]/2 - 150, 600, 300}
 
 end
 
@@ -44,24 +76,52 @@ function ConfigurationMenu:update(dt)
 
 	Menu.update(self, dt)
 
+	self.title:updateText(language.CONFIGURATION)
+	self.controls_title:updateText(language.CONTROLS)
+	self.language_section:updateText(language.LANGUAGE)
+	self.volume_section:updateText(language.SOUND)
+	self.screen_section:updateText(language.SCREEN)
+
+	self.vsync_chk.text = language.VSYNC
+	self.fps_chk.text = language.FPS
+	self.mute_chk.text = language.MUTE
+
+
 	local font = love.graphics.newFont("fonts/kirbyss.ttf", 30)
 	love.graphics.setFont(font)
 
 
-	if not self.on_controls then
-		suit.Checkbox(self.vsync_chk, {align = "left"}, 500, 250, 250,30)
-		suit.Checkbox(self.fps_chk, {align = "left"}, 500, 300, 250,30)
-		suit.Slider(self.music_slider, {align = "right"}, 600, 425, 200,30)
-		suit.Label(language.MUSIC, {align = "left"}, 475, 425, 130,30)
-		suit.Slider(self.sfx_slider, {align = "right"}, 600, 475, 200,30)
-		suit.Label(language.SFX, {align = "left"}, 475, 475, 130,30)
+	if not self.show_second_page then
+
+		suit.Slider(self.music_slider, {align = "right"}, 640, 425, 175,30)
+		suit.Label(language.MUSIC, {align = "center"}, 460, 425, 160,30)
+		suit.Slider(self.sfx_slider, {align = "right"}, 640, 475, 175,30)
+		suit.Label(language.SFX, {align = "center"}, 460, 475, 160,30)
 		suit.Checkbox(self.mute_chk, {align = "left"}, 500, 525, 250,30)
-		self.on_controls = suit.Button("CONTROLS", {align = "center"}, 480, 600, 300,50).hit
+		self.show_second_page = suit.Button("->", {id = "go_page_2", align = "center"}, self.pages_button_position[1], self.pages_button_position[2], self.pages_button_position[3],50).hit
 
-		-- TODO : Seleccion de idioma
+		if suit.Button("<-", {align = "center"}, self.flag_position[1] - 70 - 20, self.flag_position[2] + self.languages.english:getWidth() / 2 * 0.15 - 15, 70,30).hit then
+			self.active_language = self.active_language - 1
+			if self.active_language < 1 then
+				self.active_language = self.active_language + 2
+			end
+			self.init_config:setLanguage(self.languages_array[self.active_language])
+			changeLanguage(self.languages_array[self.active_language])
 
-		self.init_config:setVSYNC(self.vsync_chk.checked)
-		self.init_config:setShowFPS(self.fps_chk.checked)
+		end
+
+		if suit.Button("->", {align = "center"}, self.flag_position[1] + self.languages.english:getWidth() * 0.15 + 20, self.flag_position[2] + self.languages.english:getWidth() / 2 * 0.15 - 15, 70,30).hit then
+			self.active_language = self.active_language + 1
+
+			if self.active_language > 2 then
+				self.active_language = self.active_language - 2
+			end
+			self.init_config:setLanguage(self.languages_array[self.active_language])
+
+			changeLanguage(self.languages_array[self.active_language])
+		end
+
+
 		self.init_config:setMusicVolume(self.music_slider.value)
 		self.init_config:setSFXVolume(self.sfx_slider.value)
 		self.init_config:setMuted(self.mute_chk.checked)
@@ -85,6 +145,13 @@ function ConfigurationMenu:update(dt)
 		end
 
 	else
+
+		suit.Checkbox(self.vsync_chk, {align = "left"}, 500, 250, 250,30)
+		suit.Checkbox(self.fps_chk, {align = "left"}, 500, 300, 250,30)
+
+		self.init_config:setVSYNC(self.vsync_chk.checked)
+		self.init_config:setShowFPS(self.fps_chk.checked)
+
 
 		if suit.Button("<-", {align = "center"}, 500, 210, 70,30).hit then
 			self.actual_player = self.actual_player - 1
@@ -129,7 +196,7 @@ function ConfigurationMenu:update(dt)
 		end
 
 		-- si pulso dentro de controles, estoy saliendo de controles
-		self.on_controls = not suit.Button(language.BACK, {align = "center"}, 480, 550, 300,50).hit
+		self.show_second_page = not suit.Button("<-", {id = "go_page_1", align = "center"}, self.pages_button_position[1], self.pages_button_position[2], self.pages_button_position[3],50).hit
 	end
 
 end
@@ -140,15 +207,18 @@ function ConfigurationMenu:draw()
 	Menu.draw(self)
 
 	self.config_background:draw()
+	self.title:draw()
 
-	if not self.on_controls then
-		self.title:draw()
-		self.screen_section:draw()
+	if not self.show_second_page then
+		self.language_section:draw()
 		self.volume_section:draw()
+		love.graphics.draw(self.languages[self.languages_array[self.active_language]], self.flag_position[1], self.flag_position[2], 0, 0.15, 0.15)
+
 	else
+		self.screen_section:draw()
 		self.controls_title:draw()
 		love.graphics.reset()
-		love.graphics.draw(self.players_images["player" .. self.actual_player], self.top_left, 590, 175, 0, 0.75, 0.75)
+		love.graphics.draw(self.players_images["player" .. self.actual_player], self.top_left, self.player_position[1], self.player_position[2], 0, 0.75, 0.75)
 
 	end
 

@@ -60,20 +60,10 @@ function EnergyBall:update(dt)
 	-- self.body:setAngularVelocity(math.pi)
 end
 
-function EnergyBall:changeBallDirection(x, y)
-	self.x_direction = x
-	self.y_direction = y
-end
-
 function EnergyBall:getCurrentQuad()
 	-- calculamos que sprite se tiene que dibujar
 	return math.floor(self.animation.currentTime / self.animation.duration * #self.animation.quads) + 1
 
-end
-
-function EnergyBall:changeBallDirection()
-	self.x_direction = -self.x_direction
-	self.y_direction = -self.y_direction
 end
 
 -- Función para dibujar el jugador

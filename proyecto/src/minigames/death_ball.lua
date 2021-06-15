@@ -74,10 +74,3 @@ function DeathBall:handleEventBetweenObjects(object_a, object_b, event)
 	-- 	end
 	-- end
 end
-
-
-function DeathBall:changeBallDirection(x, y)
-
-	-- local aleatorio = love.math.random( 0, 360 )
-	self.energy_ball:changeBallDirection(x, y )
-end

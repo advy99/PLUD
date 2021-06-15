@@ -122,9 +122,6 @@ function Player:move(dir_x)
 
 		self:startWalking()
 
-		if Constants.DEBUG then
-			print(x, "\t", y)
-		end
 	end
 
 end
@@ -253,10 +250,6 @@ function Player:update(dt)
 	self:handleAnimations(dt)
 	self:animate(dt)
 
-	-- Modo DEBUG: Muestra el estado del jugador
-	if Constants.DEBUG then
-		print("Modo del jugador ", self.circle_fixture:getUserData() ," : ", self.mode)
-	end
 end
 
 -- Función para animar al jugador

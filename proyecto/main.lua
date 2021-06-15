@@ -11,6 +11,8 @@ require("src/configuration")
 require("src/game_objects/player")
 require("src/enums/constants")
 require("src/game_objects/platform")
+require("languages/english")
+require("languages/spanish")
 
 
 
@@ -20,6 +22,8 @@ require("src/game_objects/platform")
 function love.load()
 
 	config = Configuration()
+	language = nil
+	changeLanguage(config:getLanguage())
 
 	local flags = {vsync = config:getVSYNC(), fullscreen = false, resizable = false}
 

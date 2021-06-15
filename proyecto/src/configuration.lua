@@ -97,3 +97,12 @@ function Configuration:keyAssigned(k)
 
 	return false
 end
+
+function Configuration:getLanguage()
+	return self.config.language.language
+end
+
+
+function Configuration:setLanguage(value)
+	self.config.language.language = value
+end

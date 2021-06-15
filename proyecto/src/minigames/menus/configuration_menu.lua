@@ -19,20 +19,20 @@ function ConfigurationMenu:initialize(num_players)
 
 	local text_color = {1, 1, 1}
 	local box_color = {0, 0, 0}
-	self.title = TextBox:new("CONFIGURATION", 435, 80, 400, 75, 40, 1, text_color, box_color)
-	self.controls_title = TextBox:new("CONTROLS", 435, 80, 400, 75, 40, 1, text_color, box_color)
+	self.title = TextBox:new(language.CONFIGURATION, 435, 80, 400, 75, 40, 1, text_color, box_color)
+	self.controls_title = TextBox:new(language.CONTROLS, 435, 80, 400, 75, 40, 1, text_color, box_color)
 
-	self.screen_section = TextBox:new("SCREEN", 525, 170, 200, 60, 35, 0.9, text_color, box_color)
-	self.volume_section = TextBox:new("VOLUME", 525, 350, 200, 60, 35, 0.9, text_color, box_color)
+	self.screen_section = TextBox:new(language.SCREEN, 525, 170, 200, 60, 35, 0.9, text_color, box_color)
+	self.volume_section = TextBox:new(language.SOUND, 525, 350, 200, 60, 35, 0.9, text_color, box_color)
 
 	self.config_background = TextBox:new("", 390, 70, 500, 625, 40, 0.9, text_color, box_color)
 	self.init_config = Configuration:new()
 
-	self.vsync_chk = {text = "VSYNC", checked = self.init_config:getVSYNC()}
-	self.fps_chk = {text = "SHOW FPS", checked = self.init_config:getShowFPS()}
+	self.vsync_chk = {text = language.VSYNC, checked = self.init_config:getVSYNC()}
+	self.fps_chk = {text = language.FPS, checked = self.init_config:getShowFPS()}
 	self.music_slider = {value = self.init_config:getMusicVolume(), min = 0, max = 1}
 	self.sfx_slider = {value = self.init_config:getSFXVolume(), min = 0, max = 1}
-	self.mute_chk = {text = "MUTE ALL", checked = self.init_config:getMuted()}
+	self.mute_chk = {text = language.MUTE, checked = self.init_config:getMuted()}
 
 
 	self.on_controls = false
@@ -52,9 +52,9 @@ function ConfigurationMenu:update(dt)
 		suit.Checkbox(self.vsync_chk, {align = "left"}, 500, 250, 250,30)
 		suit.Checkbox(self.fps_chk, {align = "left"}, 500, 300, 250,30)
 		suit.Slider(self.music_slider, {align = "right"}, 600, 425, 200,30)
-		suit.Label("MUSIC", {align = "left"}, 475, 425, 130,30)
+		suit.Label(language.MUSIC, {align = "left"}, 475, 425, 130,30)
 		suit.Slider(self.sfx_slider, {align = "right"}, 600, 475, 200,30)
-		suit.Label("SFX", {align = "left"}, 475, 475, 130,30)
+		suit.Label(language.SFX, {align = "left"}, 475, 475, 130,30)
 		suit.Checkbox(self.mute_chk, {align = "left"}, 500, 525, 250,30)
 		self.on_controls = suit.Button("CONTROLS", {align = "center"}, 480, 600, 300,50).hit
 
@@ -102,7 +102,7 @@ function ConfigurationMenu:update(dt)
 		end
 
 
-		suit.Label("JUMP", {align = "left"}, 550, 300, 130,30)
+		suit.Label(language.JUMP, {align = "left"}, 550, 300, 130,30)
 
 		if suit.Button(string.upper(self.init_config.config["player" .. self.actual_player].JUMP_KEY), {id = "jump", align = "center"}, 675, 300, 40,30).hit then
 			local k = readKey()
@@ -111,7 +111,7 @@ function ConfigurationMenu:update(dt)
 			end
 		end
 
-		suit.Label("LEFT", {align = "left"}, 550, 350, 130,30)
+		suit.Label(language.LEFT, {align = "left"}, 550, 350, 130,30)
 		if suit.Button(string.upper(self.init_config.config["player" .. self.actual_player].LEFT_KEY), {id = "left", align = "center"}, 675, 350, 40,30).hit then
 			local k = readKey()
 			if not self.init_config:keyAssigned(k) and k ~= "escape" then
@@ -120,7 +120,7 @@ function ConfigurationMenu:update(dt)
 		end
 
 
-		suit.Label("RIGHT", {align = "left"}, 550, 400, 130,30)
+		suit.Label(language.RIGHT, {align = "left"}, 550, 400, 130,30)
 		if suit.Button(string.upper(self.init_config.config["player" .. self.actual_player].RIGHT_KEY), {id = "right", align = "center"}, 675, 400, 40,30).hit then
 			local k = readKey()
 			if not self.init_config:keyAssigned(k) and k ~= "escape" then
@@ -129,7 +129,7 @@ function ConfigurationMenu:update(dt)
 		end
 
 		-- si pulso dentro de controles, estoy saliendo de controles
-		self.on_controls = not suit.Button("BACK", {align = "center"}, 480, 550, 300,50).hit
+		self.on_controls = not suit.Button(language.BACK, {align = "center"}, 480, 550, 300,50).hit
 	end
 
 end

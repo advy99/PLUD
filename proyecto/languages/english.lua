@@ -11,7 +11,10 @@ English.QUIT_TO_MENU = "QUIT TO\nMENU IN .."
 
 English.CONFIGURATION = "CONFIGURATION"
 English.SCREEN = "SCREEN"
-English.VOLUME = "VOLUME"
+English.FPS = "SHOW FPS"
+English.VSYNC = "VSYNC"
+
+English.SOUND = "SOUND"
 English.MUSIC = "MUSIC"
 English.SFX = "SFX"
 English.MUTE = "MUTE ALL"

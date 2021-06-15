@@ -11,7 +11,11 @@ Spanish.QUIT_TO_MENU = "VOLVER AL MENU EN .."
 
 Spanish.CONFIGURATION = "CONFIGURACION"
 Spanish.SCREEN = "PANTALLA"
-Spanish.VOLUME = "VOLUMEN"
+Spanish.FPS = "MOSTRAR FPS"
+Spanish.VSYNC = "VSYNC"
+
+
+Spanish.SOUND = "SONIDO"
 Spanish.MUSIC = "MÚSICA"
 Spanish.SFX = "SFX"
 Spanish.MUTE = "SILENCIAR"

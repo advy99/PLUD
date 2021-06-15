@@ -44,3 +44,12 @@ end
 function vector_dot(x1, y1, x2, y2)
 	return (x1 * x2) + (y1 * y2)
 end
+
+
+function changeLanguage(val)
+	if val == "spanish" then
+		language = Spanish
+	else
+		language = English
+	end
+end

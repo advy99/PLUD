@@ -1,25 +1,25 @@
 
 require("src/minigames/minigame")
-require("src/game_objects/energy_ball")
+require("src/game_objects/virus")
 
 local class = require "lib/middleclass"
 
 
-DeathBall = MiniGame:subclass('DeathBall')
+VirusFall = MiniGame:subclass('VirusFall')
 
-function DeathBall:initialize(num_players)
+function VirusFall:initialize(num_players)
 
 	-- Generamos un aleatorio entre 1 y NUMBER_OF_LEVELS, ambos incluidos
 	local num_level = love.math.random(1, Constants.NUMBER_OF_LEVELS)
 
 	MiniGame.initialize(self, "level_" .. num_level, num_players)
 
-	self.energy_ball = EnergyBall:new(self.level.world, 100, 100)
+	self.energy_ball = Virus:new(self.level.world, 100, 100)
 
 end
 
 
-function DeathBall:update(dt)
+function VirusFall:update(dt)
 
 	MiniGame.update(self, dt)
 
@@ -36,14 +36,14 @@ function DeathBall:update(dt)
 end
 
 
-function DeathBall:draw()
+function VirusFall:draw()
 	MiniGame.draw(self)
 
 	self.energy_ball:draw(dt)
 
 end
 
-function DeathBall:handleEvent(object, event)
+function VirusFall:handleEvent(object, event)
 	MiniGame.handleEvent(self, object, event)
 
 	if self.level.players[object] ~= nil then
@@ -55,7 +55,7 @@ function DeathBall:handleEvent(object, event)
 end
 
 
-function DeathBall:handleEventBetweenObjects(object_a, object_b, event)
+function VirusFall:handleEventBetweenObjects(object_a, object_b, event)
 
 	MiniGame.handleEventBetweenObjects(self, object_a, object_b, event)
 
@@ -73,4 +73,11 @@ function DeathBall:handleEventBetweenObjects(object_a, object_b, event)
 	-- 		end
 	-- 	end
 	-- end
+end
+
+
+function VirusFall:changeBallDirection(x, y)
+
+	-- local aleatorio = love.math.random( 0, 360 )
+	self.energy_ball:changeBallDirection(x, y )
 end

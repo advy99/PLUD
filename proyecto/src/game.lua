@@ -6,6 +6,7 @@ require("src/level")
 require("src/minigames/minigame")
 require("src/minigames/bomb_tag")
 require("src/minigames/death_ball")
+require("src/minigames/virus_fall")
 require("src/minigames/menus/configuration_menu")
 require("src/minigames/menus/title_menu")
 require("src/minigames/menus/practice_menu")
@@ -174,7 +175,7 @@ function Game:changeMiniGame(minigame)
 	elseif minigame == Constants.DEATH_BALL then
 		self.minigame = DeathBall:new(self.num_active_players)
 	elseif minigame == Constants.VIRUS_FALL then
-		--self.minigame = TreasureHunt:new(self.num_active_players) TODO: implementar tercer minijuego
+		self.minigame = VirusFall:new(self.num_active_players)
 	elseif minigame == Constants.MENU then
 		self.minigame = TitleMenu:new(self.num_active_players)
 		SoundManager.static.menu_music:setVolume(config:getMusicVolume() * config:getMusicVolume())

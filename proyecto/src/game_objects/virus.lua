@@ -1,5 +1,5 @@
 --
--- Clase EnergyBall
+-- Clase Virus
 --
 --
 
@@ -8,16 +8,16 @@ require("src/enums/constants")
 require("src/general_functions")
 
 
--- La energy ball será un tipo de GameObject
-EnergyBall = GameObject:subclass('EnergyBall')
+-- El virus será un tipo de GameObject
+Virus = GameObject:subclass('Virus')
 
 
 --
--- Constructor de la energy ball
+-- Constructor del virus
 -- Necesitamos el mundo donde estará, su posición x e y, y su id
 --
 --
-function EnergyBall:initialize(world, x, y)
+function Virus:initialize(world, x, y)
 	-- creamos el selfeto con base de GameObject
 	GameObject.initialize(self, world, x, y, "dynamic")
 
@@ -25,15 +25,15 @@ function EnergyBall:initialize(world, x, y)
 	-- orientación y animación
 	self.orientation = 1
 
-	self.sprite_width = 94
-	self.sprite_height = 86
+	self.sprite_width = 512
+	self.sprite_height = 512
 
-	local img = love.graphics.newImage("img/energy_ball.png")
+	local img = love.graphics.newImage("img/virus.png")
 	self.animation = newAnimation(img, 0, self.sprite_width, self.sprite_height, 0.25)
 
 	-- le asignamos una altura y anchura, asociados a su forma
 
-	self.scale = 0.75
+	self.scale = 0.1
 
 	local radius = (self.sprite_width - 15) * self.scale / 2
 	self.circle_shape = love.physics.newCircleShape(radius)
@@ -43,7 +43,7 @@ function EnergyBall:initialize(world, x, y)
 	self.circle_fixture:setGroupIndex(Constants.OBJECTS_GROUP)
 	self.circle_fixture:setCategory(Constants.DEATH_BALL_CATEGORY)
 
-	self.circle_fixture:setUserData("energy_ball")
+	self.circle_fixture:setUserData("virus")
 
 	self.x_speed = 300
 	self.y_speed = 300
@@ -53,21 +53,31 @@ end
 
 -- Función para actualizar en cada frame el jugador
 -- Recibe el tiempo transcurrido desde el ultimo update
-function EnergyBall:update(dt)
+function Virus:update(dt)
 
 	self.animation.currentTime = (self.animation.currentTime + dt) % self.animation.duration
 	self.body:setLinearVelocity( self.x_speed * self.x_direction , self.y_speed * self.y_direction)
 	-- self.body:setAngularVelocity(math.pi)
 end
 
-function EnergyBall:getCurrentQuad()
+function Virus:changeBallDirection(x, y)
+	self.x_direction = x
+	self.y_direction = y
+end
+
+function Virus:getCurrentQuad()
 	-- calculamos que sprite se tiene que dibujar
 	return math.floor(self.animation.currentTime / self.animation.duration * #self.animation.quads) + 1
 
 end
 
+function Virus:changeBallDirection()
+	self.x_direction = -self.x_direction
+	self.y_direction = -self.y_direction
+end
+
 -- Función para dibujar el jugador
-function EnergyBall:draw()
+function Virus:draw()
 
 		love.graphics.reset()
 

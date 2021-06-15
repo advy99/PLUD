@@ -40,16 +40,6 @@ function Configuration:getShowFPS()
 	return self.config.screen.showFPS
 end
 
-function Configuration:setFullscreen(mode)
-	assert(type(mode) == "boolean", "setFullscreen expects a boolean")
-
-	self.config.screen.fullscreen = mode
-end
-
-function Configuration:getFullscreen()
-	return self.config.screen.fullscreen
-end
-
 function Configuration:saveConfig()
 	LIP.save(self.path, self.config)
 end

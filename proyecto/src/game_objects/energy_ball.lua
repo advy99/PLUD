@@ -8,12 +8,12 @@ require("src/enums/constants")
 require("src/general_functions")
 
 
--- El jugador será un tipo de GameObject
+-- La energy ball será un tipo de GameObject
 EnergyBall = GameObject:subclass('EnergyBall')
 
 
 --
--- Constructor del jugador
+-- Constructor de la energy ball
 -- Necesitamos el mundo donde estará, su posición x e y, y su id
 --
 --

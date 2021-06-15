@@ -42,14 +42,13 @@ function Virus:initialize(world, x, y)
 	self.circle_fixture = love.physics.newFixture(self.body, self.circle_shape, 1)
 	self.circle_fixture:setGroupIndex(Constants.OBJECTS_GROUP)
 	self.circle_fixture:setCategory(Constants.VIRUS_CATEGORY)
-	print(self.circle_fixture:getGroupIndex(), self.circle_fixture:getCategory())
 
 	self.circle_fixture:setUserData("virus")
 
 	self.circle_fixture:setSensor(true)
 
 	self.x_speed = 0
-	self.y_speed = 10
+	self.y_speed = 50
 	self.x_direction = 0
 	self.y_direction = 1
 end
@@ -85,4 +84,12 @@ function Virus:draw()
 			love.graphics.setColor(1, 0, 0) -- set the drawing color to red for the hitbox
 			love.graphics.circle("line", self.body:getX(), self.body:getY(), self.circle_shape:getRadius())
 		end
+end
+
+function Virus:setPosition(x, y)
+	self.body:setPosition(x, y)
+end
+
+function Virus:getPosition()
+	return self.body:getPosition()
 end

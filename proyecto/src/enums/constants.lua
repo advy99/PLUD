@@ -32,7 +32,7 @@ Constants.VIRUS_CATEGORY = 3
 
 -- Constantes de debug
 Constants.DEBUG = false
-Constants.SHOW_HITBOX = false
+Constants.SHOW_HITBOX = true
 
 -- Constantes de minijuegos
 Constants.BOMB_TAG = 1

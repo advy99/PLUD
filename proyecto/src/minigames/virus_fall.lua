@@ -14,7 +14,13 @@ function VirusFall:initialize(num_players)
 
 	MiniGame.initialize(self, "level_" .. num_level, num_players)
 
-	self.virus = Virus:new(self.level.world, 100, 100)
+	self.virus = {}
+
+	for i = 1, 2, 1 do
+		self.virus[i] = Virus:new(self.level.world, 0, 0)
+		self:respawnVirus(i)
+	end
+
 
 end
 
@@ -23,7 +29,17 @@ function VirusFall:update(dt)
 
 	MiniGame.update(self, dt)
 
-	self.virus:update(dt)
+	for index , virus in pairs(self.virus) do
+
+		virus:update(dt)
+
+		local _, virus_y = virus:getPosition()
+
+		if virus_y > Constants.DEFAULT_HEIGHT then
+			self:respawnVirus(index)
+		end
+
+	end
 
 
 	for _ , player in pairs(self.level.players) do
@@ -39,7 +55,9 @@ end
 function VirusFall:draw()
 	MiniGame.draw(self)
 
-	self.virus:draw(dt)
+	for index , virus in pairs(self.virus) do
+		virus:draw(dt)
+	end
 
 end
 
@@ -57,4 +75,9 @@ end
 
 function VirusFall:handleEventBetweenObjects(object_a, object_b, event)
 	MiniGame.handleEventBetweenObjects(self, object_a, object_b, event)
+end
+
+function VirusFall:respawnVirus(i)
+	local new_x = love.math.random(32 + 26, Constants.DEFAULT_WIDTH - 32 - 26)
+	self.virus[i]:setPosition(new_x, -64)
 end

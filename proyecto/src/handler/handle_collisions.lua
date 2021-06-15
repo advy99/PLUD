@@ -5,8 +5,10 @@ local ball_can_touch = true
 -- Funcion que se ejecutará cuando se detecta una colisión
 function beginContact(a, b, coll)
 
-	local category_a, mask_a, group_a = a:getFilterData()
-	local category_b, mask_b, group_b = b:getFilterData()
+	local category_a = a:getCategory()
+	local group_a = a:getGroupIndex()
+	local category_b = b:getCategory()
+	local group_b = b:getGroupIndex()
 
 	if not a:isSensor() and not b:isSensor() then
 
@@ -115,21 +117,15 @@ function beginContact(a, b, coll)
 
 	else
 
-		print(category_b , Constants.VIRUS_CATEGORY)
-
 		if group_a == Constants.PLAYER_GROUP and not a:isSensor() and
 			group_b == Constants.OBJECTS_GROUP and category_b == Constants.VIRUS_CATEGORY then
 
 			game:handleEvent(a:getUserData(), Events.PLAYER_TOUCHED_VIRUS)
 
-					print("frhufehfueu")
-
 		elseif group_b == Constants.PLAYER_GROUP and not b:isSensor() and
 				 group_a == Constants.OBJECTS_GROUP and category_a == Constants.VIRUS_CATEGORY then
 
 			game:handleEvent(b:getUserData(), Events.PLAYER_TOUCHED_VIRUS)
-
-			print("frhufehfueu")
 
 		end
 

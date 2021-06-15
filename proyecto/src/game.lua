@@ -105,7 +105,14 @@ function Game:draw()
 		countdown_text:draw()
 	end
 
-	for i = 1, self.num_active_players, 1 do
+	local num = self.num_active_players
+
+	if self.minigame.class.super.name == "Menu" then
+		num = math.min(num + 1, Constants.MAX_PLAYERS)
+	end
+
+	for i = 1, num, 1 do
+		-- si el primer parametro es nil, se trata de ayuda
 		self["interface_p" .. i]:draw(self.minigame.level.players["player" .. i])
 	end
 

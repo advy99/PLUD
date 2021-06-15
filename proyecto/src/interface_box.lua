@@ -33,25 +33,33 @@ function InterfaceBox:update(keys)
 end
 
 function InterfaceBox:draw(player)
-
-	local current_animation = player.current_animation
-	local current_quad = player:getCurrentQuad()
-
+	
 	love.graphics.setColor(0, 0, 0, self.opacity)
 	love.graphics.rectangle( "fill", self.posX, self.posY, self.sizeW, self.sizeH, self.sizeW / 10)
 
-	love.graphics.reset()
-	love.graphics.draw(current_animation.spriteSheet, current_animation.quads[current_quad], self.posX , self.posY, 0, player.scale, player.scale )
+	if player ~= nil then
+		local current_animation = player.current_animation
+		local current_quad = player:getCurrentQuad()
 
-	if self.show_controls then
-		self.up:draw()
-		self.left:draw()
-		self.right:draw()
+
+		love.graphics.reset()
+		love.graphics.draw(current_animation.spriteSheet, current_animation.quads[current_quad], self.posX , self.posY, 0, player.scale, player.scale )
+
+		if self.show_controls then
+			self.up:draw()
+			self.left:draw()
+			self.right:draw()
+		else
+			love.graphics.setColor(1, 1, 1)
+			local font = love.graphics.newFont("fonts/kirbyss.ttf", self.textSize)
+			love.graphics.setFont(font)
+			love.graphics.printf("SCORE\n" .. player:getScore(), self.posX + 32,  self.posY + self.sizeH / 4, self.sizeW, "center")
+		end
 	else
-		love.graphics.setColor(1, 1, 1)
 		local font = love.graphics.newFont("fonts/kirbyss.ttf", self.textSize)
 		love.graphics.setFont(font)
-		love.graphics.printf("SCORE\n" .. player:getScore(), self.posX + 32,  self.posY + self.sizeH / 4, self.sizeW, "center")
+		love.graphics.printf("SCORE BLA\n" , self.posX + 32,  self.posY + self.sizeH / 4, self.sizeW, "center")
+
 	end
 end
 

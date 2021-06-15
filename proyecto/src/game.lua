@@ -77,26 +77,32 @@ function Game:draw()
 		local box_color = {0, 0, 0}
 
 		local message = ""
-		local pos = {446.5, 375}
 		local size = {384, 150}
+		local pos = {(Constants.DEFAULT_WIDTH - size[1])/2, 375}
 		if self.next_minigame == Constants.BOMB_TAG or self.next_minigame == Constants.VIRUS_FALL or
 		self.next_minigame == Constants.DEATH_BALL then
 			message = language.PLAY_GAME
-			pos = {462.5, 100}
+			pos = {(Constants.DEFAULT_WIDTH - size[1])/2, 100}
 		elseif self.next_minigame == Constants.PLAY then
 			message = language.PLAY_GAME
 		elseif self.next_minigame == Constants.PRACTICE then
 			message = language.ENTER_PRACTICE
 		elseif self.next_minigame == Constants.MENU then
 			message = language.QUIT_TO_MENU
-			pos = {948, 375}
-			size = {288, 150}
+			-- Si realiza esta llamada desde el menú de prácticas
+			if self.minigame.class.name == "PracticeMenu" then
+				pos = {462.5, 100}
+			-- Si realiza esta llamada desde el menú de configuración
+			else
+				size = {288, 150}
+				pos = {948, 375}
+			end
 		elseif self.next_minigame == Constants.CONFIGURATION_MENU then
 			message = language.ENTER_OPTIONS
 		elseif self.next_minigame == Constants.SAVE_CONFIG then
 			message = language.EXIT_SAVING_OPTIONS
-			pos = {48, 375}
 			size = {288, 150}
+			pos = {48, 375}
 		elseif self.next_minigame == Constants.EXIT then
 			message = language.EXIT_GAME
 		end

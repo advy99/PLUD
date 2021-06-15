@@ -25,3 +25,6 @@ Spanish.JUMP = "SALTAR"
 Spanish.LEFT = "IZQUIERDA"
 Spanish.RIGHT = "DERECHA"
 Spanish.BACK = "ATRÁS"
+
+Spanish.ADD_PLAYER = "AÑADIR"
+Spanish.REMOVE_PLAYER = "ELIMINAR"

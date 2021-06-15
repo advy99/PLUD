@@ -35,7 +35,7 @@ function Virus:initialize(world, x, y)
 
 	self.scale = 0.1
 
-	local radius = (self.sprite_width - 15) * self.scale / 2
+	local radius = (self.sprite_width - 100) * self.scale / 2
 	self.circle_shape = love.physics.newCircleShape(radius)
 
 	-- Emparejamos el cuerpo con la forma del jugador

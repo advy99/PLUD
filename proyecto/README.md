@@ -15,6 +15,13 @@ Bla bla bla
 
 - Music by: https://www.chosic.com/ (licencia CC-0)
 
+- Sound Effects by:
+	- Slime sounds:
+		- Jump: https://freesound.org/people/Zuzek06/ (licencia CC-0)
+		- Fall: https://freesound.org/people/Lukeo135/ (licencia CC-0)
+		- Death: https://opengameart.org/content/8-wet-squish-slurp-impacts by Independent.nu (licencia CC-0)
+	- Energy Ball: https://freesound.org/people/SomeSine/ (licencia CC-0)
+
 - Icons:
 	- Boton PLAY: https://www.flaticon.com/authors/those-icons
 	- Boton opciones: https://www.freepik.com/

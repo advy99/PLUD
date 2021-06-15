@@ -20,22 +20,21 @@ function ConfigurationMenu:initialize(num_players)
 	local text_color = {1, 1, 1}
 	local box_color = {0, 0, 0}
 	self.title = TextBox:new(language.CONFIGURATION, 435, 80, 400, 75, 40, 1, text_color, box_color)
-	self.controls_title = TextBox:new(language.CONTROLS, 435, 80, 400, 75, 40, 1, text_color, box_color)
 
 
-	local background_box = {390, 70, 500, 625}
-	self.config_background = TextBox:new("", 390, 70, 500, 625, 40, 0.9, text_color, box_color)
+	self.background_box = {390, 70, 500, 625}
+	self.config_background = TextBox:new("", self.background_box[1], self.background_box[2], self.background_box[3], self.background_box[4], 40, 0.9, text_color, box_color)
 
 	-- pagina 1
-	local languages_box = {background_box[1] + background_box[3]/2 - 125, 170, 250, 60}
-	local volume_box = {background_box[1] + background_box[3]/2 - 100, 350, 200, 60}
-	self.language_section = TextBox:new(language.LANGUAGE, languages_box[1], languages_box[2], languages_box[3], languages_box[4], 35, 0.9, text_color, box_color)
-	self.volume_section = TextBox:new(language.SOUND, volume_box[1], volume_box[2], volume_box[3], volume_box[4], 35, 0.9, text_color, box_color)
+	local up_box = {self.background_box[1] + self.background_box[3]/2 - 125, 170, 250, 60}
+	local down_box = {self.background_box[1] + self.background_box[3]/2 - 125, 350, 250, 60}
+	self.language_section = TextBox:new(language.LANGUAGE, up_box[1], up_box[2], up_box[3], up_box[4], 35, 0.9, text_color, box_color)
+	self.volume_section = TextBox:new(language.SOUND, down_box[1], down_box[2], down_box[3], down_box[4], 35, 0.9, text_color, box_color)
 
 	-- pagina 2
-	local screen_box = {background_box[1] + background_box[3]/2 - 100, 170, 200, 60}
-	self.screen_section = TextBox:new(language.SCREEN, screen_box[1], screen_box[2], screen_box[3], screen_box[4], 35, 0.9, text_color, box_color)
+	self.screen_section = TextBox:new(language.SCREEN, up_box[1], up_box[2], up_box[3], up_box[4], 35, 0.9, text_color, box_color)
 
+	self.controls_section = TextBox:new(language.CONTROLS, down_box[1], down_box[2], down_box[3], down_box[4], 35, 0.9, text_color, box_color)
 
 
 
@@ -64,10 +63,10 @@ function ConfigurationMenu:initialize(num_players)
 	self.languages.english = love.graphics.newImage("img/languages/united-kingdom.png")
 	self.languages.spanish = love.graphics.newImage("img/languages/spain.png")
 
-	self.flag_position = {background_box[1] + background_box[3]/2 - self.languages.english:getWidth() / 2  * 0.15, 250}
-	self.player_position = {background_box[1] + background_box[3]/2 - self.players_images.player1:getWidth() / 2 * 0.75 / 10, 175}
+	self.flag_position = {self.background_box[1] + self.background_box[3]/2 - self.languages.english:getWidth() / 2  * 0.15, 250}
+	self.player_position = {self.background_box[1] + self.background_box[3]/2 - self.players_images.player1:getWidth() / 2 * 0.75 / 10, 390}
 
-	self.pages_button_position = {background_box[1] + background_box[3]/2 - 150, 600, 300}
+	self.pages_button_position = {self.background_box[1] + self.background_box[3]/2 - 150, 625, 300}
 
 end
 
@@ -77,7 +76,7 @@ function ConfigurationMenu:update(dt)
 	Menu.update(self, dt)
 
 	self.title:updateText(language.CONFIGURATION)
-	self.controls_title:updateText(language.CONTROLS)
+	self.controls_section:updateText(language.CONTROLS)
 	self.language_section:updateText(language.LANGUAGE)
 	self.volume_section:updateText(language.SOUND)
 	self.screen_section:updateText(language.SCREEN)
@@ -93,11 +92,11 @@ function ConfigurationMenu:update(dt)
 
 	if not self.show_second_page then
 
-		suit.Slider(self.music_slider, {align = "right"}, 640, 425, 175,30)
-		suit.Label(language.MUSIC, {align = "center"}, 460, 425, 160,30)
-		suit.Slider(self.sfx_slider, {align = "right"}, 640, 475, 175,30)
-		suit.Label(language.SFX, {align = "center"}, 460, 475, 160,30)
-		suit.Checkbox(self.mute_chk, {align = "left"}, 500, 525, 250,30)
+		suit.Slider(self.music_slider, {align = "right"}, 640, 450, 175,30)
+		suit.Label(language.MUSIC, {align = "center"}, 460, 450, 160,30)
+		suit.Slider(self.sfx_slider, {align = "right"}, 640, 500, 175,30)
+		suit.Label(language.SFX, {align = "center"}, 460, 500, 160,30)
+		suit.Checkbox(self.mute_chk, {align = "left"}, 500, 550, 275,30)
 		self.show_second_page = suit.Button("->", {id = "go_page_2", align = "center"}, self.pages_button_position[1], self.pages_button_position[2], self.pages_button_position[3],50).hit
 
 		if suit.Button("<-", {align = "center"}, self.flag_position[1] - 70 - 20, self.flag_position[2] + self.languages.english:getWidth() / 2 * 0.15 - 15, 70,30).hit then
@@ -146,21 +145,21 @@ function ConfigurationMenu:update(dt)
 
 	else
 
-		suit.Checkbox(self.vsync_chk, {align = "left"}, 500, 250, 250,30)
-		suit.Checkbox(self.fps_chk, {align = "left"}, 500, 300, 250,30)
+		suit.Checkbox(self.vsync_chk, {align = "left"}, self.background_box[1] + self.background_box[3] / 2 - 125, 250, 250,30)
+		suit.Checkbox(self.fps_chk, {align = "left"}, self.background_box[1] + self.background_box[3] / 2 - 150, 300, 300,30)
 
 		self.init_config:setVSYNC(self.vsync_chk.checked)
 		self.init_config:setShowFPS(self.fps_chk.checked)
 
 
-		if suit.Button("<-", {align = "center"}, 500, 210, 70,30).hit then
+		if suit.Button("<-", {align = "center"}, self.player_position[1] - 70 - 20, self.player_position[2]+ self.players_images.player1:getHeight() / 20 * 0.75 + 10, 70,30).hit then
 			self.actual_player = self.actual_player - 1
 			if self.actual_player < 1 then
 				self.actual_player = self.actual_player + 4
 			end
 		end
 
-		if suit.Button("->", {align = "center"}, 700, 210, 70,30).hit then
+		if suit.Button("->", {align = "center"}, self.player_position[1] + self.players_images.player1:getWidth() * 0.075 + 20, self.player_position[2] + self.players_images.player1:getHeight() / 20 * 0.75 + 10, 70,30).hit then
 			self.actual_player = self.actual_player + 1
 
 			if self.actual_player > 4 then
@@ -169,17 +168,17 @@ function ConfigurationMenu:update(dt)
 		end
 
 
-		suit.Label(language.JUMP, {align = "left"}, 550, 300, 130,30)
+		suit.Label(language.JUMP, {align = "left"}, 500, self.player_position[2] + 85, 150,30)
 
-		if suit.Button(string.upper(self.init_config.config["player" .. self.actual_player].JUMP_KEY), {id = "jump", align = "center"}, 675, 300, 40,30).hit then
+		if suit.Button(string.upper(self.init_config.config["player" .. self.actual_player].JUMP_KEY), {id = "jump", align = "center"}, 725, self.player_position[2] + 85, 40,30).hit then
 			local k = readKey()
 			if not self.init_config:keyAssigned(k) and k ~= "escape" then
 				self.init_config.config["player" .. self.actual_player].JUMP_KEY = k
 			end
 		end
 
-		suit.Label(language.LEFT, {align = "left"}, 550, 350, 130,30)
-		if suit.Button(string.upper(self.init_config.config["player" .. self.actual_player].LEFT_KEY), {id = "left", align = "center"}, 675, 350, 40,30).hit then
+		suit.Label(language.LEFT, {align = "left"}, 500, self.player_position[2] + 135, 200,30)
+		if suit.Button(string.upper(self.init_config.config["player" .. self.actual_player].LEFT_KEY), {id = "left", align = "center"}, 725, self.player_position[2] + 135, 40,30).hit then
 			local k = readKey()
 			if not self.init_config:keyAssigned(k) and k ~= "escape" then
 				self.init_config.config["player" .. self.actual_player].LEFT_KEY = k
@@ -187,8 +186,8 @@ function ConfigurationMenu:update(dt)
 		end
 
 
-		suit.Label(language.RIGHT, {align = "left"}, 550, 400, 130,30)
-		if suit.Button(string.upper(self.init_config.config["player" .. self.actual_player].RIGHT_KEY), {id = "right", align = "center"}, 675, 400, 40,30).hit then
+		suit.Label(language.RIGHT, {align = "left"}, 500, self.player_position[2] + 185, 200,30)
+		if suit.Button(string.upper(self.init_config.config["player" .. self.actual_player].RIGHT_KEY), {id = "right", align = "center"}, 725, self.player_position[2] + 185, 40,30).hit then
 			local k = readKey()
 			if not self.init_config:keyAssigned(k) and k ~= "escape" then
 				self.init_config.config["player" .. self.actual_player].RIGHT_KEY = k
@@ -216,7 +215,7 @@ function ConfigurationMenu:draw()
 
 	else
 		self.screen_section:draw()
-		self.controls_title:draw()
+		self.controls_section:draw()
 		love.graphics.reset()
 		love.graphics.draw(self.players_images["player" .. self.actual_player], self.top_left, self.player_position[1], self.player_position[2], 0, 0.75, 0.75)
 

@@ -27,3 +27,5 @@ English.BACK = "BACK"
 
 English.ADD_PLAYER = "ADD"
 English.REMOVE_PLAYER = "REMOVE"
+
+English.SCORE = "SCORE"

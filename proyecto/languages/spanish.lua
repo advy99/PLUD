@@ -28,3 +28,5 @@ Spanish.BACK = "ATRÁS"
 
 Spanish.ADD_PLAYER = "AÑADIR"
 Spanish.REMOVE_PLAYER = "ELIMINAR"
+
+Spanish.SCORE = "PUNTOS"

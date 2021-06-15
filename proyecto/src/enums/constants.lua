@@ -2,6 +2,7 @@ Constants = {}
 
 Constants.DEFAULT_WIDTH = 1280
 Constants.DEFAULT_HEIGHT = 896
+Constants.GAME_HEIGHT = 768
 
 Constants.GRAVITY = 9.81
 Constants.PX_PER_METER = 64
@@ -32,7 +33,7 @@ Constants.VIRUS_CATEGORY = 3
 
 -- Constantes de debug
 Constants.DEBUG = false
-Constants.SHOW_HITBOX = true
+Constants.SHOW_HITBOX = false
 
 -- Constantes de minijuegos
 Constants.BOMB_TAG = 1

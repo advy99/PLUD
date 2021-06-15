@@ -48,7 +48,7 @@ function Virus:initialize(world, x, y)
 	self.circle_fixture:setSensor(true)
 
 	self.x_speed = 0
-	self.y_speed = 50
+	self.y_speed = 500
 	self.x_direction = 0
 	self.y_direction = 1
 end

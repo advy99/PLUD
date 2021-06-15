@@ -125,7 +125,7 @@ function Game:handleInternalEvent(event)
 			self.countdown = Constants.TIME_BETWEEN_MINIGAME
 			self.next_minigame = nil
 			if event == Events.PLAYER_LAND_PLATFORM_PLAY then
-				self.next_minigame = Constants.PLAY
+				self.next_minigame = Constants.VIRUS_FALL
 			elseif event == Events.PLAYER_LAND_PLATFORM_CONFIGURATION then
 				self.next_minigame = Constants.CONFIGURATION_MENU
 			elseif event == Events.PLAYER_LAND_PLATFORM_PRACTICE then

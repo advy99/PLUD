@@ -27,6 +27,7 @@ Constants.PLATFORM_DEATH_BALL_CATEGORY = 10
 
 Constants.OBJECTS_GROUP = 4
 Constants.DEATH_BALL_CATEGORY = 2
+Constants.VIRUS_CATEGORY = 3
 
 
 -- Constantes de debug

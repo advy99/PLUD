@@ -41,13 +41,16 @@ function Virus:initialize(world, x, y)
 	-- Emparejamos el cuerpo con la forma del jugador
 	self.circle_fixture = love.physics.newFixture(self.body, self.circle_shape, 1)
 	self.circle_fixture:setGroupIndex(Constants.OBJECTS_GROUP)
-	self.circle_fixture:setCategory(Constants.DEATH_BALL_CATEGORY)
+	self.circle_fixture:setCategory(Constants.VIRUS_CATEGORY)
+	print(self.circle_fixture:getGroupIndex(), self.circle_fixture:getCategory())
 
 	self.circle_fixture:setUserData("virus")
 
-	self.x_speed = 300
-	self.y_speed = 300
-	self.x_direction = 1
+	self.circle_fixture:setSensor(true)
+
+	self.x_speed = 0
+	self.y_speed = 10
+	self.x_direction = 0
 	self.y_direction = 1
 end
 
@@ -60,22 +63,11 @@ function Virus:update(dt)
 	-- self.body:setAngularVelocity(math.pi)
 end
 
-function Virus:changeBallDirection(x, y)
-	self.x_direction = x
-	self.y_direction = y
-end
-
 function Virus:getCurrentQuad()
 	-- calculamos que sprite se tiene que dibujar
 	return math.floor(self.animation.currentTime / self.animation.duration * #self.animation.quads) + 1
 
 end
-
-function Virus:changeBallDirection()
-	self.x_direction = -self.x_direction
-	self.y_direction = -self.y_direction
-end
-
 -- Función para dibujar el jugador
 function Virus:draw()
 

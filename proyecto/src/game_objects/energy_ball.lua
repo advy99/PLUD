@@ -40,8 +40,11 @@ function EnergyBall:initialize(world, x, y)
 
 	-- Emparejamos el cuerpo con la forma del jugador
 	self.circle_fixture = love.physics.newFixture(self.body, self.circle_shape, 1)
-	self.circle_fixture:setGroupIndex(Constants.OBJECTS_GROUP)
-	self.circle_fixture:setCategory(Constants.DEATH_BALL_CATEGORY)
+	-- self.circle_fixture:setGroupIndex(Constants.OBJECTS_GROUP)
+	-- self.circle_fixture:setCategory(Constants.DEATH_BALL_CATEGORY)
+	-- self.circle_fixture:setMask(65535) -- Máscara más grande
+
+	self.circle_fixture:setFilterData(Constants.DEATH_BALL_CATEGORY, 65535, Constants.OBJECTS_GROUP)
 
 	self.circle_fixture:setUserData("energy_ball")
 

@@ -238,7 +238,7 @@ function Game:keyPressed(k)
 		end
 	end
 
-	if k == Constants.ADD_PLAYER_KEY and self.num_active_players < Constants.MAX_PLAYERS then
+	if (k == Constants.ADD_PLAYER_KEY or (love.keyboard.isDown(Constants.ADD_PLAYER_KEY_COMBINATION))) and self.num_active_players < Constants.MAX_PLAYERS then
 		self:addPlayer()
 	end
 

@@ -46,7 +46,8 @@ Constants.SAVE_CONFIG = 7
 Constants.PRACTICE = 8
 Constants.PLAY = 9
 
-Constants.ADD_PLAYER_KEY = "return"
+Constants.ADD_PLAYER_KEY = "+"
+Constants.ADD_PLAYER_KEY_COMBINATION = {"lshift", "="}
 Constants.REMOVE_PLAYER_KEY = "-"
 
 Constants.MIN_PLAYERS = 1

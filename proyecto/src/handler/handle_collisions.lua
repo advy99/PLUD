@@ -102,15 +102,8 @@ function beginContact(a, b, coll)
 		if (group_a == Constants.OBJECTS_GROUP and category_a == Constants.DEATH_BALL_CATEGORY or
 			group_b == Constants.OBJECTS_GROUP and category_b == Constants.DEATH_BALL_CATEGORY) and ball_can_touch then
 			-- cogemos la normal, y cambiamos
-			local x, y = coll:getNormal()
-			x, y = normalized(x, y)
-
-			local inix, iniy
-			inix = game.minigame.energy_ball.x_direction
-			iniy = game.minigame.energy_ball.y_direction
-			local dot = vector_dot(game.minigame.energy_ball.x_direction, game.minigame.energy_ball.y_direction, x, y)
-			game.minigame.energy_ball.x_direction = game.minigame.energy_ball.x_direction - (2 * x * dot)
-			game.minigame.energy_ball.y_direction = game.minigame.energy_ball.y_direction - (2 * y * dot)
+	
+			game:handleEvent(coll, Events.DEATH_BALL_COLLISION)
 
 			ball_can_touch = false
 		end

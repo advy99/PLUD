@@ -5,13 +5,10 @@ local ball_can_touch = true
 -- Funcion que se ejecutará cuando se detecta una colisión
 function beginContact(a, b, coll)
 
-	local category_a = a:getCategory()
-	local group_a = a:getGroupIndex()
-	local category_b = b:getCategory()
-	local group_b = b:getGroupIndex()
+	local category_a, mask_a, group_a = a:getFilterData()
+	local category_b, mask_b, group_b = b:getFilterData()
 
 	if not a:isSensor() and not b:isSensor() then
-
 
 		-- Si colisionan un jugador y un un sensor de una plataforma, el jugador para al estado grounded
 		if group_a == Constants.PLAYER_GROUP and group_b == Constants.PLATFORM_GROUP then
@@ -130,9 +127,10 @@ end
 -- Función que se ejecutará cuando finaliza una colisión
 function endContact(a, b, coll)
 
+	local category_a, mask_a, group_a = a:getFilterData()
+	local category_b, mask_b, group_b = b:getFilterData()
+
 	if not a:isSensor() and not b:isSensor() then
-		local category_a, mask_a, group_a = a:getFilterData()
-		local category_b, mask_b, group_b = b:getFilterData()
 
 		-- Si es un jugador y una plataforma, y el jugador no estaba saltando, pasa a cayendo.
 		if group_a == Constants.PLAYER_GROUP and group_b == Constants.PLATFORM_GROUP then

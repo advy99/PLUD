@@ -77,8 +77,8 @@ function Game:draw()
 		local box_color = {0, 0, 0}
 
 		local message = ""
-		local pos = {462.5, 375}
-		local size = {352, 150}
+		local pos = {446.5, 375}
+		local size = {384, 150}
 		if self.next_minigame == Constants.BOMB_TAG or self.next_minigame == Constants.VIRUS_FALL or
 		self.next_minigame == Constants.DEATH_BALL then
 			message = language.PLAY_GAME
@@ -132,7 +132,7 @@ function Game:handleInternalEvent(event)
 			self.countdown = Constants.TIME_BETWEEN_MINIGAME
 			self.next_minigame = nil
 			if event == Events.PLAYER_LAND_PLATFORM_PLAY then
-				self.next_minigame = Constants.VIRUS_FALL
+				self.next_minigame = Constants.PLAY
 			elseif event == Events.PLAYER_LAND_PLATFORM_CONFIGURATION then
 				self.next_minigame = Constants.CONFIGURATION_MENU
 			elseif event == Events.PLAYER_LAND_PLATFORM_PRACTICE then

@@ -1,7 +1,7 @@
 Spanish = {}
 
 
-Spanish.PLAY_GAME = "COMIENZA EN .."
+Spanish.PLAY_GAME = "EL JUEGO/nEMPIEZA EN ..."
 Spanish.ENTER_PRACTICE = "MODO PRÁCTICA .."
 Spanish.ENTER_OPTIONS = "AJUSTES .. "
 Spanish.EXIT_GAME = "CERRANDO .."

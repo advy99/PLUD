@@ -15,7 +15,8 @@ function BombTag:initialize(num_players)
 
 	self:assignBomb()
 	self.bomb_swap_time = 0
-	self.bomb_timer = 5
+	self.BOMB_TIME = 5
+	self.bomb_timer = self.BOMB_TIME
 
 end
 
@@ -45,7 +46,7 @@ function BombTag:update(dt)
 		if player.has_died then
 			local num = love.math.random(4)
 			player:respawn(self.level.spawnpoints["spawn" .. num].x, self.level.spawnpoints["spawn" .. num].y)
-			self.bomb_timer = 5
+			self.bomb_timer = self.BOMB_TIME
 			self:assignBomb()
 		end
 	end

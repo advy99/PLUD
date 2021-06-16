@@ -19,15 +19,15 @@ function ConfigurationMenu:initialize(num_players)
 
 	local text_color = {1, 1, 1}
 	local box_color = {0, 0, 0}
-	self.title = TextBox:new(language.CONFIGURATION, 435, 80, 400, 75, 40, 1, text_color, box_color)
+	self.title = TextBox:new(language.CONFIGURATION, 412, 80, 450, 75, 40, 1, text_color, box_color)
 
 
 	self.background_box = {390, 70, 500, 625}
 	self.config_background = TextBox:new("", self.background_box[1], self.background_box[2], self.background_box[3], self.background_box[4], 40, 0.9, text_color, box_color)
 
 	-- pagina 1
-	local up_box = {self.background_box[1] + self.background_box[3]/2 - 125, 170, 250, 60}
-	local down_box = {self.background_box[1] + self.background_box[3]/2 - 125, 350, 250, 60}
+	local up_box = {self.background_box[1] + self.background_box[3]/2 - 150, 170, 300, 60}
+	local down_box = {self.background_box[1] + self.background_box[3]/2 - 150, 350, 300, 60}
 	self.language_section = TextBox:new(language.LANGUAGE, up_box[1], up_box[2], up_box[3], up_box[4], 35, 0.9, text_color, box_color)
 	self.volume_section = TextBox:new(language.SOUND, down_box[1], down_box[2], down_box[3], down_box[4], 35, 0.9, text_color, box_color)
 
@@ -170,7 +170,7 @@ function ConfigurationMenu:update(dt)
 		end
 
 
-		suit.Label(language.JUMP, {align = "left"}, 500, self.player_position[2] + 85, 150,30)
+		suit.Label(language.JUMP, {align = "left"}, 500, self.player_position[2] + 85, 200,30)
 
 		if suit.Button(string.upper(self.init_config.config["player" .. self.actual_player].JUMP_KEY), {id = "jump", align = "center"}, 725, self.player_position[2] + 85, 40,30).hit then
 			local k = readKey()

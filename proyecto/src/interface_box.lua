@@ -13,7 +13,7 @@ function InterfaceBox:initialize(posX, posY, keys)
 
 	self.sizeW = 224
 	self.sizeH = 96
-	self.textSize = 30
+	self.textSize = 25
 	self.opacity = 0.5
 
 	local text_color = {0, 0, 0}
@@ -67,7 +67,7 @@ function InterfaceBox:draw(player)
 		local font = love.graphics.newFont("fonts/kirbyss.ttf", self.textSize)
 		love.graphics.setFont(font)
 		love.graphics.printf(language.ADD_PLAYER , self.posX - self.sizeW/10,  self.posY + self.sizeH/5, self.sizeW, "center")
-		love.graphics.printf(language.REMOVE_PLAYER , self.posX - self.sizeW/10 ,  self.posY + 50, self.sizeW, "center")
+		love.graphics.printf(language.REMOVE_PLAYER , self.posX - self.sizeW/10 ,  self.posY + 52, self.sizeW, "center")
 
 	end
 end

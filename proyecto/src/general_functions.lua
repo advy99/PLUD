@@ -57,6 +57,8 @@ function changeLanguage(val)
 		language = Italian
 	elseif val == "french" then
 		language = French
+	elseif val == "portuguese" then
+		language = Portuguese
 	end
 end
 

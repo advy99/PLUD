@@ -16,6 +16,7 @@ require("languages/spanish")
 require("languages/german")
 require("languages/italian")
 require("languages/french")
+require("languages/portuguese")
 
 
 

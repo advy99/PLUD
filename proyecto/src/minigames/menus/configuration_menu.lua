@@ -49,7 +49,7 @@ function ConfigurationMenu:initialize(num_players)
 
 	self.show_second_page = false
 
-	self.languages_array = {"english", "spanish", "german", "italian", "french"}
+	self.languages_array = {"english", "spanish", "german", "italian", "french", "portuguese"}
 	self.active_language = 0
 
 	for key, value in pairs(self.languages_array)
@@ -65,6 +65,7 @@ function ConfigurationMenu:initialize(num_players)
 	self.languages.german = love.graphics.newImage("img/languages/germany.png")
 	self.languages.italian = love.graphics.newImage("img/languages/italy.png")
 	self.languages.french = love.graphics.newImage("img/languages/france.png")
+	self.languages.portuguese = love.graphics.newImage("img/languages/portugal.png")
 
 	self.flag_position = {self.background_box[1] + self.background_box[3]/2 - self.languages.english:getWidth() / 2  * 0.15, 250}
 	self.player_position = {self.background_box[1] + self.background_box[3]/2 - self.players_images.player1:getWidth() / 2 * 0.75 / 10, 390}

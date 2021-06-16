@@ -18,7 +18,7 @@ German.VSYNC = "VSYNC"
 
 German.SOUND = "TON"
 German.MUSIC = "MUSIK"
-German.SFX = "SFX"
+German.SFX = "EFFEKTE"
 German.MUTE = "STUMM"
 German.CONTROLS = "STEUERUNG"
 German.JUMP = "SPRINGEN"

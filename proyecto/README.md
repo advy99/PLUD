@@ -38,3 +38,8 @@ Bla bla bla
 	- Boton death_ball: https://www.flaticon.com/authors/dinosoftlabs
 
 - Font by Brian Kent (ÆNIGMA GAMES & FONTS): https://www.dafont.com/kirby-no-kira-kizzu.font
+
+## Herramientas
+
+- Font Forge: https://fontforge.org/en-US/
+- Tiled: https://www.mapeditor.org/

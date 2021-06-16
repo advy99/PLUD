@@ -3,13 +3,13 @@ French = {}
 
 French.PLAY_GAME = "LE JEU\nCOMMENCE DANS: "
 French.ENTER_PRACTICE = "ACCÉDER AU\nMODE TEST: "
-French.ENTER_OPTIONS = "ACCÉDER AUX\nPARAMETRES: " --TODO: es PARAMÈTRES, añadir con fontforge
+French.ENTER_OPTIONS = "ACCÉDER AUX\nPARAMÈTRES: "
 French.EXIT_GAME = "QUITTER\nLE JEU: "
 
 French.EXIT_SAVING_OPTIONS = "SAUVEGARDE\nEN COURS: "
 French.QUIT_TO_MENU = "RETOUR AU\nMENU: "
 
-French.CONFIGURATION = "PARAMETRES" --TODO: es PARAMÈTRES, añadir con fontforge
+French.CONFIGURATION = "PARAMÈTRES"
 French.LANGUAGE = "LANGUE"
 French.SCREEN = "ÉCRAN"
 French.FPS = "AFFICHER FPS"
@@ -20,7 +20,7 @@ French.SOUND = "SON"
 French.MUSIC = "MUSIQUE"
 French.SFX = "EFFETS"
 French.MUTE = "SOURDINE"
-French.CONTROLS = "CONTROLES" --TODO: es CONTRÔLES, añadir con fontforge
+French.CONTROLS = "CONTRÔLES"
 French.JUMP = "SAUTER"
 French.LEFT = "GAUCHE"
 French.RIGHT = "DROITE"

@@ -1,17 +1,17 @@
 Portuguese = {}
 
 
-Portuguese.PLAY_GAME = "O JOGO\nCOMEcA: " -- TODO: es COMEÇA, añadir con fontforge
+Portuguese.PLAY_GAME = "O JOGO\nCOMEÇA: "
 Portuguese.ENTER_PRACTICE = "ENTRANDO NO\nMODO DE TESTE: "
-Portuguese.ENTER_OPTIONS = "INSERINDO AS\nCONFIGURACOES: " -- TODO: es CONFIGURAÇÕES, añadir con fontforge
+Portuguese.ENTER_OPTIONS = "INSERINDO AS\nCONFIGURAÇÕES: "
 Portuguese.EXIT_GAME = "SAINDO\nDO JOGO: "
 
 Portuguese.EXIT_SAVING_OPTIONS = "A GUARDAR\n: "
 Portuguese.QUIT_TO_MENU = "SAIR PARA\nO MENU: "
 
-Portuguese.CONFIGURATION = "CONFIGURACOES" -- TODO: es CONFIGURAÇÕES, añadir con fontforge
+Portuguese.CONFIGURATION = "CONFIGURAÇÕES"
 Portuguese.LANGUAGE = "LINGUAMEN"
-Portuguese.SCREEN = "ECRA" -- TODO: es ECRÃ, añadir con fontforge
+Portuguese.SCREEN = "ECRÃ"
 Portuguese.FPS = "MOSTRAR FPS"
 Portuguese.VSYNC = "VSYNC"
 
@@ -28,4 +28,4 @@ Portuguese.RIGHT = "DIREITA"
 Portuguese.ADD_PLAYER = "ADICIONAR"
 Portuguese.REMOVE_PLAYER = "REMOVER"
 
-Portuguese.SCORE = "PONTUACAO" -- TODO: es PONTUAÇÃO, añadir con fontforge
+Portuguese.SCORE = "PONTUAÇÃO"

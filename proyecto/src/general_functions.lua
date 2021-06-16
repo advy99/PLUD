@@ -55,3 +55,8 @@ function changeLanguage(val)
 		language = German
 	end
 end
+
+function countCharacter(string,char)
+	local _, count = string:gsub(char,"")
+	return count
+end

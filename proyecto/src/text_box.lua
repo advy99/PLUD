@@ -14,6 +14,8 @@ function TextBox:initialize(text, posX, posY, sizeW, sizeH, textSize, opacity, t
 	self.text_color = text_color
 	self.box_color = box_color
 
+		self.vertical_shift = self.sizeH/2 - self.textSize * (countCharacter(self.text,"\n")+1)/2
+
 end
 
 function TextBox:draw()
@@ -24,9 +26,10 @@ function TextBox:draw()
 	love.graphics.setColor(self.text_color[1], self.text_color[2], self.text_color[3])
 	local font = love.graphics.newFont("fonts/kirbyss.ttf", self.textSize)
 	love.graphics.setFont(font)
-	love.graphics.printf(self.text, self.posX,  self.posY + self.sizeH / 4, self.sizeW, "center")
+	love.graphics.printf(self.text, self.posX,  self.posY + self.vertical_shift, self.sizeW, "center")
 end
 
 function TextBox:updateText(text)
 	self.text = text
+	self.vertical_shift = self.sizeH/2 - self.textSize * (countCharacter(self.text,"\n")+1)/2
 end

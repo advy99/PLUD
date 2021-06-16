@@ -13,6 +13,7 @@ require("src/enums/constants")
 require("src/game_objects/platform")
 require("languages/english")
 require("languages/spanish")
+require("languages/german")
 
 
 

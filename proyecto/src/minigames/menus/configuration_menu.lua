@@ -49,7 +49,7 @@ function ConfigurationMenu:initialize(num_players)
 
 	self.show_second_page = false
 
-	self.languages_array = {"english", "spanish"}
+	self.languages_array = {"english", "spanish", "german"}
 	self.active_language = 0
 
 	for key, value in pairs(self.languages_array)
@@ -62,7 +62,8 @@ function ConfigurationMenu:initialize(num_players)
 	self.languages = {}
 	self.languages.english = love.graphics.newImage("img/languages/united-kingdom.png")
 	self.languages.spanish = love.graphics.newImage("img/languages/spain.png")
-
+	self.languages.german = love.graphics.newImage("img/languages/germany.png")
+	
 	self.flag_position = {self.background_box[1] + self.background_box[3]/2 - self.languages.english:getWidth() / 2  * 0.15, 250}
 	self.player_position = {self.background_box[1] + self.background_box[3]/2 - self.players_images.player1:getWidth() / 2 * 0.75 / 10, 390}
 
@@ -102,7 +103,7 @@ function ConfigurationMenu:update(dt)
 		if suit.Button("<-", {align = "center"}, self.flag_position[1] - 70 - 20, self.flag_position[2] + self.languages.english:getWidth() / 2 * 0.15 - 15, 70,30).hit then
 			self.active_language = self.active_language - 1
 			if self.active_language < 1 then
-				self.active_language = self.active_language + 2
+				self.active_language = self.active_language + table_size(self.languages_array)
 			end
 			self.init_config:setLanguage(self.languages_array[self.active_language])
 			changeLanguage(self.languages_array[self.active_language])
@@ -112,8 +113,8 @@ function ConfigurationMenu:update(dt)
 		if suit.Button("->", {align = "center"}, self.flag_position[1] + self.languages.english:getWidth() * 0.15 + 20, self.flag_position[2] + self.languages.english:getWidth() / 2 * 0.15 - 15, 70,30).hit then
 			self.active_language = self.active_language + 1
 
-			if self.active_language > 2 then
-				self.active_language = self.active_language - 2
+			if self.active_language > table_size(self.languages_array) then
+				self.active_language = self.active_language - table_size(self.languages_array)
 			end
 			self.init_config:setLanguage(self.languages_array[self.active_language])
 

@@ -49,7 +49,9 @@ end
 function changeLanguage(val)
 	if val == "spanish" then
 		language = Spanish
-	else
+	elseif val == "english" then
 		language = English
+	elseif val == "german" then
+		language = German
 	end
 end

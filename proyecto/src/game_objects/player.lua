@@ -70,7 +70,7 @@ function Player:initialize(world, x, y, sprite_sheet, id)
 	self.animations.idle = newAnimation(sprite_sheet, 0, self.sprite_width, self.sprite_height, 1)
 	self.animations.walk = newAnimation(sprite_sheet, 128, self.sprite_width, self.sprite_height, 1)
 	self.animations.jump = newAnimation(sprite_sheet, 256, self.sprite_width, self.sprite_height, 1)
-	self.animations.attack = newAnimation(sprite_sheet, 384, self.sprite_width, self.sprite_height, 1)
+	--self.animations.attack = newAnimation(sprite_sheet, 384, self.sprite_width, self.sprite_height, 1)
 	self.animations.dead = newAnimation(sprite_sheet, 512, self.sprite_width, self.sprite_height, 1)
 
 
@@ -176,11 +176,6 @@ function Player:getMode()
 	return self.mode
 end
 
--- Función para que el jugador ataque
-function Player:attack()
-	self:setMode("attacking");
-end
-
 -- Función para que el jugador muera
 function Player:kill()
 	self:setMode("dying")
@@ -212,12 +207,6 @@ function Player:handleAnimations(dt)
 			self.current_animation = self.animations.jump
 			self.current_animation.currentTime = 0
 			self.time_to_finish_animation = 1
-		elseif self.mode == "attacking" then
-			self.current_animation = self.animations.attack
-			self.time_to_finish_animation = 1
-			-- como el ataque es una animación unica, volvemos al estado anterior
-			-- en cuanto acabamos la animación
-			self:setMode(self.previous_mode)
 		end
 	elseif self.time_to_finish_animation <= 0 and self.mode == "dying"  then
 		self.has_died = true

@@ -16,6 +16,11 @@ function TitleMenu:initialize(num_players)
 	self.rotation_speed = 0.4
 	self.MAX_ROTATION = math.rad(5)
 
+	-- self.win_scale = 1
+	-- self.scale_speed = 0.02
+	-- self.MAX_SCALE = 0.11
+	-- self.MIN_SCALE = 0.1
+
 
 end
 
@@ -37,6 +42,16 @@ function TitleMenu:update(dt)
 		self.win_rotation = self.MAX_ROTATION
 	end
 
+	-- self.win_scale = self.win_scale - self.scale_speed * dt
+	--
+	-- if self.win_scale > self.MAX_SCALE then
+	-- 	self.scale_speed = -self.scale_speed
+	-- 	self.win_scale = self.MAX_SCALE
+	-- elseif self.win_scale < self.MIN_SCALE then
+	-- 	self.scale_speed = -self.scale_speed
+	-- 	self.win_scale = self.MIN_SCALE
+	-- end
+
 
 end
 
@@ -45,8 +60,9 @@ function TitleMenu:draw()
 	love.graphics.reset()
 	Menu.draw(self)
 
- 	love.graphics.draw(self.lose_to_image, 480 + self.lose_to_image:getWidth()/2 * 0.1, 70, self.lose_to_rotation, 0.1, 0.1, self.lose_to_image:getWidth()/2, 0)
+ 	love.graphics.draw(self.lose_to_image, 480 + self.lose_to_image:getWidth()/2 * 0.1, 70, self.lose_to_rotation, 0.09, 0.09, self.lose_to_image:getWidth()/2, 0)
 	love.graphics.draw(self.win_image, 480 + self.win_image:getWidth()/2 * 0.1, 200, self.win_rotation, 0.1, 0.1, self.win_image:getWidth()/2, 0)
+	--love.graphics.draw(self.win_image, 480 + self.win_image:getWidth()/2 * 0.1, 200, self.win_rotation, self.win_scale, self.win_scale, self.win_image:getWidth()/2, 0)
 
 
 end

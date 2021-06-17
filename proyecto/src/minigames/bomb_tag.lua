@@ -18,6 +18,11 @@ function BombTag:initialize(num_players)
 	self.BOMB_TIME = 5
 	self.bomb_timer = self.BOMB_TIME
 
+	local pos = {Constants.DEFAULT_WIDTH/2 - 16, 64}
+	local text_color = {1, 1, 1}
+	local box_color = {0, 0, 0}
+	self.countdown_box = TextBox:new( tostring(self.bomb_timer), pos[1], pos[2], 32, 32, 25, 0.8, text_color, box_color)
+
 end
 
 
@@ -32,14 +37,12 @@ function BombTag:update(dt)
 	if self.bomb_timer > 0 then
 		self.bomb_timer = self.bomb_timer - dt
 	else
-
 		for _ , player in pairs(self.level.players) do
 			if player.has_bomb then
 				player:kill()
 				player.has_bomb = false
 			end
 		end
-
 	end
 
 	for _ , player in pairs(self.level.players) do
@@ -51,17 +54,15 @@ function BombTag:update(dt)
 		end
 	end
 
+	self.countdown_box:updateText(tostring(math.abs(math.ceil(self.bomb_timer))))
+
 end
 
 
 function BombTag:draw()
 	MiniGame.draw(self)
 
-	love.graphics.setColor(0, 0, 0)
-	local mainFont = love.graphics.newFont("fonts/kirbyss.ttf", 50)
-	love.graphics.setFont(mainFont)
-	love.graphics.printf("Tiempo restante: " .. math.abs(math.ceil(self.bomb_timer)), -100,  50, 1000, "center")
-
+	self.countdown_box:draw()
 end
 
 function BombTag:handleEvent(object, event)

@@ -220,7 +220,7 @@ end
 
 function Player:respawn(pos_x, pos_y)
 	self.has_died = false
-	self.mode = "grounded"
+	self.mode = "jumping"
 	self.body:setPosition(pos_x, pos_y)
 	self.body:setLinearVelocity(0, 0)
 	self.circle_fixture:setSensor(false)

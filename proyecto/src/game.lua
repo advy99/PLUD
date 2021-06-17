@@ -91,7 +91,7 @@ function Game:draw()
 			message = language.QUIT_TO_MENU
 			-- Si realiza esta llamada desde el menú de prácticas
 			if self.minigame.class.name == "PracticeMenu" then
-				pos = {462.5, 100}
+				pos = {(Constants.DEFAULT_WIDTH - size[1])/2, 100}
 			-- Si realiza esta llamada desde el menú de configuración
 			else
 				size = {288, 150}

@@ -33,3 +33,8 @@ function TextBox:updateText(text)
 	self.text = text
 	self.vertical_shift = self.sizeH/2 - self.textSize * (countCharacter(self.text,"\n")+1)/2
 end
+
+function TextBox:updatePosition(pos_x, pos_y)
+	self.posX = pos_x
+	self.posY = pos_y
+end

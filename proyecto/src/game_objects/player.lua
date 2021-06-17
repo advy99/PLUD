@@ -45,7 +45,6 @@ function Player:initialize(world, x, y, sprite_sheet, id)
 	--self.rectangle_fixture:setGroupIndex(Constants.PLAYER_GROUP)
 	self.rectangle_fixture:setUserData(self.player_id)
 	self.rectangle_fixture:setFriction(0.5)
-	self.has_bomb = false
 
 	self.circle_fixture:setFilterData(1, 65535, Constants.PLAYER_GROUP)
 	self.rectangle_fixture:setFilterData(1, 65535, Constants.PLAYER_GROUP)
@@ -284,16 +283,6 @@ function Player:draw()
 		end
 
 		love.graphics.draw(self.current_animation.spriteSheet, self.current_animation.quads[num_quad], width , height, 0, -self.orientation * self.scale, self.scale )
-
-		-- si el personaje tiene la bomba, la dibujamos
-		if self.has_bomb then
-
-			local dynamite = love.graphics.newImage("img/dynamite_01.png")
-			local dynamite_width = self.body:getX() + 5 * self.orientation
-			local dynamite_height = self.body:getY() * 0.98
-
-			love.graphics.draw(dynamite, dynamite_width, dynamite_height, 0, -self.orientation, 1)
-		end
 
 		if Constants.SHOW_HITBOX then
 			love.graphics.setLineWidth( 1 )

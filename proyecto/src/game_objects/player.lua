@@ -288,7 +288,13 @@ function Player:draw()
 		local width = self.body:getX() + (self.orientation * (self.sprite_width / 2 - 1)) * self.scale
 		local height = self.body:getY() - (self.sprite_height / 2) * self.scale
 
-		love.graphics.draw(self.current_animation.spriteSheet, self.current_animation.quads[self:getCurrentQuad()], width , height, 0, -self.orientation * self.scale, self.scale )
+		local num_quad = self:getCurrentQuad()
+
+		if self.current_animation == self.animations.jump and num_quad < 8 and num_quad > 2 then
+			height = height + num_quad
+		end
+
+		love.graphics.draw(self.current_animation.spriteSheet, self.current_animation.quads[num_quad], width , height, 0, -self.orientation * self.scale, self.scale )
 
 		-- si el personaje tiene la bomba, la dibujamos
 		if self.has_bomb then

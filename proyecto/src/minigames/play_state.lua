@@ -14,6 +14,8 @@ function PlayState:initialize(num_players)
 	self.minigames = {}
 	-- insertamos los juegos de forma aleatoria
 	local pos = math.random(0, 2)
+	-- TODO: cambiar por menu con resultados, no la tabla de scores
+	table.insert(self.minigames, 0, ScoreMenu:new(num_players))
 	table.insert(self.minigames, (pos % 3) + 1, BombTag:new(num_players))
 	table.insert(self.minigames, ((pos + 1) % 3) + 1, DeathBall:new(num_players))
 	table.insert(self.minigames, ((pos + 2) % 3) + 1, VirusFall:new(num_players))
@@ -36,7 +38,7 @@ function PlayState:update(dt)
 
 	if self.elapsed_time >= self.TIME_PER_MINIGAME then
 		self.elapsed_time = 0
-		if #self.minigames > 1 then
+		if #self.minigames > 0 then
 			self:saveScores()
 			table.remove(self.minigames, #self.minigames)
 			self.level = self.minigames[#self.minigames].level

@@ -56,7 +56,16 @@ Constants.ADD_PLAYER_KEY = "+"
 Constants.ADD_PLAYER_KEY_COMBINATION = {"lshift", "="}
 Constants.REMOVE_PLAYER_KEY = "-"
 
-Constants.MIN_PLAYERS = 1
+Constants.MIN_PLAYERS = 2
+
+if Constants.DEBUG then
+	Constants.MIN_PLAYERS = 1
+end
+
 Constants.MAX_PLAYERS = 4
 
-Constants.TIME_BETWEEN_SCREENS = 1
+Constants.TIME_BETWEEN_SCREENS = 3
+
+if Constants.DEBUG then
+	Constants.TIME_BETWEEN_SCREENS = 1
+end

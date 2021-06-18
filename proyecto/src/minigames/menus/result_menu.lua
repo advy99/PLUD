@@ -1,4 +1,4 @@
-require("src/Menus/menus/menu")
+require("src/minigames/menus/menu")
 
 local class = require "lib/middleclass"
 

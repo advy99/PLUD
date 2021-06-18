@@ -1,5 +1,6 @@
 
 require("src/minigames/minigame")
+require("src/minigames/menus/result_menu")
 
 local class = require "lib/middleclass"
 
@@ -13,7 +14,7 @@ function PlayState:initialize(num_players)
 	-- MiniGame.initialize(self, "level_" .. num_level, num_players)
 	self.minigames = {}
 	-- TODO: cambiar por menu con resultados, no la tabla de scores
-	table.insert(self.minigames, 0, ScoreMenu:new(num_players))
+	table.insert(self.minigames, 0, ResultMenu:new(num_players))
 	table.insert(self.minigames, 1, BombTag:new(num_players))
 	table.insert(self.minigames, 2, DeathBall:new(num_players))
 	table.insert(self.minigames, 3, VirusFall:new(num_players))
@@ -108,12 +109,19 @@ function PlayState:handleEventBetweenObjects(object_a, object_b, event)
 
 end
 
+function PlayState:handleInternalEvent(event)
+	if self.elapsed_time < self.TIME_PER_MINIGAME then
+		self.minigames[#self.minigames]:handleInternalEvent(event)
+	end
+end
 
 function PlayState:saveScores()
 	for index, player in pairs(self.level.players) do
 		self.scores[index] = player:getScore()
 	end
 end
+
+
 
 function PlayState:setScores()
 	for index, player in pairs(self.level.players) do
@@ -133,4 +141,8 @@ function PlayState:setScores()
 		end
 	end
 
+end
+
+function PlayState:numPlayersInPlatform(num_platform)
+	return self.minigames[0].players_in_platform[num_platform]
 end

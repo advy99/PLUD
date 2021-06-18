@@ -90,3 +90,14 @@ end
 function love.mousemoved(x, y, dx, dy, istouch)
 	game:mouseMoved(x, y)
 end
+
+
+function love.textedited(text, start, length)
+	-- for IME input
+	game:textEdited(text, start, length)
+end
+
+function love.textinput(t)
+	-- forward text input to SUIT
+	game:textInput(t)
+end

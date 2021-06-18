@@ -301,11 +301,20 @@ function Game:keyPressed(k)
 		self:removePlayer()
 	end
 
-	for _, player in pairs(self.minigame.level.players) do
-		player:keyPressed(k)
-	end
+	self.minigame:keyPressed(k)
 
 end
+
+function Game:textEdited(text, start, length)
+	-- for IME input
+	self.mingame:textEdited(text, start, length)
+end
+
+function Game:textInput(t)
+	-- forward text input to SUIT
+	self.minigame:textInput(t)
+end
+
 
 function Game:keyReleased(k)
 

@@ -377,7 +377,7 @@ return {
               rotation = 0,
               visible = true,
               properties = {
-                ["categories"] = "7",
+                ["categories"] = "9",
                 ["friction"] = 0.8,
                 ["group"] = 3
               }
@@ -459,7 +459,7 @@ return {
               width = 125.558,
               height = 6.76268,
               rotation = 0,
-              visible = true,
+              visible = false,
               properties = {
                 ["friction"] = 0.8,
                 ["group"] = 3

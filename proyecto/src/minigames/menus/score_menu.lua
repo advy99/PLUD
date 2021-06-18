@@ -43,9 +43,9 @@ function ScoreMenu:initialize(num_players)
 				score = "0" .. score
 			end
 
-			self.bests[i] = TextBox:new(score .. "\t" .. string.upper(ordered_scores[i][1]), self.background_box[1] , 180 + 50*(i-1), self.background_box[3], 30, 35, 0, text_color, box_color)
+			self.bests[i] = TextBox:new(score .. "\t" .. string.upper(ordered_scores[i][1]), self.background_box[1] , 170 + 50*(i-1), self.background_box[3], 30, 35, 0, text_color, box_color)
 		else
-			self.bests[i] = TextBox:new("000\t---", self.background_box[1] , 180 + 50*(i-1), self.background_box[3], 30, 35, 0, text_color, box_color)
+			self.bests[i] = TextBox:new("000\t---", self.background_box[1] , 170 + 50*(i-1), self.background_box[3], 30, 35, 0, text_color, box_color)
 		end
 		self.bests[i]:setFont("fonts/RobotoMono-Bold.ttf")
 	end

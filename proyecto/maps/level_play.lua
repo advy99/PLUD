@@ -299,7 +299,7 @@ return {
               rotation = 0,
               visible = true,
               properties = {
-                ["categories"] = "6",
+                ["categories"] = "7",
                 ["friction"] = 0.8,
                 ["group"] = 3
               }
@@ -316,7 +316,7 @@ return {
               rotation = 0,
               visible = true,
               properties = {
-                ["categories"] = "12",
+                ["categories"] = "11",
                 ["friction"] = 0.8,
                 ["group"] = 3
               }
@@ -333,7 +333,7 @@ return {
               rotation = 0,
               visible = true,
               properties = {
-                ["categories"] = "8",
+                ["categories"] = "3",
                 ["friction"] = 0.8,
                 ["group"] = 3
               }
@@ -350,7 +350,7 @@ return {
               rotation = 0,
               visible = true,
               properties = {
-                ["categories"] = "11",
+                ["categories"] = "13",
                 ["friction"] = 0.8,
                 ["group"] = 3
               }

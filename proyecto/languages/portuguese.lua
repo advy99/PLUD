@@ -31,3 +31,5 @@ Portuguese.ADD_PLAYER = "ADICIONAR"
 Portuguese.REMOVE_PLAYER = "REMOVER"
 
 Portuguese.SCORE = "PONTUAÇÃO"
+Portuguese.CREDITS = "TODO"
+Portuguese.HIGHSCORE = "TODO"

@@ -31,3 +31,5 @@ Spanish.ADD_PLAYER = "AÑADIR"
 Spanish.REMOVE_PLAYER = "QUITAR"
 
 Spanish.SCORE = "PUNTOS"
+Spanish.CREDITS = "TODO"
+Spanish.HIGHSCORE = "TODO"

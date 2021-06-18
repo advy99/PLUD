@@ -31,3 +31,5 @@ Italian.ADD_PLAYER = "AGGIUNGERE"
 Italian.REMOVE_PLAYER = "RIMUOVERE"
 
 Italian.SCORE = "PUNTO"
+Italian.CREDITS = "TODO"
+Italian.HIGHSCORE = "TODO"

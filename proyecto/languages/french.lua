@@ -31,3 +31,5 @@ French.ADD_PLAYER = "AJOUTER"
 French.REMOVE_PLAYER = "RETIRER"
 
 French.SCORE = "SCORE"
+French.CREDITS = "TODO"
+French.HIGHSCORE = "TODO"

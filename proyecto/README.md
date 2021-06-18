@@ -18,6 +18,8 @@ Bla bla bla
 
 - Arte del fondo: https://www.deviantart.com/khrinx/art/Seamless-hd-landscape-641301814
 
+- Arte de plataformas: https://pixelfrog-assets.itch.io/ (licencia CC-0)
+
 - Music by Monplaisir, https://freemusicarchive.org/music/Monplaisir (licencia CC-0)
 
 - Flags: https://www.flaticon.com/packs/international-flags-6?word=flags by https://www.freepik.com/

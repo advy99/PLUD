@@ -16,6 +16,8 @@ Bla bla bla
 
 - Arte de los personajes por Calciumtrice: https://opengameart.org/content/animated-slime (licencia CC-BY 3.0)
 
+- Arte del fondo: https://www.deviantart.com/khrinx/art/Seamless-hd-landscape-641301814
+
 - Music by: https://www.chosic.com/ (licencia CC-0)
 
 - Flags: https://www.flaticon.com/packs/international-flags-6?word=flags by https://www.freepik.com/

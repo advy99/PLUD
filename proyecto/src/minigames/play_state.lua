@@ -131,6 +131,10 @@ function PlayState:setScores()
 
 	if #self.minigames == 0 then
 		local num = 1
+		local _, best = max_item(self.scores)
+
+		self.minigames[0]:setBestScore(best)
+
 		while (num <= table_size(self.scores)) do
 			local jugador, _ = max_item(self.scores)
 			self.scores[jugador] = -1
@@ -145,4 +149,19 @@ end
 
 function PlayState:numPlayersInPlatform(num_platform)
 	return self.minigames[0].players_in_platform[num_platform]
+end
+
+
+
+function PlayState:keyPressed(k)
+	self.minigames[#self.minigames]:keyPressed(k)
+end
+
+function PlayState:textEdited(text, start, length)
+	self.minigames[#self.minigames]:textEdited(text, start, length)
+
+end
+
+function PlayState:textInput(t)
+	self.minigames[#self.minigames]:textInput(t)
 end

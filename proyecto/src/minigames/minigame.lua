@@ -77,3 +77,18 @@ end
 function MiniGame:removePlayer(num_player)
 	self.level:removePlayer(num_player)
 end
+
+
+function MiniGame:keyPressed(k)
+	for _, player in pairs(self.level.players) do
+		player:keyPressed(k)
+	end
+end
+
+function MiniGame:textEdited(text, start, length)
+
+end
+
+function MiniGame:textInput(t)
+
+end

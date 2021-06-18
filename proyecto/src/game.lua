@@ -34,7 +34,7 @@ function Game:initialize()
 		self["interface_p" .. i] = InterfaceBox:new(96 + (i-1) * 224 + (i-1) * 64, 784, keys)
 	end
 
-	self:changeMiniGame(Constants.MENU)
+	self:changeMiniGame(Constants.TITLE_MENU)
 
 	SoundManager.static.menu_music:play()
 
@@ -83,11 +83,11 @@ function Game:draw()
 		self.next_minigame == Constants.DEATH_BALL then
 			message = language.PLAY_GAME
 			pos = {(Constants.DEFAULT_WIDTH - size[1])/2, 100}
-		elseif self.next_minigame == Constants.PLAY then
-			message = language.PLAY_GAME
+		elseif self.next_minigame == Constants.PLAY_MENU then
+			message = language.ENTER_PLAY
 		elseif self.next_minigame == Constants.PRACTICE then
 			message = language.ENTER_PRACTICE
-		elseif self.next_minigame == Constants.MENU then
+		elseif self.next_minigame == Constants.TITLE_MENU then
 			message = language.QUIT_TO_MENU
 			-- Si realiza esta llamada desde el menú de prácticas
 			if self.minigame.class.name == "PracticeMenu" then
@@ -146,7 +146,7 @@ function Game:handleInternalEvent(event)
 			elseif event == Events.PLAYER_LAND_PLATFORM_EXIT then
 				self.next_minigame = Constants.EXIT
 			elseif event == Events.PLAYER_LAND_PLATFORM_MENU then
-				self.next_minigame = Constants.MENU
+				self.next_minigame = Constants.TITLE_MENU
 			elseif event == Events.PLAYER_LAND_PLATFORM_SAVE_CONFIG_AND_MENU then
 				self.next_minigame = Constants.SAVE_CONFIG
 			elseif event == Events.PLAYER_LAND_PLATFORM_BOMB_TAG then
@@ -189,7 +189,7 @@ function Game:changeMiniGame(minigame)
 		self.minigame = DeathBall:new(self.num_active_players)
 	elseif minigame == Constants.VIRUS_FALL then
 		self.minigame = VirusFall:new(self.num_active_players)
-	elseif minigame == Constants.MENU then
+	elseif minigame == Constants.TITLE_MENU then
 		self.minigame = TitleMenu:new(self.num_active_players)
 		SoundManager.static.menu_music:setVolume(config:getMusicVolume() * config:getMusicVolume())
 
@@ -244,12 +244,12 @@ end
 
 function Game:keyPressed(k)
 	if k == 'escape' and self.minigame.class.super.name ~= "Menu" then
-		self:changeMiniGame(Constants.MENU)
+		self:changeMiniGame(Constants.TITLE_MENU)
 	elseif k == "escape" and Constants.DEBUG then
 		if self.minigame.class.name == "TitleMenu" then
 			love.event.quit()
 		else
-			self:changeMiniGame(Constants.MENU)
+			self:changeMiniGame(Constants.TITLE_MENU)
 		end
 	end
 

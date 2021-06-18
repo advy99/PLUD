@@ -28,14 +28,15 @@ Bla bla bla
 	- Energy Ball: https://freesound.org/people/SomeSine/ (licencia CC-0)
 
 - Icons:
-	- Boton PLAY: https://www.flaticon.com/authors/those-icons
-	- Boton opciones: https://www.freepik.com/
-	- Boton EXIT: https://www.freepik.com/
-	- Boton práctica: https://www.freepik.com/
-	- Boton check: https://www.freepik.com/
-	- Boton Cofre: https://www.flaticon.com/authors/pixel-perfect
-	- Boton bomba: https://www.freepik.com/
-	- Boton death_ball: https://www.flaticon.com/authors/dinosoftlabs
+	- Botón PLAY: https://www.flaticon.com/authors/those-icons
+	- Botón opciones: https://www.freepik.com/
+	- Botón EXIT: https://www.freepik.com/
+	- Botón créditos: https://www.freepik.com/
+	- Botón práctica: https://www.freepik.com/
+	- Botón check: https://www.freepik.com/
+	- Botón Cofre: https://www.flaticon.com/authors/pixel-perfect
+	- Botón bomba: https://www.freepik.com/
+	- Botón death_ball: https://www.flaticon.com/authors/dinosoftlabs
 
 - Font by Brian Kent (ÆNIGMA GAMES & FONTS): https://www.dafont.com/kirby-no-kira-kizzu.font
 

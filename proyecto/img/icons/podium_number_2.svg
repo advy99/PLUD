@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   version="1.2"
+   viewBox="0 0 512 512"
+   width="512"
+   height="512"
+   id="svg8"
+   sodipodi:docname="podium_number_2.svg"
+   inkscape:export-filename="/home/antonio/Documentos/PLUD/proyecto/img/icons/podium_number_2.png"
+   inkscape:export-xdpi="12"
+   inkscape:export-ydpi="12"
+   inkscape:version="1.1 (c4e8f9ed74, 2021-05-24)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <defs
+     id="defs12" />
+  <sodipodi:namedview
+     id="namedview10"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     showgrid="false"
+     inkscape:zoom="1.2890625"
+     inkscape:cx="255.61212"
+     inkscape:cy="255.61212"
+     inkscape:window-width="1920"
+     inkscape:window-height="1005"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg8" />
+  <title
+     id="title2">podium_number_2</title>
+  <style
+     id="style4">
+		tspan { white-space:pre }
+		.shp0 { fill: #ffffff } 
+		.shp1 { fill: #33323d } 
+	</style>
+  <path
+     id="Background"
+     class="shp0"
+     d="M256 512C114.43 512 0 397.57 0 256C0 114.43 114.43 0 256 0C397.57 0 512 114.43 512 256C512 397.57 397.57 512 256 512Z" />
+  <path
+     id="2 "
+     class="shp1"
+     d="M256.88 346.38L331.72 346.38L331.72 393L181.54 393L181.54 353.98C226.03 281.23 252.43 236.24 260.77 219C269.21 201.66 273.44 188.15 273.44 178.46C273.44 171.03 272.14 165.51 269.55 161.91C267.07 158.19 263.25 156.33 258.07 156.33C252.88 156.33 249 158.36 246.41 162.41C243.93 166.47 242.69 174.52 242.69 186.57L242.69 212.59L181.54 212.59L181.54 202.62C181.54 187.3 182.33 175.25 183.91 166.47C185.48 157.57 189.37 148.84 195.56 140.28C201.76 131.73 209.81 125.25 219.72 120.86C229.63 116.47 241.51 114.27 255.36 114.27C282.5 114.27 303 121.03 316.85 134.54C330.82 147.94 337.8 164.95 337.8 185.56C337.8 201.21 333.86 217.77 325.97 235.22C318.2 252.68 295.17 289.73 256.88 346.38Z" />
+</svg>

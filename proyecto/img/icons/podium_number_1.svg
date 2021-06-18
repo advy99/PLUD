@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   version="1.2"
+   viewBox="0 0 512 512"
+   width="512"
+   height="512"
+   id="svg8"
+   sodipodi:docname="podium_number_1.svg"
+   inkscape:export-filename="/home/antonio/Documentos/PLUD/proyecto/img/icons/podium_number_1.png"
+   inkscape:export-xdpi="12"
+   inkscape:export-ydpi="12"
+   inkscape:version="1.1 (c4e8f9ed74, 2021-05-24)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <defs
+     id="defs12" />
+  <sodipodi:namedview
+     id="namedview10"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     showgrid="false"
+     inkscape:zoom="1.2890625"
+     inkscape:cx="255.61212"
+     inkscape:cy="255.61212"
+     inkscape:window-width="1920"
+     inkscape:window-height="1005"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg8" />
+  <title
+     id="title2">podium_number_1</title>
+  <style
+     id="style4">
+		tspan { white-space:pre }
+		.shp0 { fill: #ffffff } 
+		.shp1 { fill: #33323d } 
+	</style>
+  <path
+     id="Background"
+     class="shp0"
+     d="M256 512C114.43 512 0 397.57 0 256C0 114.43 114.43 0 256 0C397.57 0 512 114.43 512 256C512 397.57 397.57 512 256 512Z" />
+  <path
+     id="1 "
+     class="shp1"
+     d="M249.62 119.51L289.82 119.51L289.82 393L221.58 393L221.58 246.37C221.58 225.2 221.07 212.47 220.06 208.19C219.04 203.91 216.23 200.7 211.61 198.56C207.11 196.31 196.97 195.19 181.2 195.19L174.45 195.19L174.45 163.26C207.44 156.16 232.5 141.58 249.62 119.51Z" />
+</svg>

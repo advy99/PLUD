@@ -1,22 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <map version="1.5" tiledversion="1.7.0" orientation="orthogonal" renderorder="right-down" width="40" height="24" tilewidth="32" tileheight="32" infinite="0" nextlayerid="41" nextobjectid="42">
  <editorsettings>
-  <export target="level_practice.lua" format="lua"/>
+  <export target="level_title.lua" format="lua"/>
  </editorsettings>
  <tileset firstgid="1" name="Terreno" tilewidth="32" tileheight="32" tilecount="85" columns="17">
   <image source="../img/terrain.png" width="544" height="160"/>
  </tileset>
  <tileset firstgid="86" name="exit" tilewidth="32" tileheight="32" tilecount="4" columns="2">
   <image source="../img/icons/exit.png" width="64" height="64"/>
- </tileset>
- <tileset firstgid="90" name="bomb" tilewidth="32" tileheight="32" tilecount="4" columns="2">
-  <image source="../img/icons/bomb.png" width="64" height="64"/>
- </tileset>
- <tileset firstgid="94" name="energy" tilewidth="32" tileheight="32" tilecount="4" columns="2">
-  <image source="../img/icons/energy.png" width="64" height="64"/>
- </tileset>
- <tileset firstgid="98" name="spikes" tilewidth="32" tileheight="32" tilecount="4" columns="2">
-  <image source="../img/icons/spikes.png" width="64" height="64"/>
  </tileset>
  <group id="31" name="background">
   <imagelayer id="33" name="fondo" offsetx="0" offsety="-182.67">
@@ -120,21 +111,21 @@
    </object>
    <object id="31" name="p3" x="928.667" y="319.991" width="190.397" height="3.76484">
     <properties>
-     <property name="categories" value="9"/>
+     <property name="categories" value="12"/>
      <property name="friction" type="float" value="0.8"/>
      <property name="group" type="int" value="3"/>
     </properties>
    </object>
    <object id="32" name="p1" x="545.143" y="319.984" width="190.204" height="6.76562">
     <properties>
-     <property name="categories" value="10"/>
+     <property name="categories" value="8"/>
      <property name="friction" type="float" value="0.8"/>
      <property name="group" type="int" value="3"/>
     </properties>
    </object>
    <object id="33" name="p4" x="160.859" y="319.991" width="190.596" height="2.22005">
     <properties>
-     <property name="categories" value="8"/>
+     <property name="categories" value="11"/>
      <property name="friction" type="float" value="0.8"/>
      <property name="group" type="int" value="3"/>
     </properties>
@@ -145,7 +136,7 @@
      <property name="group" type="int" value="3"/>
     </properties>
    </object>
-   <object id="37" name="p6" x="769.243" y="511.992" width="125.558" height="6.76268" visible="0">
+   <object id="37" name="p6" x="769.243" y="511.992" width="125.558" height="6.76268">
     <properties>
      <property name="friction" type="float" value="0.8"/>
      <property name="group" type="int" value="3"/>
@@ -166,8 +157,8 @@
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,90,91,0,0,0,0,0,0,0,0,0,0,94,95,0,0,0,0,0,0,0,0,0,0,98,99,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,92,93,0,0,0,0,0,0,0,0,0,0,96,97,0,0,0,0,0,0,0,0,0,0,100,101,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,

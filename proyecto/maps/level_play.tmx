@@ -9,6 +9,15 @@
  <tileset firstgid="86" name="exit" tilewidth="32" tileheight="32" tilecount="4" columns="2">
   <image source="../img/icons/exit.png" width="64" height="64"/>
  </tileset>
+ <tileset firstgid="90" name="play" tilewidth="32" tileheight="32" tilecount="4" columns="2">
+  <image source="../img/icons/play.png" width="64" height="64"/>
+ </tileset>
+ <tileset firstgid="94" name="practice" tilewidth="32" tileheight="32" tilecount="4" columns="2">
+  <image source="../img/icons/practice.png" width="64" height="64"/>
+ </tileset>
+ <tileset firstgid="98" name="scores" tilewidth="32" tileheight="32" tilecount="4" columns="2">
+  <image source="../img/icons/scores.png" width="64" height="64"/>
+ </tileset>
  <group id="31" name="background">
   <imagelayer id="33" name="fondo" offsetx="0" offsety="-182.67">
    <image source="../img/landscape.png" width="1920" height="1080"/>
@@ -157,8 +166,8 @@
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,90,91,0,0,0,0,0,0,0,0,0,0,94,95,0,0,0,0,0,0,0,0,0,0,98,99,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,92,93,0,0,0,0,0,0,0,0,0,0,96,97,0,0,0,0,0,0,0,0,0,0,100,101,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,

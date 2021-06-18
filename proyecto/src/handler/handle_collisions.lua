@@ -122,9 +122,12 @@ function beginContact(a, b, coll)
 			group_b == Constants.OBJECTS_GROUP and category_b == Constants.DEATH_BALL_CATEGORY ) and ball_can_touch then
 			-- cogemos la normal, y cambiamos
 
+			if group_a ~= Constants.PLAYER_GROUP and group_b ~= Constants.PLAYER_GROUP then
+				ball_can_touch = false
+			end
+
 			game:handleEvent(coll, Events.DEATH_BALL_COLLISION)
 
-			ball_can_touch = false
 		end
 
 	else
@@ -251,6 +254,13 @@ function endContact(a, b, coll)
 
 		end
 
+		-- hace falta esta estructura, para que no sea siempre false
+		if (group_a == Constants.OBJECTS_GROUP and category_a == Constants.DEATH_BALL_CATEGORY or
+			group_b == Constants.OBJECTS_GROUP and category_b == Constants.DEATH_BALL_CATEGORY)  then
+
+			ball_can_touch = true
+		end
+
 	end
 
 end
@@ -265,10 +275,5 @@ function postSolve(a, b, coll, normalimpulse, tangentimpulse)
 	local category_a, mask_a, group_a = a:getFilterData()
 	local category_b, mask_b, group_b = b:getFilterData()
 
-	-- hace falta esta estructura, para que no sea siempre false
-	if (group_a == Constants.OBJECTS_GROUP and category_a == Constants.DEATH_BALL_CATEGORY or
-		group_b == Constants.OBJECTS_GROUP and category_b == Constants.DEATH_BALL_CATEGORY)  then
-		ball_can_touch = true
 
-	end
 end

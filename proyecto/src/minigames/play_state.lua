@@ -13,10 +13,13 @@ function PlayState:initialize(num_players)
 	-- MiniGame.initialize(self, "level_" .. num_level, num_players)
 
 	self.minigames = {}
+	-- insertamos los juegos de forma aleatoria
 	local pos = math.random(0, 2)
 	table.insert(self.minigames, (pos % 3) + 1, BombTag:BombTag:new(num_players))
 	table.insert(self.minigames, ((pos + 1) % 3) + 1, DeathBall:BombTag:new(num_players))
 	table.insert(self.minigames, ((pos + 2) % 3) + 1, VirusFall:BombTag:new(num_players))
+
+	self.scores = {}
 
 end
 

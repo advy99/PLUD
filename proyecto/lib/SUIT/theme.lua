@@ -79,7 +79,7 @@ function theme.Checkbox(chk, opt, x,y,w,h)
 	if chk.text then
 		love.graphics.setFont(opt.font)
 		y = y + theme.getVerticalOffsetForAlign(opt.valign, opt.font, h)
-		love.graphics.printf(chk.text, x + h, y, w - h, opt.align or "left")
+		love.graphics.printf(chk.text, x * 0.9 + h, y, w - h, opt.align or "left")
 	end
 end
 

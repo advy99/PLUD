@@ -100,7 +100,7 @@ function ConfigurationMenu:update(dt)
 		suit.Label(language.MUSIC, {align = "center"}, 460, 450, 160,30)
 		suit.Slider(self.sfx_slider, {align = "right"}, 640, 500, 175,30)
 		suit.Label(language.SFX, {align = "center"}, 460, 500, 160,30)
-		suit.Checkbox(self.mute_chk, {align = "left"}, 500, 550, 275,30)
+		suit.Checkbox(self.mute_chk, {align = "center"}, 500, 550, 275,30)
 		self.show_second_page = suit.Button("->", {id = "go_page_2", align = "center"}, self.pages_button_position[1], self.pages_button_position[2], self.pages_button_position[3],50).hit
 
 		if suit.Button("<-", {align = "center"}, self.flag_position[1] - 70 - 20, self.flag_position[2] + self.languages.english:getWidth() / 2 * 0.15 - 15, 70,30).hit then
@@ -149,8 +149,8 @@ function ConfigurationMenu:update(dt)
 
 	else
 
-		suit.Checkbox(self.vsync_chk, {align = "left"}, self.background_box[1] + self.background_box[3] / 2 - 125, 250, 250,30)
-		suit.Checkbox(self.fps_chk, {align = "left"}, self.background_box[1] + self.background_box[3] / 2 - 150, 300, 300,30)
+		suit.Checkbox(self.vsync_chk, {align = "center"}, self.background_box[1] + self.background_box[3] / 2 - 150, 250, 300,30)
+		suit.Checkbox(self.fps_chk, {align = "center"}, self.background_box[1] + self.background_box[3] / 2 - 150, 300, 300,30)
 
 		self.init_config:setVSYNC(self.vsync_chk.checked)
 		self.init_config:setShowFPS(self.fps_chk.checked)

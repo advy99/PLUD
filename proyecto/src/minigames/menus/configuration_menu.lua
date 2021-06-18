@@ -35,6 +35,13 @@ function ConfigurationMenu:initialize(num_players)
 
 	self.controls_section = TextBox:new(language.CONTROLS, down_box[1], down_box[2], down_box[3], down_box[4], 35, 0.9, text_color, box_color)
 
+	local text_color = {1, 1, 1}
+	local box_color = {1.00,0.30,0.30}
+	local down_box = {self.background_box[1] + self.background_box[3]/2 - 150, 370, 300, 150}
+
+	self.key_assigned_text_box = TextBox:new(language.KEY_ASSIGNED, down_box[1], down_box[2] + 100, down_box[3], down_box[4], 35, 1, text_color, box_color)
+	self.key_assigned_time = 0
+	self.KEY_ASSIGNED_TIME = 1
 
 
 	self.init_config = Configuration:new()
@@ -177,6 +184,8 @@ function ConfigurationMenu:update(dt)
 			local k = readKey()
 			if not self.init_config:keyAssigned(k) and k ~= "escape" then
 				self.init_config.config["player" .. self.actual_player].JUMP_KEY = k
+			else
+				self.key_assigned_time = love.timer.getTime()
 			end
 		end
 
@@ -185,6 +194,8 @@ function ConfigurationMenu:update(dt)
 			local k = readKey()
 			if not self.init_config:keyAssigned(k) and k ~= "escape" then
 				self.init_config.config["player" .. self.actual_player].LEFT_KEY = k
+			else
+				self.key_assigned_time = love.timer.getTime()
 			end
 		end
 
@@ -194,6 +205,8 @@ function ConfigurationMenu:update(dt)
 			local k = readKey()
 			if not self.init_config:keyAssigned(k) and k ~= "escape" then
 				self.init_config.config["player" .. self.actual_player].RIGHT_KEY = k
+			else
+				self.key_assigned_time = love.timer.getTime()
 			end
 		end
 
@@ -225,6 +238,10 @@ function ConfigurationMenu:draw()
 	end
 
 	suit.draw()
+
+	if love.timer.getTime() < self.key_assigned_time + self.KEY_ASSIGNED_TIME then
+		self.key_assigned_text_box:draw()
+	end
 
 
 end

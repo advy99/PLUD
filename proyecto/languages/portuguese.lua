@@ -35,3 +35,5 @@ Portuguese.REMOVE_PLAYER = "REMOVER"
 Portuguese.SCORE = "PONTUAÇÃO"
 Portuguese.CREDITS = "CRÉDITOS"
 Portuguese.HIGHSCORE = "PONTUAÇÃO MÁX."
+--TODO
+Portuguese.KEY_ASSIGNED = "TECLA YA\nASIGNADA"

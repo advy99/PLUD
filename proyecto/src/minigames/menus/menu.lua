@@ -58,7 +58,7 @@ function Menu:handleInternalEvent(event)
 
 	-- como las plataformas estan ordenadas como en los eventos, si al evento le quito
 	-- el valor del primer evento, se me queda en un rango de [0,7]
-	local num = math.abs(event) - Events.PLAYER_LAND_PLATFORM_PLAY
+	local num = math.abs(event) - Events.PLAYER_LAND_PLATFORM_PLAY_MENU
 	-- Si es negativo, se ha salido de la plataforma
 	if event < 0 then
 		-- le vuelvo a restar el valor del primer evento para dejarlo en [0,3]

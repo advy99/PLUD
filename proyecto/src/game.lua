@@ -128,7 +128,7 @@ function Game:handleInternalEvent(event)
 
 	self.minigame:handleInternalEvent(event)
 
-	local num = event - Events.PLAYER_LAND_PLATFORM_PLAY
+	local num = event - Events.PLAYER_LAND_PLATFORM_PLAY_MENU
 	-- cuando entran en una plataforma
 
 	if event == Events.DEATH_BALL_COLLISION then
@@ -137,7 +137,7 @@ function Game:handleInternalEvent(event)
 		if self.minigame:numPlayersInPlatform(num) == self.minigame:getNumPlayers() then
 			self.countdown = Constants.TIME_BETWEEN_MINIGAME
 			self.next_minigame = nil
-			if event == Events.PLAYER_LAND_PLATFORM_PLAY then
+			if event == Events.PLAYER_LAND_PLATFORM_PLAY_MENU then
 				self.next_minigame = Constants.BOMB_TAG
 			elseif event == Events.PLAYER_LAND_PLATFORM_CONFIGURATION then
 				self.next_minigame = Constants.CONFIGURATION_MENU

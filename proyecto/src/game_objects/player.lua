@@ -95,6 +95,10 @@ function Player:getScore()
 	return self.score
 end
 
+function Player:setScore(value)
+	self.score = value
+end
+
 -- función para mover al jugador en el eje x
 -- Se necesitan valores en x, que será -1 o 1, y se escalara con respecto al valor
 -- de x_speed del jugador

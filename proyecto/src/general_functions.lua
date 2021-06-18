@@ -92,6 +92,7 @@ function keyValid(k)
 
 	-- algunas teclas expeciales para regex
 	if k ~= "[" and k ~= "]" then
+		k = string.lower(k)
 		-- no me gusta esto, pero lua
 		if string.find(valid_keys, k) then
 			result = true

@@ -83,3 +83,18 @@ function max_item(table)
 	return max_name, max_val
 
 end
+
+
+function keyValid(k)
+	local valid_keys = "qwertyuiopasdfghjklzxcvbnm1234567890"
+
+	local result = false
+	-- no me gusta esto, pero lua
+	if string.find(valid_keys, k) then
+		result = true
+	else
+		result = false
+	end
+
+	return result
+end

@@ -37,3 +37,4 @@ Portuguese.CREDITS = "CRÉDITOS"
 Portuguese.HIGHSCORE = "PONTUAÇÃO MÁX."
 --TODO
 Portuguese.KEY_ASSIGNED = "TECLA YA\nASIGNADA"
+Portuguese.INVALID_KEY = "TECLA NO\nVÁLIDA"

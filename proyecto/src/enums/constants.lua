@@ -54,6 +54,8 @@ Constants.SCORE_MENU = 12
 
 Constants.ADD_PLAYER_KEY = "+"
 Constants.ADD_PLAYER_KEY_COMBINATION = {"lshift", "="}
+Constants.ADD_PLAYER_KEY_COMBINATION_2 = {"rshift", "="}
+
 Constants.REMOVE_PLAYER_KEY = "-"
 
 Constants.MIN_PLAYERS = 2

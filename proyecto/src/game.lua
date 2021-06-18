@@ -140,7 +140,7 @@ function Game:handleInternalEvent(event)
 		-- self.minigame:changeBallDirection()
 	elseif event > 0 then
 		if self.minigame:numPlayersInPlatform(num) == self.minigame:getNumPlayers() then
-			self.countdown = Constants.TIME_BETWEEN_MINIGAME
+			self.countdown = Constants.TIME_BETWEEN_SCREENS
 			self.next_minigame = nil
 			if event == Events.PLAYER_LAND_PLATFORM_PLAY_MENU then
 				self.next_minigame = Constants.PLAY_MENU

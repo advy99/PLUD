@@ -90,12 +90,14 @@ function Game:draw()
 			pos = {(Constants.DEFAULT_WIDTH - size[1])/2, 100}
 		elseif self.next_minigame == Constants.PLAY_MENU then
 			message = language.ENTER_PLAY
+		elseif self.next_minigame == Constants.PLAY then
+			message = language.PLAY_GAME
 		elseif self.next_minigame == Constants.PRACTICE then
 			message = language.ENTER_PRACTICE
 		elseif self.next_minigame == Constants.TITLE_MENU then
 			message = language.QUIT_TO_MENU
 			-- Si realiza esta llamada desde el menú de prácticas
-			if self.minigame.class.name == "PracticeMenu" then
+			if self.minigame.class.name == "PlayMenu" then
 				pos = {(Constants.DEFAULT_WIDTH - size[1])/2, 100}
 			-- Si realiza esta llamada desde el menú de configuración
 			else
@@ -104,6 +106,10 @@ function Game:draw()
 			end
 		elseif self.next_minigame == Constants.CONFIGURATION_MENU then
 			message = language.ENTER_OPTIONS
+		elseif self.next_minigame == Constants.CREDITS_MENU then
+			message = language.ENTER_CREDITS
+		elseif self.next_minigame == Constants.SCORE_MENU then
+			message = language.ENTER_SCORE
 		elseif self.next_minigame == Constants.SAVE_CONFIG then
 			message = language.EXIT_SAVING_OPTIONS
 			size = {288, 150}

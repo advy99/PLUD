@@ -9,7 +9,7 @@ return {
   tilewidth = 32,
   tileheight = 32,
   nextlayerid = 39,
-  nextobjectid = 41,
+  nextobjectid = 48,
   properties = {},
   tilesets = {
     {
@@ -284,6 +284,22 @@ return {
               visible = true,
               properties = {
                 ["categories"] = "2",
+                ["friction"] = 0.8,
+                ["group"] = 3
+              }
+            },
+            {
+              id = 46,
+              name = "p1",
+              type = "",
+              shape = "rectangle",
+              x = 98.8461,
+              y = 639.977,
+              width = 187.594,
+              height = 7.5,
+              rotation = 0,
+              visible = true,
+              properties = {
                 ["friction"] = 0.8,
                 ["group"] = 3
               }

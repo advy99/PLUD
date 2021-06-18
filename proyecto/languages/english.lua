@@ -31,5 +31,5 @@ English.ADD_PLAYER = "ADD"
 English.REMOVE_PLAYER = "REMOVE"
 
 English.SCORE = "SCORE"
-English.CREDITS = "TODO"
-English.HIGHSCORE = "TODO"
+English.CREDITS = "CREDITS"
+English.HIGHSCORE = "HIGH SCORE"

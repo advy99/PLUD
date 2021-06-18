@@ -279,7 +279,10 @@ function Game:keyPressed(k)
 		end
 	end
 
-	if (k == Constants.ADD_PLAYER_KEY or (love.keyboard.isDown(Constants.ADD_PLAYER_KEY_COMBINATION))) and self.num_active_players < Constants.MAX_PLAYERS then
+	local key_comb1 =  love.keyboard.isDown(Constants.ADD_PLAYER_KEY_COMBINATION[1]) and love.keyboard.isDown(Constants.ADD_PLAYER_KEY_COMBINATION[2])
+	local key_comb2 =  love.keyboard.isDown(Constants.ADD_PLAYER_KEY_COMBINATION_2[1]) and love.keyboard.isDown(Constants.ADD_PLAYER_KEY_COMBINATION_2[2])
+
+	if (k == Constants.ADD_PLAYER_KEY or key_comb1 or key_comb2) and self.num_active_players < Constants.MAX_PLAYERS then
 		self:addPlayer()
 	end
 

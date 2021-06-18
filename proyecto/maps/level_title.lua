@@ -335,7 +335,7 @@ return {
               rotation = 0,
               visible = true,
               properties = {
-                ["categories"] = "10",
+                ["categories"] = "12",
                 ["friction"] = 0.8,
                 ["group"] = 3
               }

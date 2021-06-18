@@ -113,7 +113,7 @@
    </object>
    <object id="30" name="p2" x="929.789" y="639.974" width="188.703" height="5.9006">
     <properties>
-     <property name="categories" value="6"/>
+     <property name="categories" value="2"/>
      <property name="friction" type="float" value="0.8"/>
      <property name="group" type="int" value="3"/>
     </properties>

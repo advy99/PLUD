@@ -178,37 +178,40 @@ function ConfigurationMenu:update(dt)
 		end
 
 
-		suit.Label(language.JUMP, {align = "left"}, 500, self.player_position[2] + 85, 200,30)
+		if love.timer.getTime() > self.key_assigned_time + self.KEY_ASSIGNED_TIME then
+			suit.Label(language.JUMP, {align = "left"}, 500, self.player_position[2] + 85, 200,30)
+			if suit.Button(string.upper(self.init_config.config["player" .. self.actual_player].JUMP_KEY), {id = "jump", align = "center"}, 725, self.player_position[2] + 85, 40,30).hit then
+				local k = readKey()
+				if not self.init_config:keyAssigned(k) and k ~= "escape" then
+					self.init_config.config["player" .. self.actual_player].JUMP_KEY = k
+				else
+					self.key_assigned_time = love.timer.getTime()
+				end
+			end
 
-		if suit.Button(string.upper(self.init_config.config["player" .. self.actual_player].JUMP_KEY), {id = "jump", align = "center"}, 725, self.player_position[2] + 85, 40,30).hit then
-			local k = readKey()
-			if not self.init_config:keyAssigned(k) and k ~= "escape" then
-				self.init_config.config["player" .. self.actual_player].JUMP_KEY = k
-			else
-				self.key_assigned_time = love.timer.getTime()
+			suit.Label(language.LEFT, {align = "left"}, 500, self.player_position[2] + 135, 200,30)
+			if suit.Button(string.upper(self.init_config.config["player" .. self.actual_player].LEFT_KEY), {id = "left", align = "center"}, 725, self.player_position[2] + 135, 40,30).hit then
+				local k = readKey()
+				if not self.init_config:keyAssigned(k) and k ~= "escape" then
+					self.init_config.config["player" .. self.actual_player].LEFT_KEY = k
+				else
+					self.key_assigned_time = love.timer.getTime()
+				end
+			end
+
+
+			suit.Label(language.RIGHT, {align = "left"}, 500, self.player_position[2] + 185, 200,30)
+			if suit.Button(string.upper(self.init_config.config["player" .. self.actual_player].RIGHT_KEY), {id = "right", align = "center"}, 725, self.player_position[2] + 185, 40,30).hit then
+				local k = readKey()
+				if not self.init_config:keyAssigned(k) and k ~= "escape" then
+					self.init_config.config["player" .. self.actual_player].RIGHT_KEY = k
+				else
+					self.key_assigned_time = love.timer.getTime()
+				end
 			end
 		end
 
-		suit.Label(language.LEFT, {align = "left"}, 500, self.player_position[2] + 135, 200,30)
-		if suit.Button(string.upper(self.init_config.config["player" .. self.actual_player].LEFT_KEY), {id = "left", align = "center"}, 725, self.player_position[2] + 135, 40,30).hit then
-			local k = readKey()
-			if not self.init_config:keyAssigned(k) and k ~= "escape" then
-				self.init_config.config["player" .. self.actual_player].LEFT_KEY = k
-			else
-				self.key_assigned_time = love.timer.getTime()
-			end
-		end
 
-
-		suit.Label(language.RIGHT, {align = "left"}, 500, self.player_position[2] + 185, 200,30)
-		if suit.Button(string.upper(self.init_config.config["player" .. self.actual_player].RIGHT_KEY), {id = "right", align = "center"}, 725, self.player_position[2] + 185, 40,30).hit then
-			local k = readKey()
-			if not self.init_config:keyAssigned(k) and k ~= "escape" then
-				self.init_config.config["player" .. self.actual_player].RIGHT_KEY = k
-			else
-				self.key_assigned_time = love.timer.getTime()
-			end
-		end
 
 		-- si pulso dentro de controles, estoy saliendo de controles
 		self.show_second_page = not suit.Button("<-", {id = "go_page_1", align = "center"}, self.pages_button_position[1], self.pages_button_position[2], self.pages_button_position[3],50).hit

@@ -82,6 +82,28 @@ function beginContact(a, b, coll)
 
 		end
 
+		if (group_a == Constants.PLAYER_GROUP and group_b == Constants.PLATFORM_GROUP and category_b == Constants.PLATFORM_CREDITS_CATEGORY) or
+			(group_b == Constants.PLAYER_GROUP and group_a == Constants.PLATFORM_GROUP and category_a == Constants.PLATFORM_CREDITS_CATEGORY) then
+
+			game:handleInternalEvent(Events.PLAYER_LAND_PLATFORM_CREDITS)
+
+		end
+
+		if (group_a == Constants.PLAYER_GROUP and group_b == Constants.PLATFORM_GROUP and category_b == Constants.PLATFORM_SCORES_CATEGORY) or
+			(group_b == Constants.PLAYER_GROUP and group_a == Constants.PLATFORM_GROUP and category_a == Constants.PLATFORM_SCORES_CATEGORY) then
+
+			game:handleInternalEvent(Events.PLAYER_LAND_PLATFORM_SCORE)
+
+		end
+
+		if (group_a == Constants.PLAYER_GROUP and group_b == Constants.PLATFORM_GROUP and category_b == Constants.PLATFORM_PLAY_CATEGORY) or
+			(group_b == Constants.PLAYER_GROUP and group_a == Constants.PLATFORM_GROUP and category_a == Constants.PLATFORM_PLAY_CATEGORY) then
+
+			game:handleInternalEvent(Events.PLAYER_LAND_PLATFORM_PLAY)
+
+		end
+
+
 		-- Si colisionan un jugador y un un sensor de una plataforma, el jugador para al estado grounded
 		if group_a == Constants.PLAYER_GROUP and group_b == Constants.OBJECTS_GROUP and category_b == Constants.DEATH_BALL_CATEGORY then
 			game:handleEvent(a:getUserData(), Events.PLAYER_TOUCHED_DEATH_BALL)
@@ -205,6 +227,27 @@ function endContact(a, b, coll)
 			(group_b == Constants.PLAYER_GROUP and group_a == Constants.PLATFORM_GROUP and category_a == Constants.PLATFORM_DEATH_BALL_CATEGORY) then
 
 			game:handleInternalEvent(Events.PLAYER_LEAVE_PLATFORM_DEATH_BALL)
+
+		end
+
+		if (group_a == Constants.PLAYER_GROUP and group_b == Constants.PLATFORM_GROUP and category_b == Constants.PLATFORM_CREDITS_CATEGORY) or
+			(group_b == Constants.PLAYER_GROUP and group_a == Constants.PLATFORM_GROUP and category_a == Constants.PLATFORM_CREDITS_CATEGORY) then
+
+			game:handleInternalEvent(Events.PLAYER_LEAVE_PLATFORM_CREDITS)
+
+		end
+
+		if (group_a == Constants.PLAYER_GROUP and group_b == Constants.PLATFORM_GROUP and category_b == Constants.PLATFORM_SCORES_CATEGORY) or
+			(group_b == Constants.PLAYER_GROUP and group_a == Constants.PLATFORM_GROUP and category_a == Constants.PLATFORM_SCORES_CATEGORY) then
+
+			game:handleInternalEvent(Events.PLAYER_LEAVE_PLATFORM_SCORE)
+
+		end
+
+		if (group_a == Constants.PLAYER_GROUP and group_b == Constants.PLATFORM_GROUP and category_b == Constants.PLATFORM_PLAY_CATEGORY) or
+			(group_b == Constants.PLAYER_GROUP and group_a == Constants.PLATFORM_GROUP and category_a == Constants.PLATFORM_PLAY_CATEGORY) then
+
+			game:handleInternalEvent(Events.PLAYER_LEAVE_PLATFORM_PLAY)
 
 		end
 

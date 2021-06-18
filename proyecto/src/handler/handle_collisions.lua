@@ -19,8 +19,8 @@ function beginContact(a, b, coll)
 		end
 
 
-		if (group_a == Constants.PLAYER_GROUP and group_b == Constants.PLATFORM_GROUP and category_b == Constants.PLATFORM_PLAY_CATEGORY) or
-		 	(group_b == Constants.PLAYER_GROUP and group_a == Constants.PLATFORM_GROUP and category_a == Constants.PLATFORM_PLAY_CATEGORY) then
+		if (group_a == Constants.PLAYER_GROUP and group_b == Constants.PLATFORM_GROUP and category_b == Constants.PLATFORM_PLAY_MENU_CATEGORY) or
+		 	(group_b == Constants.PLAYER_GROUP and group_a == Constants.PLATFORM_GROUP and category_a == Constants.PLATFORM_PLAY_MENU_CATEGORY) then
 
 			game:handleInternalEvent(Events.PLAYER_LAND_PLATFORM_PLAY)
 
@@ -68,8 +68,8 @@ function beginContact(a, b, coll)
 
 		end
 
-		if (group_a == Constants.PLAYER_GROUP and group_b == Constants.PLATFORM_GROUP and category_b == Constants.PLATFORM_MENU_CATEGORY) or
-			(group_b == Constants.PLAYER_GROUP and group_a == Constants.PLATFORM_GROUP and category_a == Constants.PLATFORM_MENU_CATEGORY) then
+		if (group_a == Constants.PLAYER_GROUP and group_b == Constants.PLATFORM_GROUP and category_b == Constants.PLATFORM_TITLE_MENU_CATEGORY) or
+			(group_b == Constants.PLAYER_GROUP and group_a == Constants.PLATFORM_GROUP and category_a == Constants.PLATFORM_TITLE_MENU_CATEGORY) then
 
 			game:handleInternalEvent(Events.PLAYER_LAND_PLATFORM_MENU)
 
@@ -143,8 +143,8 @@ function endContact(a, b, coll)
 
 
 		-- si sale de una plataforma con contador
-		if (group_a == Constants.PLAYER_GROUP and group_b == Constants.PLATFORM_GROUP and category_b == Constants.PLATFORM_PLAY_CATEGORY) or
-		 	(group_b == Constants.PLAYER_GROUP and group_a == Constants.PLATFORM_GROUP and category_a == Constants.PLATFORM_PLAY_CATEGORY) then
+		if (group_a == Constants.PLAYER_GROUP and group_b == Constants.PLATFORM_GROUP and category_b == Constants.PLATFORM_PLAY_MENU_CATEGORY) or
+		 	(group_b == Constants.PLAYER_GROUP and group_a == Constants.PLATFORM_GROUP and category_a == Constants.PLATFORM_PLAY_MENU_CATEGORY) then
 
 			game:handleInternalEvent(Events.PLAYER_LEAVE_PLATFORM_PLAY)
 
@@ -172,8 +172,8 @@ function endContact(a, b, coll)
 
 		end
 
-		if (group_a == Constants.PLAYER_GROUP and group_b == Constants.PLATFORM_GROUP and category_b == Constants.PLATFORM_MENU_CATEGORY) or
-			(group_b == Constants.PLAYER_GROUP and group_a == Constants.PLATFORM_GROUP and category_a == Constants.PLATFORM_MENU_CATEGORY) then
+		if (group_a == Constants.PLAYER_GROUP and group_b == Constants.PLATFORM_GROUP and category_b == Constants.PLATFORM_TITLE_MENU_CATEGORY) or
+			(group_b == Constants.PLAYER_GROUP and group_a == Constants.PLATFORM_GROUP and category_a == Constants.PLATFORM_TITLE_MENU_CATEGORY) then
 
 			game:handleInternalEvent(Events.PLAYER_LEAVE_PLATFORM_MENU)
 

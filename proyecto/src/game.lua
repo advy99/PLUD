@@ -138,7 +138,7 @@ function Game:handleInternalEvent(event)
 			self.countdown = Constants.TIME_BETWEEN_MINIGAME
 			self.next_minigame = nil
 			if event == Events.PLAYER_LAND_PLATFORM_PLAY_MENU then
-				self.next_minigame = Constants.BOMB_TAG
+				self.next_minigame = Constants.PLAY_MENU
 			elseif event == Events.PLAYER_LAND_PLATFORM_CONFIGURATION then
 				self.next_minigame = Constants.CONFIGURATION_MENU
 			elseif event == Events.PLAYER_LAND_PLATFORM_PRACTICE then
@@ -155,6 +155,12 @@ function Game:handleInternalEvent(event)
 				self.next_minigame = Constants.VIRUS_FALL
 			elseif event == Events.PLAYER_LAND_PLATFORM_DEATH_BALL then
 				self.next_minigame = Constants.DEATH_BALL
+			elseif event == Events.PLAYER_LAND_PLATFORM_SCORES then
+				self.next_minigame = Constants.SCORE_MENU
+			elseif event == Events.PLAYER_LAND_PLATFORM_CREDITS then
+				self.next_minigame = Constants.CREDITS_MENU
+			elseif event == Events.PLAYER_LAND_PLATFORM_PLAY then
+				self.next_minigame = Constants.PLAY
 			end
 		end
 	else
@@ -216,6 +222,14 @@ function Game:changeMiniGame(minigame)
 	elseif minigame == Constants.SAVE_CONFIG then
 		self.minigame:saveConfig()
 		self.minigame = TitleMenu:new(self.num_active_players)
+	elseif minigame == Constants.PLAY_MENU then
+		self.minigame = PlayMenu:new(self.num_active_players)
+	elseif minigame == Constants.CREDITS_MENU then
+		self.minigame = CreditsMenu:new(self.num_active_players)
+	elseif minigame == Constants.SCORE_MENU then
+		self.minigame = ScoreMenu:new(self.num_active_players)
+	elseif minigame == Constants.PLAY then
+		-- TODO
 	end
 
 	local show

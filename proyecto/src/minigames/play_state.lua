@@ -73,7 +73,6 @@ end
 
 function PlayState:setScores()
 	for index, player in pairs(self.level.players) do
-		print(self.scores[index])
 		player:setScore(self.scores[index])
 	end
 end

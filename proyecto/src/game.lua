@@ -7,6 +7,7 @@ require("src/minigames/minigame")
 require("src/minigames/bomb_tag")
 require("src/minigames/death_ball")
 require("src/minigames/virus_fall")
+require("src/minigames/play_state")
 require("src/minigames/menus/configuration_menu")
 require("src/minigames/menus/title_menu")
 require("src/minigames/menus/practice_menu")
@@ -240,7 +241,7 @@ function Game:changeMiniGame(minigame)
 	elseif minigame == Constants.SCORE_MENU then
 		self.minigame = ScoreMenu:new(self.num_active_players)
 	elseif minigame == Constants.PLAY then
-		-- TODO
+		self.minigame = PlayState:new(self.num_active_players)
 	end
 
 	local show

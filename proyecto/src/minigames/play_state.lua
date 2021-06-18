@@ -120,14 +120,12 @@ function PlayState:setScores()
 		player:setScore(self.scores[index])
 	end
 
-	-- TODO : reordenar personajes por score
 
 	if #self.minigames == 0 then
 		local num = 1
 		while (num <= table_size(self.scores)) do
 			local jugador, _ = max_item(self.scores)
 			self.scores[jugador] = -1
-			print(jugador, num)
 			local x_pos =  self.level.spawnpoints["spawn" .. num].x
 			local y_pos = self.level.spawnpoints["spawn" .. num].y
 			self.level.players[jugador]:respawn(x_pos, y_pos)

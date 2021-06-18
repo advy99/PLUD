@@ -89,11 +89,15 @@ function keyValid(k)
 	local valid_keys = "qwertyuiopasdfghjklzxcvbnm1234567890"
 
 	local result = false
-	-- no me gusta esto, pero lua
-	if string.find(valid_keys, k) then
-		result = true
-	else
-		result = false
+
+	-- algunas teclas expeciales para regex
+	if k ~= "[" and k ~= "]" then
+		-- no me gusta esto, pero lua
+		if string.find(valid_keys, k) then
+			result = true
+		else
+			result = false
+		end
 	end
 
 	return result

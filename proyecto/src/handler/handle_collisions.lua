@@ -22,7 +22,7 @@ function beginContact(a, b, coll)
 		if (group_a == Constants.PLAYER_GROUP and group_b == Constants.PLATFORM_GROUP and category_b == Constants.PLATFORM_PLAY_MENU_CATEGORY) or
 		 	(group_b == Constants.PLAYER_GROUP and group_a == Constants.PLATFORM_GROUP and category_a == Constants.PLATFORM_PLAY_MENU_CATEGORY) then
 
-			game:handleInternalEvent(Events.PLAYER_LAND_PLATFORM_PLAY)
+			game:handleInternalEvent(Events.PLAYER_LAND_PLATFORM_PLAY_MENU)
 
 		end
 
@@ -146,7 +146,7 @@ function endContact(a, b, coll)
 		if (group_a == Constants.PLAYER_GROUP and group_b == Constants.PLATFORM_GROUP and category_b == Constants.PLATFORM_PLAY_MENU_CATEGORY) or
 		 	(group_b == Constants.PLAYER_GROUP and group_a == Constants.PLATFORM_GROUP and category_a == Constants.PLATFORM_PLAY_MENU_CATEGORY) then
 
-			game:handleInternalEvent(Events.PLAYER_LEAVE_PLATFORM_PLAY)
+			game:handleInternalEvent(Events.PLAYER_LEAVE_PLATFORM_PLAY_MENU)
 
 		end
 

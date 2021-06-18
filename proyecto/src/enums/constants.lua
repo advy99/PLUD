@@ -41,10 +41,13 @@ Constants.VIRUS_FALL = 2
 Constants.DEATH_BALL = 3
 Constants.CONFIGURATION_MENU = 4
 Constants.EXIT = 5
-Constants.MENU = 6
+Constants.TITLE_MENU = 6
 Constants.SAVE_CONFIG = 7
 Constants.PRACTICE = 8
-Constants.PLAY = 9
+Constants.PLAY_MENU = 9
+Constants.CREDITS_MENU = 10
+Constants.PLAY = 11
+Constants.SCORE_MENU = 12
 
 Constants.ADD_PLAYER_KEY = "+"
 Constants.ADD_PLAYER_KEY_COMBINATION = {"lshift", "="}

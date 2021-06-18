@@ -13,6 +13,22 @@ function CreditsMenu:initialize(num_players)
 
 	self.background_box = {390, 70, 500, 625}
 	self.config_background = TextBox:new("", self.background_box[1], self.background_box[2], self.background_box[3], self.background_box[4], 40, 0.9, text_color, box_color)
+
+	local up_box = {self.background_box[1] + self.background_box[3]/2 - 200, 170, 400, 60}
+	local down_box = {self.background_box[1] + self.background_box[3]/2 - 200, 350, 400, 60}
+
+	self.made_by = TextBox:new(language.MADE_BY, up_box[1], up_box[2], up_box[3], up_box[4], 35, 0.9, text_color, box_color)
+	self.author_1 = TextBox:new("Guillermo Sandoval", self.background_box[1] , 250, self.background_box[3], 30, 35, 0, text_color, box_color)
+	self.author_2 = TextBox:new("Antonio D. Villegas", self.background_box[1], 300, self.background_box[3], 30, 35, 0, text_color, box_color)
+
+	self.special_thanks = TextBox:new(language.THANKS, down_box[1], down_box[2], down_box[3], down_box[4], 35, 0.9, text_color, box_color)
+	self.thanks = {}
+
+	local names = {"Calciumtrice","PixelFrog","Khrinx","Monplaisir","Brian Kent"}
+
+	for i=1, 5, 1 do
+		self.thanks[i] = TextBox:new(names[i], self.background_box[1] , 430 + 50*(i-1), self.background_box[3], 30, 35, 0, text_color, box_color)
+	end
 end
 
 
@@ -28,6 +44,15 @@ function CreditsMenu:draw()
 
 	self.config_background:draw()
 	self.title:draw()
+
+	self.made_by:draw()
+	self.author_1:draw()
+	self.author_2:draw()
+
+	self.special_thanks:draw()
+	for i=1, 5, 1 do
+		self.thanks[i]:draw()
+	end
 end
 
 function CreditsMenu:handleEvent(object, event)

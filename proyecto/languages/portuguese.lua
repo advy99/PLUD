@@ -5,6 +5,8 @@ Portuguese.PLAY_GAME = "O JOGO\nCOMEÇA: "
 Portuguese.ENTER_PRACTICE = "ENTRANDO NO\nMODO DE TESTE: "
 Portuguese.ENTER_OPTIONS = "INSERINDO AS\nCONFIGURAÇÕES: "
 Portuguese.EXIT_GAME = "SAINDO\nDO JOGO: "
+Portuguese.ENTER_PLAY = "TODO"
+
 
 Portuguese.EXIT_SAVING_OPTIONS = "A GUARDAR:\n"
 Portuguese.QUIT_TO_MENU = "SAIR PARA\nO MENU: "

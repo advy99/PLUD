@@ -1,5 +1,4 @@
 require("src/minigames/menus/menu")
-require("src/configuration")
 
 local class = require "lib/middleclass"
 local suit = require("lib/SUIT")

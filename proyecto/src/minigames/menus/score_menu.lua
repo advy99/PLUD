@@ -1,8 +1,6 @@
 require("src/minigames/menus/menu")
-require("src/score")
 
 local class = require "lib/middleclass"
-local suit = require("lib/SUIT")
 
 ScoreMenu = Menu:subclass('ScoreMenu')
 

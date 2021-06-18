@@ -41,3 +41,6 @@ Portuguese.INVALID_KEY = "TECLA\nINVÁLIDA"
 
 Portuguese.MADE_BY = "DESENVOLVIDO POR"
 Portuguese.THANKS = "AGRADECIMIENTOS"
+
+Portuguese.NAME = "TODO"
+Portuguese.SAVE = "TODO"

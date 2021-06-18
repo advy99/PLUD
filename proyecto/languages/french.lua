@@ -41,3 +41,6 @@ French.INVALID_KEY = "CLÉ\nINVALIDE"
 
 French.MADE_BY = "DÉVELOPPÉ PAR"
 French.THANKS = "REMERCIEMENTS"
+
+French.NAME = "TODO"
+French.SAVE = "TODO"

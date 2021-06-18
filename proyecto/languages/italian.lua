@@ -41,3 +41,6 @@ Italian.INVALID_KEY = "CHIAVE NON\nVALIDA"
 
 Italian.MADE_BY = "SVILUPPATO DA"
 Italian.THANKS = "RINGRAZIAMENTI"
+
+Italian.NAME = "TODO"
+Italian.SAVE = "TODO"

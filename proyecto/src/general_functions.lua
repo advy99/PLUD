@@ -66,3 +66,20 @@ function countCharacter(string,char)
 	local _, count = string:gsub(char,"")
 	return count
 end
+
+
+function max_item(table)
+
+	local max_name = ""
+	local max_val = -1
+
+	for name, val in pairs(table) do
+		if val > max_val then
+			max_val = val
+			max_name = name
+		end
+	end
+
+	return max_name, max_val
+
+end

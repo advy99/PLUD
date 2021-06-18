@@ -12,13 +12,11 @@ function PlayState:initialize(num_players)
 	-- este minijuego  no tendrá mapa ni jugadores, luego no tengo que cargar la clase padre
 	-- MiniGame.initialize(self, "level_" .. num_level, num_players)
 	self.minigames = {}
-	-- insertamos los juegos de forma aleatoria
-	local pos = math.random(0, 2)
 	-- TODO: cambiar por menu con resultados, no la tabla de scores
 	table.insert(self.minigames, 0, ScoreMenu:new(num_players))
-	table.insert(self.minigames, (pos % 3) + 1, BombTag:new(num_players))
-	table.insert(self.minigames, ((pos + 1) % 3) + 1, DeathBall:new(num_players))
-	table.insert(self.minigames, ((pos + 2) % 3) + 1, VirusFall:new(num_players))
+	table.insert(self.minigames, 1, BombTag:new(num_players))
+	table.insert(self.minigames, 2, DeathBall:new(num_players))
+	table.insert(self.minigames, 3, VirusFall:new(num_players))
 
 	self.level = self.minigames[#self.minigames].level
 	self.scores = {}
@@ -32,7 +30,7 @@ function PlayState:initialize(num_players)
 
 	self.curtain_animation_time = 0.75
 
-	self.TIME_PER_MINIGAME = 3
+	self.TIME_PER_MINIGAME = 10
 	self.TIME_CLOSE_CURTAINS = self.TIME_PER_MINIGAME + self.curtain_animation_time
 	self.TIME_OPEN_CURTAINS = self.TIME_CLOSE_CURTAINS + self.curtain_animation_time
 	self.elapsed_time = 0
@@ -121,4 +119,20 @@ function PlayState:setScores()
 	for index, player in pairs(self.level.players) do
 		player:setScore(self.scores[index])
 	end
+
+	-- TODO : reordenar personajes por score
+
+	if #self.minigames == 0 then
+		local num = 1
+		while (num <= table_size(self.scores)) do
+			local jugador, _ = max_item(self.scores)
+			self.scores[jugador] = -1
+			print(jugador, num)
+			local x_pos =  self.level.spawnpoints["spawn" .. num].x
+			local y_pos = self.level.spawnpoints["spawn" .. num].y
+			self.level.players[jugador]:respawn(x_pos, y_pos)
+			num = num + 1
+		end
+	end
+
 end

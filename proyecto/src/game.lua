@@ -10,6 +10,11 @@ require("src/minigames/virus_fall")
 require("src/minigames/menus/configuration_menu")
 require("src/minigames/menus/title_menu")
 require("src/minigames/menus/practice_menu")
+require("src/minigames/menus/score_menu")
+require("src/minigames/menus/credits_menu")
+require("src/minigames/menus/play_menu")
+
+
 require("src/text_box")
 require("src/interface_box")
 require("src/sound_manager")
@@ -155,7 +160,7 @@ function Game:handleInternalEvent(event)
 				self.next_minigame = Constants.VIRUS_FALL
 			elseif event == Events.PLAYER_LAND_PLATFORM_DEATH_BALL then
 				self.next_minigame = Constants.DEATH_BALL
-			elseif event == Events.PLAYER_LAND_PLATFORM_SCORES then
+			elseif event == Events.PLAYER_LAND_PLATFORM_SCORE then
 				self.next_minigame = Constants.SCORE_MENU
 			elseif event == Events.PLAYER_LAND_PLATFORM_CREDITS then
 				self.next_minigame = Constants.CREDITS_MENU

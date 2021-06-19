@@ -79,6 +79,7 @@ end
 
 
 function ResultMenu:keyPressed(k)
+	Menu.keyPressed(self, k)
 	suit.keypressed(k)
 end
 

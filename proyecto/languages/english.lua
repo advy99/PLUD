@@ -41,4 +41,4 @@ English.MADE_BY = "DEVELOPED BY"
 English.THANKS = "SPECIAL THANKS"
 
 English.NAME = "TODO"
-English.SAVE = "TODO"
+English.SUBMIT = "TODO"

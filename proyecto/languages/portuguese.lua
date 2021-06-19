@@ -43,4 +43,4 @@ Portuguese.MADE_BY = "DESENVOLVIDO POR"
 Portuguese.THANKS = "AGRADECIMIENTOS"
 
 Portuguese.NAME = "TODO"
-Portuguese.SAVE = "TODO"
+Portuguese.SUBMIT = "TODO"

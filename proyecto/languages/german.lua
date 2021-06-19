@@ -42,4 +42,4 @@ German.MADE_BY = "ENTWICKELT VON"
 German.THANKS = "BESONDERER DANK"
 
 German.NAME = "TODO"
-German.SAVE = "TODO"
+German.SUBMIT = "TODO"

@@ -43,4 +43,4 @@ Italian.MADE_BY = "SVILUPPATO DA"
 Italian.THANKS = "RINGRAZIAMENTI"
 
 Italian.NAME = "TODO"
-Italian.SAVE = "TODO"
+Italian.SUBMIT = "TODO"

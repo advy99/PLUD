@@ -31,7 +31,7 @@ function ResultMenu:update(dt)
 	if self.show_suit then
 		suit.Input(self.input_text, Constants.DEFAULT_WIDTH / 2 , Constants.DEFAULT_HEIGHT / 2 + 75, 80, 40)
 
-		if suit.Button(language.SAVE, {align = "center"}, Constants.DEFAULT_WIDTH / 2 - 100, Constants.DEFAULT_HEIGHT / 2 + 150, 200, 40).hit then
+		if suit.Button(language.SUBMIT, {align = "center"}, Constants.DEFAULT_WIDTH / 2 - 100, Constants.DEFAULT_HEIGHT / 2 + 150, 200, 40).hit then
 
 			if #self.input_text.text ~= 3 then
 				-- TODO: que salga un mensaje de error de minimo tres caracteres

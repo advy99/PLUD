@@ -111,6 +111,9 @@ function Game:draw()
 			if self.minigame.class.name == "PlayMenu" then
 				pos = {(Constants.DEFAULT_WIDTH - size[1])/2, 100}
 			-- Si realiza esta llamada desde el menú de configuración
+		elseif self.minigame.class.name == "PlayState" then
+				size = {384, 150}
+				lpos = {(Constants.DEFAULT_WIDTH - size[1])/2, 375}
 			else
 				size = {288, 150}
 				pos = {948, 375}

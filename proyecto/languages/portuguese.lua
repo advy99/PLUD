@@ -3,11 +3,11 @@ Portuguese = {}
 
 Portuguese.PLAY_GAME = "O JOGO\nCOMEÇA: "
 Portuguese.ENTER_PRACTICE = "ENTRANDO NO\nMODO DE TESTE: "
-Portuguese.ENTER_OPTIONS = "INSERINDO AS\nCONFIGURAÇÕES: "
+Portuguese.ENTER_OPTIONS = "MOSTRANDO AS\nCONFIGURAÇÕES: "
 Portuguese.EXIT_GAME = "SAINDO\nDO JOGO: "
-Portuguese.ENTER_PLAY = "TODO"
-Portuguese.ENTER_CREDITS = "TODO"
-Portuguese.ENTER_SCORE = "TODO"
+Portuguese.ENTER_PLAY = "ACESSO AO\nMODO DE JOGO: "
+Portuguese.ENTER_CREDITS = "MOSTRANDO OS\nCRÉDITOS: "
+Portuguese.ENTER_SCORE = "MOSTRANDO AS\nPONTUAÇÃOES: "
 
 
 Portuguese.EXIT_SAVING_OPTIONS = "A GUARDAR:\n"
@@ -42,5 +42,5 @@ Portuguese.INVALID_KEY = "TECLA\nINVÁLIDA"
 Portuguese.MADE_BY = "DESENVOLVIDO POR"
 Portuguese.THANKS = "AGRADECIMIENTOS"
 
-Portuguese.NAME = "TODO"
-Portuguese.SUBMIT = "TODO"
+Portuguese.NAME = "NOME"
+Portuguese.SUBMIT = "SUBMETER"

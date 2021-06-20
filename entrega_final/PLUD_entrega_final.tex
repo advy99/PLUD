@@ -713,8 +713,6 @@ En el modo principal de juego los jugadores jugarán a los tres minijuegos duran
 
 Como detalle dejar claro que el minijuego se para por completo en el momento que comienzan a moverse las cortinas, evitando que ocurran muertes fuera de plano.
 
-
-
 \section{Recursos multimedia}
 
 Todo el contenido multimedia utilizado en Lose To Win utiliza una licencia libre Creative Commons, diferenciando entre CC-0 y CC-BY. Aunque actualmente el juego se encuentre en un estado pre-lanzamiento, tenemos como objetivo ampliar la experiencia de usuario mejorando el contenido multimedia actual, incluyendo nuevo mapeado, variedad de apariencias para los personajes, etc.
@@ -821,38 +819,81 @@ Por estos motivos, aunque hemos aprendido en gran profundidad las etapas, herram
 
 Hemos utilizado las siguientes bibliotecas:
 
-\begin{enumerate}
+\begin{itemize}
 	\item \href{https://github.com/Dynodzzo/Lua_INI_Parser}{LIP}: Biblioteca para cargar archivos INI.
 	\item \href{https://github.com/kikito/middleclass}{middleclass}: Biblioteca para usar clases en Lua.
 	\item \href{https://github.com/vrld/suit}{SUIT}: Biblioteca para gestionar menús con sliders, checkbox, etc.
 	\item \href{https://github.com/karai17/Simple-Tiled-Implementation}{STI}: Biblioteca para cargar mapas de Tiled en Love2D.
-\end{enumerate}
+\end{itemize}
 
 Estas bibliotecas nos han permitido suplir muchos de los problemas de Lua, aunque eso no ha evitado el tiempo y trabajo perdido hasta llegar a una iteración en la que hemos llegado a implementar todo el proyecto utilizando estas herramientas.
 
 \section{Estructura del proyecto}
+
+El proyecto se estructura en un fichero principal, \texttt{main.lua}, que será el fichero gestionado por Love2D debido a las necesidades de este framework. Este fichero delegará todas las funciones de Love2D (entrada por teclaro, ratón, actualización, dibujado, eventos, etc del juego) a nuestra propia clase \texttt{Game}.
+
+\subsection{Clase gestora Game}
+
+Nuestra clase \texttt{Game} será la encargada de gestionar en todo momento el estado del juego, que mapa se está cargando, que menú se debe mostrar, cuantos jugadores activos existen, así como realizar todos los cambios necesarios para mantener la actualización, dibujado y otras tareas del juego. Esto no implica que esta clase, a su vez, delegue el trabajo concreto a las distintas clases que utilizaremos, de forma que funcione como un gestor del juego.
+
+\subsection{Clase genérica GameObject}
+
+Esta clase será una clase interfaz que servirá como plantilla para todos los objetos que encontremos en el juego. Estos objetos son los jugadores, con la clase \texttt{Player} y los distintos objetos necesarios para los minijuegos, como la bola de energía, o los virus.
+
+Estas clases gestionarán individualmente su comportamiento, como se deben mover, que tienen permitido, que formas y cuerpos tendrán, sus animaciones, entre otros.
+
+Con estas clases hemos conseguido que todo lo que recaiga de la gestión de los jugadores y otros objetos con respecto a su creación, dibujado, actualización, etc, se realice en su respectiva sección sin que intervengan otras variables y casos generales del juego.
+
+\subsection{Clase Level}
+
+Esta clase será la clase que contendrá el mapa y los objetos que formarán parte de ese mapa, como los jugadores, objetos, entre otros.
+
+Nos servirá para centralizar y gestionar los distintos objetos activos.
+
+\subsection{Clase genérica MiniGame}
+
+Esta clase se tratará de una plantilla para los minijuegos. Esta clase definirá el comportamiento común de los minijuegos, permitiendo una mayor escalabilidad, haciendo que el implementar un minijuego sea simplemente gestionar las características específicas de cada minijuego, haciendo más fácil y viable el permitir minijuegos personalizados.
+
+Los minijuegos implementados actualmente son clases derivadas de esta, implementando la lógica de cada minijuego en concreto.
+
+Otro uso de esta clase ha sido las pantallas de menús. Debido a que en nuestro juego los menús forman parte de la jugabilidad del proyecto, los propios menús son de tipo \texttt{MiniGame} ya que necesitan gestionar su propia lógica de a que parte pueden saltar, que sensores son necesarios, entre otros.
+
+
+\subsection{Otras clases auxiliares}
+
+También disponemos de otras clases auxiliares de cara a automatizar y gestionar tareas concretas, como la clase \texttt{SoundManager} que se encargará de gestionar todos los sonidos del minijuego, la clase \texttt{InterfaceBox} que se encargará de la interfaz inferior del juego o la clase \texttt{TextBox} que surgió de la necesidad de tener cajas de texto para mostrar información por pantalla en momento puntuales.
 
 
 \section*{Trabajo futuro}
 \label{sec:futuro}
 \addcontentsline{toc}{section}{\nameref{sec:futuro}}
 
+De cara a seguir con el desarrollo del proyecto, nos gustaría realizar las siguientes mejoras y ampliaciones de funcionalidad, previo estudio de la posibilidad de reimplementar este proyecto en un entorno distinto:
+
+\begin{itemize}
+	\item Mejorar el sistema de puntuaciones.
+	\item Selector de mapas en el modo en práctica.
+	\item Permitir a los usuarios añadir mapas personalizados.
+	\item Permitir a los usuarios añadir minijuegos personalizados.
+	\item Añadir soporte de mandos como dispositivo de entrada.
+	\item Multijugador en red.
+	\item Modo un jugador (para algunos minijuegos).
+	\item Mayor versatilidad en la configuración de minijuegos.
+\end{itemize}
+
 
 \section*{Manual de usuario}
 \label{sec:manual}
 \addcontentsline{toc}{section}{\nameref{sec:manual}}
 
-\section{Como descargar el videojuego}
+
+\section{Como descargar y ejecutar el videojuego}
 
 \subsection{Ejecutando el código fuente manualmente con Love2D}
 
 \subsection{Utilizando la versión de lanzamiento}
 
-
-\section{Como ejecutar el videojuego}
-
 \section{Como jugar al videojuego}
-
 
 
 \end{document}

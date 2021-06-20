@@ -13,7 +13,7 @@ function InterfaceBox:initialize(posX, posY, keys)
 
 	self.sizeW = 224
 	self.sizeH = 96
-	self.textSize = 24
+	self.textSize = 22
 	self.opacity = 0.5
 
 	local text_color = {0, 0, 0}
@@ -57,7 +57,7 @@ function InterfaceBox:draw(player)
 			love.graphics.setColor(1, 1, 1)
 			local font = love.graphics.newFont("fonts/kirbyss.ttf", self.textSize)
 			love.graphics.setFont(font)
-			love.graphics.printf(language.SCORE .. "\n" .. player:getScore(), self.posX + 32,  self.posY + self.sizeH / 4, self.sizeW, "center")
+			love.graphics.printf(language.SCORE .. "\n" .. player:getScore(), self.posX + 34,  self.posY + self.sizeH / 4, self.sizeW, "center")
 		end
 	-- Mostar un cuadro de ayuda para añadir/eliminar jugadores
 	else
@@ -66,8 +66,8 @@ function InterfaceBox:draw(player)
 		love.graphics.setColor(1, 1, 1)
 		local font = love.graphics.newFont("fonts/kirbyss.ttf", self.textSize)
 		love.graphics.setFont(font)
-		love.graphics.printf(language.ADD_PLAYER , self.posX - self.sizeW/10,  self.posY + self.sizeH/5, self.sizeW, "center")
-		love.graphics.printf(language.REMOVE_PLAYER , self.posX - self.sizeW/10 ,  self.posY + 52, self.sizeW, "center")
+		love.graphics.printf(language.ADD_PLAYER , self.posX - self.sizeW/10,  self.posY + self.sizeH/5 + 2, self.sizeW, "center")
+		love.graphics.printf(language.REMOVE_PLAYER , self.posX - self.sizeW/10 ,  self.posY + 54, self.sizeW, "center")
 
 	end
 end

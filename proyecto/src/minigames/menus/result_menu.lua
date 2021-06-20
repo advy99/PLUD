@@ -29,6 +29,7 @@ function ResultMenu:update(dt)
 	Menu.update(self, dt)
 
 	if self.show_suit then
+		love.graphics.setFont(love.graphics.newFont("fonts/kirbyss.ttf", 20))
 		suit.Input(self.input_text, Constants.DEFAULT_WIDTH / 2 , Constants.DEFAULT_HEIGHT / 2 + 75, 80, 40)
 
 		if suit.Button(language.SUBMIT, {align = "center"}, Constants.DEFAULT_WIDTH / 2 - 100, Constants.DEFAULT_HEIGHT / 2 + 150, 200, 40).hit then

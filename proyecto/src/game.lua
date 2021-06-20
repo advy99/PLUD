@@ -78,6 +78,20 @@ function Game:draw()
 
 	self.minigame:draw()
 
+	if self.minigame.class.super.name ~= "Menu" and self.minigame.class.name ~= "PlayState" then
+		love.graphics.setColor(0, 0, 0, 0.5)
+
+		local box_color = {0, 0, 0}
+		local text_color = {1, 1, 1}
+		local key_size = 40
+		local pos = {Constants.DEFAULT_WIDTH - 115, 35}
+		local esc = TextBox:new( "ESC", pos[1], pos[2], key_size * 2, key_size, 22, 1, text_color, box_color) -- text, posX, posY, sizeW, sizeH, textSize
+
+
+		esc:draw()
+
+	end
+
 	if self.next_minigame ~= nil then
 		local text_color = {1, 1, 1}
 		local box_color = {0, 0, 0}

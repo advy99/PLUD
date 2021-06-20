@@ -39,7 +39,7 @@ end
 function CreditsMenu:update(dt)
 
 	Menu.update(self, dt)
-	local buttons_position = {self.background_box[1] + self.background_box[3]/2 , 630}
+	local buttons_position = {self.background_box[1] + self.background_box[3]/2 , 640}
 
 	if suit.Button("<-", {align = "center"}, buttons_position[1] - 35 - 100, buttons_position[2] , 70,30).hit then
 		self.active_page = self.active_page - 1
@@ -84,7 +84,7 @@ function CreditsMenu:draw()
 
 
 
-	local buttons_position = {self.background_box[1] + self.background_box[3]/2 , 630}
+	local buttons_position = {self.background_box[1] + self.background_box[3]/2 , 640}
 	local text_color = {1, 1, 1}
 	local box_color = {0, 0, 0}
 	local contador = TextBox:new(self.active_page .. "/" .. self.NUM_PAGES, buttons_position[1] - 50, buttons_position[2] - 10, 100, 50, 30, 0, text_color, box_color)

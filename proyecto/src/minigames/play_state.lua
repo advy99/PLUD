@@ -93,6 +93,19 @@ function PlayState:draw()
 		love.graphics.draw(self.curtain, self.right_curtain_animation_position, 0)
 	end
 
+	love.graphics.setColor(0, 0, 0, 0.5)
+
+	if self.TIME_PER_MINIGAME - self.elapsed_time > 0 and #self.minigames ~= 0 then
+		local box_color = {0, 0, 0}
+		local text_color = {1, 1, 1}
+		local key_size = 40
+		local pos = {Constants.DEFAULT_WIDTH - 115, 35}
+		local time = TextBox:new( tostring(math.abs(math.ceil(self.TIME_PER_MINIGAME - self.elapsed_time))), pos[1], pos[2], key_size * 2, key_size, 22, 1, text_color, box_color) -- text, posX, posY, sizeW, sizeH, textSize
+		time:draw()
+	end
+
+
+
 end
 
 function PlayState:handleEvent(object, event)

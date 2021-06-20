@@ -607,7 +607,47 @@ Las barras de sonido, con el objetivo de ser más flexibles a la hora de selecci
 
 \subsection{Pantalla}
 
+Para las opciones de pantalla, debido a distintas trabas impuestas por el framework utilizado, solo disponemos de dos opciones, activar o desactivar la sincronización vertical, y mostrar o no mostrar un contador de los frames generados por segundo:
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\textwidth]{"opciones/pantalla.png"}
+	\caption{Opciones de pantalla en Lose To Win.}\label{figure:pantalla}
+\end{figure}
+
+Estas dos opciones, debido a que es necesario recargar la ventana completa, son las únicas opciones que se harán efectivas una vez guardemos los cambios y volvamos al menú principal.
+
+Como comentaremos más adelante, una de las opciones pendientes más claras es la posibilidad de cambiar el tamaño de pantalla, que ha sido imposible de implementar por la poca flexibilidad de Love2D, aunque en un futuro cercano es uno de nuestros objetivos a añadir.
+
 \subsection{Controles}
+
+Los controles de Lose To Win son muy simples, de ahí que las opciones para modificarlos sean muy simples. Simplementen se tratan de tres botones que nos permitirán actualizar las tres teclas utilizadas, saltar, moverse a la izquierda y moverse a la derecha:
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\textwidth]{"opciones/controles_especifico.png"}
+	\caption{Opciones de controles en Lose To Win.}\label{figure:controles_especifico}
+\end{figure}
+
+Esta sección de la configuración se basa en dos botones para cambiar el jugador al que modificaremos los controles, y los tres botones para cada acción.
+
+Además, en caso de que una tecla ya esté en uso, o no sea válida, como la tecla de escape por ejemplo, mostrará un error:
+
+\begin{figure}[H]
+    \centering
+	 \begin{subfigure}[b]{0.49\textwidth}
+		 \centering
+		 \includegraphics[width=\textwidth]{"opciones/tecla_asignada_especifico.png"}
+		 \caption{Error al intentar seleccionar una tecla ya asignada.}\label{fig:tecla_asignada_especifico}
+	 \end{subfigure}
+	 \begin{subfigure}[b]{0.49\textwidth}
+		 \centering
+		\includegraphics[width=\textwidth]{"opciones/tecla_invalida_especifico.png"}
+		\caption{Error al intentar seleccionar una tecla inválida.}\label{fig:tecla_invalida_especifico}
+   \end{subfigure}
+	\caption{Posibles errores al seleccionar los controles.}\label{fig:errores_controles}
+\end{figure}
+
 
 
 \section{Modos de juego}
@@ -628,10 +668,33 @@ Las barras de sonido, con el objetivo de ser más flexibles a la hora de selecci
 
 \subsubsection{Sprites de los jugadores}
 
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\textwidth]{"multimedia/blue_slime_atlas.png"}
+	\caption{Altas de las animaciones de uno de los jugadores.}\label{figure:blue_slime_atlas}
+\end{figure}
+
 \subsubsection{Sprites de los mapas}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\textwidth]{"multimedia/landscape.png"}
+	\caption{Paisaje de fondo.}\label{figure:landscape}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\textwidth]{"multimedia/terrain.png"}
+	\caption{Altas con los distintos elementos de las plataformas.}\label{figure:terrain}
+\end{figure}
 
 \subsubsection{Sprites de los objetos utilizados}
 
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\textwidth]{"multimedia/energy_ball.png"}
+	\caption{Sprites de animación de la bola de energía.}\label{figure:energy_ball}
+\end{figure}
 
 \subsection{Mapeado}
 

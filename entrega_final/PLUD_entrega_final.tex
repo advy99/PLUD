@@ -537,7 +537,73 @@ Con respecto a las opciones, hemos añadido distintas opciones de cara a que los
 
 \subsection{Idioma}
 
+Para introducir distintos idiomas hemos diseñado un sistema escalable, de forma que tenemos todas las lineas utilizadas almacenadas en ficheros que cualquier persona podría diseñar, y con un simple cambio en el código incorporar un nuevo idioma.
+
+Actualmente contamos con seis traducciones:
+
+\begin{enumerate}
+	\item Español.
+	\item Inglés.
+	\item Alemán.
+	\item Italiano.
+	\item Francés.
+	\item Portugués.
+\end{enumerate}
+
+Modificar el idioma es tan sencillo como pulsar un botón en el menú de juego, y el cambio se hará efectivo en el momento, aunque no permanecerá a no ser que guardemos las opciones:
+
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\textwidth]{"opciones/idiomas/spanish.png"}
+	\caption{Lose To Win en español.}\label{figure:spanish}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\textwidth]{"opciones/idiomas/english.png"}
+	\caption{Lose To Win en inglés.}\label{figure:english}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\textwidth]{"opciones/idiomas/german.png"}
+	\caption{Lose To Win en alemán.}\label{figure:german}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\textwidth]{"opciones/idiomas/italian.png"}
+	\caption{Lose To Win en italiano.}\label{figure:italian}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\textwidth]{"opciones/idiomas/french.png"}
+	\caption{Lose To Win en francés.}\label{figure:french}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\textwidth]{"opciones/idiomas/portuguese.png"}
+	\caption{Lose To Win en portugués.}\label{figure:portuguese}
+\end{figure}
+
+
+Además de cambiar todo lo mostrado en las imágenes, también cambiarán los textos de los menús, puntuaciones, etc, para adaptarse al idioma seleccionado.
+
 \subsection{Sonido}
+
+Para el sonido contamos con dos barras de selección, una para escoger el nivel de música y otra para el nivel de los efectos de sonido, y un botón para silenciar el juego por completo:
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\textwidth]{"opciones/sonido.png"}
+	\caption{Opciones de sonido en Lose To Win.}\label{figure:sonido}
+\end{figure}
+
+
+Las barras de sonido, con el objetivo de ser más flexibles a la hora de seleccionar el nivel de audio, en lugar de estar en una escala lineal de cero a uno se han implementado en una escala cuadrática de cero a uno, de forma que el rango de valores es el mismo, pero al comienzo de la barra los cambios apenas son perceptibles de cara a poder ajustar lo máximo posible el nivel de sonido, mientras que si se quiere un nivel alto de sonido se pueda conseguir al mantener escala.
 
 \subsection{Pantalla}
 

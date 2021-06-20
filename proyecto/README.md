@@ -10,7 +10,7 @@ Bla bla bla
 - LIP: https://github.com/Dynodzzo/Lua_INI_Parser/ (licencia MIT)
 - middleclass: Biblioteca para usar clases en Lua: https://github.com/kikito/middleclass (licencia MIT)
 - SUIT: Biblioteca para gestionar menus con sliders, checkbox, etc: https://github.com/vrld/suit
-
+- STI: Biblioteca para cargar mapas de Tiled en Love2D: https://github.com/karai17/Simple-Tiled-Implementation
 
 ## Assets
 

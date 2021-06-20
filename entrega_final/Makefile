@@ -12,7 +12,7 @@ CARPETA_ENCONTRADA = $(wildcard $(OUT))
 
 FICHEROS_TEX = $(wildcard src/*)
 
-all: crear_carpetas $(OUT_NAME) demo
+all: crear_carpetas $(OUT_NAME)
 
 $(OUT_NAME) : $(TEX_FILE) $(FICHEROS_TEX)
 	$(TEXCC) $(TEXCCFLAGS) $(TEX_FILE)

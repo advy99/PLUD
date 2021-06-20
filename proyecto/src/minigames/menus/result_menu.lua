@@ -10,7 +10,7 @@ ResultMenu = Menu:subclass('ResultMenu')
 function ResultMenu:initialize(num_players)
 	Menu.initialize(self, "level_result", num_players)
 
-	self.input_text = {text = ""}
+	self.input_text = {text = "---"}
 
 	local text_color = {1, 1, 1}
 	local box_color = {0, 0, 0}
@@ -29,9 +29,11 @@ function ResultMenu:update(dt)
 	Menu.update(self, dt)
 
 	if self.show_suit then
+		love.graphics.setFont(love.graphics.newFont("fonts/RobotoMono-Bold.ttf", 20))
+		if suit.Input(self.input_text,  {align = "center"}, Constants.DEFAULT_WIDTH / 2 , Constants.DEFAULT_HEIGHT / 2 + 75, 45, 40).hit then
+			self.input_text.text = ""
+		end
 		love.graphics.setFont(love.graphics.newFont("fonts/kirbyss.ttf", 20))
-		suit.Input(self.input_text, Constants.DEFAULT_WIDTH / 2 , Constants.DEFAULT_HEIGHT / 2 + 75, 80, 40)
-
 		if suit.Button(language.SUBMIT, {align = "center"}, Constants.DEFAULT_WIDTH / 2 - 100, Constants.DEFAULT_HEIGHT / 2 + 150, 200, 40).hit then
 
 			if #self.input_text.text ~= 3 then

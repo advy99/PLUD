@@ -76,8 +76,6 @@ function ConfigurationMenu:initialize(num_players)
 	self.flag_position = {self.background_box[1] + self.background_box[3]/2 - self.languages.english:getWidth() / 2  * 0.15, 250}
 	self.player_position = {self.background_box[1] + self.background_box[3]/2 - self.players_images.player1:getWidth() / 2 * 0.75 / 10, 390}
 
-	self.pages_button_position = {self.background_box[1] + self.background_box[3]/2 - 150, 625, 300}
-
 end
 
 
@@ -228,7 +226,7 @@ function ConfigurationMenu:update(dt)
 
 	end
 
-	local buttons_position = {self.background_box[1] + self.background_box[3]/2 , 630}
+	local buttons_position = {self.background_box[1] + self.background_box[3]/2 , 640}
 
 	if suit.Button("<-", {id = "pagina_menos", align = "center"}, buttons_position[1] - 35 - 100, buttons_position[2] , 70,30).hit then
 		self.active_page = self.active_page - 1
@@ -274,7 +272,7 @@ function ConfigurationMenu:draw()
 	end
 
 
-	local buttons_position = {self.background_box[1] + self.background_box[3]/2 , 630}
+	local buttons_position = {self.background_box[1] + self.background_box[3]/2 , 640}
 	local text_color = {1, 1, 1}
 	local box_color = {0, 0, 0}
 	local contador = TextBox:new(self.active_page .. "/" .. self.NUM_PAGES, buttons_position[1] - 50, buttons_position[2] - 10, 100, 50, 30, 0, text_color, box_color)

@@ -39,8 +39,9 @@ Portuguese.HIGHSCORE = "PONTUAÇÃO MÁX."
 Portuguese.KEY_ASSIGNED = "TECLA JÁ\nATRIBUÍDA"
 Portuguese.INVALID_KEY = "TECLA\nINVÁLIDA"
 
-Portuguese.MADE_BY = "DESENVOLVIDO POR"
-Portuguese.THANKS = "AGRADECIMIENTOS"
+Portuguese.MADE_BY = "DESENVOLVIMENTO"
+Portuguese.ART = "ARTE"
+Portuguese.FONT = "FONTE"
 
 Portuguese.NAME = "NOME"
 Portuguese.SUBMIT = "SUBMETER"

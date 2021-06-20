@@ -697,6 +697,22 @@ Por último, una plaga de virus mortales para los temibles (y cucos) personajes 
 
 \subsection{Modo de juego}
 
+En el modo principal de juego los jugadores jugarán a los tres minijuegos durante cierto tiempo preestablecido, separando cada minijuego por una animación de un telón. En este modo, en lugar de mostrar la tecla para parar el minijuego, se mostrará el tiempo restante del minijuego y no será posible parar este modo sin que finalicen todos los minijuegos:
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\textwidth]{"modos/virus_play_state.png"}
+	\caption{Cuatro jugadores jugando a Virus Fall.}\label{figure:virus_play_state}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\textwidth]{"modos/cortinas_cambio_minijuego.png"}
+	\caption{Cortinas mostrando el cambio de un minijuego.}\label{figure:cortinas_cambio_minijuego}
+\end{figure}
+
+Como detalle dejar claro que el minijuego se para por completo en el momento que comienzan a moverse las cortinas, evitando que ocurran muertes fuera de plano.
+
 
 
 \section{Recursos multimedia}
@@ -707,21 +723,26 @@ Todo el contenido multimedia utilizado en Lose To Win utiliza una licencia libre
 
 \subsubsection{Sprites de los jugadores}
 
-El diseño de los personajes consta de un slime que cuenta con cinco animaciones distintas, de las cuales se han utilizado
+El diseño de los personajes consta de un slime que cuenta con cinco animaciones distintas, de las cuales se han utilizado cuatro de ellas (en reposo, andando, saltando y muriendo). Además, el resto de personajes consta en variaciones cromáticas del mismo, siendo sencillo plantear la posibilidad de ampliar el repertorio de diseños de los jugadores.
 
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=\textwidth]{"multimedia/blue_slime_atlas.png"}
-	\caption{Altas de las animaciones de uno de los jugadores.}\label{figure:blue_slime_atlas}
+	\caption{Altas de animación de uno de los jugadores.}\label{figure:blue_slime_atlas}
 \end{figure}
 
-\subsubsection{Sprites de los mapas}
+Por otra parte, al solo necesitar cuatro animaciones distintas, facilitamos enormente la introducción de aspectos completamente nuevos, similares al ejemplo mostrado a continuación, que se descartaron finalmente debido a necesitar un rediseño de algunas de sus animaciones.
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=\textwidth]{"multimedia/landscape.png"}
-	\caption{Paisaje de fondo.}\label{figure:landscape}
+	\includegraphics[width=\textwidth]{"multimedia/dinos.png"}
+	\caption{Altas de animación descartado.}\label{figure:dinos}
 \end{figure}
+
+
+\subsubsection{Sprites de los mapas}
+
+Al igual que con en el diseño de los personajes, se ha optado por un diseño simple y suficientemente variado, contando con plataformas detalladas y amigables a la vista. Los sprites utilizados incluyen baldosas que conformarán todo el escenario, paredes, techos, plataformas, etc.
 
 \begin{figure}[H]
 	\centering
@@ -729,17 +750,42 @@ El diseño de los personajes consta de un slime que cuenta con cinco animaciones
 	\caption{Altas con los distintos elementos de las plataformas.}\label{figure:terrain}
 \end{figure}
 
-\subsubsection{Sprites de los objetos utilizados}
+Además, se ha utilizado una imagen de fondo que se integra con el estilo elegido e incluso forma parte del fondo utilizado tanto en los escenarios como en la interfaz del juego.
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=\textwidth]{"multimedia/energy_ball.png"}
+	\includegraphics[width=\textwidth]{"multimedia/landscape.png"}
+	\caption{Paisaje de fondo.}\label{figure:landscape}
+\end{figure}
+
+\subsubsection{Sprites de los objetos utilizados}
+
+Por último se han utilizado diversos sprites simples pero distintivos para tanto representar los iconos informativos usados en las plataformas de los distintos menús como de los objetos y amenazas que forman parte de cada uno de los minijuegos. Como ejemplo, incluimo
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.3\textwidth]{"multimedia/energy_ball.png"}
 	\caption{Sprites de animación de la bola de energía.}\label{figure:energy_ball}
 \end{figure}
 
 \subsection{Mapeado}
 
-\subsubsection{Creación de los mapas: Tiled}
+A la hora de crear los mapas utilizados hemos decidido utilizar la aplicación \href{https://www.mapeditor.org/}{Tiled}, ya que su uso es muy sencillo y contamos con una biblioteca de Lua que los integra en Love2D, como comentaremos más adelante.
+
+\subsubsection{Creación de los mapas y menús: Tiled}
+
+Para crear los mapas simplemente hemos creado un mapa en Tiled del tamaño deseado y utilizado para la pantalla en nuestro juego, con cuadrículas de 32 píxeles para ajustar todo, y hemos añadido los dibujos necesarios del terreno. Gracias a la biblioteca \href{https://github.com/karai17/Simple-Tiled-Implementation}{STI} es posible añadir a los objetos añadidos en Tiled colisiones y categorías para gestionar las físicas con estos objetos desde el código.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\textwidth]{"mapa_menu_principal.png"}
+	\caption{Mapa del menú principal en Tiled.}\label{figure:mapa_menu_principal}
+\end{figure}
+
+También se ha podido añadir información que se utilizará en el juego, como los puntos de aparición de los jugadores, entre otros.
+
+El resto de mapas ha sido creado de la misma forma, añadiendo plataformas, sensores, y demás donde era necesario.
+
 
 \subsection{Sonido}
 

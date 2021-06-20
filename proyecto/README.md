@@ -1,6 +1,35 @@
-# Titulo
+# Lose To Win
 
 Lose To Win: Proyecto para la asignatura de Programación Lúdica.
+
+# Como ejecutar el proyecto
+
+En la sección de lanzamientos podremos encontrar la última versión disponible del código, así como su versión ejecutable. Lua, al ser un lenguaje interpretado, nos permitirá ejecutar Lose To Win directamente desde el código, aunque debido a la necesidad de tener instalado Love2D para esta opción hemos añadido un fichero zip con los recursos necesario y una versión portable de Love2D para que lanzar Lose To Win sea tan sencillo como ejecutar un fichero, sin necesidad de descargas adicionales.
+
+
+## Ejecutando el código fuente manualmente con Love2D}
+
+Si optamos por descargar el código del proyecto, será necesario instalar Love2D en nuestro sistema. Esto se puede hacer utilizando los instaladores de la página principal de Love2D (https://love2d.org). Será necesario instalar, como mínimo, la versión 11.3 de Love2D.
+
+Tras instalar Love2D, simplemente nos movemos a la ruta del proyecto, en la que se encuetra el fichero main.lua y lanzamos Love2D en la carpeta actual:
+
+```
+cd <ruta_descarga>/proyecto
+love .
+```
+
+## Utilizando la versión de lanzamiento (recomendado)
+
+Si optamos descargar la versión disponible en la herramienta de lanzamiento de GitHub, donde podemos encontrar el fichero LoseToWin.zip, es tan simple como extraer dicho fichero comprimido donde encontraremos una carpeta y dos ficheros:
+
+- LoseToWin: Carpeta con los recursos y código de LoseToWin, así como una versión portable de Love2D tanto de Windows como de Linux, ambos de 64 bits.
+- LoseToWinLinux.sh: Fichero para ejecutar Lose To Win en Linux.
+- LoseToWinWindows.bat: Fichero para ejecutar Lose To Win en Windows.
+
+Lanzar Lose To Win es tan simple como ejecutar el fichero de tu sistema operativo.
+
+En cualquier caso, siempre es posible abrir un error en GitHub si se encuentra algún fallo tanto en la versión de lanzamiento, ejecución, etc.
+
 
 # Bibliotecas externas y recursos utilizados
 

@@ -20,6 +20,8 @@ Bla bla bla
 
 - Arte de plataformas: https://pixelfrog-assets.itch.io/ (licencia CC-0)
 
+- Arte de la bola de energía: https://www.deviantart.com/dbaf23
+
 - Music by Monplaisir, https://freemusicarchive.org/music/Monplaisir (licencia CC-0)
 
 - Flags: https://www.flaticon.com/packs/international-flags-6?word=flags by https://www.freepik.com/
@@ -38,10 +40,9 @@ Bla bla bla
 	- Botón créditos: https://www.freepik.com/
 	- Botón práctica: https://www.freepik.com/
 	- Botón check: https://www.freepik.com/
-	- Botón Cofre: https://www.flaticon.com/authors/pixel-perfect
 	- Botón bomba: https://www.freepik.com/
 	- Botón death_ball: https://www.flaticon.com/authors/dinosoftlabs
-
+	- Botón trofeo: https://www.freepik.com/
 - Font by Brian Kent (ÆNIGMA GAMES & FONTS): https://www.dafont.com/kirby-no-kira-kizzu.font
 
 ## Herramientas

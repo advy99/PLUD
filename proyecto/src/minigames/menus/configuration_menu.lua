@@ -52,8 +52,8 @@ function ConfigurationMenu:initialize(num_players)
 	self.sfx_slider = {value = self.init_config:getSFXVolume(), min = 0, max = 1}
 	self.mute_chk = {text = language.MUTE, checked = self.init_config:getMuted()}
 
-
-	self.show_second_page = false
+	self.NUM_PAGES = 2
+	self.active_page = 1
 
 	self.languages_array = {"english", "spanish", "german", "italian", "french", "portuguese"}
 	self.active_language = 0
@@ -100,14 +100,13 @@ function ConfigurationMenu:update(dt)
 	love.graphics.setFont(font)
 
 
-	if not self.show_second_page then
+	if self.active_page == 1 then
 
 		suit.Slider(self.music_slider, {align = "right"}, 640, 450, 175,30)
 		suit.Label(language.MUSIC, {align = "center"}, 460, 450, 160,30)
 		suit.Slider(self.sfx_slider, {align = "right"}, 640, 500, 175,30)
 		suit.Label(language.SFX, {align = "center"}, 460, 500, 160,30)
 		suit.Checkbox(self.mute_chk, {align = "center"}, 500, 550, 275,30)
-		self.show_second_page = suit.Button("->", {id = "go_page_2", align = "center"}, self.pages_button_position[1], self.pages_button_position[2], self.pages_button_position[3],50).hit
 
 		if suit.Button("<-", {align = "center"}, self.flag_position[1] - 70 - 20, self.flag_position[2] + self.languages.english:getWidth() / 2 * 0.15 - 15, 70,30).hit then
 			self.active_language = self.active_language - 1
@@ -153,7 +152,7 @@ function ConfigurationMenu:update(dt)
 			player.sound_manager:setVolume("dead", sfx_vol)
 		end
 
-	else
+	elseif self.active_page == 2 then
 
 		suit.Checkbox(self.vsync_chk, {align = "center"}, self.background_box[1] + self.background_box[3] / 2 - 150, 250, 300,30)
 		suit.Checkbox(self.fps_chk, {align = "center"}, self.background_box[1] + self.background_box[3] / 2 - 150, 300, 300,30)
@@ -227,9 +226,22 @@ function ConfigurationMenu:update(dt)
 		end
 
 
+	end
 
-		-- si pulso dentro de controles, estoy saliendo de controles
-		self.show_second_page = not suit.Button("<-", {id = "go_page_1", align = "center"}, self.pages_button_position[1], self.pages_button_position[2], self.pages_button_position[3],50).hit
+	local buttons_position = {self.background_box[1] + self.background_box[3]/2 , 630}
+
+	if suit.Button("<-", {id = "pagina_menos", align = "center"}, buttons_position[1] - 35 - 100, buttons_position[2] , 70,30).hit then
+		self.active_page = self.active_page - 1
+		if self.active_page < 1 then
+			self.active_page = self.active_page + self.NUM_PAGES
+		end
+	end
+
+	if suit.Button("->", {id = "pagina_mas", align = "center"}, buttons_position[1] - 35 + 100, buttons_position[2], 70,30).hit then
+		self.active_page = self.active_page + 1
+		if self.active_page > self.NUM_PAGES then
+			self.active_page = self.active_page - self.NUM_PAGES
+		end
 	end
 
 end
@@ -242,12 +254,12 @@ function ConfigurationMenu:draw()
 	self.config_background:draw()
 	self.title:draw()
 
-	if not self.show_second_page then
+	if self.active_page == 1 then
 		self.language_section:draw()
 		self.volume_section:draw()
 		love.graphics.draw(self.languages[self.languages_array[self.active_language]], self.flag_position[1], self.flag_position[2], 0, 0.15, 0.15)
 
-	else
+	elseif self.active_page == 2 then
 		self.screen_section:draw()
 		self.controls_section:draw()
 		love.graphics.reset()
@@ -260,6 +272,14 @@ function ConfigurationMenu:draw()
 	if love.timer.getTime() < self.key_assigned_time + self.KEY_ASSIGNED_TIME then
 		self.key_assigned_text_box:draw()
 	end
+
+
+	local buttons_position = {self.background_box[1] + self.background_box[3]/2 , 630}
+	local text_color = {1, 1, 1}
+	local box_color = {0, 0, 0}
+	local contador = TextBox:new(self.active_page .. "/" .. self.NUM_PAGES, buttons_position[1] - 50, buttons_position[2] - 10, 100, 50, 30, 0, text_color, box_color)
+
+	contador:draw()
 
 
 end

@@ -1,7 +1,6 @@
 # Titulo
 
-Bla bla bla
-
+Lose To Win: Proyecto para la asignatura de Programación Lúdica.
 
 # Bibliotecas externas y recursos utilizados
 

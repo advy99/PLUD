@@ -147,7 +147,7 @@ function Game:draw()
 			message = language.EXIT_GAME
 		end
 
-		local countdown_text = TextBox:new( message .. math.abs(math.ceil(self.countdown)), pos[1], pos[2], size[1], size[2], 34, 0.8, text_color, box_color)
+		local countdown_text = TextBox:new( message .. math.abs(math.ceil(self.countdown)), pos[1], pos[2], size[1], size[2], 32, 0.8, text_color, box_color)
 		countdown_text:draw()
 	end
 

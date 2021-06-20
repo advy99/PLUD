@@ -394,6 +394,127 @@ Actualmente contamos con tres minijuegos completados, pudiendo jugar en modo pr�
 
 \section{Interfaz de usuario}
 
+La interfaz de usuario se trata de una interfaz simple, dividida en dos secciones, la pantalla de juego, y una pantalla donde los usuarios podrán ver tanto sus controles y como añadir jugadores si se encuentran en un menú o su puntuación si se encuentran jugando:
+
+\begin{figure}[H]
+  \centering
+	\includegraphics[width=\textwidth]{"interfaz/interfaz_inferior_anadir.png"}
+  \caption{Interfaz inferior con dos jugadores en un menú.}\label{figure:interfaz_inferior_anadir}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+	\includegraphics[width=\textwidth]{"interfaz/interfaz_inferior_jugando.png"}
+  \caption{Interfaz inferior con cuatro jugadores jugando.}\label{figure:interfaz_inferior_jugando}
+\end{figure}
+
+Con respecto al resto de interfaz, esta se encuentra totalmente integrada en el propio juego, los jugadores con sus personajes se moverán por plataformas que les llevarán a las distintas secciones disponibles, de forma que la adaptación a los controles del juego se hace de una forma escalada, en la que los jugadores pueden aprender a manejar a los personajes desde el principio, navegando por la interfaz. La única excepción será en el menú de opciones, donde la modificación de opciones se realizará con el ratón por motivos de comodidad frente al gran número de opciones disponibles.
+
+De cara a poder navegar por el juego y sus menús será necesario que los jugadores se pongan de acuerdo sobre a que sección han de navegar, ya que el juego pedirá que todos los jugadores activos se encuentren en la misma plataforma para pasar de una sección a otra. Todas las plataformas que llevan a secciones están marcadas con símbolos en el mapa, además de tener un texto de acompañamiento junto a una cuenta atrás para asegurar que se trata del menú correcto:
+
+\begin{figure}[H]
+  \centering
+	\includegraphics[width=\textwidth]{"interfaz/menu_no_funciona_num_jugadores.png"}
+  \caption{El menú no se activa aunque dos jugadores quieran ir a esa sección, ya que otros dos no se han decidido.}\label{figure:menu_no_funciona_num_jugadores}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+	\includegraphics[width=\textwidth]{"interfaz/esperando_practicar.png"}
+  \caption{Cuatro jugadores pasando a otro menú.}\label{figure:esperando_practicar}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+	\includegraphics[width=\textwidth]{"interfaz/menu_funciona_num_jugadores.png"}
+  \caption{Cambiando el número de jugadores, seguimos necesitando a la totalidad de los jugadores activos.}\label{figure:menu_funciona_num_jugadores}
+\end{figure}
+
+Como vemos, a la vez que el jugador aprende a manejarse con su personaje, se mueve por los menús practicando el movimiento y saltos, a la vez de utilizar una interfaz simple y directa que deja claro en todo momento que es cada opción acompañándola de un mensaje.
+
+\subsection{Secciones de la interfaz de usuario}
+
+La interfaz de usuario está dividida de la siguiente forma:
+
+\subsubsection{Menú principal}
+
+Tras iniciar el juego nos encontraremos con el menú inicial, con el número mínimo de jugadores, dos:
+
+\begin{figure}[H]
+  \centering
+	\includegraphics[width=\textwidth]{"interfaz/modo_inicial_defecto.png"}
+  \caption{Menú inicial por defecto, con dos jugadores.}\label{figure:modo_inicial_defecto}
+\end{figure}
+
+En este menú podemos realizar cuatro opciones, de arriba a abajo y de izquierda a derecha:
+
+\begin{enumerate}
+	\item Ir al menú de juego.
+	\item Ir al menú de opciones.
+	\item Ir al menú de créditos.
+	\item Salir del juego.
+\end{enumerate}
+
+\subsubsection{Menú de juego}
+
+Al pasar al menú de juego, veremos lo siguiente:
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\textwidth]{"modos/menu_juego.png"}
+	\caption{Menú de juego.}\label{figure:menu_juego}
+\end{figure}
+
+Como vemos, contamos con cuatro opciones:
+
+\begin{enumerate}
+	\item Entrar a jugar.
+	\item Ir al modo práctica.
+	\item Ir a la tabla de puntuaciones.
+	\item Volver al menú anterior.
+\end{enumerate}
+
+
+En la primera opción pasaremos al modo de juego por defecto, que explicaremos más adelante, en la segunda opción iremos al menú de práctica, donde podremos escoger entre los tres minijuegos disponibles actualmente y jugar de forma indefinida, con el objetivo de entender como funcionan y entrenarnos para jugar:
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\textwidth]{"modos/menu_practica.png"}
+	\caption{Menú de práctica.}\label{figure:menu_practica}
+\end{figure}
+
+Por último, en la tabla de puntuaciones podremos consultar quienes son los mejores jugadores de todo el juego, ya que como veremos más adelante en el modo de juego, tras acabar una partida el ganador podrá guardar su nombre con su puntuación en esta tabla y pasar a la historia de Lose To Win como el mayor perdedor:
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\textwidth]{"tabla_puntuaciones.png"}
+	\caption{Menú de puntuaciones.}\label{figure:tabla_puntuaciones}
+\end{figure}
+
+
+\subsubsection{Menú de opciones}
+
+En el menú de opciones encontraremos una interfaz controlada por ratón para controlar las distintas configuraciones disponibles. También encontraremos dos plataformas, una a la izquierda para guardar la configuración y a la derecha para salir sin guardar los cambios realizados:
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\textwidth]{"opciones/idiomas/spanish.png"}
+	\caption{Menú de opciones.}\label{figure:menu_opciones}
+\end{figure}
+
+
+Con respecto a este menú y las opciones disponibles entraremos en detalle en la sección de opciones.
+
+\subsubsection{Menú de créditos}
+
+En este menú podremos encontrar una plataforma para volver al menú principal, además de un cuadro de texto con varias páginas que nos permitirá ver quien ha desarrollado este proyecto, así como dar crédito a todos los recursos utilizados para su desarrollo:
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\textwidth]{"interfaz/creditos.png"}
+	\caption{Menú de créditos.}\label{figure:creditos}
+\end{figure}
+
 \section{Opciones}
 
 \subsection{Idioma}

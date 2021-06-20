@@ -31,7 +31,7 @@ function PlayState:initialize(num_players)
 
 	self.curtain_animation_time = 0.75
 
-	self.TIME_PER_MINIGAME = 10
+	self.TIME_PER_MINIGAME = 30
 	self.TIME_CLOSE_CURTAINS = self.TIME_PER_MINIGAME + self.curtain_animation_time
 	self.TIME_OPEN_CURTAINS = self.TIME_CLOSE_CURTAINS + self.curtain_animation_time
 	self.elapsed_time = 0

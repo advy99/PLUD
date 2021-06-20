@@ -760,7 +760,7 @@ Además, se ha utilizado una imagen de fondo que se integra con el estilo elegid
 
 \subsubsection{Sprites de los objetos utilizados}
 
-Por último se han utilizado diversos sprites simples pero distintivos para tanto representar los iconos informativos usados en las plataformas de los distintos menús como de los objetos y amenazas que forman parte de cada uno de los minijuegos. Como ejemplo, incluimo
+Por último se han utilizado diversos sprites simples pero distintivos para tanto representar los iconos informativos usados en las plataformas de los distintos menús como de los objetos y amenazas que forman parte de cada uno de los minijuegos. Como ejemplo, incluimos el sprite de la bola de energía del minijuego Death Ball, que cuenta con una simple animación de dos frames.
 
 \begin{figure}[H]
 	\centering
@@ -791,15 +791,44 @@ El resto de mapas ha sido creado de la misma forma, añadiendo plataformas, sens
 
 \subsubsection{Música}
 
+En el apartado de banda sonora, se ha optado por una única canción simple y corta en bucle pero que a su vez es agradable y adictiva. En un futuro, se prevee ampliar el repertorio de banda sonora, contando con diversos tipos de canciones que se adecueen al flujo del juego, contando con canciones más tranquilas para los menús y más frenéticas para los minijuegos.
+
 \subsubsection{Efectos de sonido}
+
+En el apartado de SFX o efectos de sonido el trabajo se ha centrado principalmente en dotar a los personajes de efectos sonoros que mejorasen la experiencia del usuario, aportando retroalimentación a los jugadores en función de la acción realizada, ya fuese saltar, aterrizar en una plataforma o conseguir morirse.
+
+También se ha incluido un efecto sonoro como prueba al minijuego Death Ball que se activa al generar cualquier colisión de la bola de energía, ya fuese con los jugadores o el esceario. Para el trabajo futuro, se va a trabajar en seguir mejorando esta experiencia de usuario aportando mayor retroalimentación a los jugadores mediante efectos sonoros.
 
 \section*{Desarrollo}
 \label{sec:desarrollo}
 \addcontentsline{toc}{section}{\nameref{sec:desarrollo}}
 
+En esta sección comentaremos los aspectos y tomas de decisiones más importantes en el proceso del desarrollo del proyecto.
+
 \section{Lenguaje y framework utilizados}
 
+En un principio se decidió utilizar el lenguaje de programación Lua con el framework Love2D ya que parecía un entorno sencillo, amigable, y rápido de utilizar. Sin embargo, y aunque eramos conscientes de haber escogido un entorno de más bajo nivel, esto fue un error por los siguientes motivos:
+
+\begin{enumerate}
+	\item Falta de estructuras de datos al uso: Lua solo dispone de tablas como estructuras de datos, además de no disponer de una estructura orientada a objetos, permitiendo clases complejas personalizadas.
+	\item Documentación anticuada: Lua se trata de un lenguaje muy permisivo, por lo que toda la información que encontrada se trata de parches que no se deberían utilizar, funciones sin soporte, o se había modificado su uso versiones más actuales pero no se había actualizado la documentación. Este problema está también presente en la documentación de Love2D, aunque en menor medida.
+	\item Falta de herramientas por parte de Love2D: Aunque Love2D aporta una base para el desarrollo de un videojuego, tras intentar realizar un proyecto de relativa (aunque pequeña) envergadura que vaya más allá de una pantalla mostrando cierta información, es claramente visible la falta de herramientas que o bien no existían, o estaban incompletas, llevando a una situación en la que gran parte de tareas que son comunes en otros entornos como Godot, Unity o Unreal Engine son triviales, en Love2D ha sido necesario implementarlas desde cero, sumando los contratiempos provistos por la falta de estructuras, funcionalidades y herramientas de Lua.
+\end{enumerate}
+
+Por estos motivos, aunque hemos aprendido en gran profundidad las etapas, herramientas y pasos necesarios para desarrollar un videojuego y hemos logrado crear un proyecto que bajo nuestro punto de vista es de gran calidad, tenemos planeado reescribirlo en otro entorno más completo, aunque nos gustaría mantener el desarrollo a bajo nivel.
+
 \section{Bibliotecas externas utilizadas}
+
+Hemos utilizado las siguientes bibliotecas:
+
+\begin{enumerate}
+	\item \href{https://github.com/Dynodzzo/Lua_INI_Parser}{LIP}: Biblioteca para cargar archivos INI.
+	\item \href{https://github.com/kikito/middleclass}{middleclass}: Biblioteca para usar clases en Lua.
+	\item \href{https://github.com/vrld/suit}{SUIT}: Biblioteca para gestionar menús con sliders, checkbox, etc.
+	\item \href{https://github.com/karai17/Simple-Tiled-Implementation}{STI}: Biblioteca para cargar mapas de Tiled en Love2D.
+\end{enumerate}
+
+Estas bibliotecas nos han permitido suplir muchos de los problemas de Lua, aunque eso no ha evitado el tiempo y trabajo perdido hasta llegar a una iteración en la que hemos llegado a implementar todo el proyecto utilizando estas herramientas.
 
 \section{Estructura del proyecto}
 

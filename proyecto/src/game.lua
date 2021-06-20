@@ -283,8 +283,8 @@ function Game:mouseMoved(x, y)
 end
 
 function Game:keyPressed(k)
-	if k == 'escape' and self.minigame.class.super.name ~= "Menu" then
-		self:changeMiniGame(Constants.TITLE_MENU)
+	if k == 'escape' and self.minigame.class.super.name ~= "Menu" and self.minigame.class.name ~= "PlayState" then
+		self:changeMiniGame(Constants.PLAY_MENU)
 	elseif k == "escape" and Constants.DEBUG then
 		if self.minigame.class.name == "TitleMenu" then
 			love.event.quit()

@@ -324,7 +324,7 @@ end
 
 function Game:textEdited(text, start, length)
 	-- for IME input
-	self.mingame:textEdited(text, start, length)
+	self.minigame:textEdited(text, start, length)
 end
 
 function Game:textInput(t)

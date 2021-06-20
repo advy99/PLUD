@@ -1,6 +1,7 @@
 require("src/minigames/menus/menu")
 
 local class = require "lib/middleclass"
+local suit = require("lib/SUIT")
 
 CreditsMenu = Menu:subclass('CreditsMenu')
 
@@ -29,12 +30,32 @@ function CreditsMenu:initialize(num_players)
 	for i=1, 5, 1 do
 		self.thanks[i] = TextBox:new(names[i], self.background_box[1] , 430 + 50*(i-1), self.background_box[3], 30, 35, 0, text_color, box_color)
 	end
+
+	self.active_page = 1
+	self.NUM_PAGES = 2
 end
 
 
 function CreditsMenu:update(dt)
 
 	Menu.update(self, dt)
+	local buttons_position = {self.background_box[1] + self.background_box[3]/2 , 630}
+
+	if suit.Button("<-", {align = "center"}, buttons_position[1] - 35 - 100, buttons_position[2] , 70,30).hit then
+		self.active_page = self.active_page - 1
+		if self.active_page < 1 then
+			self.active_page = self.active_page + self.NUM_PAGES
+		end
+
+	end
+
+	if suit.Button("->", {align = "center"}, buttons_position[1] - 35 + 100, buttons_position[2], 70,30).hit then
+		self.active_page = self.active_page + 1
+		if self.active_page > self.NUM_PAGES then
+			self.active_page = self.active_page - self.NUM_PAGES
+		end
+	end
+
 end
 
 
@@ -45,14 +66,33 @@ function CreditsMenu:draw()
 	self.config_background:draw()
 	self.title:draw()
 
-	self.made_by:draw()
-	self.author_1:draw()
-	self.author_2:draw()
+	if self.active_page == 1 then
+		self.made_by:draw()
+		self.author_1:draw()
+		self.author_2:draw()
 
-	self.special_thanks:draw()
-	for i=1, 5, 1 do
-		self.thanks[i]:draw()
+	elseif self.active_page == 2 then
+		self.special_thanks:draw()
+		for i=1, 5, 1 do
+			self.thanks[i]:draw()
+		end
+
 	end
+
+
+
+
+
+
+	local buttons_position = {self.background_box[1] + self.background_box[3]/2 , 630}
+	local text_color = {1, 1, 1}
+	local box_color = {0, 0, 0}
+	local contador = TextBox:new(self.active_page .. "/" .. self.NUM_PAGES, buttons_position[1] - 50, buttons_position[2] - 10, 100, 50, 30, 0, text_color, box_color)
+
+	contador:draw()
+
+	suit.draw()
+
 end
 
 function CreditsMenu:handleEvent(object, event)
